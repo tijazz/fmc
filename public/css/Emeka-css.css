@@ -1,0 +1,122 @@
+/* Extra small devices (phones, 600px and down) */
+/*@media only screen and (max-width: 600px) {
+  body
+   {
+    background-color:  red;
+  }
+}*/
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/*@media only screen and (min-width: 600px) {
+  body
+   {
+    background-color: orange;
+  }
+}*/
+
+/* Medium devices (landscape tablets, 768px and up) */
+/*@media only screen and (min-width: 768px) {
+  body
+   {
+    background-color : yellow;
+  }
+
+} */
+
+/* Large devices (laptops/desktops, 992px and up) */
+/*@media only screen and (min-width: 992px) {
+   body
+   {
+    background-color : green;
+  }
+} */
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/*@media only screen and (min-width: 1200px) {
+   body
+   {
+    background-color : blue;
+  }
+}*/
+
+
+.FMS-title{
+    margin-left: 9rem;
+    font-weight: bolder;
+}
+
+
+
+.context{
+  padding:0.5rem 1rem;
+}
+
+.check_location, .im_btn{
+  background:#1ab394;
+  color:#fff;
+  padding:0.5rem 1rem;
+  border-radius:5px;
+  margin-top:5px;
+  box-shadow:0px 0px 2px 2px rgba(207, 201, 201, 0.319);
+}
+
+
+.map{float:right;}
+
+.invest-list{
+  margin-top: 7.2rem;
+}
+
+.fin_management,.inventory_management,.risk_management,
+.supply_chain_management, .monitoring_eval, .investment_management
+{
+  background:#1ab394 !important;
+  color:#fff;
+  height: 11.5rem;
+}
+
+.supply_chain_management, .monitoring_eval, .investment_management{
+  margin-top: 4rem;
+}
+
+.fin_management h1{
+  margin-top:10px;
+}
+
+.fin_management h3,.fin_management h1{
+  font-weight:400;
+}
+
+.fin_management, .fin-context, .scm-context, .invest-context
+{
+  text-align:center;
+}
+
+.fin_management {
+  color:#fff;
+  background: #1ab394;
+}
+
+.fm_btn
+{
+    background:#1ab394;
+  color:#fff;
+  padding:0.5rem 1rem;
+  border-radius:5px;
+  margin-top:5px;
+  box-shadow:0px 0px 2px 2px rgba(207, 201, 201, 0.319);
+}
+
+
+.rm-title,.fin-title,.in-title,
+.me-title, .invest-title
+{
+  margin: 4rem;
+}
+
+.rm-body, .fin-body, .in-body,
+.me-body
+{
+  margin: 0.5rem;
+}
+
