@@ -8398,6 +8398,28 @@ body.md-skin {
     margin-top: 5rem;
 }
 
+/* Login page */
+.login-page {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.pb-3x{
+  padding-bottom:54px;
+  } 
+  
+  .pt-2x{
+  padding-top:36px;
+  } 
+  
+  .mb{
+    margin-bottom:18px;
+    } 
+ 
+  .bk-white, .bk-light{ 
+  background:#fff; 
+ } 
+
 .errorWrap {
   padding: 10px;
   margin: 0 0 20px 0;
