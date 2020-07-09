@@ -118,8 +118,8 @@
 										foreach($results as $result)
 										{				?>	
 										<tr>
-											<td><?php echo htmlentities($id);?></td>
-                                            <td><?php echo htmlentities($result->user_id);?></td>
+											<td><?php echo htmlentities($cnt);?></td>
+                                            <td><?php echo htmlentities($result->fullname);?></td>
                                             <td><?php echo htmlentities($result->details);?></td>
 											<td><?php echo htmlentities($result->category);?></td>
 											<td><?php echo htmlentities($result->amount);?></td>

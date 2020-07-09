@@ -106,7 +106,7 @@
 									
 									<tbody>
 
-										<?php $sql = "SELECT * from transactions ";
+										<?php $sql = "SELECT * FROM transactions LEFT JOIN member ON transactions.user_id = member.id";
 										$query = $dbh -> prepare($sql);
 										$query->execute();
 										$results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -117,7 +117,7 @@
 										{				?>	
 										<tr>
 											<td><?php echo htmlentities($cnt);?></td>
-                                            <td><?php echo htmlentities($result->user_id);?></td>
+                                            <td><?php echo htmlentities($result->fullname);?></td>
                                             <td><?php echo htmlentities($result->details);?></td>
 											<td><?php echo htmlentities($result->category);?></td>
 											<td><?php echo htmlentities($result->amount);?></td>
