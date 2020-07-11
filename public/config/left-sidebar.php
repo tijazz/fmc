@@ -75,7 +75,7 @@
                         </li>
                         
                         <li>
-                            <a href="#">
+                            <a href="transaction.php">
                                 <i class="fa fa-star"></i>
                                 <span class="nav-label">Transaction</span>  
                             </a>
