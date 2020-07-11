@@ -17,7 +17,8 @@ if(isset($_POST['submit']))
   $name=$_POST['name'];
   $email=$_POST['email'];
   $mobileno=$_POST['phone_no'];
-  $mobileno=$_POST['title'];
+  $title =$_POST['title'];
+  $cat = $_POST['cat'];
   
 
 //   if(move_uploaded_file($file_loc,$folder.$final_file))
@@ -110,7 +111,7 @@ if(isset($_POST['submit']))
                     <div class="ibox-content">
                         <div class="row">
                            
-                        <form action="" method="POST" class="forma">
+                        <form action="form.php" method="POST" class="forma">
                     <p>
                         <label for="full_name">Full Name</label>
                         <input type="text" name="full_name" disabled value="<?php echo $name;?>">
@@ -154,7 +155,7 @@ if(isset($_POST['submit']))
                         
 
                         $(".cat").click(function(){
-                            c++
+                            
                             var datas = ["Overhead cost", "Insurance and security", "Raw Materials", "Depreciation cost", "Project Expenses"]
                             var id = this.id
                             // $(".dropdown").before('<p><label for="#">' + id + '</label><input type="text" name="#" disabled></p>')
@@ -163,20 +164,30 @@ if(isset($_POST['submit']))
                             for (let i = 0; i < datas.length; i++) {
                                 
                                 if (datas[i] == id){
-                                    $(".cat-down").before('<p><label for="' + id + '">' + id + '</label><input type="text" name="category' + c + '"></p>')
+                                    $(".cat-down").before('<p><label for="' + id + '">' + id + '</label><input type="text" name="cat[]"></p>')
                                 }
                                 
                             }
+                            c++
                         })
                     });
                     </script>
                     
                     <p>
-                        <button type="submit">
+                        <button type="submit" name="submit">
                             Submit
                         </button>
                     </p>
                 </form>
+                <p>
+                    <?php
+                    foreach($cat as $ca){
+                        echo $ca;
+                    } 
+                    
+                    echo $title
+                    ?>
+                </p>
 
                         </div>
                     </div>
