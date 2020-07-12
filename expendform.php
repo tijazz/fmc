@@ -20,21 +20,6 @@ if(isset($_POST['submit']))
   $title =$_POST['title'];
   $cat = $_POST['cat'];
   
-
-//   if(move_uploaded_file($file_loc,$folder.$final_file))
-//       {
-//           $image=$final_file;
-//       }
-
-//   $sql="UPDATE member SET fullname=(:name), email=(:email), phone=(:mobileno), images=(:image) WHERE id=(:idedit)";
-//   $query = $dbh->prepare($sql);
-//   $query-> bindParam(':name', $name, PDO::PARAM_STR);
-//   $query-> bindParam(':email', $email, PDO::PARAM_STR);
-//   $query-> bindParam(':mobileno', $mobileno, PDO::PARAM_STR);
-//   $query-> bindParam(':image', $image, PDO::PARAM_STR);
-//   $query-> bindParam(':idedit', $idedit, PDO::PARAM_STR);
-//   $query->execute();
-//   $msg="Information Updated Successfully";
 }    
 ?>
 
@@ -66,6 +51,8 @@ if(isset($_POST['submit']))
                 $category = htmlentities($result->category);
                     
             }
+
+
 ?>
     <div id="wrapper">
         <?php
@@ -133,51 +120,36 @@ if(isset($_POST['submit']))
                         <label for="full_name">Title</label>
                         <input type="text" name="title" value="">
                     </p>
-                    
-                    <div class="dropdown cat-down">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add Category
-                        <span class="caret"></span></button>
-                        <ul class="dropdown-menu cat-drop">
-                        </ul>
-                    </div>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                    <script>
-                        var c = 0
-                        var datas = ["Overhead cost", "Insurance and security", "Raw Materials", "Depreciation cost", "Project Expenses"]
+
+                    <p>
+                        <select name="category" id="">
+                        <option selected>Select</option>
                         
 
-                        $(document).ready(function() {
-                            var c = 0
-                            var datas = ["Overhead cost", "Insurance and security", "Raw Materials", "Depreciation cost", "Project Expenses"]  
-                            for (let i = 0; i < datas.length; i++) {
-                                $(".cat-drop").append("<li class='cat' id='"+datas[i]+"'>"+datas[i]+"</li>")
-                            }                           
+                        <?php 
+                                        $sql = "SELECT * FROM `type-expenses`";
+                                        $query = $dbh -> prepare($sql);
+										$query->execute();
+										$results=$query->fetchAll(PDO::FETCH_OBJ);
+										$cnt=1;
+										if($query->rowCount() > 0)
+										{
+										foreach($results as $result)
+										{				?>	
+										<option value="<?php echo htmlentities($result->title);?>"><?php echo htmlentities($result->title);?></option>
+										<?php $cnt=$cnt+1; }} ?>
                         
-
-                        $(".cat").click(function(){
+                        
                             
-                            var datas = ["Overhead cost", "Insurance and security", "Raw Materials", "Depreciation cost", "Project Expenses"]
-                            var id = this.id
-                            // $(".dropdown").before('<p><label for="#">' + id + '</label><input type="text" name="#" disabled></p>')
-                            console.log(id)
-
-                            for (let i = 0; i < datas.length; i++) {
-                                
-                                if (datas[i] == id){
-                                    $(".cat-down").before('<p><label for="' + id + '">' + id + '</label><input type="text" name="cat[]"></p>')
-                                }
-                                
-                            }
-                            c++
-                        })
-                    });
-                    </script>
+                        </select>
+                    </p>
                     
                     <p>
                         <button type="submit" name="submit">
                             Submit
                         </button>
                     </p>
+
                 </form>
                 <p>
                     <?php
