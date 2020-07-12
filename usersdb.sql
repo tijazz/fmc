@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2020 at 07:11 PM
+-- Generation Time: Jul 12, 2020 at 07:08 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -57,6 +57,31 @@ CREATE TABLE `deleteduser` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `expenditure`
+--
+
+CREATE TABLE `expenditure` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `description` varchar(55) NOT NULL,
+  `type-expenses` varchar(55) NOT NULL,
+  `type-asset` varchar(55) NOT NULL,
+  `amount` double NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `expenditure`
+--
+
+INSERT INTO `expenditure` (`id`, `user_id`, `description`, `type-expenses`, `type-asset`, `amount`, `created_at`) VALUES
+(1, 5, 'Boy', 'Insurance & security', '', 1000000, '2020-07-12 16:27:45'),
+(2, 5, 'Training', 'Raw Materials', '', 1245677, '2020-07-12 16:35:00'),
+(4, 5, 'good', 'Project\r\nExpenses', '', 1334344, '2020-07-12 16:56:15');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `feedback`
 --
 
@@ -98,6 +123,53 @@ INSERT INTO `gallery` (`id`, `imageName`, `created_at`) VALUES
 (1, '838.jpg', '2020-07-03 00:52:16'),
 (4, 'invest-in-the-stock-market.jpg', '2020-07-03 00:54:51'),
 (5, '1556112789graduate-finance-jobs-planning.jpg', '2020-07-03 00:55:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `income`
+--
+
+CREATE TABLE `income` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `details` varchar(55) NOT NULL,
+  `type-income` varchar(55) NOT NULL,
+  `type-asset` varchar(55) NOT NULL,
+  `amount` double NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `income`
+--
+
+INSERT INTO `income` (`id`, `user_id`, `details`, `type-income`, `type-asset`, `amount`, `created_at`) VALUES
+(1, 5, 'Boy', 'Select', '', 1000000, '2020-07-12 16:43:48');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `liabilty`
+--
+
+CREATE TABLE `liabilty` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `details` varchar(55) NOT NULL,
+  `type-liability` varchar(55) NOT NULL,
+  `type-asset` varchar(55) NOT NULL,
+  `amount` double NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `liabilty`
+--
+
+INSERT INTO `liabilty` (`id`, `user_id`, `details`, `type-liability`, `type-asset`, `amount`, `created_at`) VALUES
+(1, 5, 'Training', 'Unearned revenue', '', 1245677, '2020-07-12 17:01:11'),
+(2, 5, 'good', 'Amount payable', '', 1334344, '2020-07-12 17:02:45');
 
 -- --------------------------------------------------------
 
@@ -220,6 +292,93 @@ INSERT INTO `transactions` (`trans_id`, `user_id`, `details`, `category`, `amoun
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `type-asset`
+--
+
+CREATE TABLE `type-asset` (
+  `id` int(11) NOT NULL,
+  `title` varchar(55) NOT NULL,
+  `description` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `type-asset`
+--
+
+INSERT INTO `type-asset` (`id`, `title`, `description`) VALUES
+(1, 'Currents', 'reoccurring every time'),
+(2, 'Fixed', 'permanent in nature');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `type-expenses`
+--
+
+CREATE TABLE `type-expenses` (
+  `id` int(11) NOT NULL,
+  `title` varchar(55) NOT NULL,
+  `description` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `type-expenses`
+--
+
+INSERT INTO `type-expenses` (`id`, `title`, `description`) VALUES
+(1, 'Overhead cost', ''),
+(2, 'Insurance & security', ''),
+(3, 'Raw Materials', ''),
+(4, 'Project\r\nExpenses', ''),
+(5, 'Depreciation\r\ncost', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `type-income`
+--
+
+CREATE TABLE `type-income` (
+  `id` int(11) NOT NULL,
+  `title` varchar(55) NOT NULL,
+  `description` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `type-income`
+--
+
+INSERT INTO `type-income` (`id`, `title`, `description`) VALUES
+(1, 'Product Sales ', ''),
+(2, 'Service Sales', ''),
+(3, 'Grants', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `type-liability`
+--
+
+CREATE TABLE `type-liability` (
+  `id` int(11) NOT NULL,
+  `title` varchar(55) NOT NULL,
+  `description` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `type-liability`
+--
+
+INSERT INTO `type-liability` (`id`, `title`, `description`) VALUES
+(1, 'Interest payable', ''),
+(2, 'wages and Salary payable', ''),
+(3, 'Income tax payable', ''),
+(4, 'Unearned revenue', ''),
+(5, 'Amount payable', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -247,51 +406,21 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `gender`, `mobile`, `des
 --
 
 --
--- Indexes for table `admin`
+-- Indexes for table `expenditure`
 --
-ALTER TABLE `admin`
+ALTER TABLE `expenditure`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `deleteduser`
+-- Indexes for table `income`
 --
-ALTER TABLE `deleteduser`
+ALTER TABLE `income`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `feedback`
+-- Indexes for table `liabilty`
 --
-ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `gallery`
---
-ALTER TABLE `gallery`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `member`
---
-ALTER TABLE `member`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `notification`
---
-ALTER TABLE `notification`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `reply`
---
-ALTER TABLE `reply`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `testimonial`
---
-ALTER TABLE `testimonial`
+ALTER TABLE `liabilty`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -299,6 +428,30 @@ ALTER TABLE `testimonial`
 --
 ALTER TABLE `transactions`
   ADD PRIMARY KEY (`trans_id`);
+
+--
+-- Indexes for table `type-asset`
+--
+ALTER TABLE `type-asset`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `type-expenses`
+--
+ALTER TABLE `type-expenses`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `type-income`
+--
+ALTER TABLE `type-income`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `type-liability`
+--
+ALTER TABLE `type-liability`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -311,58 +464,52 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT for table `expenditure`
 --
-ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `deleteduser`
---
-ALTER TABLE `deleteduser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT for table `feedback`
---
-ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT for table `gallery`
---
-ALTER TABLE `gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `member`
---
-ALTER TABLE `member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `notification`
---
-ALTER TABLE `notification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
-
---
--- AUTO_INCREMENT for table `reply`
---
-ALTER TABLE `reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `testimonial`
---
-ALTER TABLE `testimonial`
+ALTER TABLE `expenditure`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `income`
+--
+ALTER TABLE `income`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `liabilty`
+--
+ALTER TABLE `liabilty`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
   MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `type-asset`
+--
+ALTER TABLE `type-asset`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `type-expenses`
+--
+ALTER TABLE `type-expenses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `type-income`
+--
+ALTER TABLE `type-income`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `type-liability`
+--
+ALTER TABLE `type-liability`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
