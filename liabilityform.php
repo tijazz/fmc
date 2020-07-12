@@ -14,11 +14,35 @@
 if(isset($_POST['submit']))
 {
 
-  $name=$_POST['name'];
-  $email=$_POST['email'];
-  $mobileno=$_POST['phone_no'];
-  $title =$_POST['title'];
-  $cat = $_POST['cat'];
+    $name=$_POST['name'];
+    $email=$_POST['email'];
+    $mobileno=$_POST['phone_no'];
+    $title =$_POST['title'];
+    $cat = $_POST['category'];
+    $amt = $_POST['amount'];
+  
+  
+    $email = $_SESSION['alogin'];
+    $sql = "SELECT * from member where email = (:email);";
+    $query = $dbh -> prepare($sql);
+    $query-> bindParam(':email', $email, PDO::PARAM_STR);
+    $query->execute();
+    $result=$query->fetch(PDO::FETCH_OBJ);
+    $cnt=1;	
+    
+    if($query->rowCount() > 0)
+        {    
+          $user = htmlentities($result->id);
+          $sql="INSERT INTO `liabilty`(`user_id`, `details`, `type-liability`, `amount`) VALUES (:user,:title,:cat,:amt)";
+          $query = $dbh->prepare($sql);
+          $query-> bindParam(':user', $user, PDO::PARAM_STR);
+          $query-> bindParam(':title', $title, PDO::PARAM_STR);
+          $query-> bindParam(':cat', $cat, PDO::PARAM_STR);
+          $query-> bindParam(':amt', $amt, PDO::PARAM_STR);
+          $query->execute(); 
+          $msg="Feedback Send";        
+        }
+
   
 }    
 ?>
@@ -98,7 +122,7 @@ if(isset($_POST['submit']))
                     <div class="ibox-content">
                         <div class="row">
                            
-                        <form action="form.php" method="POST" class="forma">
+                        <form action="#" method="POST" class="forma">
                     <p>
                         <label for="full_name">Full Name</label>
                         <input type="text" name="full_name" disabled value="<?php echo $name;?>">
@@ -117,8 +141,13 @@ if(isset($_POST['submit']))
                     </p>
                     
                     <p>
-                        <label for="full_name">Title</label>
+                        <label for="full_name">Description</label>
                         <input type="text" name="title" value="">
+                    </p>
+
+                    <p>
+                        <label for="amount">Amount</label>
+                        <input type="text" name="amount" value="">
                     </p>
 
                     <p>
