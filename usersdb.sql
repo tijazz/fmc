@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Jul 12, 2020 at 02:43 PM
--- Server version: 5.7.19
--- PHP Version: 7.1.9
+-- Host: 127.0.0.1
+-- Generation Time: Jul 12, 2020 at 07:08 PM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -28,8 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
-DROP TABLE IF EXISTS `admin`;
-CREATE TABLE IF NOT EXISTS `admin` (
+CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -50,11 +48,10 @@ INSERT INTO `admin` (`id`, `username`, `email`, `password`) VALUES
 -- Table structure for table `deleteduser`
 --
 
-DROP TABLE IF EXISTS `deleteduser`;
-CREATE TABLE IF NOT EXISTS `deleteduser` (
+CREATE TABLE `deleteduser` (
   `id` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `deltime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `deltime` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -63,17 +60,24 @@ CREATE TABLE IF NOT EXISTS `deleteduser` (
 -- Table structure for table `expenditure`
 --
 
-DROP TABLE IF EXISTS `expenditure`;
-CREATE TABLE IF NOT EXISTS `expenditure` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `expenditure` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `description` varchar(55) NOT NULL,
   `type-expenses` varchar(55) NOT NULL,
   `type-asset` varchar(55) NOT NULL,
   `amount` double NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `expenditure`
+--
+
+INSERT INTO `expenditure` (`id`, `user_id`, `description`, `type-expenses`, `type-asset`, `amount`, `created_at`) VALUES
+(1, 5, 'Boy', 'Insurance & security', '', 1000000, '2020-07-12 16:27:45'),
+(2, 5, 'Training', 'Raw Materials', '', 1245677, '2020-07-12 16:35:00'),
+(4, 5, 'good', 'Project\r\nExpenses', '', 1334344, '2020-07-12 16:56:15');
 
 -- --------------------------------------------------------
 
@@ -81,8 +85,7 @@ CREATE TABLE IF NOT EXISTS `expenditure` (
 -- Table structure for table `feedback`
 --
 
-DROP TABLE IF EXISTS `feedback`;
-CREATE TABLE IF NOT EXISTS `feedback` (
+CREATE TABLE `feedback` (
   `id` int(11) NOT NULL,
   `sender` varchar(50) NOT NULL,
   `reciver` varchar(50) NOT NULL,
@@ -106,11 +109,10 @@ INSERT INTO `feedback` (`id`, `sender`, `reciver`, `title`, `feedbackdata`, `att
 -- Table structure for table `gallery`
 --
 
-DROP TABLE IF EXISTS `gallery`;
-CREATE TABLE IF NOT EXISTS `gallery` (
+CREATE TABLE `gallery` (
   `id` int(11) NOT NULL,
   `imageName` varchar(55) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -128,17 +130,22 @@ INSERT INTO `gallery` (`id`, `imageName`, `created_at`) VALUES
 -- Table structure for table `income`
 --
 
-DROP TABLE IF EXISTS `income`;
-CREATE TABLE IF NOT EXISTS `income` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `income` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `details` varchar(55) NOT NULL,
   `type-income` varchar(55) NOT NULL,
   `type-asset` varchar(55) NOT NULL,
   `amount` double NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `income`
+--
+
+INSERT INTO `income` (`id`, `user_id`, `details`, `type-income`, `type-asset`, `amount`, `created_at`) VALUES
+(1, 5, 'Boy', 'Select', '', 1000000, '2020-07-12 16:43:48');
 
 -- --------------------------------------------------------
 
@@ -146,17 +153,23 @@ CREATE TABLE IF NOT EXISTS `income` (
 -- Table structure for table `liabilty`
 --
 
-DROP TABLE IF EXISTS `liabilty`;
-CREATE TABLE IF NOT EXISTS `liabilty` (
+CREATE TABLE `liabilty` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `details` varchar(55) NOT NULL,
   `type-liability` varchar(55) NOT NULL,
   `type-asset` varchar(55) NOT NULL,
   `amount` double NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `liabilty`
+--
+
+INSERT INTO `liabilty` (`id`, `user_id`, `details`, `type-liability`, `type-asset`, `amount`, `created_at`) VALUES
+(1, 5, 'Training', 'Unearned revenue', '', 1245677, '2020-07-12 17:01:11'),
+(2, 5, 'good', 'Amount payable', '', 1334344, '2020-07-12 17:02:45');
 
 -- --------------------------------------------------------
 
@@ -164,8 +177,7 @@ CREATE TABLE IF NOT EXISTS `liabilty` (
 -- Table structure for table `member`
 --
 
-DROP TABLE IF EXISTS `member`;
-CREATE TABLE IF NOT EXISTS `member` (
+CREATE TABLE `member` (
   `id` int(11) NOT NULL,
   `active` int(11) NOT NULL,
   `fullname` varchar(100) NOT NULL,
@@ -197,13 +209,12 @@ INSERT INTO `member` (`id`, `active`, `fullname`, `email`, `phone`, `category`, 
 -- Table structure for table `notification`
 --
 
-DROP TABLE IF EXISTS `notification`;
-CREATE TABLE IF NOT EXISTS `notification` (
+CREATE TABLE `notification` (
   `id` int(11) NOT NULL,
   `notiuser` varchar(50) NOT NULL,
   `notireciver` varchar(50) NOT NULL,
   `notitype` varchar(50) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -225,13 +236,12 @@ INSERT INTO `notification` (`id`, `notiuser`, `notireciver`, `notitype`, `time`)
 -- Table structure for table `reply`
 --
 
-DROP TABLE IF EXISTS `reply`;
-CREATE TABLE IF NOT EXISTS `reply` (
+CREATE TABLE `reply` (
   `id` int(11) NOT NULL,
   `feedbackID` int(11) NOT NULL,
   `receiver_email` varchar(55) NOT NULL,
   `reply_body` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -240,13 +250,12 @@ CREATE TABLE IF NOT EXISTS `reply` (
 -- Table structure for table `testimonial`
 --
 
-DROP TABLE IF EXISTS `testimonial`;
-CREATE TABLE IF NOT EXISTS `testimonial` (
+CREATE TABLE `testimonial` (
   `id` int(11) NOT NULL,
   `fullname` varchar(55) NOT NULL,
   `occupation` varchar(55) NOT NULL,
   `body` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -260,16 +269,37 @@ INSERT INTO `testimonial` (`id`, `fullname`, `occupation`, `body`, `created_at`)
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `transactions`
+--
+
+CREATE TABLE `transactions` (
+  `trans_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `details` varchar(50) NOT NULL,
+  `category` varchar(50) NOT NULL,
+  `amount` int(100) NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transactions`
+--
+
+INSERT INTO `transactions` (`trans_id`, `user_id`, `details`, `category`, `amount`, `date`) VALUES
+(22, 1, 'payment for house', 'Asset', 10000000, '2020-07-09'),
+(23, 5, 'Shop payment', 'Asset', 5000, '2020-07-09');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `type-asset`
 --
 
-DROP TABLE IF EXISTS `type-asset`;
-CREATE TABLE IF NOT EXISTS `type-asset` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `type-asset` (
+  `id` int(11) NOT NULL,
   `title` varchar(55) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `description` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `type-asset`
@@ -285,13 +315,11 @@ INSERT INTO `type-asset` (`id`, `title`, `description`) VALUES
 -- Table structure for table `type-expenses`
 --
 
-DROP TABLE IF EXISTS `type-expenses`;
-CREATE TABLE IF NOT EXISTS `type-expenses` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `type-expenses` (
+  `id` int(11) NOT NULL,
   `title` varchar(55) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `description` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `type-expenses`
@@ -310,13 +338,11 @@ INSERT INTO `type-expenses` (`id`, `title`, `description`) VALUES
 -- Table structure for table `type-income`
 --
 
-DROP TABLE IF EXISTS `type-income`;
-CREATE TABLE IF NOT EXISTS `type-income` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `type-income` (
+  `id` int(11) NOT NULL,
   `title` varchar(55) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `description` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `type-income`
@@ -333,13 +359,11 @@ INSERT INTO `type-income` (`id`, `title`, `description`) VALUES
 -- Table structure for table `type-liability`
 --
 
-DROP TABLE IF EXISTS `type-liability`;
-CREATE TABLE IF NOT EXISTS `type-liability` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `type-liability` (
+  `id` int(11) NOT NULL,
   `title` varchar(55) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `description` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `type-liability`
@@ -351,6 +375,147 @@ INSERT INTO `type-liability` (`id`, `title`, `description`) VALUES
 (3, 'Income tax payable', ''),
 (4, 'Unearned revenue', ''),
 (5, 'Amount payable', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `gender` varchar(50) NOT NULL,
+  `mobile` varchar(50) NOT NULL,
+  `designation` varchar(50) NOT NULL,
+  `image` varchar(50) NOT NULL,
+  `status` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `gender`, `mobile`, `designation`, `image`, `status`) VALUES
+(20, 'Abdulazeez Tijani', 'test@gmail.com', '098f6bcd4621d373cade4e832627b4f6', 'Male', '09098778900', 'Farmer', 'whatsapp-image-2020-03-29-at-9.16.27-pm.jpeg', 1);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `expenditure`
+--
+ALTER TABLE `expenditure`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `income`
+--
+ALTER TABLE `income`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `liabilty`
+--
+ALTER TABLE `liabilty`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`trans_id`);
+
+--
+-- Indexes for table `type-asset`
+--
+ALTER TABLE `type-asset`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `type-expenses`
+--
+ALTER TABLE `type-expenses`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `type-income`
+--
+ALTER TABLE `type-income`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `type-liability`
+--
+ALTER TABLE `type-liability`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `expenditure`
+--
+ALTER TABLE `expenditure`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `income`
+--
+ALTER TABLE `income`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `liabilty`
+--
+ALTER TABLE `liabilty`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `type-asset`
+--
+ALTER TABLE `type-asset`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `type-expenses`
+--
+ALTER TABLE `type-expenses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `type-income`
+--
+ALTER TABLE `type-income`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `type-liability`
+--
+ALTER TABLE `type-liability`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
