@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2020 at 07:08 PM
+-- Generation Time: Jul 13, 2020 at 10:36 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -77,7 +77,8 @@ CREATE TABLE `expenditure` (
 INSERT INTO `expenditure` (`id`, `user_id`, `description`, `type-expenses`, `type-asset`, `amount`, `created_at`) VALUES
 (1, 5, 'Boy', 'Insurance & security', '', 1000000, '2020-07-12 16:27:45'),
 (2, 5, 'Training', 'Raw Materials', '', 1245677, '2020-07-12 16:35:00'),
-(4, 5, 'good', 'Project\r\nExpenses', '', 1334344, '2020-07-12 16:56:15');
+(4, 5, 'good', 'Project\r\nExpenses', '', 1334344, '2020-07-12 16:56:15'),
+(5, 5, 'repair of pipes', 'Buildings', '', 10000, '2020-07-13 20:21:22');
 
 -- --------------------------------------------------------
 
@@ -170,6 +171,49 @@ CREATE TABLE `liabilty` (
 INSERT INTO `liabilty` (`id`, `user_id`, `details`, `type-liability`, `type-asset`, `amount`, `created_at`) VALUES
 (1, 5, 'Training', 'Unearned revenue', '', 1245677, '2020-07-12 17:01:11'),
 (2, 5, 'good', 'Amount payable', '', 1334344, '2020-07-12 17:02:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `maintenance`
+--
+
+CREATE TABLE `maintenance` (
+  `id` int(11) NOT NULL,
+  `serial no` int(11) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `description` varchar(50) NOT NULL,
+  `amount` int(100) NOT NULL,
+  `Time` time(6) NOT NULL DEFAULT current_timestamp(),
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `maintenance`
+--
+
+INSERT INTO `maintenance` (`id`, `serial no`, `type`, `description`, `amount`, `Time`, `date`) VALUES
+(1, 12345678, 'Buildings', 'Repair of SInk', 100000, '21:29:28.000000', '2020-07-13 20:29:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `maintenance-item`
+--
+
+CREATE TABLE `maintenance-item` (
+  `id` int(100) NOT NULL,
+  `item` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `maintenance-item`
+--
+
+INSERT INTO `maintenance-item` (`id`, `item`) VALUES
+(9, 'Buildings'),
+(10, 'Vehicles'),
+(11, 'Machines');
 
 -- --------------------------------------------------------
 
@@ -278,7 +322,7 @@ CREATE TABLE `transactions` (
   `details` varchar(50) NOT NULL,
   `category` varchar(50) NOT NULL,
   `amount` int(100) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp()
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -286,8 +330,8 @@ CREATE TABLE `transactions` (
 --
 
 INSERT INTO `transactions` (`trans_id`, `user_id`, `details`, `category`, `amount`, `date`) VALUES
-(22, 1, 'payment for house', 'Asset', 10000000, '2020-07-09'),
-(23, 5, 'Shop payment', 'Asset', 5000, '2020-07-09');
+(22, 1, 'payment for house', 'Asset', 10000000, '2020-07-08 23:00:00'),
+(23, 5, 'Shop payment', 'Asset', 5000, '2020-07-08 23:00:00');
 
 -- --------------------------------------------------------
 
@@ -424,6 +468,18 @@ ALTER TABLE `liabilty`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `maintenance`
+--
+ALTER TABLE `maintenance`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `maintenance-item`
+--
+ALTER TABLE `maintenance-item`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `transactions`
 --
 ALTER TABLE `transactions`
@@ -467,7 +523,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `expenditure`
 --
 ALTER TABLE `expenditure`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `income`
@@ -480,6 +536,18 @@ ALTER TABLE `income`
 --
 ALTER TABLE `liabilty`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `maintenance`
+--
+ALTER TABLE `maintenance`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `maintenance-item`
+--
+ALTER TABLE `maintenance-item`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `transactions`
