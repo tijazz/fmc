@@ -14,19 +14,27 @@
 if(isset($_POST['submit']))
 {
 
+    $type = $_POST['type'];
     $sn = $_POST['sn'];
-    $cat =$_POST['cat'];
-    $de = $_POST['de'];
-    $amt = $_POST['amt'];
-  
-    $sql="INSERT INTO `maintenance` (`serial no`, `type`, `description`, `amount`) VALUES (:sn,:cat,:de,:amt)";
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+	$amount = $_POST['amount'];
+    $time = $_POST['time'];
+    $date = $_POST['date'];
+	$add_parameters =$_POST['add_parameters'];
+	
+    $sql="INSERT INTO maintenance (type, sn, name, description, amount, time, date, add_parameters) VALUES (:type, :sn, :name, :description, :amount, :time, :date, :add_parameters)";
     $query = $dbh->prepare($sql);
-    $query-> bindParam(':sn', $user, PDO::PARAM_STR);
-    $query-> bindParam(':cat', $title, PDO::PARAM_STR);
-    $query-> bindParam(':de', $cat, PDO::PARAM_STR);
-    $query-> bindParam(':amt', $amt, PDO::PARAM_STR);
+    $query-> bindParam(':type', $type, PDO::PARAM_STR);
+    $query-> bindParam(':sn', $sn, PDO::PARAM_STR);
+    $query-> bindParam(':name', $name, PDO::PARAM_STR);
+    $query-> bindParam(':description', $description, PDO::PARAM_STR);
+	$query-> bindParam(':amount', $amount, PDO::PARAM_STR);
+    $query-> bindParam(':time', $time, PDO::PARAM_STR);
+    $query-> bindParam(':date', $date, PDO::PARAM_STR);
+    $query-> bindParam(':add_parameters', $add_parameters, PDO::PARAM_STR);
     $query->execute(); 
-    $msg="Feedback Send"; 
+    $msg="Maintenance Updated"; 
   
 }    
 ?>
@@ -36,7 +44,7 @@ if(isset($_POST['submit']))
 
 
         <?php
-        require_once "public/config/header.php";
+        require_once ('public/config/header.php');
         ?>
 
 <body>
@@ -55,8 +63,8 @@ if(isset($_POST['submit']))
                             
                 </div>
                 <div class="row  border-bottom white-bg dashboard-header">
-                <div class="panel-heading"><h4>Edit Profile</h4></div>
-<?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
+                <div class="panel-heading"><h4>Maintenance</h4></div>
+				<?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
 				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
 
 				</div>
@@ -85,44 +93,44 @@ if(isset($_POST['submit']))
                     <div class="ibox-content">
                         <div class="row">
                            
-                        <form action="#" method="POST" class="forma">
+                 <form action="maintenanceform.php" method="POST" class="forma">
                     <p>
-                        <label for="full_name">Serial Number</label>
-                        <input type="text" name="sn">
-                    </p>
-
-                    
-                    <p>
-                        <select name="cat">
-                        <option selected>Select</option>
-                        
-
-                        <?php 
-                                        $sql = "SELECT * FROM `maintenance-item`";
-                                        $query = $dbh -> prepare($sql);
-										$query->execute();
-										$results=$query->fetchAll(PDO::FETCH_OBJ);
-										$cnt=1;
-										if($query->rowCount() > 0)
-										{
-										foreach($results as $result)
-										{				?>	
-										<option value="<?php echo htmlentities($result->item);?>"><?php echo htmlentities($result->item);?></option>
-										<?php $cnt=$cnt+1; }} ?>
-                        
-                        
-                            
+                        <select name="type">
+                        <option disabled selected>Maintenance type</option>
+						<option >Building</option>
+						<option >Machines</option>
+						<option >Vehicles</option>    
                         </select>
                     </p>
-                    
+					<p>
+                        <label for="sn">Serial Number</label>
+                        <input type="text" name="sn">
+                    </p>
+					<p>
+                        <label for="full_name">Name</label>
+                        <input type="text" name="name">
+                    </p>
+
                     <p>
                         <label for="full_name">Description</label>
-                        <input type="text" name="de" value="">
+                        <input type="text" name="description" value="">
                     </p>
 
                     <p>
                         <label for="amount">Amount</label>
-                        <input type="text" name="amt" value="">
+                        <input type="text" name="amount" value="">
+                    </p>
+					<p>
+                        <label for="time">Time</label>
+                        <input type="time" name="time" value="">
+					<p>
+					<p>
+                        <label for="date">Date</label>
+                        <input type="date" name="date" value="2017-06-01">
+                    </p>
+					
+                        <label for="add_parameters">Add Parameter</label>
+                        <input type="textarea" name="add_parameters" value="">
                     </p>
                     
                     <p>
@@ -132,9 +140,6 @@ if(isset($_POST['submit']))
                     </p>
 
                 </form>
-                <p>
-                        <?php echo $amt?>
-                    </p>
                         </div>
                     </div>
                 </div>
@@ -165,6 +170,23 @@ if(isset($_POST['submit']))
         <?php
                 require_once "public/config/footer.php";
                 ?>
+					<!-- Loading Scripts -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap-select.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.dataTables.min.js"></script>
+	<script src="js/dataTables.bootstrap.min.js"></script>
+	<script src="js/Chart.min.js"></script>
+	<script src="js/fileinput.js"></script>
+	<script src="js/chartData.js"></script>
+	<script src="js/main.js"></script>
+	<script type="text/javascript">
+				 $(document).ready(function () {          
+					setTimeout(function() {
+						$('.succWrap').slideUp("slow");
+					}, 3000);
+					});
+	</script>
 
     </body>
     

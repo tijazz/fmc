@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2020 at 10:36 PM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.7
+-- Generation Time: Jul 15, 2020 at 04:41 AM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -45,13 +46,37 @@ INSERT INTO `admin` (`id`, `username`, `email`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `advert`
+--
+
+CREATE TABLE `advert` (
+  `id` int(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `sn` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `amount` int(255) NOT NULL,
+  `date` date NOT NULL,
+  `add_parameters` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `advert`
+--
+
+INSERT INTO `advert` (`id`, `type`, `sn`, `name`, `description`, `amount`, `date`, `add_parameters`) VALUES
+(2, 'Radio', '001', 'ade', 'ICT director\'s car', 2300, '2018-06-14', 'nothing');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `deleteduser`
 --
 
 CREATE TABLE `deleteduser` (
   `id` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `deltime` timestamp NOT NULL DEFAULT current_timestamp()
+  `deltime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -67,7 +92,7 @@ CREATE TABLE `expenditure` (
   `type-expenses` varchar(55) NOT NULL,
   `type-asset` varchar(55) NOT NULL,
   `amount` double NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -77,8 +102,7 @@ CREATE TABLE `expenditure` (
 INSERT INTO `expenditure` (`id`, `user_id`, `description`, `type-expenses`, `type-asset`, `amount`, `created_at`) VALUES
 (1, 5, 'Boy', 'Insurance & security', '', 1000000, '2020-07-12 16:27:45'),
 (2, 5, 'Training', 'Raw Materials', '', 1245677, '2020-07-12 16:35:00'),
-(4, 5, 'good', 'Project\r\nExpenses', '', 1334344, '2020-07-12 16:56:15'),
-(5, 5, 'repair of pipes', 'Buildings', '', 10000, '2020-07-13 20:21:22');
+(4, 5, 'good', 'Project\r\nExpenses', '', 1334344, '2020-07-12 16:56:15');
 
 -- --------------------------------------------------------
 
@@ -113,7 +137,7 @@ INSERT INTO `feedback` (`id`, `sender`, `reciver`, `title`, `feedbackdata`, `att
 CREATE TABLE `gallery` (
   `id` int(11) NOT NULL,
   `imageName` varchar(55) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -138,7 +162,7 @@ CREATE TABLE `income` (
   `type-income` varchar(55) NOT NULL,
   `type-asset` varchar(55) NOT NULL,
   `amount` double NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -161,7 +185,7 @@ CREATE TABLE `liabilty` (
   `type-liability` varchar(55) NOT NULL,
   `type-asset` varchar(55) NOT NULL,
   `amount` double NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -179,41 +203,24 @@ INSERT INTO `liabilty` (`id`, `user_id`, `details`, `type-liability`, `type-asse
 --
 
 CREATE TABLE `maintenance` (
-  `id` int(11) NOT NULL,
-  `serial no` int(11) NOT NULL,
-  `type` varchar(50) NOT NULL,
-  `description` varchar(50) NOT NULL,
-  `amount` int(100) NOT NULL,
-  `Time` time(6) NOT NULL DEFAULT current_timestamp(),
-  `date` timestamp NOT NULL DEFAULT current_timestamp()
+  `id` int(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `sn` int(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `amount` varchar(255) NOT NULL,
+  `time` time(6) NOT NULL,
+  `date` date NOT NULL,
+  `add_parameters` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `maintenance`
 --
 
-INSERT INTO `maintenance` (`id`, `serial no`, `type`, `description`, `amount`, `Time`, `date`) VALUES
-(1, 12345678, 'Buildings', 'Repair of SInk', 100000, '21:29:28.000000', '2020-07-13 20:29:28');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `maintenance-item`
---
-
-CREATE TABLE `maintenance-item` (
-  `id` int(100) NOT NULL,
-  `item` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `maintenance-item`
---
-
-INSERT INTO `maintenance-item` (`id`, `item`) VALUES
-(9, 'Buildings'),
-(10, 'Vehicles'),
-(11, 'Machines');
+INSERT INTO `maintenance` (`id`, `type`, `sn`, `name`, `description`, `amount`, `time`, `date`, `add_parameters`) VALUES
+(1, 'Vehicles', 1, 'ade', 'ICT director\'s car', '2300', '17:30:00.000000', '2017-06-01', ''),
+(2, 'Vehicles', 1, 'ade', 'ICT director\'s car', '2300', '17:30:00.000000', '2017-06-01', '');
 
 -- --------------------------------------------------------
 
@@ -258,7 +265,7 @@ CREATE TABLE `notification` (
   `notiuser` varchar(50) NOT NULL,
   `notireciver` varchar(50) NOT NULL,
   `notitype` varchar(50) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT current_timestamp()
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -277,6 +284,58 @@ INSERT INTO `notification` (`id`, `notiuser`, `notireciver`, `notitype`, `time`)
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `purchases`
+--
+
+CREATE TABLE `purchases` (
+  `id` int(255) NOT NULL,
+  `sn` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `ppunit` varchar(255) NOT NULL,
+  `qitem` varchar(255) NOT NULL,
+  `amount` int(255) NOT NULL,
+  `time` time(6) NOT NULL,
+  `date` date NOT NULL,
+  `add_parameters` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `purchases`
+--
+
+INSERT INTO `purchases` (`id`, `sn`, `name`, `description`, `ppunit`, `qitem`, `amount`, `time`, `date`, `add_parameters`) VALUES
+(1, '001', 'sugar', 'tea', '10', '4', 2300, '03:32:00.000000', '2016-09-01', 'nothing');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rent`
+--
+
+CREATE TABLE `rent` (
+  `id` int(255) NOT NULL,
+  `sn` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `quantity` varchar(255) NOT NULL,
+  `amount` int(255) NOT NULL,
+  `date` date NOT NULL,
+  `add_parameters` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rent`
+--
+
+INSERT INTO `rent` (`id`, `sn`, `name`, `description`, `quantity`, `amount`, `date`, `add_parameters`) VALUES
+(2, '001', 'ade', 'ICT director\'s car', '2', 2300, '2017-06-01', 'nothing'),
+(3, '001', 'ade', 'ICT director\'s car', '2', 2300, '2017-06-01', 'nothing'),
+(4, '', '', '', '', 0, '2017-06-01', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `reply`
 --
 
@@ -285,7 +344,7 @@ CREATE TABLE `reply` (
   `feedbackID` int(11) NOT NULL,
   `receiver_email` varchar(55) NOT NULL,
   `reply_body` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -299,7 +358,7 @@ CREATE TABLE `testimonial` (
   `fullname` varchar(55) NOT NULL,
   `occupation` varchar(55) NOT NULL,
   `body` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -309,29 +368,6 @@ CREATE TABLE `testimonial` (
 INSERT INTO `testimonial` (`id`, `fullname`, `occupation`, `body`, `created_at`) VALUES
 (3, 'Wale Ayo', 'Trader', 'Dufma is the best agricultural investment service out there. I have 100% trust in them', '2020-07-03 00:50:24'),
 (4, 'Ajibade Sodiq', 'ARTISAN', 'Invest in Dufma and enjoy money lavishly all your life yuuuuuuuuuuuuuuuuuuuuu', '2020-07-03 00:51:46');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `transactions`
---
-
-CREATE TABLE `transactions` (
-  `trans_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `details` varchar(50) NOT NULL,
-  `category` varchar(50) NOT NULL,
-  `amount` int(100) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `transactions`
---
-
-INSERT INTO `transactions` (`trans_id`, `user_id`, `details`, `category`, `amount`, `date`) VALUES
-(22, 1, 'payment for house', 'Asset', 10000000, '2020-07-08 23:00:00'),
-(23, 5, 'Shop payment', 'Asset', 5000, '2020-07-08 23:00:00');
 
 -- --------------------------------------------------------
 
@@ -445,9 +481,39 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `gender`, `mobile`, `designation`, `image`, `status`) VALUES
 (20, 'Abdulazeez Tijani', 'test@gmail.com', '098f6bcd4621d373cade4e832627b4f6', 'Male', '09098778900', 'Farmer', 'whatsapp-image-2020-03-29-at-9.16.27-pm.jpeg', 1);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `utilities`
+--
+
+CREATE TABLE `utilities` (
+  `id` int(255) NOT NULL,
+  `sn` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `amount` int(255) NOT NULL,
+  `date` date NOT NULL,
+  `add_parameters` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `utilities`
+--
+
+INSERT INTO `utilities` (`id`, `sn`, `name`, `description`, `amount`, `date`, `add_parameters`) VALUES
+(1, '001', 'light', 'dec', 2300, '2017-06-27', ''),
+(2, '001', 'ade', 'ICT director\'s car', 2300, '2017-06-01', 'nothing');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `advert`
+--
+ALTER TABLE `advert`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `expenditure`
@@ -474,16 +540,16 @@ ALTER TABLE `maintenance`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `maintenance-item`
+-- Indexes for table `purchases`
 --
-ALTER TABLE `maintenance-item`
+ALTER TABLE `purchases`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `transactions`
+-- Indexes for table `rent`
 --
-ALTER TABLE `transactions`
-  ADD PRIMARY KEY (`trans_id`);
+ALTER TABLE `rent`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `type-asset`
@@ -516,14 +582,26 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `utilities`
+--
+ALTER TABLE `utilities`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `advert`
+--
+ALTER TABLE `advert`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `expenditure`
 --
 ALTER TABLE `expenditure`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `income`
@@ -541,49 +619,25 @@ ALTER TABLE `liabilty`
 -- AUTO_INCREMENT for table `maintenance`
 --
 ALTER TABLE `maintenance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `maintenance-item`
+-- AUTO_INCREMENT for table `purchases`
 --
-ALTER TABLE `maintenance-item`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+ALTER TABLE `purchases`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `transactions`
+-- AUTO_INCREMENT for table `rent`
 --
-ALTER TABLE `transactions`
-  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+ALTER TABLE `rent`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `type-asset`
+-- AUTO_INCREMENT for table `utilities`
 --
-ALTER TABLE `type-asset`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `type-expenses`
---
-ALTER TABLE `type-expenses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `type-income`
---
-ALTER TABLE `type-income`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `type-liability`
---
-ALTER TABLE `type-liability`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+ALTER TABLE `utilities`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
