@@ -7,7 +7,6 @@ a:hover{color:#192c29;}
   margin: auto;
 }
 ul{padding:0;list-style:none;}
-
 /* Hide the images by default */
 .mySlides,.mySlides2 {
   display: none;
@@ -184,3 +183,5 @@ ul{padding:0;list-style:none;}
   color:#1ab394;
   background:#fff;
 }
+
+.row,.statistic-box{padding-bottom:1rem !important;}
