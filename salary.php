@@ -25,7 +25,7 @@ if(isset($_POST['submit']))
     $method = $_POST['method'];
 	$add_parameters =$_POST['add_parameters'];
 	
-    $sql="INSERT INTO salary (`type`, `name`, `amout payable`, `employee status`, `description`, `eligibility`, `method`, `allowance to be debited`, `date`, `Add parameter`) VALUES (:type, :name, :amount, :category, :description, :eligibility, :method, :allowance, :date, :add_parameters)";
+    $sql="INSERT INTO salary (`type`, `name`, `amount payable`, `employee status`, `description`, `eligibility`, `method`, `allowance to be debited`, `date`, `Add parameter`) VALUES (:type, :name, :amount, :category, :description, :eligibility, :method, :allowance, :date, :add_parameters)";
     $query = $dbh->prepare($sql);
     $query-> bindParam(':type', $type, PDO::PARAM_STR);
     $query-> bindParam(':category', $category, PDO::PARAM_STR);
@@ -102,7 +102,7 @@ if(isset($_POST['submit']))
                         <select name="type">
                         <option selected>Salary</option>
                         <option >Allowance</option>
-                        <option >Bonous</option>  
+                        <option >Bonus</option>  
                         </select>
                     </p>
 					<p>

@@ -95,7 +95,7 @@ if(isset($_POST['submit']))
                     
 					<p>
                         <label for="sn">Serial Number</label>
-                        <input type="text" name="sn">
+                        <input type="text" name="sn" disabled>
                     </p>
 					<p>
                         <label for="full_name">Name of Rent(from inventory list)</label>

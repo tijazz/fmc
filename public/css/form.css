@@ -15,6 +15,7 @@
     align-items:center;
     border-radius:5px;
     box-shadow:0 3px 5px 2px rgba(0, 0, 0, 0.301);
+    margin:auto;
 }
 
 .forma p{
@@ -32,7 +33,7 @@
     margin-bottom:0.2rem;
 }
 
-.forma p input{
+.forma p input,.forma input[name="add_parameters"]{
     padding:0.4rem 1rem;
     border-radius: 5px;
     border:none;
@@ -68,10 +69,22 @@
     font-weight:bold;
 }
 
+.forma select{
+    border-radius:5px;
+    padding:0.4rem 0.5rem;
+    outline:none;
+}
+
+.forma label[for="add_parameters"]{
+    color:rgb(231, 231, 231);
+}
+
 .forma button[type="submit"]:hover{
     background:rgb(127, 200, 127);
     color:#fff;
 }
+
+
 
 /* Overwrite workzone grid property */
 .workzone{display:flex;
