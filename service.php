@@ -31,7 +31,7 @@ if(isset($_POST['submit']))
     $add_parameter = $_POST['add_parameter'];
 
 	
-    $sql="INSERT INTO `productsale` (`transaction`, `salename`, `date`, `productname`, `description`, `price`, `quantity`, `discount`, `totalamount`, `totalquantity`, `method`, `customername`, `phone`, `type`, `add_parameter`) VALUES (:transaction,:salename,:date,:productname,:description,:price,:quantity,:discount,:totalamount,:totalquantity,:method,:customername,:phone,:type,:add_parameter)";
+    $sql="INSERT INTO `service` (`transaction`, `salename`, `date`, `productname`, `description`, `price`, `quantity`, `discount`, `totalamount`, `totalquantity`, `method`, `customername`, `phone`, `type`, `add_parameter`) VALUES (:transaction,:salename,:date,:productname,:description,:price,:quantity,:discount,:totalamount,:totalquantity,:method,:customername,:phone,:type,:add_parameter)";
     $query = $dbh->prepare($sql);
     $query-> bindParam(':transaction', $transaction, PDO::PARAM_STR);
     $query-> bindParam(':salename', $salename, PDO::PARAM_STR);
@@ -49,7 +49,7 @@ if(isset($_POST['submit']))
     $query-> bindParam(':type', $type, PDO::PARAM_STR);
     $query-> bindParam(':add_parameter', $add_parameter, PDO::PARAM_STR);
     $query->execute(); 
-    $msg="Maintenance Updated"; 
+    $msg="Services Updated"; 
   
 }    
 ?>
@@ -108,7 +108,7 @@ if(isset($_POST['submit']))
                     <div class="ibox-content">
                         <div class="row">
                            
-                 <form action="sales.php" method="POST" class="forma">
+                 <form action="service.php" method="POST" class="forma">
                  <p>
                         <select name="type">
                         <option selected>Daily</option>
@@ -121,7 +121,7 @@ if(isset($_POST['submit']))
                         <input type="text" name="transaction">
                     </p>
                     <p>
-                        <label for="salename">Sale employee name</label>
+                        <label for="salename">Service employee name</label>
                         <input type="text" name="salename" value="">
                     </p>
         
@@ -132,20 +132,20 @@ if(isset($_POST['submit']))
                     </p>
 
                     <p>
-                        <label for="productname">Product name</label>
+                        <label for="productname">Service name</label>
                         <input type="text" name="productname" value="">
                     </p>
 
                     <p>
-                        <label for="description">Product description</label>
+                        <label for="description">Service description</label>
                         <input type="text" name="description" value="">
                     </p>
                     <p>
-                        <label for="price">Price of product per unit</label>
+                        <label for="price">Price of Service per hour/day</label>
                         <input type="text" name="price" value="">
                     </p>
 					<p>
-                        <label for="quantity">Quantity of product sold</label>
+                        <label for="quantity">Number of hours for Service sold</label>
                         <input type="name" name="quantity" value="">
                     </p>
 					<p>
@@ -154,12 +154,12 @@ if(isset($_POST['submit']))
                     </p>
 
                     <p>
-                        <label for="totalamount">Total income for product sold</label>
+                        <label for="totalamount">Total income for Service sold</label>
                         <input type="text" name="totalamount" value="">
                     </p>
 
                     <p>
-                        <label for="totalquantity">Total number/quantity of product sold</label>
+                        <label for="totalquantity">Total number of hours for Service sold</label>
                         <input type="text" name="totalquantity" value="">
                     </p>
 
@@ -182,8 +182,7 @@ if(isset($_POST['submit']))
                         <label for="add_parameters">(Add parameter)</label>
                         <input type="textarea" name="add_parameter" value="">
                     </p>
-                    
-                        <p>
+                       <p>
                         <button type="submit" name="submit">
                             Submit
                         </button>

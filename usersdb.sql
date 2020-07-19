@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 19, 2020 at 07:42 PM
+-- Generation Time: Jul 19, 2020 at 11:32 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -156,6 +156,21 @@ INSERT INTO `gallery` (`id`, `imageName`, `created_at`) VALUES
 (1, '838.jpg', '2020-07-03 00:52:16'),
 (4, 'invest-in-the-stock-market.jpg', '2020-07-03 00:54:51'),
 (5, '1556112789graduate-finance-jobs-planning.jpg', '2020-07-03 00:55:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `granty`
+--
+
+CREATE TABLE `granty` (
+  `id` int(11) NOT NULL,
+  `grantname` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `amount` int(10) NOT NULL,
+  `possibilityofreturn` varchar(255) NOT NULL,
+  `add_parameters` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -359,6 +374,31 @@ INSERT INTO `power` (`id`, `description`, `amount`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `productsale`
+--
+
+CREATE TABLE `productsale` (
+  `id` int(11) NOT NULL,
+  `transaction` varchar(255) NOT NULL,
+  `salename` varchar(30) NOT NULL,
+  `date` date NOT NULL,
+  `productname` varchar(50) NOT NULL,
+  `description` varchar(50) NOT NULL,
+  `price` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `discount` int(11) NOT NULL,
+  `totalamount` int(11) NOT NULL,
+  `totalquantity` int(11) NOT NULL,
+  `method` varchar(50) NOT NULL,
+  `customername` varchar(50) NOT NULL,
+  `phone` varchar(11) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `add_parameter` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product sales`
 --
 
@@ -481,6 +521,38 @@ CREATE TABLE `salary` (
 INSERT INTO `salary` (`id`, `type`, `name`, `amount payable`, `employee status`, `description`, `eligibility`, `method`, `allowance to be debited`, `date`, `Add parameter`) VALUES
 (1, 'Salary', 'Abdullahi', 1000000, 'contract', 'go home', 'yes', 'transfer', 100000, '2017-05-31 23:00:00', ''),
 (2, 'Salary', 'Abdullahi', 1000000, 'contract', 'Bypassing', 'yes', 'transfer', 100000, '2017-05-31 23:00:00', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `service`
+--
+
+CREATE TABLE `service` (
+  `id` int(11) NOT NULL,
+  `transaction` varchar(255) NOT NULL,
+  `salename` varchar(30) NOT NULL,
+  `date` date NOT NULL,
+  `productname` varchar(50) NOT NULL,
+  `description` varchar(50) NOT NULL,
+  `price` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `discount` int(11) NOT NULL,
+  `totalamount` int(11) NOT NULL,
+  `totalquantity` int(11) NOT NULL,
+  `method` varchar(50) NOT NULL,
+  `customername` varchar(50) NOT NULL,
+  `phone` varchar(11) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `add_parameter` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `service`
+--
+
+INSERT INTO `service` (`id`, `transaction`, `salename`, `date`, `productname`, `description`, `price`, `quantity`, `discount`, `totalamount`, `totalquantity`, `method`, `customername`, `phone`, `type`, `add_parameter`) VALUES
+(0, '123', 'otun', '2020-07-02', 'boska', 'brown', 100, 3, 20, 200, 200, 'transfer', 'tunde', '08039412009', 'Weekly', 'nothing');
 
 -- --------------------------------------------------------
 
@@ -683,6 +755,12 @@ ALTER TABLE `expenditure`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `granty`
+--
+ALTER TABLE `granty`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `income`
 --
 ALTER TABLE `income`
@@ -775,6 +853,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `expenditure`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `granty`
+--
+ALTER TABLE `granty`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `income`
