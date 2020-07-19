@@ -31,7 +31,7 @@ if(isset($_POST['submit']))
     $add_parameters = $_POST['add_parameters'];
 
 	
-    $sql="INSERT INTO `product sales` (`Transaction number`, `Sale employee name`, `Business transaction date`, `Product name`, `Product description`, `Price of product per unit`, `Quantity of product sold`, `Discount`, `Total income for product sold`, `Total number/quantity of product sold`, `Payment method`, `Customer’s name`, `Customer phone`, `type`, `Add parameter`) VALUES (:transaction,:salename,:date,:productname,:description,:price,:quantity,:discount,:totalamount,:totalquantity,:method,:customername,:phone,:type, :add_parameter";
+    $sql="INSERT INTO `product sales` (`Transaction number`, `Sale employee name`, `Business transaction date`, `Product name`, `Product description`, `Price of product per unit`, `Quantity of product sold`, `Discount`, `Total income for product sold`, `Total number/quantity of product sold`, `Payment method`, `Customer’s name`, `Customer phone`, `type`, `Add parameter`) VALUES (:transaction,:salename,:date,:productname,:description,:price,:quantity,:discount,:totalamount,:totalquantity,:method,:customername,:phone,:type,:add_parameter";
     $query = $dbh->prepare($sql);
     $query-> bindParam(':transaction', $transaction, PDO::PARAM_STR);
     $query-> bindParam(':salename', $salename, PDO::PARAM_STR);
@@ -184,13 +184,13 @@ if(isset($_POST['submit']))
                     </p>
                     
                     <p>
-                        <button type="submit" name="submit">
-                            Submit
-                        </button>
+                        <input type="submit" value="submit">
                     </p>
 
                     <p>
-                        <?php echo $productname?>
+                        <button type="submit" name="submit">
+                            Submit
+                        </button>
                     </p>
 
                 </form>
