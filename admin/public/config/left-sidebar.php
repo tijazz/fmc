@@ -65,6 +65,23 @@
                                 <i class="fa fa-star"></i>
                                 <span class="nav-label">Financial Management</span>
                             </a>
+                            <ul class="nav nav-second-level collapse in">
+                                <li><a href="advert.php">Advert</a></li> 
+                                <li><a href="assetform.php">Asset</a></li>          
+                                <li><a href="expendform.php">Expenditure</a></li>
+                                <li><a href="grant.php">Grant</a></li>
+                                <li><a href="incomeform.php">Income</a></li>
+                                <li><a href="item.php">Item</a></li>
+                                <li><a href="legalfees.php">Legal Fees</a></li>
+                                <li><a href="liabilityform.php">Liability</a></li>
+                                <li><a href="maintenanceform.php">Maintenance</a></li>
+                                <li><a href="powerform.php">Power</a></li>
+                                <li><a href="rent.php">Rent</a></li>
+                                <li><a href="salary.php">Salary</a></li>
+                                <li><a href="service.php">Service</a></li>
+                                <li><a href="utilities.php">Utilities</a></li>
+                                <li><a href="purchases.php">Purchaces</a></li>
+                            </ul>
                         </li>
                         
                         <li>
@@ -96,7 +113,7 @@
                     <ul class="nav nav-second-level collapse in" style="">
                         <li><a href="notification-dash.php">Notification Dashboard</a></li> 
                         <li><a href="notification.php">Notification</a></li>          
-                      <li><a href="complaints.php">Messages</a></li>
+                        <li><a href="complaints.php">Messages</a></li>
                     </ul>
                 </li>
                 <li class="active">
