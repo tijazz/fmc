@@ -19,20 +19,20 @@ if(isset($_POST['submit']))
     $name = $_POST['name'];
     $description = $_POST['description'];
 	$amount = $_POST['amount'];
-    $time = $_POST['time'];
+    #$time = $_POST['time'];
     $date = $_POST['date'];
-	$add_parameters =$_POST['add_parameters'];
+	#$add_parameters =$_POST['add_parameters'];
 	
-    $sql="INSERT INTO maintenance (type, sn, name, description, amount, time, date, add_parameters) VALUES (:type, :sn, :name, :description, :amount, :time, :date, :add_parameters)";
+    $sql="INSERT INTO `maintenance` (`type`, `name`, `serial_no`, `description`, `amount`, `created_at`) VALUES (:type, :name, :sn, :description, :amount, :date)";
     $query = $dbh->prepare($sql);
     $query-> bindParam(':type', $type, PDO::PARAM_STR);
     $query-> bindParam(':sn', $sn, PDO::PARAM_STR);
     $query-> bindParam(':name', $name, PDO::PARAM_STR);
     $query-> bindParam(':description', $description, PDO::PARAM_STR);
 	$query-> bindParam(':amount', $amount, PDO::PARAM_STR);
-    $query-> bindParam(':time', $time, PDO::PARAM_STR);
+    #$query-> bindParam(':time', $time, PDO::PARAM_STR);
     $query-> bindParam(':date', $date, PDO::PARAM_STR);
-    $query-> bindParam(':add_parameters', $add_parameters, PDO::PARAM_STR);
+    #$query-> bindParam(':add_parameters', $add_parameters, PDO::PARAM_STR);
     $query->execute(); 
     $msg="Maintenance Updated"; 
   
@@ -122,7 +122,7 @@ if(isset($_POST['submit']))
                     </p>
 					<p>
                         <label for="time">Time</label>
-                        <input type="time" name="time" value="">
+                        <input type="time" name="time" value="12:30:12">
 					<p>
 					<p>
                         <label for="date">Date</label>

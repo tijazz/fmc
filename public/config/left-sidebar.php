@@ -29,7 +29,7 @@
                         </div>
                     </li>
                     <li class="active">
-                        <a href="index-2.html">
+                        <a href="dashboard.php">
                             <i class="fa fa-dashboard"></i>
                             <span class="nav-label">Dashboard</span> 
                         </a>
