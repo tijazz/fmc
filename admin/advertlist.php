@@ -57,7 +57,7 @@
                 <div class="col-lg-12">
 
                     <h2 class="page-title">Configure Testimonials</h2>
-
+                    <h1><a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a></h1>
                   <!-- Zero Configuration Table -->
 				<div class="panel panel-default">
                 <div class="panel-heading">List Users</div>
@@ -103,7 +103,70 @@
 										
 									</tbody>
 								</table>
-							</div>
+                            </div>
+<div id="add" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content" style="height:auto">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Add New Product</h4>
+              </div>
+              <div class="modal-body">
+              <form action="advert.php" method="POST" class="forma">
+                    <p>
+                        <select name="type">
+                        <option disabled selected>Advert Category</option>
+						<option >TV</option>
+						<option >Radio</option>
+						<option >Social Media</option>
+						<option >Print</option>
+						<option >Others</option>  
+                        </select>
+                    </p>
+					<p>
+                        <label for="sn">Serial Number</label>
+                        <input type="text" name="sn">
+                    </p>
+					<p>
+                        <label for="full_name">Name</label>
+                        <input type="text" name="name">
+                    </p>
+                    <p>
+                        <label for="full_name">Description of Advert</label>
+                        <input type="text" name="description" value="">
+                    </p>
+
+                    <p>
+                        <label for="amount">Amount of Advert</label>
+                        <input type="text" name="amount" value="">
+                    </p>
+					<p>
+                        <label for="date">Date of Expiry</label>
+                        <input type="date" name="date" value="2017-06-01">
+                    </p>
+					
+                        <label for="add_parameters">Add Parameter</label>
+                        <input type="textarea" name="add_parameters" value="">
+                    </p>
+                    
+                    <p>
+                        <button type="submit" name="submit">
+                            Submit
+                        </button>
+                    </p>
+
+                </form>
+
+                    
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+      
+        </div><!--end of modal-dialog-->
+ </div>
 						</div>	
 
                 </div>

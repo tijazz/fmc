@@ -61,11 +61,12 @@
                         </li>
                         
                         <li>
-                            <a href="#">
+                            <a href="#" class='user__dets'>
                                 <i class="fa fa-money"></i>
                                 <span class="nav-label">Financial Management</span>
+                                <span id="arrow" class="fa arrow arrow1"></span>
                             </a>
-                            <ul class="nav nav-second-level collapse in">
+                            <ul class="nav nav-second-level collapse in" id="user_dets_list" style="display:none;">
                                 <li><a href="advert.php">Advert</a></li> 
                                 <li><a href="assetform.php">Asset</a></li>          
                                 <li><a href="expendform.php">Expenditure</a></li>

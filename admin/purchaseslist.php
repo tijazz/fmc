@@ -57,7 +57,7 @@
                 <div class="col-lg-12">
 
                     <h2 class="page-title">Configure Testimonials</h2>
-
+                    <h1><a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a></h1>
                   <!-- Zero Configuration Table -->
 				<div class="panel panel-default">
                 <div class="panel-heading">List Users</div>
@@ -114,7 +114,73 @@
 										
 									</tbody>
 								</table>
-							</div>
+                            </div>
+                            <div id="add" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content" style="height:auto">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Add New Product</h4>
+              </div>
+              <div class="modal-body">
+              <form action="purchases.php" method="POST" class="forma">
+				
+					<p>
+                        <label for="sn">Serial Number</label>
+                        <input type="text" name="sn">
+                    </p>
+					<p>
+                        <label for="full_name">Name of Item</label>
+                        <input type="text" name="name">
+                    </p> 
+                    <p>
+                        <label for="full_name">Description</label>
+                        <input type="text" name="description" value="">
+                    </p>
+					<p>
+                        <label for="sn">Price per Unit of Item</label>
+                        <input type="text" name="ppunit">
+                    </p>
+					<p>
+                        <label for="full_name">Quantity of Item</label>
+                        <input type="text" name="qitem">
+                    </p>
+
+                    <p>
+                        <label for="amount">Cost</label>
+                        <input type="text" name="amount" value="">
+                    </p>
+					<p>
+                        <label for="time">Time</label>
+                        <input type="time" name="time" value="13:30">
+					<p>
+					<p>
+                        <label for="date">Date</label>
+                        <input type="date" name="date" value="2017-06-01">
+                    </p>
+					
+                        <label for="add_parameters">Add Parameter</label>
+                        <input type="textarea" name="add_parameters" value="">
+                    </p>
+                    
+                    <p>
+                        <button type="submit" name="submit">
+                            Submit
+                        </button>
+                    </p>
+
+                </form>
+
+                    
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+      
+        </div><!--end of modal-dialog-->
+ </div>
 						</div>	
 
                 </div>
