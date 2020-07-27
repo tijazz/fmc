@@ -55,20 +55,15 @@
             <div class="row">
                        
                 <div class="col-lg-12">
-                    <div class="">
+
                     <h2 class="page-title">Configure Testimonials</h2>
-                    <h1>
-              <a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a>
-            </h1>
-                    </div>
+
                   <!-- Zero Configuration Table -->
 				<div class="panel panel-default">
-                <div class="panel-heading">List Users
-                </div>
+                <div class="panel-heading">List Users</div>
 							<div class="panel-body">
 											<?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } 
-                                else if($msg){?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php }?>
-                                
+								else if($msg){?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php }?>
 								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 									<thead>
 										<tr>
@@ -113,64 +108,7 @@
 										
 									</tbody>
 								</table>
-                            </div>
-<div id="add" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-  <div class="modal-dialog">
-    <div class="modal-content" style="height:auto">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Add New Product</h4>
-              </div>
-              <div class="modal-body">
-              <form action="rent.php" method="POST" class="forma">
-                    
-					<p>
-                        <label for="sn">Serial Number</label>
-                        <input type="text" name="sn">
-                    </p>
-					<p>
-                        <label for="full_name">Name of Rent(from inventory list)</label>
-                        <input type="text" name="name">
-                    </p>
-                    <p>
-                        <label for="full_name">Rent Description</label>
-                        <input type="text" name="description" value="">
-                    </p>
-					<p>
-                        <label for="amount">Quantity</label>
-                        <input type="number" name="quantity" value="">
-                    </p>
-
-                    <p>
-                        <label for="amount">Cost of Rent</label>
-                        <input type="text" name="amount" value="">
-                    </p>
-					<p>
-                        <label for="date">Date of Rent</label>
-                        <input type="date" name="date" value="2017-06-01">
-                    </p>
-					
-                        <label for="add_parameters">Add Parameter</label>
-                        <input type="textarea" name="add_parameters" value="">
-                    </p>
-                    
-                    <p>
-                        <button type="submit" name="submit">
-                            Submit
-                        </button>
-                    </p>
-
-                    
-                </form>
-            </div>
-            <div class="modal-footer">
-
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-      
-        </div><!--end of modal-dialog-->
- </div>
+							</div>
 						</div>	
 
                 </div>

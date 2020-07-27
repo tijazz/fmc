@@ -57,7 +57,7 @@
                 <div class="col-lg-12">
 
                     <h2 class="page-title">Configure Testimonials</h2>
-                    <h1><a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a></h1>
+
                   <!-- Zero Configuration Table -->
 				<div class="panel panel-default">
                 <div class="panel-heading">List Users</div>
@@ -126,107 +126,7 @@
 										
 									</tbody>
 								</table>
-                            </div>
-                            <div id="add" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-  <div class="modal-dialog">
-    <div class="modal-content" style="height:auto">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Add New Product</h4>
-              </div>
-              <div class="modal-body">
-              <form action="service.php" method="POST" class="forma">
-                 <p>
-                        <select name="type">
-                        <option selected>Daily</option>
-                        <option >Weekly</option>
-                        <option >Yearly</option>  
-                        </select>
-                    </p>
-					<p>
-                        <label for="transaction">Transaction number</label>
-                        <input type="text" name="transaction">
-                    </p>
-                    <p>
-                        <label for="salename">Service employee name</label>
-                        <input type="text" name="salename" value="">
-                    </p>
-        
-
-                    <p>
-                        <label for="date">Business transaction date</label>
-                        <input type="date" name="date" value="">
-                    </p>
-
-                    <p>
-                        <label for="productname">Service name</label>
-                        <input type="text" name="productname" value="">
-                    </p>
-
-                    <p>
-                        <label for="description">Service description</label>
-                        <input type="text" name="description" value="">
-                    </p>
-                    <p>
-                        <label for="price">Price of Service per hour/day</label>
-                        <input type="text" name="price" value="">
-                    </p>
-					<p>
-                        <label for="quantity">Number of hours for Service sold</label>
-                        <input type="name" name="quantity" value="">
-                    </p>
-					<p>
-                        <label for="discount">Discount</label>
-                        <input type="text" name="discount" value="">
-                    </p>
-
-                    <p>
-                        <label for="totalamount">Total income for Service sold</label>
-                        <input type="text" name="totalamount" value="">
-                    </p>
-
-                    <p>
-                        <label for="totalquantity">Total number of hours for Service sold</label>
-                        <input type="text" name="totalquantity" value="">
-                    </p>
-
-                    <p>
-                        <label for="method">Payment method</label>
-                        <input type="text" name="method" value="">
-                    </p>
-
-                    <p>
-                        <label for="type">Customer’s name</label>
-                        <input type="text" name="customername" value="">
-                    </p>
-
-                    <p>
-                        <label for="type">Phone number</label>
-                        <input type="tel" name="phone" value="">
-                    </p>
-
-                    <p>
-                        <label for="add_parameters">(Add parameter)</label>
-                        <input type="textarea" name="add_parameter" value="">
-                    </p>
-                       <p>
-                        <button type="submit" name="submit">
-                            Submit
-                        </button>
-                    </p>
-
-                </form>
-
-                    
-            </div>
-            <div class="modal-footer">
-
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-      
-        </div><!--end of modal-dialog-->
- </div>
+							</div>
 						</div>	
 
                 </div>

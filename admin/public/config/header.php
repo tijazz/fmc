@@ -21,5 +21,4 @@
     <link href="public/css/Emeka-css.css" rel="stylesheet">
     <link href="public/css/profile.css" rel="stylesheet">
     <link href="public/css/form.css" rel="stylesheet">
-    
 </head>

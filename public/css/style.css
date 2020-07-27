@@ -227,15 +227,6 @@ h5 {
   right: 6px;
   top: 12px;
 }
-
-.arrow1{
-  transform:rotate(-90deg);
-}
-
-.arrow1_rotate{
-  transform:rotate(-270deg);
-}
-
 .arrow {
   float: right;
 }

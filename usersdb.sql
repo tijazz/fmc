@@ -252,7 +252,7 @@ CREATE TABLE `maintenance` (
   `type` varchar(50) NOT NULL,
   `description` varchar(50) NOT NULL,
   `amount` int(100) NOT NULL,
-  `Time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `Time` time(6) NOT NULL DEFAULT current_timestamp(),
   `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
