@@ -57,7 +57,9 @@
                 <div class="col-lg-12">
 
                     <h2 class="page-title">Configure Testimonials</h2>
-                    <h1><a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a></h1>
+                    <h1>
+              <a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a>
+            </h1>
                   <!-- Zero Configuration Table -->
 				<div class="panel panel-default">
                 <div class="panel-heading">List Users</div>
@@ -80,7 +82,7 @@
 									
 									<tbody>
 
-										<?php $sql = "SELECT * from `utilities`";
+										<?php $sql = "SELECT * from `expenditure`";
 										$query = $dbh -> prepare($sql);
 										$query->execute();
 										$results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -109,7 +111,8 @@
 									</tbody>
 								</table>
                             </div>
-                            <div id="add" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                            
+<div id="add" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
   <div class="modal-dialog">
     <div class="modal-content" style="height:auto">
               <div class="modal-header">
@@ -118,32 +121,55 @@
                 <h4 class="modal-title">Add New Product</h4>
               </div>
               <div class="modal-body">
-              <form action="utilities.php" method="POST" class="forma">
+              <form action="assetform.php" method="POST" class="forma">
+                    <p>
+                        <label for="full_name">Full Name</label>
+                        <input type="text" name="full_name" disabled value="<?php echo $name;?>">
+                    </p>
+
                     
-					<p>
-                        <label for="sn">Serial Number</label>
-                        <input type="text" name="sn">
+                    <p>
+                        <label for="phone_no">Phone Number</label>
+                        <input type="number" name="phone_no" disabled value="<?php echo $phone;?>">
+                        
                     </p>
-					<p>
-                        <label for="full_name">Name of Utility</label>
-                        <input type="text" name="name">
+                    
+                    <p>
+                        <label for="email">Email</label>
+                        <input type="email" name="email" disabled value="<?php echo $email;?>">
                     </p>
+                    
                     <p>
                         <label for="full_name">Description</label>
-                        <input type="text" name="description" value="">
+                        <input type="text" name="title" value="">
                     </p>
 
                     <p>
-                        <label for="amount">Amount of Utility</label>
+                        <label for="amount">Amount</label>
                         <input type="text" name="amount" value="">
                     </p>
-					<p>
-                        <label for="date">Date of Expiry</label>
-                        <input type="date" name="date" value="2017-06-01">
-                    </p>
-					
-                        <label for="add_parameters">Add Parameter</label>
-                        <input type="textarea" name="add_parameters" value="">
+
+                    <p>
+                        <select name="category" id="">
+                        <option selected>Select</option>
+                        
+
+                        <?php 
+                                        $sql = "SELECT * FROM `type-asset`";
+                                        $query = $dbh -> prepare($sql);
+										$query->execute();
+										$results=$query->fetchAll(PDO::FETCH_OBJ);
+										$cnt=1;
+										if($query->rowCount() > 0)
+										{
+										foreach($results as $result)
+										{				?>	
+										<option value="<?php echo htmlentities($result->title);?>"><?php echo htmlentities($result->title);?></option>
+										<?php $cnt=$cnt+1; }} ?>
+                        
+                        
+                            
+                        </select>
                     </p>
                     
                     <p>
@@ -153,8 +179,6 @@
                     </p>
 
                 </form>
-
-                    
             </div>
             <div class="modal-footer">
 
