@@ -57,7 +57,7 @@
                 <div class="col-lg-12">
 
                     <h2 class="page-title">Configure Testimonials</h2>
-
+                    <h1><a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a></h1>
                   <!-- Zero Configuration Table -->
 				<div class="panel panel-default">
                 <div class="panel-heading">List Users</div>
@@ -105,7 +105,61 @@
 										
 									</tbody>
 								</table>
-							</div>
+                            </div>
+                            <div id="add" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content" style="height:auto">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Add New Product</h4>
+              </div>
+              <div class="modal-body">
+              <form action="grant.php" method="POST" class="forma">
+              
+					<p>
+                        <label for="grantname">Grant name</label>
+                        <input type="text" name="grantname" value="">
+                    </p>
+
+                    <p>
+                        <label for="description">Grant description</label>
+                        <input type="text" name="description" value="">
+                    </p>
+                    <p>
+                        <label for="amount">Grant Amount</label>
+                        <input type="text" name="amount" value="">
+                    </p>
+					<p>
+                        <label for="possibilityofreturn">Possibility of Return</label>
+                        <input type="name" name="possibilityofreturn" value="">
+                    </p>
+                    <p>
+                        <label for="add_parameters">(Add parameter)</label>
+                        <input type="textarea" name="add_parameters" value="" col="5">
+                    </p>
+                    
+                    <p>
+                        <button type="submit" name="submit">
+                            Submit
+                        </button>
+                    </p>
+
+                    <p>
+                        <?php echo $productname?>
+                    </p>
+
+                </form>
+
+                    
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+      
+        </div><!--end of modal-dialog-->
+ </div>
 						</div>	
 
                 </div>

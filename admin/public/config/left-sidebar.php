@@ -66,49 +66,43 @@
                                 <span class="nav-label">Financial Management</span>
                             </a>
                             <ul class="nav nav-second-level collapse in">
-                                <li><a href="advert.php">Advert</a></li> 
+                                
 								<li><a href="advertlist.php">Advert List</a></li>
 								
-                                <li><a href="assetform.php">Asset</a></li> 
-								<li><a href="assetformlist.php">Asset List</a></li> 
+                               
+								<li><a href="assetlist.php">Asset List</a></li> 
 								
-                                <li><a href="expendform.php">Expenditure</a></li>
+                               
 								<li><a href="expenditurelist.php">Expenditure List</a></li>
 								
-                                <li><a href="grant.php">Grant</a></li>
+                                
 								<li><a href="grantlist.php">Grant List</a></li>
 								
-                                <li><a href="incomeform.php">Income</a></li>
+                               
 								<li><a href="incomelist.php">Income list</a></li>
 								
-                                <li><a href="item.php">Item</a></li>
-								<li><a href="itemlist.php">Item List</a></li>
+                                <li><a href="itemlist.php">Item List</a></li>
 								
-                                <li><a href="legalfees.php">Legal Fees</a></li>
+                             
 								<li><a href="legallist.php">Legal Fees List</a></li>
 								
-                                <li><a href="liabilityform.php">Liability</a></li>
+                               
 								<li><a href="liabilitylist.php">Liability List</a></li>
 								
-                                <li><a href="maintenanceform.php">Maintenance</a></li>
+                              
 								<li><a href="maintenancelist.php">Maintenance List</a></li><!--I stoped here -->
-								
-                                <li><a href="powerform.php">Power</a></li>
+                                
 								<li><a href="powerlist.php">Power List</a></li>
 								
-                                <li><a href="rent.php">Rent</a></li>
-								<li><a href="rentlist.php">Rent List</a></li>
+                                <li><a href="rentlist.php">Rent List</a></li>
 								
-                                <li><a href="salary.php">Salary</a></li>
 								<li><a href="salarylist.php">Salary List</a></li>
 								
-                                <li><a href="service.php">Service</a></li>
+                                
 								<li><a href="servicelist.php">Service List</a></li>
 								
-                                <li><a href="utilities.php">Utilities</a></li>
-								<li><a href="utilitieslist.php">Utilities List</a></li>
-								
-                                <li><a href="purchases.php">Purchaces</a></li>
+								<li><a href="utilitieslist.php">Utilities List</a></li>	
+                                
 								<li><a href="purchaseslist.php">Purchaces List</a></li>
                             </ul>
                         </li>
@@ -139,7 +133,7 @@
                 </li>
                <li class="active">
                     <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Notifications</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse in" style="">
+                    <ul class="nav nav-second-level collapse in">
                         <li><a href="notification-dash.php">Notification Dashboard</a></li> 
                         <li><a href="notification.php">Notification</a></li>          
                         <li><a href="complaints.php">Messages</a></li>
@@ -147,7 +141,7 @@
                 </li>
                 <li class="active">
                     <a href="#"><i class="fa fa-picture-o"></i> <span class="nav-label">Gallery</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse in" style="">
+                    <ul class="nav nav-second-level collapse in">
                         <li class="active"><a href="gallery.php">View Gallery</a></li>
                         <li><a href="addGallery.php">Add Gallery</a></li>
 
@@ -155,7 +149,7 @@
                 </li>
                 <li class="active">
                     <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Testimonial</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse in" style="">
+                    <ul class="nav nav-second-level collapse in">
                         <li class="active"><a href="testimolist.php">View Testimonials</a></li>
                         <li><a href="addTestimonial.php">Add Testimonial</a></li>
 
@@ -163,7 +157,7 @@
                 </li>
                 <li class="active">
                     <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Users</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse in" style="">
+                    <ul class="nav nav-second-level collapse in">
                       <li><a href="profile.php">My Profile</a></li> 
                       <li><a href="userlist.php">Users list</a></li>                        
                       <li><a href="deleteduser.php">Deleted Users</a></li> 
