@@ -6,7 +6,14 @@
         <script src="public/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
         <script src="public/js/plugins/dataTables/datatables.min.js"></script>
         <script src="public/js/plugins/jasny/jasny-bootstrap.min.js"></script>
-	<script src="public/js/main.js"></script>
+        <script src="public/js/main.js"></script>
+        
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="public/js/skycons.js"></script>
+        <!-- GeoCode -->
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCSWB8ogOt_P0L7lXpu-tCNTwB-atv9CD0&amp;sensor=false&amp;libraries=places"></script>
+        <script src="public/js/jquery.geocomplete.min.js"></script>
         <!-- Flot
         <script src="public/js/plugins/flot/jquery.flot.js"></script>
         <script src="public/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
@@ -41,6 +48,34 @@
         <script src="public/js/plugins/toastr/toastr.min.js"></script>
         -->
         <!-- Slide -->
+        <script>
+      var skycons = new Skycons({"color": "#ebebeb"}),
+          list  = [
+            "clear-day", "clear-night", "partly-cloudy-day",
+            "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+            "fog"
+          ],
+          i;
+
+        for(i = list.length; i--; ) {
+            var weatherType = list[i],
+                elements = document.getElementsByClassName( weatherType );
+            for (e = elements.length; e--;){
+                skycons.set( elements[e], weatherType );
+            }
+        }
+
+      skycons.play();
+
+      //GeoCode
+      $(function(){
+        $("#geocomplete").geocomplete({
+          details: "form",
+          types: ["geocode"],
+        });
+      });
+
+    </script>
         <script src="public/js/slide.js"></script>
         <script type="text/javascript">
 				 $(document).ready(function () {          

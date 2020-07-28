@@ -11,16 +11,15 @@
         }
         else{
          	
-if(isset($_POST['submit']))
+if(isset($_GET['lng']))
 {
 
-$longitude = $_POST['lng'];
-$latitude = $_POST['lat'];
+$longitude = $_GET['lng'];
+$latitude = $_GET['lat'];
+$location = $_GET['location'];
 $api_key = '797897c2f10238d2556eadcc88930024';
 $units = 'auto';  // Read the API docs for full details // default is auto
-// $latitude = '<script>position.coords.latitude</script>';
-// $longitude = '<script>position.coords.longitude</script>';
-echo $longitude;
+
 
 $json = 'https://api.forecast.io/forecast/'.$api_key.'/'.$latitude.','.$longitude.'?units='.$units; 
 //$json = 'sample.json';  //for testing
@@ -37,7 +36,6 @@ if ($response != null) {
   //Current Conditions
   $curTime = $response['currently']['time'];
   $curSummary = $response['currently']['summary'];
-  echo $curSummary;
   $curIcon = $response['currently']['icon'];
   $curPrecipProb = ($response['currently']['precipProbability'])*100;
     if (isset($response['currently']['precipType'])) {
@@ -130,14 +128,45 @@ if ($response != null) {
                     </div>
                 <div class="ibox-content">
                         <div class="row">
-                        <input type="search" id="address" class="form-control" placeholder="Where are we going?" />
-                        <form action="weather.php" method="POST">
-                            <input type="text" name="lng" id="lng" value="">
-                            <input type="text" name="lat" id="lat" value="">
-                            <input type="submit" name="submit" value="submit">
-                        </form>
-                        <p>Selected: <strong id="address-value">none</strong></p>
-                        <p><?php echo $curSummary;?></p>
+                        <input type="search" id="address" class="form-control" placeholder="Your location" />
+                        <!-- Page Content Holder -->
+            <div id="content">
+
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#"><i class="fa fa-clock-o"></i> <?php echo date("g:i a | l, F j", $curTime); ?></a></li> <!-- forecast time -->
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+
+            <div class="container-fluid" id="msl">
+
+            <div class="row">
+            <h3 class="ml-15 text-info"><p>Selected: <strong id="address-value"><?php echo $location?></strong></p></small></h3>
+            <!-- CURRENT CONDITIONS -->
+            <?php require 'weather/partials/part_current.php' ?>
+
+            <!-- TODAY FORECAST -->
+            <?php require 'weather/partials/part_today.php' ?>
+
+            </div> <!-- /row -->
+
+            <!-- HOURLY -->
+            <?php require 'weather/partials/part_hourly.php' ?>
+
+            <!-- WEEK FORECAST -->
+            <?php require 'weather/partials/part_daily.php' ?>
+
+            </div> <!-- /container -->
+
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
 <script>
 (function() {
@@ -163,9 +192,10 @@ if ($response != null) {
   var $lng = document.querySelector('#lng')
   var $lat = document.querySelector('#lat')
   placesAutocomplete.on('change', function(e) {
-    $address.textContent = e.suggestion.value;
-    $lng.value = e.suggestion.latlng['lng'];
-    $lat.value = e.suggestion.latlng['lat'];
+    $location = e.suggestion.value;
+    $lng = e.suggestion.latlng['lng'];
+    $lat = e.suggestion.latlng['lat'];
+    window.location.href = "weather.php?lng=" + $lng + "&lat=" + $lat + "&location=" + $location; 
   });
 
   placesAutocomplete.on('clear', function() {
