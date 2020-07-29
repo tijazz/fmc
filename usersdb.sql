@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 19, 2020 at 11:32 PM
+-- Generation Time: Jul 29, 2020 at 05:42 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -243,6 +243,47 @@ INSERT INTO `liabilty` (`id`, `user_id`, `details`, `type-liability`, `type-asse
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `locations`
+--
+
+CREATE TABLE `locations` (
+  `id` int(11) NOT NULL,
+  `user` varchar(50) NOT NULL,
+  `lat` float(10,6) NOT NULL,
+  `lng` float(10,6) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `location_status` tinyint(1) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `locations`
+--
+
+INSERT INTO `locations` (`id`, `user`, `lat`, `lng`, `description`, `location_status`) VALUES
+(1, '', 45.401100, -0.871771, '', 1),
+(2, 'Abdullahi', 48.217510, -3.642206, 'farm3', 1),
+(3, 'Abdullahi', 48.217510, -3.642206, 'farm3', 1),
+(4, 'Abdullahi', 48.217510, -3.642206, 'farm3', 1),
+(5, 'Abdullahi', 48.217510, -3.642206, 'farm3', 1),
+(6, 'Abdullahi', 48.217510, -3.642206, 'farm3', 1),
+(7, 'Abdullahi', 48.217510, -3.642206, 'farm3', 1),
+(8, 'Abdullahi', 48.217510, -3.642206, 'farm3', 1),
+(9, 'Abdullahi', 48.217510, -3.642206, 'farm3', 1),
+(10, 'Abdullahi', 48.217510, -3.642206, 'farm3', 1),
+(11, 'Abdullahi', 48.217510, -3.642206, 'farm3', 1),
+(12, 'Abdullahi', 48.217510, -3.642206, 'farm3', 1),
+(13, 'Abdullahi', 48.217510, -3.642206, 'farm3', 1),
+(14, 'Abdullahi', 48.217510, -3.642206, 'farm3', 1),
+(15, 'ads', 47.032887, -1.922850, 'farm 4', 1),
+(16, 'ads', 47.032887, -1.922850, 'farm 4', 1),
+(17, 'ads', 47.032887, -1.922850, 'farm 4', 1),
+(18, 'ads', 47.032887, -1.922850, 'farm 4', 1),
+(19, 'asg', 47.558182, -2.565550, 'farm4', 1),
+(20, 'Abdullahi', 6.845704, 7.391327, 'Farm 2', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `maintenance`
 --
 
@@ -252,7 +293,7 @@ CREATE TABLE `maintenance` (
   `type` varchar(50) NOT NULL,
   `description` varchar(50) NOT NULL,
   `amount` int(100) NOT NULL,
-  `Time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `Time` time(6) NOT NULL DEFAULT current_timestamp(),
   `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -779,6 +820,12 @@ ALTER TABLE `liabilty`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `locations`
+--
+ALTER TABLE `locations`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `maintenance`
 --
 ALTER TABLE `maintenance`
@@ -877,6 +924,12 @@ ALTER TABLE `legalfees`
 --
 ALTER TABLE `liabilty`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `locations`
+--
+ALTER TABLE `locations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `maintenance`
