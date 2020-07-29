@@ -24,6 +24,11 @@
   position:relative;
 }
 
+.monitoring-mgt-fm{
+  position: relative;
+}
+
+
 .svg-holder{
   height:100%;
   display:flex;
@@ -76,5 +81,36 @@
 .grouped > div{
   background:#404f5d50;
   border-radius:5px;
+  padding:10px 1rem;
 }
 
+.fin-mgt-fm h2{
+  display:inline-block;
+}
+
+.losses{float:right;  }
+
+.line-up{
+  flex-direction:column;
+}
+
+.trans{display:flex;align-items: center;}
+.trans:nth-child(2){
+  margin-top:30px;
+}
+
+.trans span{
+  margin-left:20px;
+}
+
+.green{
+  padding:1rem 0.5rem;
+  background:rgba(10, 201, 10, 0.39);
+  border-radius:5px;
+}
+
+.red{
+  padding:1rem 0.5rem;
+  background:rgba(255, 34, 34, 0.856);
+  border-radius:5px;
+}
