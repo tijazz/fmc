@@ -386,9 +386,6 @@ class Dbconnect {
 
 
 
-
-
-
 	//function to save staff
 	public function saveStaff($array){
 		try{
