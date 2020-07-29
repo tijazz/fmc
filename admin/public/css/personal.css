@@ -265,3 +265,47 @@ ul{padding:0;list-style:none;}
 .text-light {
   color: #fff !important;
 }
+
+
+/* Scrollbar fixes */
+.sidebar-collapse{
+  height:100vh;
+  overflow-y:scroll;
+  overflow-x:hidden;
+}
+
+.sidebar-collapse::-webkit-scrollbar-thumb{
+  background:#1ab394;
+  width:5px;
+  height:40px;
+  transition:background 0.5s ease-in-out;
+}
+
+
+
+.sidebar-collapse::-webkit-scrollbar{
+  width:8px;
+  /* background:#1ab394; */
+}
+
+.sidebar-collapse::-webkit-scrollbar-thumb:hover{
+  background:#1ee2bb;
+}
+
+.parent ul{
+  display:none;
+}
+
+.parent a .arrow{
+  transform:rotate(-90deg);
+}
+
+.opened a .arrow{
+  transform: rotate(90deg);
+}
+
+.opened ul{
+  display:block;
+}
+
+

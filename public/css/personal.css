@@ -185,3 +185,28 @@ ul{padding:0;list-style:none;}
 }
 
 .row,.statistic-box{padding-bottom:1rem !important;}
+
+
+/* Scrollbar */
+.sidebar-collapse{
+  height:100vh;
+  overflow-y:scroll;
+  overflow-x:hidden;
+}
+
+.sidebar-collapse::-webkit-scrollbar-thumb{
+  background:#1ab394;
+  width:5px;
+  height:40px;
+}
+
+
+
+.sidebar-collapse::-webkit-scrollbar{
+  width:8px;
+  /* background:#1ab394; */
+}
+
+.sidebar-collapse::-webkit-scrollbar-thumb:hover{
+  background:#1ee2bb;
+}
