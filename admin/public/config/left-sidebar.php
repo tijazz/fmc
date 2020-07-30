@@ -68,11 +68,8 @@
                             </ul>
                         </li>
                         
-<<<<<<< HEAD
-                        <li>
-=======
+
                         <li class='parentd'>
->>>>>>> b3fe0dc8ea9b5c04908dbc7b374f5053a9f78bad
                             <a href="#">
                                 <i class="fa fa-star"></i>
                                 <span class="nav-label">Financial Management</span>
@@ -142,50 +139,29 @@
                         <li><a href="dashboard_4_1.html">Dashboard v.4</a></li>
                         <li><a href="dashboard_5.html">Dashboard v.5 </a></li>
                     </ul>
-<<<<<<< HEAD
-                </li>
-               <li class="active">
-                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Notifications</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse in">
-=======
-                </li> -->
+
+                </li> 
                <li class="parentd">
                     <a href="#" class='spec'><i class="fa fa-edit"></i> <span class="nav-label">Notifications</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
->>>>>>> b3fe0dc8ea9b5c04908dbc7b374f5053a9f78bad
+
                         <li><a href="notification-dash.php">Notification Dashboard</a></li> 
                         <li><a href="notification.php">Notification</a></li>          
                         <li><a href="complaints.php">Messages</a></li>
                     </ul>
                 </li>
-<<<<<<< HEAD
-                <li class="active">
-                    <a href="#"><i class="fa fa-picture-o"></i> <span class="nav-label">Gallery</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse in">
-                        <li class="active"><a href="gallery.php">View Gallery</a></li>
-=======
+
                 <li class="parentd">
                     <a href="#" class='spec'><i class="fa fa-picture-o"></i> <span class="nav-label">Gallery</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="''"><a href="gallery.php">View Gallery</a></li>
->>>>>>> b3fe0dc8ea9b5c04908dbc7b374f5053a9f78bad
+
                         <li><a href="addGallery.php">Add Gallery</a></li>
 
                     </ul>
                 </li>
-<<<<<<< HEAD
-                <li class="active">
-                    <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Testimonial</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse in">
-                        <li class="active"><a href="testimolist.php">View Testimonials</a></li>
-                        <li><a href="addTestimonial.php">Add Testimonial</a></li>
 
-                    </ul>
-                </li>
-                <li class="active">
-                    <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Users</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse in">
-=======
+
                 <li class="parentd">
                     <a href="#" class='spec'><i class="fa fa-files-o"></i> <span class="nav-label">Testimonial</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
@@ -196,7 +172,6 @@
                 <li class="parentd">
                     <a href="#" class='spec'><i class="fa fa-users"></i> <span class="nav-label">Users</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
->>>>>>> b3fe0dc8ea9b5c04908dbc7b374f5053a9f78bad
                       <li><a href="profile.php">My Profile</a></li> 
                       <li><a href="userlist.php">Users list</a></li>                        
                       <li><a href="deleteduser.php">Deleted Users</a></li> 
@@ -214,9 +189,7 @@
                     </ul>
                     
                 </div>
-<<<<<<< HEAD
-            </nav>
-=======
+
             </nav>
 
             <script>
@@ -229,4 +202,3 @@
                     })
                 })
             </script>
->>>>>>> b3fe0dc8ea9b5c04908dbc7b374f5053a9f78bad
