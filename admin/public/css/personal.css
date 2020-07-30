@@ -137,12 +137,6 @@ ul{padding:0;list-style:none;}
   grid-column:1/3;
 }
 
-.supply_chain_management{
-}
-
-.inventory_management,.monitoring_eval,
-.fin_management,.investment_management{
-}
 
 .inventory_management,.monitoring_eval{
   grid-row:2/4;
@@ -292,11 +286,11 @@ ul{padding:0;list-style:none;}
   background:#1ee2bb;
 }
 
-.parent ul{
+.parentd ul{
   display:none;
 }
 
-.parent a .arrow{
+.parentd a .arrow{
   transform:rotate(-90deg);
 }
 
