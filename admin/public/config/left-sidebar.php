@@ -28,7 +28,7 @@
                             <img src="images/logo.png" alt="" style="height:30px;">
                         </div>
                     </li>
-                    <li class="''">
+                    <li class="active">
                         <a href="dashboard.php">
                             <i class="fa fa-star"></i>
                             <span class="nav-label">Dashboard</span> 
@@ -57,16 +57,23 @@
                             <a href="#">
                                 <i class="fa fa-star"></i>
                                 <span class="nav-label">Monitoring and Evaluation</span> 
+								<span id="arrow" class="fa arrow arrow1"></span>
                             </a>
+							<ul class="nav nav-second-level collapse in">                                
+                                <li><a href="employee.php">Employee</a></li>
+								<li><a href="employeeappraisal.php">Employee Appraisal</a></li>
+                                <li><a href="worker.php">Worker</a></li>
+								<li><a href="workerappraisal.php">Worker Appraisal</a></li>
+                                
+                            </ul>
                         </li>
                         
-                        <li class='parent'>
+                        <li>
                             <a href="#">
+                                <i class="fa fa-star"></i>
                                 <span class="nav-label">Financial Management</span>
-                                <i class="fa arrow"></i>
-
                             </a>
-                            <ul class="nav nav-second-level">
+                            <ul class="nav nav-second-level collapse in">
                                 
 								<li><a href="advertlist.php">Advert List</a></li>
 								
@@ -122,7 +129,7 @@
                             </a>
                         </li>
 
-                        <!-- <li>
+                        <li>
                     <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="index-2.html">Dashboard v.1</a></li>
@@ -131,33 +138,34 @@
                         <li><a href="dashboard_4_1.html">Dashboard v.4</a></li>
                         <li><a href="dashboard_5.html">Dashboard v.5 </a></li>
                     </ul>
-                </li> -->
-               <li class="parent">
+                </li>
+               <li class="active">
                     <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Notifications</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
+                    <ul class="nav nav-second-level collapse in">
                         <li><a href="notification-dash.php">Notification Dashboard</a></li> 
                         <li><a href="notification.php">Notification</a></li>          
                         <li><a href="complaints.php">Messages</a></li>
                     </ul>
                 </li>
-                <li class="parent">
+                <li class="active">
                     <a href="#"><i class="fa fa-picture-o"></i> <span class="nav-label">Gallery</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li class="''"><a href="gallery.php">View Gallery</a></li>
+                    <ul class="nav nav-second-level collapse in">
+                        <li class="active"><a href="gallery.php">View Gallery</a></li>
                         <li><a href="addGallery.php">Add Gallery</a></li>
 
                     </ul>
                 </li>
-                <li class="parent">
+                <li class="active">
                     <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Testimonial</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li class="''"><a href="testimolist.php">View Testimonials</a></li>
+                    <ul class="nav nav-second-level collapse in">
+                        <li class="active"><a href="testimolist.php">View Testimonials</a></li>
+                        <li><a href="addTestimonial.php">Add Testimonial</a></li>
 
                     </ul>
                 </li>
-                <li class="parent">
+                <li class="active">
                     <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Users</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
+                    <ul class="nav nav-second-level collapse in">
                       <li><a href="profile.php">My Profile</a></li> 
                       <li><a href="userlist.php">Users list</a></li>                        
                       <li><a href="deleteduser.php">Deleted Users</a></li> 
@@ -176,14 +184,3 @@
                     
                 </div>
             </nav>
-
-            <script>
-                let parents = document.querySelectorAll(".parent");
-                let links = document.querySelectorAll(".parent a:first-child");
-
-                links.forEach((one) => {
-                    one.addEventListener("click",() => {
-                        one.parentElement.classList.toggle("opened");
-                    })
-                })
-            </script>

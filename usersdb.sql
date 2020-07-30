@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2020 at 05:42 PM
+-- Generation Time: Jul 30, 2020 at 08:44 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -78,6 +78,25 @@ CREATE TABLE `deleteduser` (
   `id` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
   `deltime` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employee`
+--
+
+CREATE TABLE `employee` (
+  `id` int(6) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `gender` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `qualityofwork` varchar(255) NOT NULL,
+  `teamwork` varchar(255) NOT NULL,
+  `punctuality` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -779,6 +798,25 @@ INSERT INTO `utilities` (`id`, `sn`, `name`, `description`, `amount`, `date`, `a
 (2, '001', 'ade', 'ICT director\'s car', 2300, '2017-06-01', 'nothing'),
 (0, '124345665', 'Terminus', 'Bypassing', 1000000, '2017-06-01', '');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `worker`
+--
+
+CREATE TABLE `worker` (
+  `id` int(6) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `gender` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `qualityofwork` varchar(255) NOT NULL,
+  `teamwork` varchar(255) NOT NULL,
+  `punctuality` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
@@ -787,6 +825,12 @@ INSERT INTO `utilities` (`id`, `sn`, `name`, `description`, `amount`, `date`, `a
 -- Indexes for table `advert`
 --
 ALTER TABLE `advert`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `employee`
+--
+ALTER TABLE `employee`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -892,8 +936,20 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `worker`
+--
+ALTER TABLE `worker`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `employee`
+--
+ALTER TABLE `employee`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `expenditure`
@@ -996,6 +1052,12 @@ ALTER TABLE `type-liability`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `worker`
+--
+ALTER TABLE `worker`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
