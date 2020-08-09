@@ -92,7 +92,7 @@
 										    <td><?php echo htmlentities($result->user_id);?></td>
                                             <td><?php echo htmlentities($result->description);?></td>
                                             <td><?php echo htmlentities($result->amount);?></td>
-                                            <td><?php echo htmlentities($result->created_at);?></td>
+                                            <td><?php echo htmlentities($result->date);?></td>
 																						
 											<td>
 											<a href="edit-testimo.php?edit=<?php echo $result->id;?>" onclick="return confirm('Do you want to Edit');">&nbsp; <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;

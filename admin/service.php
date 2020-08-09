@@ -31,7 +31,7 @@ if(isset($_POST['submit']))
     $add_parameter = $_POST['add_parameter'];
 
 	
-    $sql="INSERT INTO `service` (`transaction`, `salename`, `date`, `productname`, `description`, `price`, `quantity`, `discount`, `totalamount`, `totalquantity`, `method`, `customername`, `phone`, `type`, `add_parameter`) VALUES (:transaction,:salename,:date,:productname,:description,:price,:quantity,:discount,:totalamount,:totalquantity,:method,:customername,:phone,:type,:add_parameter)";
+    $sql="INSERT INTO `service` (`transaction`, `salename`, `date`, `productname`, `description`, `price`, `quantity`, `discount`, `amount`, `totalquantity`, `method`, `customername`, `phone`, `type`, `add_parameter`) VALUES (:transaction,:salename,:date,:productname,:description,:price,:quantity,:discount,:amount,:totalquantity,:method,:customername,:phone,:type,:add_parameter)";
     $query = $dbh->prepare($sql);
     $query-> bindParam(':transaction', $transaction, PDO::PARAM_STR);
     $query-> bindParam(':salename', $salename, PDO::PARAM_STR);
@@ -41,7 +41,7 @@ if(isset($_POST['submit']))
     $query-> bindParam(':price', $price, PDO::PARAM_STR);
     $query-> bindParam(':quantity', $quantity, PDO::PARAM_STR);
     $query-> bindParam(':discount', $discount, PDO::PARAM_STR);
-    $query-> bindParam(':totalamount', $totalamount, PDO::PARAM_STR);
+    $query-> bindParam(':amount', $totalamount, PDO::PARAM_STR);
     $query-> bindParam(':totalquantity', $totalquantity, PDO::PARAM_STR);
     $query-> bindParam(':method', $method, PDO::PARAM_STR);
     $query-> bindParam(':customername', $customername, PDO::PARAM_STR);
