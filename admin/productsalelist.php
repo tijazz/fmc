@@ -108,7 +108,7 @@
                                             <td><?php echo htmlentities($result->price);?></td>
                                             <td><?php echo htmlentities($result->quantity);?></td>
                                             <td><?php echo htmlentities($result->discount);?></td>
-                                            <td><?php echo htmlentities($result->totlaamount);?></td>
+                                            <td><?php echo htmlentities($result->amount);?></td>
                                             <td><?php echo htmlentities($result->totalquantity);?></td>
                                             <td><?php echo htmlentities($result->method);?></td>
                                             <td><?php echo htmlentities($result->customername);?></td>
