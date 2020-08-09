@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 30, 2020 at 08:44 PM
+-- Generation Time: Aug 09, 2020 at 08:41 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -112,14 +112,14 @@ CREATE TABLE `expenditure` (
   `type-expenses` varchar(55) NOT NULL,
   `type-asset` varchar(55) NOT NULL,
   `amount` double NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `expenditure`
 --
 
-INSERT INTO `expenditure` (`id`, `user_id`, `description`, `type-expenses`, `type-asset`, `amount`, `created_at`) VALUES
+INSERT INTO `expenditure` (`id`, `user_id`, `description`, `type-expenses`, `type-asset`, `amount`, `date`) VALUES
 (1, 5, 'Boy', 'Insurance & security', '', 1000000, '2020-07-12 16:27:45'),
 (2, 5, 'Training', 'Raw Materials', '', 1245677, '2020-07-12 16:35:00'),
 (4, 5, 'good', 'Project\r\nExpenses', '', 1334344, '2020-07-12 16:56:15'),
@@ -190,6 +190,14 @@ CREATE TABLE `granty` (
   `possibilityofreturn` varchar(255) NOT NULL,
   `add_parameters` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `granty`
+--
+
+INSERT INTO `granty` (`id`, `grantname`, `description`, `amount`, `possibilityofreturn`, `add_parameters`) VALUES
+(3, 'despicado', 'just something', 10000, 'no', ''),
+(4, 'despicado', 'just something', 10000, 'no', '');
 
 -- --------------------------------------------------------
 
@@ -414,6 +422,39 @@ INSERT INTO `notification` (`id`, `notiuser`, `notireciver`, `notitype`, `time`)
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `plannedexpense`
+--
+
+CREATE TABLE `plannedexpense` (
+  `expense` varchar(50) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `plannedincome`
+--
+
+CREATE TABLE `plannedincome` (
+  `income` varchar(50) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `date` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `plannedincome`
+--
+
+INSERT INTO `plannedincome` (`income`, `amount`, `date`) VALUES
+('productsales', 100000, '2020-06'),
+('service', 1245677, '2020-05'),
+('service', 1245677, '2020-01');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `power`
 --
 
@@ -447,7 +488,7 @@ CREATE TABLE `productsale` (
   `price` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `discount` int(11) NOT NULL,
-  `totalamount` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
   `totalquantity` int(11) NOT NULL,
   `method` varchar(50) NOT NULL,
   `customername` varchar(50) NOT NULL,
@@ -598,7 +639,7 @@ CREATE TABLE `service` (
   `price` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `discount` int(11) NOT NULL,
-  `totalamount` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
   `totalquantity` int(11) NOT NULL,
   `method` varchar(50) NOT NULL,
   `customername` varchar(50) NOT NULL,
@@ -611,8 +652,9 @@ CREATE TABLE `service` (
 -- Dumping data for table `service`
 --
 
-INSERT INTO `service` (`id`, `transaction`, `salename`, `date`, `productname`, `description`, `price`, `quantity`, `discount`, `totalamount`, `totalquantity`, `method`, `customername`, `phone`, `type`, `add_parameter`) VALUES
-(0, '123', 'otun', '2020-07-02', 'boska', 'brown', 100, 3, 20, 200, 200, 'transfer', 'tunde', '08039412009', 'Weekly', 'nothing');
+INSERT INTO `service` (`id`, `transaction`, `salename`, `date`, `productname`, `description`, `price`, `quantity`, `discount`, `amount`, `totalquantity`, `method`, `customername`, `phone`, `type`, `add_parameter`) VALUES
+(0, '123', 'otun', '2020-07-02', 'boska', 'brown', 100, 3, 20, 200, 200, 'transfer', 'tunde', '08039412009', 'Weekly', 'nothing'),
+(0, '12325544', 'Abdullahi', '2020-08-07', 'ybnl', 'Buy Fuel', 1200, 15, 200, 15000, 15, 'transfer', 'method', '+2348061266', 'Daily', 'qw');
 
 -- --------------------------------------------------------
 
@@ -961,7 +1003,7 @@ ALTER TABLE `expenditure`
 -- AUTO_INCREMENT for table `granty`
 --
 ALTER TABLE `granty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `income`
