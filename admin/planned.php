@@ -58,7 +58,7 @@
 
                 <div class="col-lg-12">
 
-                    <h2 class="page-title">Planned Expense</h2>
+                    <h2 class="page-title">Planned Income</h2>
                     <h1><a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal"
                             style="color:#fff;" class="small-box-footer"><i
                                 class="glyphicon glyphicon-plus text-blue"></i> Income </a></h1>
@@ -75,7 +75,7 @@
                                     <?php
                                     $months = ["Jan"=>"01", "Feb"=>"02", "Mar"=>"03", "Apr"=>"04", "May"=>"05", "Jun"=>"06", "Jul"=>"07", "Aug"=>"08", "Sep"=>"09", "Oct"=>"10", "Nov"=>"11", "Dec"=>"12"];
                                     $expense = array("Maintenance & repairs"=>"maintenance", "Project expenses"=>"expenditure", "Raw materials"=>"", "Security"=>"", "Other"=>"");
-                                    $income = ["Product Sales"=>"productsales", "Service Sales"=>"service", "Grants"=>"granty", "Other"=>""];
+                                    $income = ["Product Sales"=>"productsale", "Service Sales"=>"service", "Grants"=>"granty", "Other"=>""];
 
                                     ?>
                                     <tr>
@@ -184,8 +184,8 @@
 
                 <div class="col-lg-12">
 
-                    <h2 class="page-title">Planned Income</h2>
-                    <h1><a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal"
+                    <h2 class="page-title">Planned Expense</h2>
+                    <h1><a class="btn btn-lg btn-primary" href="#add2" data-target="#add2" data-toggle="modal"
                             style="color:#fff;" class="small-box-footer"><i
                                 class="glyphicon glyphicon-plus text-blue"></i> Expense </a></h1>
                     <!-- Zero Configuration Table -->
@@ -198,12 +198,6 @@
                             <table id="zctb" class="display table table-striped table-bordered table-hover"
                                 cellspacing="0" width="100%">
                                 <thead>
-                                    <?php
-                                    $months = ["Jan"=>"01", "Feb"=>"02", "Mar"=>"03", "Apr"=>"04", "May"=>"05", "Jun"=>"06", "Jul"=>"07", "Aug"=>"08", "Sep"=>"09", "Oct"=>"10", "Nov"=>"11", "Dec"=>"12"];
-                                    $expense = array("Maintenance & repairs"=>"maintenance", "Project expenses"=>"expenditure", "Raw materials"=>"", "Security"=>"", "Other"=>"");
-                                    $income = ["Product Sales"=>"productsales", "Service Sales"=>"service", "Grants"=>"granty", "Other"=>""];
-
-                                    ?>
                                     <tr>
                                         <th>Expense</th>
                                         <?php
@@ -228,7 +222,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div id="add" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                        <div id="add2" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                             aria-hidden="true" style="display: none;">
                             <div class="modal-dialog">
                                 <div class="modal-content" style="height:auto">
@@ -241,9 +235,9 @@
                                         <form action="plannedexpense.php" method="POST" class="forma">
 
                                             <p>
-                                                <label for="income">Income Type</label>
+                                                <label for="expense">Expense Type</label>
                                                 
-                                                <select name="income">
+                                                <select name="expense">
                                                 <?php
                                                 foreach($expense as $key => $value){
                                                     echo '<option value="'.$value.'">'.$key.'</option>';
@@ -254,12 +248,12 @@
 
                                             <p>
                                                 <label for="amount">Amount</label>
-                                                <input type="text" name="amount" value="">
+                                                <input type="text" name="amount" >
                                             </p>
 
                                             <p>
                                                 <label for="month">Month</label>
-                                                <input type="Month" name="month" value="">
+                                                <input type="Month" name="month">
                                             </p>
                                             <p>
                                                 <button type="submit" name="submit">
