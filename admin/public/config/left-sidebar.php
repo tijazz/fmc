@@ -34,32 +34,31 @@
                             <span class="nav-label">Dashboard</span> 
                         </a>
                     </li>
-                    <li>
+                        <li class="parentd">
                         <a href="#">
                             <i class="fa fa-star"></i>
                             <span class="nav-label">Supply chain management</span></a>
                         </li>
-                        <li>
+                        <li class="parentd">
                             <a href="#">
                                 <i class="fa fa-star"></i>
                                 <span class="nav-label">Risk Management</span>
                             </a>
                         </li>
                         
-                        <li>
+                        <li class="parentd">
                             <a href="#">
                                 <i class="fa fa-star"></i>
                                 <span class="nav-label">Inventory management</span>
                             </a>
                         </li>
                         
-                        <li>
-                            <a href="#">
+                        <li class="parentd">
+                            <a href="#" class="spec">
                                 <i class="fa fa-star"></i>
-                                <span class="nav-label">Monitoring and Evaluation</span> 
-								<span id="arrow" class="fa arrow arrow1"></span>
+                                <span class="nav-label">Monitoring and Evaluation</span>
                             </a>
-							<ul class="nav nav-second-level collapse in">                                
+							<ul class="nav nav-second-level">                                
                                 <li><a href="employee.php">Employee</a></li>
 								<li><a href="employeeappraisal.php">Employee Appraisal</a></li>
                                 <li><a href="worker.php">Worker</a></li>
@@ -70,11 +69,11 @@
                         
 
                         <li class='parentd'>
-                            <a href="#">
+                            <a href="#" class="spec">
                                 <i class="fa fa-star"></i>
                                 <span class="nav-label">Financial Management</span>
                             </a>
-                            <ul class="nav nav-second-level collapse in">
+                            <ul class="nav nav-second-level">
                                 
 								<li><a href="advertlist.php">Advert List</a></li>
 								

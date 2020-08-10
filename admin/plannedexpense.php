@@ -13,13 +13,13 @@
          	
 if(isset($_POST['submit']))
 {
-
+    $expense = $_POST['expense'];
     $amount = $_POST['amount'];
     $date = $_POST['month'];
-    echo $date;
 	
-    $sql="INSERT INTO plannedexpense (amount, date) VALUES (:amount, :date)";
+    $sql="INSERT INTO plannedexpense (expense, amount, date) VALUES (:expense, :amount, :date)";
     $query = $dbh->prepare($sql);
+    $query-> bindParam(':expense', $expense, PDO::PARAM_STR);
     $query-> bindParam(':amount', $amount, PDO::PARAM_STR);
     $query-> bindParam(':date', $date, PDO::PARAM_STR);
     $query->execute(); 
