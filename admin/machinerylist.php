@@ -21,7 +21,7 @@ if(isset($_POST['submit']))
     $manufacturer = $_POST['manufacturer'];
     echo $description;
 	
-    $sql="INSERT INTO `machinery`(`category`, `name`, `description`, `serial_no`, `manufacturer`) VALUES (':category', ':name', ':description', ':serial_no', ':manufacturer')";
+    $sql="INSERT INTO `machinery`(`category`, `name`, `description`, `serial_no`, `manufacturer`) VALUES (:category, :name, :description, :serial_no, :manufacturer)";
     $query = $dbh->prepare($sql);
     $query-> bindParam(':category', $category, PDO::PARAM_STR);
     $query-> bindParam(':name', $name, PDO::PARAM_STR);
@@ -30,7 +30,7 @@ if(isset($_POST['submit']))
     $query-> bindParam(':manufacturer', $manufacturer, PDO::PARAM_STR);
     $query->execute(); 
     $msg="Rent Updated Successfully";
-    // header('location:machineryform.php');
+    header('location:machineryform.php');
 }
 }  
 ?>
