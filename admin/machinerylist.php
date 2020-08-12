@@ -16,12 +16,12 @@ if(isset($_POST['submit']))
 
     $category = $_POST['category'];
     $name = $_POST['name'];
-    $income = $_POST['income'];
+    $description = $_POST['description'];
     $snum = $_POST['snum'];
     $manufacturer = $_POST['manufacturer'];
-    echo $manufacturer;
+    echo $description;
 	
-    $sql="INSERT INTO `machinery` (`category`, `name`, `description`, `serial_no`, `manufacturer`) VALUES (`:category`, `:name`, `:description`, `:serial_no`, `:manufacturer`)";
+    $sql="INSERT INTO `machinery`(`category`, `name`, `description`, `serial_no`, `manufacturer`) VALUES (':category', ':name', ':description', ':serial_no', ':manufacturer')";
     $query = $dbh->prepare($sql);
     $query-> bindParam(':category', $category, PDO::PARAM_STR);
     $query-> bindParam(':name', $name, PDO::PARAM_STR);
