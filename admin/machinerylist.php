@@ -51,14 +51,14 @@
             </div>
             <div class="row  border-bottom white-bg dashboard-header">
                 <div class="panel-heading">
-                    <h2 class="page-title">Manage Testimonials</h2>
+                    <h2 class="page-title">Manage Machinery</h2>
                 </div>
             </div>
             <div class="row">
 
                 <div class="col-lg-12">
 
-                    <h2 class="page-title">Configure Testimonials</h2>
+                    <h2 class="page-title">Machinery</h2>
                     <h1>
                         <a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal"
                             style="color:#fff;" class="small-box-footer"><i
