@@ -51,6 +51,11 @@
                                 <i class="fa fa-star"></i>
                                 <span class="nav-label">Inventory management</span>
                             </a>
+                            <ul class="nav nav-second-level">                                
+                                <li><a href="buildinglist.php">Building</a></li>
+								<li><a href="machinerylist.php">Machinery</a></li>
+                                
+                            </ul>
                         </li>
                         
                         <li class="parentd">

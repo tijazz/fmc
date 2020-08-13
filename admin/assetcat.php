@@ -21,7 +21,15 @@ if(isset($_POST['submit']))
     $query-> bindParam(':category', $category, PDO::PARAM_STR);
     $query->execute(); 
     $msg="Rent Updated Successfully";
-    header('location:machineryform.php');
+
+    $link = $_SERVER['HTTP_REFERER'];
+    $data=explode("/",$link); //associative array
+
+      foreach($data as $d=>$a)
+      {
+        
+      }
+    header('location:'. $a);
 }
 }  
 ?>

@@ -51,14 +51,14 @@
             </div>
             <div class="row  border-bottom white-bg dashboard-header">
                 <div class="panel-heading">
-                    <h2 class="page-title">Manage Machinery</h2>
+                    <h2 class="page-title">Manage Building</h2>
                 </div>
             </div>
             <div class="row">
 
                 <div class="col-lg-12">
 
-                    <h2 class="page-title">Machinery</h2>
+                    <h2 class="page-title">Building</h2>
                     <h1>
                         <a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal"
                             style="color:#fff;" class="small-box-footer"><i
@@ -82,10 +82,11 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Categogry</th>
                                         <th>Name</th>
                                         <th>Description</th>
-                                        <th>Item Serial Number</th>
+                                        <th>Size/capacity</th>
+                                        <th>Location</th>
+                                        <th>Category</th>
                                         <th>Date</th>
                                         <th>Action</th>
                                     </tr>
@@ -93,7 +94,7 @@
 
                                 <tbody>
 
-                                    <?php $sql = "SELECT * from `machinery`";
+                                    <?php $sql = "SELECT * from `building`";
 										$query = $dbh -> prepare($sql);
 										$query->execute();
 										$results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -104,12 +105,12 @@
 										{				?>
                                     <tr>
                                         <td><?php echo htmlentities($cnt);?></td>
-                                        <td><?php echo htmlentities($result->category);?></td>
                                         <td><?php echo htmlentities($result->name);?></td>
                                         <td><?php echo htmlentities($result->description);?></td>
-                                        <td><?php echo htmlentities($result->serial_no);?></td>
+                                        <td><?php echo htmlentities($result->size);?></td>
+                                        <td><?php echo htmlentities($result->location);?></td>
+                                        <td><?php echo htmlentities($result->category);?></td>
                                         <td><?php echo htmlentities($result->date);?></td>
-
 
                                         <td>
                                             <a href="edit-testimo.php?edit=<?php echo $result->id;?>"
@@ -136,12 +137,34 @@
                                         <h4 class="modal-title">Add New Product</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="machineryform.php" method="POST" class="forma">
+                                        <form action="buildingform.php" method="POST" class="forma">
+                                            
+                                            <p>
+                                                <label for="name">Name</label>
+                                                <input type="text" name="name" value="">
+                                            </p>
+
+
+                                            <p>
+                                                <label for="description">Description</label>
+                                                <input type="text" name="description" value="">
+                                            </p>
+
+                                            <p>
+                                                <label for="size">Size</label>
+                                                <input type="text" name="size" value="">
+                                            </p>
+
+                                            <p>
+                                                <label for="location">Location</label>
+                                                <input type="text" name="location" value="">
+                                            </p>
+
                                             <p>
                                                 <select name="category" id="">
                                                     <option selected disabled>Select</option>
                                                     <?php 
-                                        $sql = "SELECT * FROM `asset` WHERE item LIKE 'Machinery'";
+                                        $sql = "SELECT * FROM `asset` WHERE item LIKE 'building'";
                                         $query = $dbh -> prepare($sql);
 										$query->execute();
 										$results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -155,28 +178,6 @@
                                                     <?php $cnt=$cnt+1; 
                                         }} ?>
                                                 </select>
-                                            </p>
-
-
-                                            <p>
-                                                <label for="name">Name</label>
-                                                <input type="text" name="name" value="">
-                                            </p>
-
-
-                                            <p>
-                                                <label for="description">Description</label>
-                                                <input type="text" name="description" value="">
-                                            </p>
-
-                                            <p>
-                                                <label for="snum">Item Serial Number</label>
-                                                <input type="text" name="snum" value="">
-                                            </p>
-
-                                            <p>
-                                                <label for="amount">Manufacturer</label>
-                                                <input type="text" name="manufacturer" value="">
                                             </p>
 
                                             <p>
@@ -221,7 +222,7 @@
                                         <form action="assetcat.php" method="POST" class="forma">
                                             <p>
                                                 <label for="full_name">Item</label>
-                                                <input type="text" name="item" value="Machinery">
+                                                <input type="text" name="item" value="Building">
                                             </p>
 
                                             <p>
