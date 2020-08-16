@@ -53,8 +53,11 @@
                             </a>
                             <ul class="nav nav-second-level">                                
                                 <li><a href="buildinglist.php">Building</a></li>
-								<li><a href="machinerylist.php">Machinery</a></li>
-                                
+                                <li><a href="machinerylist.php">Machinery</a></li>
+                                <li><a href="vehiclelist.php">Vehicle</a></li>
+                                <li><a href="otassetlist.php">Other Tangible Assets</a></li>
+                                <li><a href="operationlist.php">Operation</a></li>
+                                <li><a href="administrationlist.php">Administration</a></li>
                             </ul>
                         </li>
                         
