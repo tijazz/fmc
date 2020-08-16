@@ -91,7 +91,7 @@
 
                                 <li><a href="budget.php">Yearly Budget</a></li> 
                                 <li><a href="monthlybudget.php">Monthly Budget</a></li> 
-                                <li><a href="planned.php">Monthly Budget</a></li>
+                                <li><a href="planned.php">planned Budget</a></li>
 								
                                
 								<li><a href="expenditurelist.php">Expenditure List</a></li>
