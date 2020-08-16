@@ -17,7 +17,7 @@ if(isset($_POST['submit']))
     $amount = $_POST['amount'];
     $date = $_POST['month'];
     $income = $_POST['income'];
-   
+   echo $date;
 	
     $sql="INSERT INTO plannedincome (income, amount, date) VALUES (:income, :amount, :date)";
     $query = $dbh->prepare($sql);

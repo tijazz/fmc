@@ -34,52 +34,64 @@
                             <span class="nav-label">Dashboard</span> 
                         </a>
                     </li>
-                    <li>
+                        <li class="parentd">
                         <a href="#">
                             <i class="fa fa-star"></i>
                             <span class="nav-label">Supply chain management</span></a>
                         </li>
-                        <li>
+                        <li class="parentd">
                             <a href="#">
                                 <i class="fa fa-star"></i>
                                 <span class="nav-label">Risk Management</span>
                             </a>
                         </li>
                         
-                        <li>
+                        <li class="parentd">
                             <a href="#">
                                 <i class="fa fa-star"></i>
                                 <span class="nav-label">Inventory management</span>
                             </a>
+                            <ul class="nav nav-second-level">                                
+                                <li><a href="buildinglist.php">Building</a></li>
+                                <li><a href="machinerylist.php">Machinery</a></li>
+                                <li><a href="vehiclelist.php">Vehicle</a></li>
+                                <li><a href="otassetlist.php">Other Tangible Assets</a></li>
+                                <li><a href="operationlist.php">Operation</a></li>
+                                <li><a href="administrationlist.php">Administration</a></li>
+                            </ul>
                         </li>
                         
-                        <li>
-                            <a href="#">
+                        <li class="parentd">
+                            <a href="#" class="spec">
                                 <i class="fa fa-star"></i>
-                                <span class="nav-label">Monitoring and Evaluation</span> 
-								<span id="arrow" class="fa arrow arrow1"></span>
+                                <span class="nav-label">Monitoring and Evaluation</span>
                             </a>
-							<ul class="nav nav-second-level collapse in">                                
+							<ul class="nav nav-second-level">                                
                                 <li><a href="employee.php">Employee</a></li>
 								<li><a href="employeeappraisal.php">Employee Appraisal</a></li>
                                 <li><a href="worker.php">Worker</a></li>
-								<li><a href="workerappraisal.php">Worker Appraisal</a></li>
+                                <li><a href="workerappraisal.php">Worker Appraisal</a></li>
+                                <li><a href="weather.php">Weather</a></li>
                                 
                             </ul>
                         </li>
                         
 
                         <li class='parentd'>
-                            <a href="#">
+                            <a href="#" class="spec">
                                 <i class="fa fa-star"></i>
                                 <span class="nav-label">Financial Management</span>
                             </a>
-                            <ul class="nav nav-second-level collapse in">
+                            <ul class="nav nav-second-level">
                                 
 								<li><a href="advertlist.php">Advert List</a></li>
 								
                                
 								<li><a href="assetlist.php">Asset List</a></li> 
+
+                                <li><a href="budget.php">Yearly Budget</a></li> 
+                                <li><a href="monthlybudget.php">Monthly Budget</a></li> 
+                                <li><a href="planned.php">planned Budget</a></li>
 								
                                
 								<li><a href="expenditurelist.php">Expenditure List</a></li>
@@ -90,7 +102,7 @@
                                
 								<li><a href="incomelist.php">Income list</a></li>
 								
-                                <li><a href="itemlist.php">Item List</a></li>
+                                <li><a href="item.php">Item List</a></li>
 								
                              
 								<li><a href="legallist.php">Legal Fees List</a></li>
