@@ -70,7 +70,8 @@
                                 <li><a href="employee.php">Employee</a></li>
 								<li><a href="employeeappraisal.php">Employee Appraisal</a></li>
                                 <li><a href="worker.php">Worker</a></li>
-								<li><a href="workerappraisal.php">Worker Appraisal</a></li>
+                                <li><a href="workerappraisal.php">Worker Appraisal</a></li>
+                                <li><a href="weather.php">Weather</a></li>
                                 
                             </ul>
                         </li>
@@ -97,7 +98,7 @@
                                
 								<li><a href="incomelist.php">Income list</a></li>
 								
-                                <li><a href="itemlist.php">Item List</a></li>
+                                <li><a href="item.php">Item List</a></li>
 								
                              
 								<li><a href="legallist.php">Legal Fees List</a></li>
