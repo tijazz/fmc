@@ -14,12 +14,13 @@
                 {
                     $id=$_GET['del'];
 
-                    $sql = "delete from testimonial WHERE id=:id";
+                    $sql = "delete from building WHERE sn=:id";
                     $query = $dbh->prepare($sql);
                     $query -> bindParam(':id',$id, PDO::PARAM_STR);
                     $query -> execute();                
 
                     $msg="Data Deleted successfully";
+                    header('location:buildinglist.php');
                 }
 
                     
@@ -113,10 +114,10 @@
                                         <td><?php echo htmlentities($result->date);?></td>
 
                                         <td>
-                                            <a href="edit-testimo.php?edit=<?php echo $result->id;?>"
+                                            <a href="buildinglist.php?edit=<?php echo $result->sn;?>"
                                                 onclick="return confirm('Do you want to Edit');">&nbsp; <i
                                                     class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                            <a href="testimolist.php?del=<?php echo $result->id;?>;?>"
+                                            <a href="buildinglist.php?del=<?php echo $result->sn;?>;?>"
                                                 onclick="return confirm('Do you want to Delete');"><i
                                                     class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                         </td>
