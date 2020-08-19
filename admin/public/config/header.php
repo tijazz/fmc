@@ -8,7 +8,6 @@
     
     <link href="public/css/bootstrap.min.css" rel="stylesheet">
     <link href="public/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="public/css/boot.css" rel="stylesheet">
 
     <!-- Toastr style -->
     <link href="public/css/plugins/toastr/toastr.min.css" rel="stylesheet">
