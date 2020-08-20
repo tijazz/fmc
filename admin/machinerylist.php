@@ -74,11 +74,9 @@
                             style="color:#fff;" class="small-box-footer"><i
                                 class="glyphicon glyphicon-plus text-blue"></i> Add category</a>
                     </h1>
+                    </div>
+                    </div>
                     <!-- button style End -->
-
-                    </div>
-                    </div>
-
 
                     <!-- Zero Configuration Table -->
                     <div class="panel panel-default">
