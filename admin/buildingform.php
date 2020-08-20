@@ -33,26 +33,6 @@ if(isset($_POST['submit']))
     header('location:buildinglist.php');
 
 
-}elseif (isset($_POST['edit'])) {
-    $sn=$_POST['edit'];
-    $name=$_POST['name'];
-    $description = $_POST['description'];
-    $size = $_POST['size'];
-    $location = $_POST['location'];
-    $category = $_POST['category'];
-    
-    $sql = "UPDATE `building` SET `name`=(:name), `description`=(:description), `size`=(:size), `location`=(:location), `category`=(:category) WHERE sn=(:sn)";
-    $query = $dbh->prepare($sql);
-    $query-> bindParam(':name', $name, PDO::PARAM_STR);
-    $query-> bindParam(':description', $description, PDO::PARAM_STR);
-    $query-> bindParam(':size', $size, PDO::PARAM_STR);
-    $query-> bindParam(':location', $location, PDO::PARAM_STR);
-    $query-> bindParam(':category', $category, PDO::PARAM_STR);
-    $query-> bindParam(':sn', $sn, PDO::PARAM_STR);
-    $query->execute(); 
-    $msg="Rent Updated Successfully";
-    
-    header('location:buildinglist.php');
 }
 
 
