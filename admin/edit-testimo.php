@@ -29,7 +29,6 @@
 
      //               print_r($_POST);
                 $sql="UPDATE testimonial SET fullname=(:fullname), occcupation=(:occup), body=(:textt) WHERE id=(:idedit)";
-     //           print_r($sql);
                 $query = $dbh->prepare($sql);
                 $query-> bindValue(':fullname', $fullname, PDO::PARAM_STR);
                 $query-> bindValue(':occup', $occupation, PDO::PARAM_STR);
