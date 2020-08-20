@@ -28,6 +28,7 @@
 
         <!DOCTYPE html>
         <html>
+        <link rel="stylesheet" href="public/css/new_styles.css">
 
 
         <?php
@@ -49,21 +50,21 @@
                 ?>
                             
                 </div>
-                <div class="row  border-bottom white-bg dashboard-header">
-                <div class="panel-heading"><h2 class="page-title">Manage Testimonials</h2></div>
+                <div class="row white-bg dashboard-header">
 				</div>
             <div class="row">
                        
                 <div class="col-lg-12">
 
-                    <h2 class="page-title">Configure Testimonials</h2>
-                    <h1>
-              <a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a>
-            </h1>
-                  <!-- Zero Configuration Table -->
-				<div class="panel panel-default">
+                    <div class="end_placer apart_placer"> 
+                <h2 class="page-title">Asset List</h2>
+                        <a class="green_btn plus_btn " href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a>
+                    </div>
+
+                    <!-- Zero Configuration Table -->
+				<div class="panel panel-default" style="background:#fff;">
                 <div class="panel-heading">List Users</div>
-							<div class="panel-body">
+							<div class="table-body">
 											<?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } 
 								else if($msg){?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php }?>
 								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">

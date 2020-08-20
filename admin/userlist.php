@@ -56,7 +56,7 @@
 
         <!DOCTYPE html>
         <html>
-
+                        <link rel="stylesheet" href="public/css/userlist.css">
 
         <?php
         require_once "public/config/header.php";
@@ -83,19 +83,16 @@
             <div class="row">
                        
                 <div class="col-lg-12">
-
-                    <h2 class="page-title">Configure Users Details</h2>
-
                   <!-- Zero Configuration Table -->
-				<div class="panel panel-default">
+				<div class="table_container panel-default">
                 <div class="panel-heading">List Users</div>
 							<div class="panel-body">
 											<?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } 
 								else if($msg){?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php }?>
-								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+								<table id="zctb" class="userlist_table" cellspacing="0" width="100%">
 									<thead>
 										<tr>
-										<th>#</th>
+										<th style="padding:0 5px 0 8px">#</th>
 												<th>Image</th>
                                                 <th>Name</th>
                                                 <th>Email</th>
@@ -120,7 +117,7 @@
 										foreach($results as $result)
 										{				?>	
 										<tr>
-											<td><?php echo htmlentities($cnt);?></td>
+											<td style="padding:0 5px 0 8px"><?php echo htmlentities($cnt);?></td>
 											<td><img src="../images/<?php echo htmlentities($result->images);?>" style="width:50px; border-radius:50%;"/></td>
                                             <td><?php echo htmlentities($result->fullname);?></td>
                                             <td><?php echo htmlentities($result->email);?></td>
@@ -132,14 +129,14 @@
                                             
                                             <?php if($result->status == 1)
                                                     {?>
-                                                    <a href="userlist.php?confirm=<?php echo htmlentities($result->id);?>" onclick="return confirm('Do you really want to Un-Confirm the Account')">Confirmed <i class="fa fa-check-circle"></i></a> 
+                                                    <a class="confirm" href="userlist.php?confirm=<?php echo htmlentities($result->id);?>" onclick="return confirm('Do you really want to Un-Confirm the Account')">Confirmed <i class="fa fa-check-circle"></i></a> 
                                                     <?php } else {?>
-                                                    <a href="userlist.php?unconfirm=<?php echo htmlentities($result->id);?>" onclick="return confirm('Do you really want to Confirm the Account')">Un-Confirmed <i class="fa fa-times-circle"></i></a>
+                                                    <a class="unconfirm" href="userlist.php?unconfirm=<?php echo htmlentities($result->id);?>" onclick="return confirm('Do you really want to Confirm the Account')">Un-Confirmed <i class="fa fa-times-circle"></i></a>
                                                     <?php } ?>
 											</td>                                  
 																						
 											<td>
-											<a href="edit-user.php?edit=<?php echo $result->id;?>" onclick="return confirm('Do you want to Edit');">&nbsp; <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+											<a href="edit-user.php?edit=<?php echo $result->id;?>" onclick="return confirm('Do you want to Edit');">&nbsp; <i style="color:#1ab394;" class="fa fa-pencil"></i></a>&nbsp;&nbsp;
 											<a href="userlist.php?del=<?php echo $result->id;?>&name=<?php echo htmlentities($result->email);?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
 											</td>
 										</tr>

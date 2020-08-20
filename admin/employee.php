@@ -118,6 +118,7 @@
         require_once "public/config/header.php";
         ?>
 <head>
+<link rel="stylesheet" href="public/css/new_styles.css">
 <script type="text/javascript">
 
 	function validate()
@@ -150,7 +151,7 @@
         ?>
             
             <div id="page-wrapper" class="gray-bg dashbard-1">
-                <div class="row border-bottom">
+                <div class="row border-bottom" >
             
                 <?php
                 require_once "public/config/topbar.php";
@@ -160,20 +161,20 @@
                 <div class="row  border-bottom white-bg dashboard-header">
                 <div class="panel-heading"><h2 class="page-title">Manage Employee</h2></div>
 				</div>
-            <div class="row">
+            <div class="row" style="background:#fff;">
                        
-                <div class="col-lg-12">
-
-                    <h2 class="page-title">Configure Employee Details</h2>
-				<h1><a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer" ><i class="glyphicon glyphicon-plus text-blue"> Add Employee</i></a></h1>
-                 
+                <div class="col-lg-12 table_holder">
+<div class="apart_placer end_placer" style="margin-top:1.3rem;">
+                    <h2 class="page-title" style="color:#000;">Configure Employee Details</h2>
+				<a class="green_btn" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer" ><i class="glyphicon glyphicon-plus text-blue"> Add Employee</i></a>
+                </div>
                   <!-- Zero Configuration Table -->
-				<div class="panel panel-default">
-                <div class="panel-heading">List Employee</div>
-							<div class="panel-body">
+				<div class="table-cover">
+                <!-- <div class="table__">List of employees</div> -->
+							<div class="table-body_">
 											<?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } 
 								else if($msg){?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php }?>
-								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+								<table class="employee_table" cellspacing="0" width="100%">
 									<thead>
 										<tr>
 										<th>#</th>
@@ -213,7 +214,6 @@
 											</td>
 										</tr>
 										<?php $cnt=$cnt+1; }} ?>
-										
 									</tbody>
 								</table>
 							</div>

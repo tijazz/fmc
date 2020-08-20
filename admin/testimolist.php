@@ -28,7 +28,9 @@
 
         <!DOCTYPE html>
         <html>
-
+            <head>
+                <link rel="stylesheet" href="public/css/new_styles.css">
+            </head>
 
         <?php
         require_once "public/config/header.php";
@@ -49,21 +51,18 @@
                 ?>
                             
                 </div>
-                <div class="row  border-bottom white-bg dashboard-header">
-                <div class="panel-heading"><h2 class="page-title">Manage Testimonials</h2></div>
-				</div>
-            <div class="row">
+            <div class="row" style="margin-top:2rem;">
                        
                 <div class="col-lg-12">
 
-<h1>
-<a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a>
-
-</h1>
+<div class="end_placer apart_placer">
+    <h2 style="margin-bottom:0";>Manage Testimonials</h2>
+<a class="green_btn plus_btn" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a>
+</div>
                   <!-- Zero Configuration Table -->
-				<div class="panel panel-default">
-                <div class="panel-heading">List Users</div>
-							<div class="panel-body">
+				<div class="title-row">
+                <div class="green_bg">List of Testimonials</div>
+							<div class="table-body">
 											<?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } 
 								else if($msg){?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php }?>
 								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
@@ -88,7 +87,7 @@
 										{
 										foreach($results as $result)
 										{				?>	
-										<tr style='color:#fff;'>
+										<tr>
 											<td><?php echo htmlentities($cnt);?></td>
 										    <td><?php echo htmlentities($result->fullname);?></td>
                                             <td><?php echo htmlentities($result->occupation);?></td>
@@ -96,7 +95,7 @@
                                 
 																						
 											<td>
-											<a href="edit-testimo.php?edit=<?php echo $result->id;?>" onclick="return confirm('Do you want to Edit');">&nbsp; <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+											<a href="edit-testimo.php?edit=<?php echo $result->id;?>" onclick="return confirm('Do you want to Edit');">&nbsp; <i style="color:#1ab394;" class="fa fa-pencil"></i></a>&nbsp;&nbsp;
 											<a href="testimolist.php?del=<?php echo $result->id;?>;?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
 											</td>
 										</tr>
