@@ -14,12 +14,12 @@
                 {
                     $id=$_GET['del'];
 
-                    $sql = "delete from testimonial WHERE id=:id";
+                    $sql = "delete from machinery WHERE sn=:id";
                     $query = $dbh->prepare($sql);
                     $query -> bindParam(':id',$id, PDO::PARAM_STR);
                     $query -> execute();                
-
                     $msg="Data Deleted successfully";
+                    header('location:machinerylist.php');
                 }
 
                     
@@ -59,17 +59,27 @@
                 <div class="col-lg-12">
 
                     <h2 class="page-title">Machinery</h2>
-                    <h1>
+
+                    <!-- button style Start -->
+                    <div class="navbar">
+                    <div class="container-fluid">
+                    <h1 class="nav navbar-nav">
                         <a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal"
                             style="color:#fff;" class="small-box-footer"><i
-                                class="glyphicon glyphicon-plus text-blue"></i></a>
+                                class="glyphicon glyphicon-plus text-blue"></i> Add</a>           
                     </h1>
 
-                    <h1>
+                    <h1 class="nav navbar-nav navbar-right">
                         <a class="btn btn-lg btn-primary" href="#add2" data-target="#add2" data-toggle="modal"
                             style="color:#fff;" class="small-box-footer"><i
-                                class="glyphicon glyphicon-plus text-blue"></i> add category</a>
+                                class="glyphicon glyphicon-plus text-blue"></i> Add category</a>
                     </h1>
+                    <!-- button style End -->
+
+                    </div>
+                    </div>
+
+
                     <!-- Zero Configuration Table -->
                     <div class="panel panel-default">
                         <div class="panel-heading">List Users</div>
@@ -111,14 +121,24 @@
                                         <td><?php echo htmlentities($result->date);?></td>
 
 
+                                        <!-- Action Button Start -->
                                         <td>
-                                            <a href="edit-testimo.php?edit=<?php echo $result->id;?>"
-                                                onclick="return confirm('Do you want to Edit');">&nbsp; <i
-                                                    class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                            <a href="testimolist.php?del=<?php echo $result->id;?>;?>"
+                                            <a data-toggle="modal" href="machineryedit.php?s=<?php echo $result->sn;?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                            <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                            <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog model-sm">
+                                                        <div class="modal-content"> </div>
+                                                    </div>
+                                            </div>
+
+                                            <a href="machinerylist.php?del=<?php echo $result->sn;?>"
                                                 onclick="return confirm('Do you want to Delete');"><i
                                                     class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                         </td>
+
+                                        <!-- Action Button End -->
+
+
                                     </tr>
                                     <?php $cnt=$cnt+1; }} ?>
 
@@ -194,19 +214,10 @@
                                     </div>
 
                                 </div>
-                                <!--end of modal-dialog-->
+                                
                             </div>
-
-                            <!---
-                <div class="col-lg-4">
-                        <?php
-            //    require_once "public/config/right-sidebar.php";
-                ?>
-
-                            </div>
-                                                    -->
                         </div>
-
+                                        <!--end of modal-dialog-->
 
                         <div id="add2" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                             aria-hidden="true" style="display: none;">
@@ -244,18 +255,12 @@
                                     </div>
 
                                 </div>
-                                <!--end of modal-dialog-->
+                                
                             </div>
 
-                            <!---
-                <div class="col-lg-4">
-                        <?php
-            //    require_once "public/config/right-sidebar.php";
-                ?>
-
-                            </div>
-                                                    -->
                         </div>
+                                        <!--end of modal-dialog-->
+
 
                     </div>
 

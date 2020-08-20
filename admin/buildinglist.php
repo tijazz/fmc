@@ -11,16 +11,20 @@
         }
         else{
             if(isset($_GET['del']))
-                {
+            {
                     $id=$_GET['del'];
 
-                    $sql = "delete from testimonial WHERE id=:id";
+                    $sql = "delete from building WHERE sn=:id";
                     $query = $dbh->prepare($sql);
                     $query -> bindParam(':id',$id, PDO::PARAM_STR);
                     $query -> execute();                
 
                     $msg="Data Deleted successfully";
-                }
+                    header('location:buildinglist.php');
+            }else{
+                
+            }
+            
 
                     
 
@@ -59,20 +63,37 @@
                 <div class="col-lg-12">
 
                     <h2 class="page-title">Building</h2>
-                    <h1>
-                        <a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal"
-                            style="color:#fff;" class="small-box-footer"><i
-                                class="glyphicon glyphicon-plus text-blue"></i></a>
-                    </h1>
 
-                    <h1>
+                    
+                    <div class="navbar">
+                    <div class="container-fluid">
+                    <h1 class="nav navbar-nav">
+                        <a id='newAdd' class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal"
+                            style="color:#fff;" class="small-box-footer"><i
+                                class="glyphicon glyphicon-plus text-blue"></i> Add</a>           
+                    </h1>
+                    <!-- returning changes back to default after clicking on editing button -->
+                    <script>
+                        $("#newAdd").click(function(){
+                            $('#f_edit>p>input').val("<?php echo $result->location?>");
+                            // $('select').val("select");
+                            $('button[type="submit"]').attr('name', 'submit');
+                            $('#edit').text('Add');             
+                        })
+                    </script>
+
+                    <h1 class="nav navbar-nav navbar-right">
                         <a class="btn btn-lg btn-primary" href="#add2" data-target="#add2" data-toggle="modal"
                             style="color:#fff;" class="small-box-footer"><i
-                                class="glyphicon glyphicon-plus text-blue"></i> add category</a>
+                                class="glyphicon glyphicon-plus text-blue"></i> Add category</a>
                     </h1>
+
+                    </div>
+                    </div>
+
                     <!-- Zero Configuration Table -->
                     <div class="panel panel-default">
-                        <div class="panel-heading">List Users</div>
+                        <div class="panel-heading">Building list</div>
                         <div class="panel-body">
                             <?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?>
                             </div><?php } 
@@ -104,7 +125,7 @@
 										foreach($results as $result)
 										{				?>
                                     <tr>
-                                        <td><?php echo htmlentities($cnt);?></td>
+                                        <td><?php echo htmlentities($result->sn);?></td>
                                         <td><?php echo htmlentities($result->name);?></td>
                                         <td><?php echo htmlentities($result->description);?></td>
                                         <td><?php echo htmlentities($result->size);?></td>
@@ -113,13 +134,33 @@
                                         <td><?php echo htmlentities($result->date);?></td>
 
                                         <td>
-                                            <a href="edit-testimo.php?edit=<?php echo $result->id;?>"
-                                                onclick="return confirm('Do you want to Edit');">&nbsp; <i
-                                                    class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                            <a href="testimolist.php?del=<?php echo $result->id;?>;?>"
-                                                onclick="return confirm('Do you want to Delete');"><i
+                                            &nbsp; <a href="#add" data-target="#add" data-toggle="modal"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                            <a href="buildinglist.php?del=<?php echo $result->sn;?>" onclick="return confirm('Do you want to Delete');"><i
                                                     class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                         </td>
+                                        
+                                        <!-- Script for edit button -->
+                                        <script>
+                                        
+                                        $(document).ready(function(){
+                                            $(".fa-pencil").on({
+                                                click: function(){
+                                                    
+                                                    $('input[name="name"]').val("<?php echo $result->name?>");
+                                                    $('input[name="description"]').val("<?php echo $result->description?>");
+                                                    $('input[name="size"]').val("<?php echo $result->size?>");
+                                                    $('input[name="location"]').val("<?php echo $result->location?>");
+                                                    $('select[name="category"]').val("<?php echo $result->category?>");
+                                                    $('#submit').val('<?php echo $result->sn;?>');
+                                                    $('#submit').attr('name', 'edit');
+                                                    $('#edit').text('Edit');
+                                                }  
+                                            });
+                                            
+                                            
+                                        });
+                                        </script>
+
                                     </tr>
                                     <?php $cnt=$cnt+1; }} ?>
 
@@ -134,10 +175,10 @@
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span></button>
-                                        <h4 class="modal-title">Add New Product</h4>
+                                        <h4 id='edit' class="modal-title">Add New Product</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="buildingform.php" method="POST" class="forma">
+                                        <form action="buildingform.php" method="POST" class="forma" id="f_edit">
                                             
                                             <p>
                                                 <label for="name">Name</label>
@@ -181,7 +222,7 @@
                                             </p>
 
                                             <p>
-                                                <button type="submit" name="submit">
+                                                <button type="submit" name="submit" id="submit">
                                                     Submit
                                                 </button>
                                             </p>
@@ -195,19 +236,11 @@
                                     </div>
 
                                 </div>
-                                <!--end of modal-dialog-->
+                                
                             </div>
 
-                            <!---
-                <div class="col-lg-4">
-                        <?php
-            //    require_once "public/config/right-sidebar.php";
-                ?>
-
-                            </div>
-                                                    -->
                         </div>
-
+<!--end of modal-dialog-->
 
                         <div id="add2" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                             aria-hidden="true" style="display: none;">
@@ -268,7 +301,6 @@
             <?php
                 require_once "public/config/footer.php";
                 ?>
-
 </body>
 
 <!-- Mirrored from webapplayers.com/inspinia_admin-v2.6.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Sep 2016 02:26:53 GMT -->

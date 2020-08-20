@@ -14,6 +14,20 @@
         <!-- GeoCode -->
         <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCSWB8ogOt_P0L7lXpu-tCNTwB-atv9CD0&amp;sensor=false&amp;libraries=places"></script>
         <script src="public/js/jquery.geocomplete.min.js"></script>
+
+        <!-- Necessary -->
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap-select.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.dataTables.min.js"></script>
+        <script src="js/dataTables.bootstrap.min.js"></script>
+        <script src="js/Chart.min.js"></script>
+        <script src="js/fileinput.js"></script>
+        <script src="js/chartData.js"></script>
+        <script src="js/main.js"></script>
+        <script type="text/javascript">
+
         <!-- Flot
         <script src="public/js/plugins/flot/jquery.flot.js"></script>
         <script src="public/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
