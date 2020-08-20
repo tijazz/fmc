@@ -90,9 +90,10 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Categogry</th>
+                                        <th>Category</th>
                                         <th>Name</th>
                                         <th>Description</th>
+                                        <th>Manufacturer</th>
                                         <th>Item Serial Number</th>
                                         <th>Date</th>
                                         <th>Action</th>
@@ -115,6 +116,7 @@
                                         <td><?php echo htmlentities($result->category);?></td>
                                         <td><?php echo htmlentities($result->name);?></td>
                                         <td><?php echo htmlentities($result->description);?></td>
+                                        <td><?php echo htmlentities($result->manufacturer);?></td>
                                         <td><?php echo htmlentities($result->serial_no);?></td>
                                         <td><?php echo htmlentities($result->date);?></td>
 
