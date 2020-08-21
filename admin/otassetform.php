@@ -33,7 +33,7 @@ if(isset($_POST['submit']))
     $query->execute(); 
     $msg="Rent Updated Successfully";
 
-    header('location:otassetform.php');
+    header('location:otassetlist.php');
 
 
     
