@@ -107,7 +107,7 @@ elseif (isset($_GET['s'])) {
                                             </p>
 
                                             <p>
-                                                <button type="submit" name="edit" value="<?php echo ($results->sn);?>">
+                                                <button type="submit" name="edit" value="<?php echo $sn;?>">
                                                     Submit
                                                 </button>
                                             </p>
