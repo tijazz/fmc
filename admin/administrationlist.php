@@ -14,12 +14,13 @@
                 {
                     $id=$_GET['del'];
 
-                    $sql = "delete from testimonial WHERE id=:id";
+                    $sql = "delete from administration WHERE sn=:id";
                     $query = $dbh->prepare($sql);
                     $query -> bindParam(':id',$id, PDO::PARAM_STR);
-                    $query -> execute();                
+                    $query -> execute();               
 
                     $msg="Data Deleted successfully";
+                    header('location:administrationlist.php');
                 }
 
                     
@@ -51,28 +52,34 @@
             </div>
             <div class="row  border-bottom white-bg dashboard-header">
                 <div class="panel-heading">
-                    <h2 class="page-title">Manage Building</h2>
+                    <h2 class="page-title">Manage Administration</h2>
                 </div>
             </div>
             <div class="row">
 
                 <div class="col-lg-12">
 
-                    <h2 class="page-title">Building</h2>
-                    <h1>
+                    <h2 class="page-title">Administration</h2>
+                    <!-- button style Start -->
+                    <div class="navbar">
+                    <div class="container-fluid">
+                    <h1 class="nav navbar-nav">
                         <a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal"
                             style="color:#fff;" class="small-box-footer"><i
-                                class="glyphicon glyphicon-plus text-blue"></i></a>
+                                class="glyphicon glyphicon-plus text-blue"></i> Add</a>           
                     </h1>
 
-                    <h1>
+                    <h1 class="nav navbar-nav navbar-right">
                         <a class="btn btn-lg btn-primary" href="#add2" data-target="#add2" data-toggle="modal"
                             style="color:#fff;" class="small-box-footer"><i
-                                class="glyphicon glyphicon-plus text-blue"></i> add category</a>
+                                class="glyphicon glyphicon-plus text-blue"></i> Add category</a>
                     </h1>
+                    </div>
+                    </div>
+                    <!-- button style End -->
                     <!-- Zero Configuration Table -->
                     <div class="panel panel-default">
-                        <div class="panel-heading">List Users</div>
+                        <div class="panel-heading">List Items</div>
                         <div class="panel-body">
                             <?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?>
                             </div><?php } 
@@ -117,15 +124,22 @@
                                         <td><?php echo htmlentities($result->place);?></td>
                                         <td><?php echo htmlentities($result->status);?></td>
                                         <td><?php echo htmlentities($result->date);?></td>
-
+                                        <!-- Action Button Start -->
                                         <td>
-                                            <a href="edit-testimo.php?edit=<?php echo $result->id;?>"
-                                                onclick="return confirm('Do you want to Edit');">&nbsp; <i
-                                                    class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                            <a href="testimolist.php?del=<?php echo $result->id;?>;?>"
+                                            <a data-toggle="modal" href="administrationedit.php?s=<?php echo $result->sn;?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                            <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                            <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog model-sm">
+                                                        <div class="modal-content"> </div>
+                                                    </div>
+                                            </div>
+
+                                            <a href="administrationlist.php?del=<?php echo $result->sn;?>"
                                                 onclick="return confirm('Do you want to Delete');"><i
                                                     class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                         </td>
+
+                                        <!-- Action Button End -->
                                     </tr>
                                     <?php $cnt=$cnt+1; }} ?>
 

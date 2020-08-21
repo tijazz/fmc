@@ -14,7 +14,7 @@
                 {
                     $id=$_GET['del'];
 
-                    $sql = "delete from vehicle WHERE sn=:id";
+                    $sql = "delete from other_asset WHERE sn=:id";
                     $query = $dbh->prepare($sql);
                     $query -> bindParam(':id',$id, PDO::PARAM_STR);
                     $query -> execute();                
@@ -52,22 +52,30 @@
             </div>
             <div class="row  border-bottom white-bg dashboard-header">
                 <div class="panel-heading">
-                    <h2 class="page-title">Manage Building</h2>
+                    <h2 class="page-title">Manage Other Assets</h2>
                 </div>
             </div>
             <div class="row">
 
                 <div class="col-lg-12">
 
-                    <h2 class="page-title">Building</h2>
-                    <h1>
+                    <h2 class="page-title">Other Assets</h2>
+
+                    <!-- button style Start -->
+                    <div class="navbar">
+                    <div class="container-fluid">
+                    <h1 class="nav navbar-nav">
                         <a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal"
                             style="color:#fff;" class="small-box-footer"><i
-                                class="glyphicon glyphicon-plus text-blue"></i></a>
+                                class="glyphicon glyphicon-plus text-blue"></i> Add</a>           
                     </h1>
+                    </div>
+                    </div>
+                    <!-- button style End -->
+
                     <!-- Zero Configuration Table -->
                     <div class="panel panel-default">
-                        <div class="panel-heading">List Vehicles</div>
+                        <div class="panel-heading">List Other Assets</div>
                         <div class="panel-body">
                             <?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?>
                             </div><?php } 
@@ -109,14 +117,22 @@
                                         <td><?php echo htmlentities($result->location);?></td>
                                         <td><?php echo htmlentities($result->date);?></td>
 
+                                        <!-- Action Button Start -->
                                         <td>
-                                            <a href="edit-testimo.php?edit=<?php echo $result->sn;?>"
-                                                onclick="return confirm('Do you want to Edit');">&nbsp; <i
-                                                    class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                            <a href="vehiclelist.php?del=<?php echo $result->sn;?>;?>"
+                                            <a data-toggle="modal" href="otassetedit.php?s=<?php echo $result->sn;?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                            <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                            <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog model-sm">
+                                                        <div class="modal-content"> </div>
+                                                    </div>
+                                            </div>
+
+                                            <a href="otassetlist.php?del=<?php echo $result->sn;?>"
                                                 onclick="return confirm('Do you want to Delete');"><i
                                                     class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                         </td>
+
+                                        <!-- Action Button End -->
                                     </tr>
                                     <?php $cnt=$cnt+1; }} ?>
 
