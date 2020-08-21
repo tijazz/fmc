@@ -56,7 +56,8 @@
 
         <!DOCTYPE html>
         <html>
-
+        <link rel="stylesheet" href="public/css/transaction.css">
+        <link rel="stylesheet" href="public/css/new_styles.css">
 
         <?php
         require_once "public/config/header.php";
@@ -75,23 +76,23 @@
                 <?php
                 require_once "public/config/topbar.php";
                 ?>
-                            
                 </div>
                 <div class="row  border-bottom white-bg dashboard-header">
-                <div class="panel-heading"><h2 class="page-title">Transaction</h2></div>
+                <div class="panel-heading"><h2 class="page-title">Wallet</h2></div>
 				</div>
             <div class="row">
                        
                 <div class="col-lg-12">
 
-                    <h2 class="page-title">Users Transaction Details</h2>
+                    <h2 class="page-title text-white">Users Transaction Details</h2>
 
                   <!-- Zero Configuration Table -->
-				<div class="panel panel-default">
+				<div class="panel-default" style="border-radius:10px;background:#fff;">
                 <div class="panel-heading">List Users</div>
-							<div class="panel-body">
+							<div class="table-body">
 											<?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } 
-								else if($msg){?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php }?>
+                                else if($msg){?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php }?>
+                                </div>
 								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 									<thead>
 										<tr>

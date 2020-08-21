@@ -2322,12 +2322,7 @@ th {
 .table-bordered > thead > tr > td {
   border-bottom-width: 2px;
 }
-.table-striped > tbody > tr:nth-of-type(odd) {
-  background-color: #4e5d6c;
-}
-.table-hover > tbody > tr:hover {
-  background-color: #485563;
-}
+
 table col[class*="col-"] {
   position: static;
   float: none;

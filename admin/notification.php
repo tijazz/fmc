@@ -46,7 +46,11 @@
                     <h2 class="page-title"></h2>
 
                   <!-- Zero Configuration Table -->
-						<div class="panel panel-default">
+                        <div class="panel panel-default" style="
+                        background: #b3f3e677;
+                        border-radius: 5px;
+                        box-shadow: 1px 1px 4px 2px rgba(110, 104, 104, 0.335);
+                    ">
 							<div class="panel-heading">Users Activity log</div>
 							<div class="panel-body">
 								<?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } 
@@ -64,7 +68,7 @@
                                     {
                                     foreach($results as $result)
                                     {				?>	
-                                        <h5 style="background:#ededed;padding:20px;"><i class="fa fa-bell text-primary"></i>&nbsp;&nbsp;<b class="text-primary"><?php echo htmlentities($result->time);?></b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo htmlentities($result->notiuser);?> -----> <?php echo htmlentities($result->notitype);?></h5>
+                                        <h5 style="background:#e7f8f1;padding:20px;border-radius:10px;box-shadow: 1px 1px 3px 1px rgba(255, 255, 255, 0.315);"><i class="fa fa-bell "></i>&nbsp;&nbsp;<b><?php echo htmlentities($result->time);?></b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo htmlentities($result->notiuser);?> -----> <?php echo htmlentities($result->notitype);?></h5>
                                   <?php $cnt=$cnt+1; }} ?>
           
 			
