@@ -52,14 +52,14 @@
             </div>
             <div class="row  border-bottom white-bg dashboard-header">
                 <div class="panel-heading">
-                    <h2 class="page-title">Manage Vehicle</h2>
+                    <h2 class="page-title">Manage Other Assets</h2>
                 </div>
             </div>
             <div class="row">
 
                 <div class="col-lg-12">
 
-                    <h2 class="page-title">Vehicle</h2>
+                    <h2 class="page-title">Other Assets</h2>
                     <!-- button style Start -->
                     <div class="navbar">
                     <div class="container-fluid">
@@ -73,7 +73,7 @@
                     <!-- button style End -->
                     <!-- Zero Configuration Table -->
                     <div class="panel panel-default">
-                        <div class="panel-heading">List Vehicles</div>
+                        <div class="panel-heading">List Other Assets</div>
                         <div class="panel-body">
                             <?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?>
                             </div><?php } 
