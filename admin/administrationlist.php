@@ -51,14 +51,14 @@
             </div>
             <div class="row  border-bottom white-bg dashboard-header">
                 <div class="panel-heading">
-                    <h2 class="page-title">Manage Building</h2>
+                    <h2 class="page-title">Manage Administration</h2>
                 </div>
             </div>
             <div class="row">
 
                 <div class="col-lg-12">
 
-                    <h2 class="page-title">Building</h2>
+                    <h2 class="page-title">Administration</h2>
                     <!-- button style Start -->
                     <div class="navbar">
                     <div class="container-fluid">
@@ -78,7 +78,7 @@
                     <!-- button style End -->
                     <!-- Zero Configuration Table -->
                     <div class="panel panel-default">
-                        <div class="panel-heading">List Users</div>
+                        <div class="panel-heading">List Items</div>
                         <div class="panel-body">
                             <?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?>
                             </div><?php } 
