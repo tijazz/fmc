@@ -17,9 +17,10 @@
                     $sql = "delete from administration WHERE sn=:id";
                     $query = $dbh->prepare($sql);
                     $query -> bindParam(':id',$id, PDO::PARAM_STR);
-                    $query -> execute();                
+                    $query -> execute();               
 
                     $msg="Data Deleted successfully";
+                    header('location:administrationlist.php');
                 }
 
                     
