@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2020 at 01:31 AM
+-- Generation Time: Aug 21, 2020 at 02:41 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -68,7 +68,7 @@ CREATE TABLE `administration` (
 --
 
 INSERT INTO `administration` (`sn`, `name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`, `date`) VALUES
-(1, 'dsl', 'dcl iron', '12', 'Abdullahi', 'Oyo', 'fan', 'ibadan', 'in stock', '2020-08-16');
+(1, 'dsl', 'dcl iron', '12', 'Abdullahi', 'Oyo', 'A.C.', 'ibadan', 'in stock', '2020-08-16');
 
 -- --------------------------------------------------------
 
@@ -116,7 +116,8 @@ INSERT INTO `asset` (`item`, `category`) VALUES
 ('Building', 'storage'),
 ('Building', 'warehouse'),
 ('operation', 'seed'),
-('administration', 'fan');
+('administration', 'fan'),
+('administration', 'A.C.');
 
 -- --------------------------------------------------------
 
@@ -139,7 +140,8 @@ CREATE TABLE `building` (
 --
 
 INSERT INTO `building` (`sn`, `name`, `description`, `size`, `location`, `category`, `date`) VALUES
-(1, 'duplex', 'three bedroom', '23', '43', 'admin', '2020-08-12');
+(4, 'Abdullahi', 'camry404', '12', 'Oyo', 'admin', '2020-08-19'),
+(6, 'Duplex', 'blue colored', '20', 'Oyo', 'admin', '2020-08-20');
 
 -- --------------------------------------------------------
 
@@ -171,6 +173,13 @@ CREATE TABLE `employee` (
   `teamwork` varchar(255) NOT NULL,
   `punctuality` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `employee`
+--
+
+INSERT INTO `employee` (`id`, `image`, `name`, `email`, `gender`, `role`, `phone`, `qualityofwork`, `teamwork`, `punctuality`) VALUES
+(10, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', 'male', 'Developer', '08061266260', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -247,7 +256,8 @@ INSERT INTO `gallery` (`id`, `imageName`, `created_at`) VALUES
 (5, '1556112789graduate-finance-jobs-planning.jpg', '2020-07-03 00:55:26'),
 (1, '838.jpg', '2020-07-03 00:52:16'),
 (4, 'invest-in-the-stock-market.jpg', '2020-07-03 00:54:51'),
-(5, '1556112789graduate-finance-jobs-planning.jpg', '2020-07-03 00:55:26');
+(5, '1556112789graduate-finance-jobs-planning.jpg', '2020-07-03 00:55:26'),
+(0, 'dark-world.jpg', '2020-08-18 19:34:58');
 
 -- --------------------------------------------------------
 
@@ -379,7 +389,8 @@ INSERT INTO `locations` (`id`, `user`, `lat`, `lng`, `description`, `location_st
 (17, 'ads', 47.032887, -1.922850, 'farm 4', 1),
 (18, 'ads', 47.032887, -1.922850, 'farm 4', 1),
 (19, 'asg', 47.558182, -2.565550, 'farm4', 1),
-(20, 'Abdullahi', 6.845704, 7.391327, 'Farm 2', 1);
+(20, 'Abdullahi', 6.845704, 7.391327, 'Farm 2', 1),
+(21, 'olawale', 7.872496, 8.588821, 'farm 3A', 1);
 
 -- --------------------------------------------------------
 
@@ -402,10 +413,9 @@ CREATE TABLE `machinery` (
 --
 
 INSERT INTO `machinery` (`sn`, `category`, `name`, `description`, `serial_no`, `manufacturer`, `date`) VALUES
-(1, 'tractor', 'santiago', 'a player', '123235655', 'Abdullahi', '2020-08-12'),
-(2, ':category', ':name', ':description', ':serial_no', ':manufacturer', '2020-08-12'),
+(1, 'tractor', 'james', 'a player', '123235655', 'dangote', '2020-08-12'),
 (3, 'tractor', 'Terminus', 'For this month', '45323453', 'Adullahi', '2020-08-12'),
-(4, 'tractor', 'jaguar', 'Buy Fuel', '45323453', 'jat', '2020-08-12');
+(5, 'tractor', 'Abdullahi ', 'Bypassing', '45323453', 'Q&S', '2020-08-20');
 
 -- --------------------------------------------------------
 
@@ -542,7 +552,8 @@ CREATE TABLE `operation` (
 --
 
 INSERT INTO `operation` (`sn`, `name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`, `date`) VALUES
-(1, 'corn', 'treated corn', '15', 'covas', 'Oyo', 'seed', 'ibadan', 'in stock', '2020-08-16');
+(1, 'corn', 'treated corn', '15', 'covas', 'Oyo', 'seed', 'ibadan', 'in stock', '2020-08-16'),
+(2, 'Abdullahi', 'Bypassing', '15', 'jat', 'Oyo', 'seed', 'Ghana', 'in stock', '2020-08-21');
 
 -- --------------------------------------------------------
 
@@ -566,7 +577,7 @@ CREATE TABLE `other_asset` (
 --
 
 INSERT INTO `other_asset` (`sn`, `name`, `description`, `quantity`, `manufacturer`, `status`, `location`, `date`) VALUES
-(1, 'hoe', 'iron hoe', '12', 'jat', 'in storage', 'Oyo', '2020-08-16');
+(1, 'hoe', 'iron hoe', '12', 'jat', 'in use', 'Oyo', '2020-08-16');
 
 -- --------------------------------------------------------
 
@@ -585,7 +596,8 @@ CREATE TABLE `plannedexpense` (
 --
 
 INSERT INTO `plannedexpense` (`expense`, `amount`, `date`) VALUES
-('maintenance', 1000000, '2020-05');
+('maintenance', 1000000, '2020-05'),
+('maintenance', 1334344, '2020-01');
 
 -- --------------------------------------------------------
 
@@ -607,7 +619,8 @@ INSERT INTO `plannedincome` (`income`, `amount`, `date`) VALUES
 ('productsales', 100000, '2020-06'),
 ('service', 1245677, '2020-05'),
 ('service', 1245677, '2020-01'),
-('productsale', 1245677, '2020-06');
+('productsale', 1245677, '2020-06'),
+('productsale', 100000, '2020-01');
 
 -- --------------------------------------------------------
 
@@ -627,7 +640,8 @@ CREATE TABLE `power` (
 --
 
 INSERT INTO `power` (`id`, `description`, `amount`, `date`) VALUES
-(1, 'Buy Fuel', 5000, '2017-05-31 23:00:00');
+(1, 'Buy Fuel', 5000, '2017-05-31 23:00:00'),
+(2, 'power for this month', 11000, '2017-05-31 23:00:00');
 
 -- --------------------------------------------------------
 
@@ -778,7 +792,8 @@ CREATE TABLE `salary` (
 
 INSERT INTO `salary` (`id`, `type`, `name`, `amount payable`, `employee status`, `description`, `eligibility`, `method`, `allowance to be debited`, `date`, `Add parameter`) VALUES
 (1, 'Salary', 'Abdullahi', 1000000, 'contract', 'go home', 'yes', 'transfer', 100000, '2017-05-31 23:00:00', ''),
-(2, 'Salary', 'Abdullahi', 1000000, 'contract', 'Bypassing', 'yes', 'transfer', 100000, '2017-05-31 23:00:00', '');
+(2, 'Salary', 'Abdullahi', 1000000, 'contract', 'Bypassing', 'yes', 'transfer', 100000, '2017-05-31 23:00:00', ''),
+(3, 'Allowance', 'Abdullahi', 1245677, 'contract', 'Bypassing', 'yes', 'transfer', 100000, '2017-05-31 23:00:00', 'we');
 
 -- --------------------------------------------------------
 
@@ -1017,7 +1032,8 @@ CREATE TABLE `vehicle` (
 --
 
 INSERT INTO `vehicle` (`sn`, `name`, `description`, `serial_no`, `manufacturer`, `date`) VALUES
-(1, 'camry', 'camry404', '123453221', 'toyota', '2020-08-16');
+(1, 'camry', 'camry404', '123453221', 'toyota', '2020-08-16'),
+(4, 'sienna', 'a long vehicle', '1234434', 'mezidis', '2020-08-21');
 
 -- --------------------------------------------------------
 
@@ -1206,19 +1222,19 @@ ALTER TABLE `worker`
 -- AUTO_INCREMENT for table `administration`
 --
 ALTER TABLE `administration`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `building`
 --
 ALTER TABLE `building`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `expenditure`
@@ -1254,13 +1270,13 @@ ALTER TABLE `liabilty`
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `machinery`
 --
 ALTER TABLE `machinery`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `maintenance`
@@ -1278,19 +1294,19 @@ ALTER TABLE `maintenance-item`
 -- AUTO_INCREMENT for table `operation`
 --
 ALTER TABLE `operation`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `other_asset`
 --
 ALTER TABLE `other_asset`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `power`
 --
 ALTER TABLE `power`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product sales`
@@ -1302,7 +1318,7 @@ ALTER TABLE `product sales`
 -- AUTO_INCREMENT for table `salary`
 --
 ALTER TABLE `salary`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `transactions`
@@ -1344,7 +1360,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `vehicle`
 --
 ALTER TABLE `vehicle`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `worker`
