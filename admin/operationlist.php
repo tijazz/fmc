@@ -78,7 +78,7 @@
                     <!-- button style End -->
                     <!-- Zero Configuration Table -->
                     <div class="panel panel-default">
-                        <div class="panel-heading">List Users</div>
+                        <div class="panel-heading">List Operations</div>
                         <div class="panel-body">
                             <?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?>
                             </div><?php } 
