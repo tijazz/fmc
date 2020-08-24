@@ -30,26 +30,26 @@
                     </li>
                     <li class="active">
                         <a href="dashboard.php">
-                            <i class="fa fa-star"></i>
+                            <i class="fa fa-user"></i>
                             <span class="nav-label">Dashboard</span> 
                         </a>
                     </li>
                         <li class="parentd">
                         <a href="#">
-                            <i class="fa fa-star"></i>
+                            <i class="fa fa-truck"></i>
                             <span class="nav-label">Supply chain management</span></a>
                         </li>
                         <li class="parentd">
                             <a href="#">
-                                <i class="fa fa-star"></i>
+                                <i class="fa fa-bolt"></i>
                                 <span class="nav-label">Risk Management</span>
                             </a>
                         </li>
                         
                         <li class="parentd">
                             <a href="#">
-                                <i class="fa fa-star"></i>
-                                <span class="nav-label">Inventory management</span>
+                                <i class="fa fa-university"></i>
+                                <span class="nav-label">Inventory management</span><span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">                                
                                 <li><a href="buildinglist.php">Building</a></li>
@@ -63,8 +63,8 @@
                         
                         <li class="parentd">
                             <a href="#" class="spec">
-                                <i class="fa fa-star"></i>
-                                <span class="nav-label">Monitoring and Evaluation</span>
+                                <i class="fa fa-search"></i>
+                                <span class="nav-label">Monitoring and Evaluation</span><span class="fa arrow"></span>
                             </a>
 							<ul class="nav nav-second-level">                                
                                 <li><a href="employee.php">Employee</a></li>
@@ -79,8 +79,8 @@
 
                         <li class='parentd'>
                             <a href="#" class="spec">
-                                <i class="fa fa-star"></i>
-                                <span class="nav-label">Financial Management</span>
+                                <i class="fa fa-money"></i>
+                                <span class="nav-label">Financial Management</span><span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
                                 
@@ -143,16 +143,7 @@
                         </li>
 
                         <li>
-                    <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li><a href="index-2.html">Dashboard v.1</a></li>
-                        <li><a href="dashboard_2.html">Dashboard v.2</a></li>
-                        <li><a href="dashboard_3.html">Dashboard v.3</a></li>
-                        <li><a href="dashboard_4_1.html">Dashboard v.4</a></li>
-                        <li><a href="dashboard_5.html">Dashboard v.5 </a></li>
-                    </ul>
-
-                </li> 
+                  
                <li class="parentd">
                     <a href="#" class='spec'><i class="fa fa-edit"></i> <span class="nav-label">Notifications</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">

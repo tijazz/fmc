@@ -77,8 +77,8 @@
                 require_once "public/config/topbar.php";
                 ?>
                 </div>
-                <div class="row  border-bottom white-bg dashboard-header">
-                <div class="panel-heading"><h2 class="page-title">Wallet</h2></div>
+                <div class="row  dashboard-header">
+                <div class="panel-heading" style='padding:0;'><h2 class="page-title">Wallet</h2></div>
 				</div>
             <div class="row">
                        

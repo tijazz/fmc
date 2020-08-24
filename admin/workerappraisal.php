@@ -49,14 +49,13 @@
                 ?>
                             
                 </div>
-                <div class="row  border-bottom white-bg dashboard-header">
-                <div class="panel-heading"><h2 class="page-title">Manage Worker Appraisal</h2></div>
+                <div class="row dashboard-header">
+                <div class="panel-heading" style='padding:0;'><h2 class="page-title">Manage Worker Appraisal</h2></div>
 				</div>
             <div class="row">
                        
                 <div class="col-lg-12">
 
-                    <h2 class="page-title">Configure Worker Appraisal Details</h2>
 			
                   <!-- Zero Configuration Table -->
 				<div class="panel panel-default">
@@ -118,7 +117,7 @@
 						<!-- form 2 here -->
 						
                   <!-- Zero Configuration Table -->
-				<div class="panel panel-default">										
+				<div class="panel panel-default" style='border:none'>										
 				<div id="edit" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">						
 				<div class="modal-dialog">
 				<div class="modal-content" style="height:auto">

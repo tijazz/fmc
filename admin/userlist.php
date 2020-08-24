@@ -57,6 +57,8 @@
         <!DOCTYPE html>
         <html>
                         <link rel="stylesheet" href="public/css/userlist.css">
+                <link rel="stylesheet" href="public/css/new_styles.css">
+
 
         <?php
         require_once "public/config/header.php";
@@ -77,8 +79,8 @@
                 ?>
                             
                 </div>
-                <div class="row  border-bottom white-bg dashboard-header">
-                <div class="panel-heading"><h2 class="page-title">Manage Users</h2></div>
+                <div class="row dashboard-header">
+                <div class="panel-heading" style='padding:0;'><h2 class="page-title">Manage Users</h2></div>
 				</div>
             <div class="row">
                        
