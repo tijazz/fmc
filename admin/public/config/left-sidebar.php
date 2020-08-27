@@ -51,13 +51,12 @@
                                 <i class="fa fa-star"></i>
                                 <span class="nav-label">Inventory management</span>
                             </a>
-                            <ul class="nav nav-second-level">                                
-                                <li><a href="buildinglist.php">Building</a></li>
-                                <li><a href="machinerylist.php">Machinery</a></li>
-                                <li><a href="vehiclelist.php">Vehicle</a></li>
-                                <li><a href="otassetlist.php">Other Tangible Assets</a></li>
-                                <li><a href="operationlist.php">Operation</a></li>
-                                <li><a href="administrationlist.php">Administration</a></li>
+                            <ul class="nav nav-second-level">
+                                <li><a href="#">Inventory Dashboard</a></li>                               
+                                <li><a href="tangible-asset.php">Tangible Asset</a></li>
+                                <li><a href="equip-input.php">Equipment & Input</a></li>
+                                <li><a href="prod-mang.php">Product Management</a></li>
+                                <li><a href="storage.php">Storage</a></li>
                             </ul>
                         </li>
                         
