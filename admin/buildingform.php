@@ -19,11 +19,13 @@ if(isset($_POST['submit']))
     $size = $_POST['size'];
     $location = $_POST['location'];
     $category = $_POST['category'];
-    echo $description;
+    $user_id = $_SESSION['id'];
+    
 	
-    $sql="INSERT INTO `building`(`name`, `description`, `size`, `location`, `category`) VALUES (:name, :description, :size, :location, :category)";
+    $sql="INSERT INTO `building`(`name`, `user_id`, `description`, `size`, `location`, `category`) VALUES (:name, :user_id, :description, :size, :location, :category)";
     $query = $dbh->prepare($sql);
     $query-> bindParam(':name', $name, PDO::PARAM_STR);
+    $query-> bindParam(':user_id', $user_id, PDO::PARAM_STR);
     $query-> bindParam(':description', $description, PDO::PARAM_STR);
     $query-> bindParam(':size', $size, PDO::PARAM_STR);
     $query-> bindParam(':location', $location, PDO::PARAM_STR);
