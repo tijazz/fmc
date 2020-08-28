@@ -22,11 +22,12 @@ if(isset($_POST['submit']))
     $category = $_POST['category'];
     $place = $_POST['place'];
     $status = $_POST['status'];
-    echo $manufacturer;
+    $user_id = $_SESSION['id'];
     
 	
-    $sql="INSERT INTO `operation`(`name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`) VALUES (:name, :description, :quantity, :manufacturer, :location, :category, :place, :status)";
+    $sql="INSERT INTO `operation`(`user_id`, `name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`) VALUES (:user_id, :name, :description, :quantity, :manufacturer, :location, :category, :place, :status)";
     $query = $dbh->prepare($sql);
+    $query-> bindParam(':user_id', $user_id, PDO::PARAM_STR);
     $query-> bindParam(':name', $name, PDO::PARAM_STR);
     $query-> bindParam(':description', $description, PDO::PARAM_STR);
     $query-> bindParam(':quantity', $quantity, PDO::PARAM_STR);

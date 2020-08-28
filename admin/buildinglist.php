@@ -115,7 +115,7 @@
 										foreach($results as $result)
 										{				?>
                                     <tr>
-                                        <td><?php echo htmlentities($result->sn);?></td>
+                                        <td><?php echo htmlentities($cnt);?></td>
                                         <td><?php echo htmlentities($result->name);?></td>
                                         <td><?php echo htmlentities($result->description);?></td>
                                         <td><?php echo htmlentities($result->size);?></td>

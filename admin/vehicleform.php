@@ -18,11 +18,12 @@ if(isset($_POST['submit']))
     $description = $_POST['description'];
     $serial_no = $_POST['serial_no'];
     $manufacturer = $_POST['manufacturer'];
-    echo $manufacturer;
+    $user_id = $_SESSION['id'];
 	
-    $sql="INSERT INTO `vehicle`(`name`, `description`, `serial_no`, `manufacturer`) VALUES (:name, :description, :serial_no, :manufacturer)";
+    $sql="INSERT INTO `vehicle`(`name`, `description`, `user_id`, `serial_no`, `manufacturer`) VALUES (:name, :description, :user_id, :serial_no, :manufacturer)";
     $query = $dbh->prepare($sql);
     $query-> bindParam(':name', $name, PDO::PARAM_STR);
+    $query-> bindParam(':user_id', $user_id, PDO::PARAM_STR);
     $query-> bindParam(':description', $description, PDO::PARAM_STR);
     $query-> bindParam(':serial_no', $serial_no, PDO::PARAM_STR);
     $query-> bindParam(':manufacturer', $manufacturer, PDO::PARAM_STR);

@@ -51,13 +51,16 @@
                                 <i class="fa fa-university"></i>
                                 <span class="nav-label">Inventory management</span><span class="fa arrow"></span>
                             </a>
-                            <ul class="nav nav-second-level">                                
-                                <li><a href="buildinglist.php">Building</a></li>
-                                <li><a href="machinerylist.php">Machinery</a></li>
-                                <li><a href="vehiclelist.php">Vehicle</a></li>
-                                <li><a href="otassetlist.php">Other Tangible Assets</a></li>
-                                <li><a href="operationlist.php">Operation</a></li>
-                                <li><a href="administrationlist.php">Administration</a></li>
+                            <ul class="nav nav-second-level">
+                                <li><a href="#">Landing Summary Page</a></li>                               
+                                <li><a href="procurement.php">Procurement</a></li>
+                                <li><a href="#">Product Management</a></li>
+                                <li><a href="#">Ware Housing</a></li>
+                                <li><a href="#">Input Analysis</a></li>
+                                <li><a href="#">output</a></li>
+                                <li><a href="#">Tracking and Report</a></li>
+                                <li><a href="#">Warehousing</a></li>
+                                
                             </ul>
                         </li>
                         
@@ -84,47 +87,14 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 
-								<li><a href="advertlist.php">Advert List</a></li>
-								
-                               
-								<li><a href="assetlist.php">Asset List</a></li> 
-
-                                <li><a href="budget.php">Yearly Budget</a></li> 
-                                <li><a href="monthlybudget.php">Monthly Budget</a></li> 
-                                <li><a href="planned.php">planned Budget</a></li>
-								
-                               
-								<li><a href="expenditurelist.php">Expenditure List</a></li>
-								
-                                
-								<li><a href="grantlist.php">Grant List</a></li>
-								
-                               
-								<li><a href="incomelist.php">Income list</a></li>
-								
-                                <li><a href="item.php">Item List</a></li>
-								
-                             
-								<li><a href="legallist.php">Legal Fees List</a></li>
-								
-                               
-								<li><a href="liabilitylist.php">Liability List</a></li>
-								
-                              
-								<li><a href="maintenancelist.php">Maintenance List</a></li><!--I stoped here -->
-                                
-								<li><a href="powerlist.php">Power List</a></li>
-								
-                                <li><a href="rentlist.php">Rent List</a></li>
-								
-								<li><a href="salarylist.php">Salary List</a></li>
-								
-                                
-								<li><a href="servicelist.php">Service List</a></li>
-								
-								<li><a href="utilitieslist.php">Utilities List</a></li>	
-                                
-								<li><a href="purchaseslist.php">Purchaces List</a></li>
+								<li><a href="#">Landing Summary Page</a></li>
+                                <li><a href="expenditurelist.php">Expenditure Log</a></li>
+                                <li><a href="incomelist.php">Income Log</a></li>
+                                <li><a href="assetlist.php">Asset</a></li>
+                                <li><a href="liabilitylist.php">Liability</a></li>
+                                <li><a href="budget.php">Budget</a></li>
+                                <li><a href="transaction.php">Transactions</a></li>
+                                <li><a href="#">Invoices</a></li>
                             </ul>
                         </li>
                         

@@ -20,10 +20,11 @@ if(isset($_POST['submit']))
     $manufacturer = $_POST['manufacturer'];
     $status = $_POST['status'];
     $location = $_POST['location'];
-    echo $status;
+    $user_id = $_SESSION['id'];
 	
-    $sql="INSERT INTO `other_asset`(`name`, `description`, `quantity`, `manufacturer`, `status`, `location`) VALUES (:name, :description, :quantity, :manufacturer, :status, :location)";
+    $sql="INSERT INTO `other_asset`(`user_id`, `name`, `description`, `quantity`, `manufacturer`, `status`, `location`) VALUES (:user_id, :name, :description, :quantity, :manufacturer, :status, :location)";
     $query = $dbh->prepare($sql);
+    $query-> bindParam(':user_id', $user_id, PDO::PARAM_STR);
     $query-> bindParam(':name', $name, PDO::PARAM_STR);
     $query-> bindParam(':description', $description, PDO::PARAM_STR);
     $query-> bindParam(':quantity', $quantity, PDO::PARAM_STR);
