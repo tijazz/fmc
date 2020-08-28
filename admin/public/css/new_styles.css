@@ -147,3 +147,11 @@ div.dataTables_wrapper div.dataTables_filter input{
 #zctb_info{
     margin-left:2rem;
 }
+
+#zctb_wrapper{
+    overflow:hidden;
+}
+
+#zctb_wrapper > div:nth-child(2) > div{
+    overflow-x:scroll;
+}

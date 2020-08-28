@@ -7,7 +7,7 @@
 
 
 $(document).ready(function () {
-
+    console.log("Reasy");
 
     // Add body-small class if window less than 768px
     if ($(this).width() < 769) {

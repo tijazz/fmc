@@ -1,6 +1,6 @@
                 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                         <div class="navbar-header">
-                            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#" id='slide_left_btn'><i class="fa fa-bars"></i> </a>
                             
                             <form role="search" class="navbar-form-custom" action="http://webapplayers.com/  inspinia_admin-v2.6.1/search_results.html">
                             </form>
@@ -121,3 +121,47 @@
                         </ul>
                         
                     </nav>
+
+                    <!-- Temporary fix to the navbar issue -->
+                    <script>
+
+                        let navTriggerBtn = document.getElementById('slide_left_btn');
+                        let BigLeftNav = document.querySelector("#wrapper > nav");
+                        let pageWrapper = document.querySelector('#page-wrapper ');
+                        if(window.innerWidth > 763){
+                        navTriggerBtn.addEventListener('click',() => {
+                            BigLeftNav.classList.toggle('slide_left_navbar');
+                            pageWrapper.classList.toggle('no_margin_left');
+                        })}
+                        else if(window.innerWidth < 763 ){
+                            navTriggerBtn.addEventListener('click',() => {
+                            BigLeftNav.classList.toggle('navbar_small');
+                            // pageWrapper.classList.toggle('no_margin_left_small_screens');
+                            navTriggerBtn.classList.toggle('right_btn');
+                        })}
+                        
+                    </script>
+                    <style>
+                        /* styles for big screens */
+                        .slide_left_navbar{
+                            margin-left:-500px;
+                            transition:0.4s ease-in-out;
+                        }
+                        .no_margin_left{
+                            margin-left:0 !important;
+                        }
+                       
+                        /* styles for small screens */
+                        .right_btn{
+                            position:absolute;
+                            right:1rem;
+                        }
+                        
+                        .navbar_small{
+                            /* margin-left:0; */
+                            /* z-index:1000; */
+                            width:calc(90vw - 2rem) !important;
+                            display:block !important;
+                            background-color:#2f4050;
+                        }
+                    </style>
