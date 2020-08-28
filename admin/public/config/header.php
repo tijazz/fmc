@@ -30,11 +30,11 @@
     <link rel="icon" type="image/png" sizes="16x16" href="public/css/fav-icons/favicon-16x16.png">
     
     <!-- Bootstrap core CSS -->
-    <link href="css/boot.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.5/css/weather-icons.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
-
+    <!-- <link rel="stylesheet" href="public/css/boot.css" /> -->
+    
     <!-- Map -->
     <style>
     #map {
