@@ -36,16 +36,16 @@ if (strlen($_SESSION['alogin']) == 0) {
                     ?>
 
             </div>
-            <div class="row  border-bottom white-bg dashboard-header">
-                <div class="panel-heading">
-                    <h2 class="page-title">Manage Testimonials</h2>
+            <div class="row dashboard-header">
+                <div class="panel-heading" style='padding:0;'>
+                    <h2 class="page-title">Manage Monthly Budgets</h2>
                 </div>
             </div>
             <div class="row">
 
                 <div class="col-lg-4">
 
-                    <h2 class="page-title">Select Range</h2>
+                    <h2 class="page-title" style='color:#fff;'>Select Range</h2>
                     <!-- Zero Configuration Table -->
                     <div class="panel panel-default">
                         <div class="panel-heading">Expenses</div>
@@ -86,7 +86,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                 <div class="col-lg-12">
 
-                    <h2 class="page-title">Budget</h2>
+                    <h2 class="page-title" style='color:#fff;'>Expenses</h2>
                     <!-- Zero Configuration Table -->
                     <div class="panel panel-default">
                         <div class="panel-heading">Expenses</div>
@@ -185,7 +185,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                 <div class="col-lg-12">
 
-                    <h2 class="page-title">Budget</h2>
+                    <h2 class="page-title" style='color:#fff;'>Budget</h2>
                     <!-- Zero Configuration Table -->
                     <div class="panel panel-default">
                         <div class="panel-heading">Expenses</div>

@@ -36,14 +36,14 @@
                 ?>
                             
                 </div>
-                <div class="row  border-bottom white-bg dashboard-header">
-                <div class="panel-heading"><h2>Inquiry and Complaints Messages</h2></div>
+                <div class="row dashboard-header">
+                <div class="panel-heading" style='padding:0;'><h2>Inquiry and Complaints Messages</h2></div>
 				</div>
             <div class="row">
                        
                 <div class="col-lg-8">
 
-                    <h2 class="page-title">Configure Messages</h2>
+                    <h2 class="page-title text-white">Configure Messages</h2>
 
                   <!-- Zero Configuration Table -->
 						<div class="panel panel-default">

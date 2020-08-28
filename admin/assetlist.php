@@ -58,12 +58,12 @@
 
                     <div class="end_placer apart_placer"> 
                 <h2 class="page-title">Asset List</h2>
-                        <a class="green_btn plus_btn " href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a>
+                        <a class="green_btn plus_btn btn btn-md" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a>
                     </div>
 
                     <!-- Zero Configuration Table -->
 				<div class="panel panel-default" style="background:#fff;">
-                <div class="panel-heading">List Users</div>
+                <div class="panel-heading" style='color:#fff;'>List Assets</div>
 							<div class="table-body">
 											<?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } 
 								else if($msg){?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php }?>

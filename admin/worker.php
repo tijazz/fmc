@@ -157,19 +157,18 @@
                 ?>
                             
                 </div>
-                <div class="row  border-bottom white-bg dashboard-header">
-                <div class="panel-heading"><h2 class="page-title">Manage worker</h2></div>
+                <div class="row dashboard-header">
+                <div class="panel-heading" style='padding:0;margin-bottom:-30px;'><h2 class="page-title">Manage workers</h2></div>
 				</div>
             <div class="row">
                        
                 <div class="col-lg-12">
 
-                    <h2 class="page-title">Configure worker Details</h2>
-				<h1><a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer" ><i class="glyphicon glyphicon-plus text-blue"> Add worker</i></a></h1>
+				<h1><a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer" ><i class="glyphicon glyphicon-plus text-blue"> Add worker</i></a></h1>
                  
                   <!-- Zero Configuration Table -->
 				<div class="panel panel-default">
-                <div class="panel-heading">List worker</div>
+                <div class="panel-heading"'>List worker</div>
 							<div class="panel-body">
 											<?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } 
 								else if($msg){?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php }?>
