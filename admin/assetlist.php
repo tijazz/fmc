@@ -71,41 +71,62 @@
 									<thead>
 										<tr>
 										<th>#</th>
-                                                <th>Serial number</th>
                                                 <th>Name</th>
                                                 <th>Description</th>
                                                 <th>Price</th>
-                                                <th>Date</th>
-                                                <th>Add Parameter</th>
+                                                <th>Asset Type</th>
                                                 <th>Action</th>	
 										</tr>
 									</thead>
 									
 									<tbody>
 
-										<?php $sql = "SELECT * from `expenditure`";
+										<?php $sql = "SELECT sn, name, description, date, table_name FROM building
+                                                    UNION
+                                                    SELECT sn, name, description, date, table_name FROM machinery
+                                                    UNION
+                                                    SELECT sn, name, description, date, table_name FROM vehicle
+                                                    UNION
+                                                    SELECT sn, name, description, date, table_name FROM other_asset
+                                                    ORDER BY date;";
 										$query = $dbh -> prepare($sql);
 										$query->execute();
-										$results=$query->fetchAll(PDO::FETCH_OBJ);
-										$cnt=1;
+                                        $results=$query->fetchAll(PDO::FETCH_OBJ);
+                                        $cnt=1;
 										if($query->rowCount() > 0)
 										{
 										foreach($results as $result)
-										{				?>	
+										{	
+                                            $s="SELECT * FROM `asset_amount` WHERE asset_id = " . $result->sn . " and asset_type = '" . $result->table_name . "';";
+                                            $q = $dbh -> prepare($s);
+                                            $q->execute();
+                                            $rs=$q->fetchAll(PDO::FETCH_OBJ);
+                                            ?>	
 										<tr>
-											<td><?php echo htmlentities($cnt);?></td>
-										    <td><?php echo htmlentities($result->sn);?></td>
+											<td><?php echo var_dump($s);?></td>
                                             <td><?php echo htmlentities($result->name);?></td>
                                             <td><?php echo htmlentities($result->description);?></td>
                                             <td><?php echo htmlentities($result->amount);?></td>
-                                            <td><?php echo htmlentities($result->date);?></td>
-                                            <td><?php echo htmlentities($result->add_parameter);?></td>
+                                            <td><?php echo htmlentities($result->table_name);?></td>
+                                            
 
 																						
-											<td>
-											<a href="edit-testimo.php?edit=<?php echo $result->id;?>" onclick="return confirm('Do you want to Edit');">&nbsp; <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-											<a href="testimolist.php?del=<?php echo $result->id;?>;?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
-											</td>
+											<!-- Action Button Start -->
+                                            <td>
+                                            <a data-toggle="modal" href="assetedit.php?s=1&name=<?php echo $result->name;?>&asset_type=<?php echo $result->table_name;?>&asset_id=<?php echo $result->sn;?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                            <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                            <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog model-sm">
+                                                        <div class="modal-content"> </div>
+                                                    </div>
+                                            </div>
+
+                                            <a href="#assetlist.php?del=<?php echo $result->sn;?>"
+                                                onclick="return confirm('Do you want to Delete');"><i
+                                                    class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
+                                        </td>
+
+                                        <!-- Action Button End -->
 										</tr>
 										<?php $cnt=$cnt+1; }} ?>
 										

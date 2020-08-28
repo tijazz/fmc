@@ -88,10 +88,10 @@
                             <ul class="nav nav-second-level">
                                 
 								<li><a href="#">Landing Summary Page</a></li>
-                                <li><a href="expenditurelist.php">Expenditure Log</a></li>
-                                <li><a href="incomelist.php">Income Log</a></li>
-                                <li><a href="assetlist.php">Asset</a></li>
-                                <li><a href="liabilitylist.php">Liability</a></li>
+                                <li><a href="expenditure.php">Expenditure Log</a></li>
+                                <li><a href="income.php">Income Log</a></li>
+                                <li><a href="asset.php">Asset</a></li>
+                                <li><a href="liability.php">Liability</a></li>
                                 <li><a href="budget.php">Budget</a></li>
                                 <li><a href="transaction.php">Transactions</a></li>
                                 <li><a href="#">Invoices</a></li>

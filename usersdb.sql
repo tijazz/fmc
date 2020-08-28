@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2020 at 02:41 PM
+-- Generation Time: Aug 28, 2020 at 06:45 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -52,6 +52,7 @@ INSERT INTO `admin` (`id`, `username`, `email`, `password`) VALUES
 
 CREATE TABLE `administration` (
   `sn` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `description` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `quantity` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
@@ -67,8 +68,9 @@ CREATE TABLE `administration` (
 -- Dumping data for table `administration`
 --
 
-INSERT INTO `administration` (`sn`, `name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`, `date`) VALUES
-(1, 'dsl', 'dcl iron', '12', 'Abdullahi', 'Oyo', 'A.C.', 'ibadan', 'in stock', '2020-08-16');
+INSERT INTO `administration` (`sn`, `user_id`, `name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`, `date`) VALUES
+(1, 2, 'dsl', 'dcl iron', '12', 'Abdullahi', 'Oyo', 'A.C.', 'ibadan', 'in stock', '2020-08-16'),
+(3, 2, 'Abdullahi Temidayo Jimoh', 'camry404', '12', 'Adullahi', 'Oyo, Nigeria.', 'fan', 'ibadan', 'out stock', '2020-08-27');
 
 -- --------------------------------------------------------
 
@@ -122,26 +124,51 @@ INSERT INTO `asset` (`item`, `category`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `asset_amount`
+--
+
+CREATE TABLE `asset_amount` (
+  `id` int(6) UNSIGNED NOT NULL,
+  `user_id` varchar(30) NOT NULL,
+  `asset_id` int(11) NOT NULL,
+  `asset_type` varchar(50) DEFAULT NULL,
+  `amount` int(50) DEFAULT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `asset_amount`
+--
+
+INSERT INTO `asset_amount` (`id`, `user_id`, `asset_id`, `asset_type`, `amount`, `date`) VALUES
+(1, '2', 1, 'machinery', 1000000, '2020-08-28'),
+(2, '2', 1, 'machinery', 1000000, '2020-08-28');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `building`
 --
 
 CREATE TABLE `building` (
   `sn` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `description` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `size` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `location` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `category` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp()
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `table_name` varchar(50) NOT NULL DEFAULT 'building'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `building`
 --
 
-INSERT INTO `building` (`sn`, `name`, `description`, `size`, `location`, `category`, `date`) VALUES
-(4, 'Abdullahi', 'camry404', '12', 'Oyo', 'admin', '2020-08-19'),
-(6, 'Duplex', 'blue colored', '20', 'Oyo', 'admin', '2020-08-20');
+INSERT INTO `building` (`sn`, `user_id`, `name`, `description`, `size`, `location`, `category`, `date`, `table_name`) VALUES
+(4, 2, 'Abdullahi', 'camry404', '12', 'Oyo', 'admin', '2020-08-18 23:00:00', 'building'),
+(7, 2, 'Abdullahi', 'Buy Fuel', '20', 'nigeria', 'storage', '2020-08-27 17:55:40', 'building');
 
 -- --------------------------------------------------------
 
@@ -390,7 +417,9 @@ INSERT INTO `locations` (`id`, `user`, `lat`, `lng`, `description`, `location_st
 (18, 'ads', 47.032887, -1.922850, 'farm 4', 1),
 (19, 'asg', 47.558182, -2.565550, 'farm4', 1),
 (20, 'Abdullahi', 6.845704, 7.391327, 'Farm 2', 1),
-(21, 'olawale', 7.872496, 8.588821, 'farm 3A', 1);
+(21, 'olawale', 7.872496, 8.588821, 'farm 3A', 1),
+(22, '', 7.146105, 5.126693, '', 1),
+(23, 'door', 7.777913, 8.093002, 'opening and closing', 1);
 
 -- --------------------------------------------------------
 
@@ -400,22 +429,25 @@ INSERT INTO `locations` (`id`, `user`, `lat`, `lng`, `description`, `location_st
 
 CREATE TABLE `machinery` (
   `sn` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `category` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `description` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `serial_no` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `manufacturer` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp()
+  `date` date NOT NULL DEFAULT current_timestamp(),
+  `table_name` varchar(50) NOT NULL DEFAULT 'machinery'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `machinery`
 --
 
-INSERT INTO `machinery` (`sn`, `category`, `name`, `description`, `serial_no`, `manufacturer`, `date`) VALUES
-(1, 'tractor', 'james', 'a player', '123235655', 'dangote', '2020-08-12'),
-(3, 'tractor', 'Terminus', 'For this month', '45323453', 'Adullahi', '2020-08-12'),
-(5, 'tractor', 'Abdullahi ', 'Bypassing', '45323453', 'Q&S', '2020-08-20');
+INSERT INTO `machinery` (`sn`, `user_id`, `category`, `name`, `description`, `serial_no`, `manufacturer`, `date`, `table_name`) VALUES
+(1, 2, 'tractor', 'james', 'a player', '123235655', 'dangote', '2020-08-12', 'machinery'),
+(3, 2, 'tractor', 'Terminus', 'For this month', '45323453', 'Adullahi', '2020-08-12', 'machinery'),
+(5, 2, 'tractor', 'Abdullahi ', 'Bypassing', '45323453', 'Q&S', '2020-08-20', 'machinery'),
+(7, 2, 'tractor', 'Abdullahi', 'Bypassing', '45323453', 'jat', '2020-08-27', 'machinery');
 
 -- --------------------------------------------------------
 
@@ -536,6 +568,7 @@ INSERT INTO `notification` (`id`, `notiuser`, `notireciver`, `notitype`, `time`)
 
 CREATE TABLE `operation` (
   `sn` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `description` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `quantity` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
@@ -551,9 +584,10 @@ CREATE TABLE `operation` (
 -- Dumping data for table `operation`
 --
 
-INSERT INTO `operation` (`sn`, `name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`, `date`) VALUES
-(1, 'corn', 'treated corn', '15', 'covas', 'Oyo', 'seed', 'ibadan', 'in stock', '2020-08-16'),
-(2, 'Abdullahi', 'Bypassing', '15', 'jat', 'Oyo', 'seed', 'Ghana', 'in stock', '2020-08-21');
+INSERT INTO `operation` (`sn`, `user_id`, `name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`, `date`) VALUES
+(1, 2, 'corn', 'treated corn', '15', 'covas', 'Oyo', 'seed', 'ibadan', 'in stock', '2020-08-16'),
+(2, 2, 'Abdullahi', 'Bypassing', '15', 'jat', 'Oyo', 'seed', 'Ghana', 'in stock', '2020-08-21'),
+(3, 2, 'Abdullahi Temidayo Jimoh', 'camry404', '12', 'jat', 'Oyo', 'seed', 'ibadan', 'in stock', '2020-08-27');
 
 -- --------------------------------------------------------
 
@@ -563,21 +597,24 @@ INSERT INTO `operation` (`sn`, `name`, `description`, `quantity`, `manufacturer`
 
 CREATE TABLE `other_asset` (
   `sn` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `description` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `quantity` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `manufacturer` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `status` varchar(50) NOT NULL,
   `location` varchar(50) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp()
+  `date` date NOT NULL DEFAULT current_timestamp(),
+  `table_name` varchar(50) NOT NULL DEFAULT 'other_asset'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `other_asset`
 --
 
-INSERT INTO `other_asset` (`sn`, `name`, `description`, `quantity`, `manufacturer`, `status`, `location`, `date`) VALUES
-(1, 'hoe', 'iron hoe', '12', 'jat', 'in use', 'Oyo', '2020-08-16');
+INSERT INTO `other_asset` (`sn`, `user_id`, `name`, `description`, `quantity`, `manufacturer`, `status`, `location`, `date`, `table_name`) VALUES
+(1, 0, 'hoe', 'iron hoe', '12', 'jat', 'in use', 'Oyo', '2020-08-16', 'other_asset'),
+(4, 2, 'Abdullahi Temidayo Jimoh', 'Bypassing', '12', 'Adullahi', 'in use', 'Oyo', '2020-08-27', 'other_asset');
 
 -- --------------------------------------------------------
 
@@ -653,7 +690,7 @@ CREATE TABLE `productsale` (
   `id` int(11) NOT NULL,
   `transaction` varchar(255) NOT NULL,
   `salename` varchar(30) NOT NULL,
-  `date` date NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `productname` varchar(50) NOT NULL,
   `description` varchar(50) NOT NULL,
   `price` int(11) NOT NULL,
@@ -1020,20 +1057,23 @@ INSERT INTO `utilities` (`id`, `sn`, `name`, `description`, `amount`, `date`, `a
 
 CREATE TABLE `vehicle` (
   `sn` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `description` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `serial_no` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `manufacturer` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp()
+  `date` date NOT NULL DEFAULT current_timestamp(),
+  `table_name` varchar(50) NOT NULL DEFAULT 'vehicle'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `vehicle`
 --
 
-INSERT INTO `vehicle` (`sn`, `name`, `description`, `serial_no`, `manufacturer`, `date`) VALUES
-(1, 'camry', 'camry404', '123453221', 'toyota', '2020-08-16'),
-(4, 'sienna', 'a long vehicle', '1234434', 'mezidis', '2020-08-21');
+INSERT INTO `vehicle` (`sn`, `user_id`, `name`, `description`, `serial_no`, `manufacturer`, `date`, `table_name`) VALUES
+(1, 2, 'camry', 'camry404', '123453221', 'toyota', '2020-08-16', 'vehicle'),
+(4, 2, 'sienna', 'a long vehicle', '1234434', 'mezidis', '2020-08-21', 'vehicle'),
+(7, 0, 'Terminus', '2', '1234434', 'covas', '2020-08-27', 'vehicle');
 
 -- --------------------------------------------------------
 
@@ -1068,6 +1108,12 @@ ALTER TABLE `administration`
 -- Indexes for table `advert`
 --
 ALTER TABLE `advert`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `asset_amount`
+--
+ALTER TABLE `asset_amount`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1155,6 +1201,12 @@ ALTER TABLE `power`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `productsale`
+--
+ALTER TABLE `productsale`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `product sales`
 --
 ALTER TABLE `product sales`
@@ -1222,13 +1274,19 @@ ALTER TABLE `worker`
 -- AUTO_INCREMENT for table `administration`
 --
 ALTER TABLE `administration`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `asset_amount`
+--
+ALTER TABLE `asset_amount`
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `building`
 --
 ALTER TABLE `building`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `employee`
@@ -1270,13 +1328,13 @@ ALTER TABLE `liabilty`
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `machinery`
 --
 ALTER TABLE `machinery`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `maintenance`
@@ -1294,19 +1352,25 @@ ALTER TABLE `maintenance-item`
 -- AUTO_INCREMENT for table `operation`
 --
 ALTER TABLE `operation`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `other_asset`
 --
 ALTER TABLE `other_asset`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `power`
 --
 ALTER TABLE `power`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `productsale`
+--
+ALTER TABLE `productsale`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product sales`
@@ -1360,7 +1424,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `vehicle`
 --
 ALTER TABLE `vehicle`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `worker`
