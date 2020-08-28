@@ -56,7 +56,7 @@
                 <div class="col-lg-12">
                 <div class="end_placer apart_placer">
                     <h2>Advert List</h2>
-                    <a class="green_btn plus_btn" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a>
+                    <a class="green_btn plus_btn btn btn-md" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a>
                     </div>  <!-- Zero Configuration Table -->
 				<div class="panel panel-default" style="border-radius:10px;">
                 <div class="panel-heading">List Users</div>

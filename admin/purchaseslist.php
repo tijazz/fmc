@@ -56,12 +56,12 @@
                 <div class="col-lg-12">
                     <div class="apart_placer end_placer">
                     <h2 class="page-title">Purchases List</h2>
-                    <h1><a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a></h1>
+                    <h1><a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a></h1>
                 </div>
                     <!-- Zero Configuration Table -->
 				<div class="panel-default">
                 <div class="panel-heading">List Users</div>
-							<div class="table-body" style='background:#caf0e8;'>
+							<div class="table-body" style='background:#fff;'>
 											<?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } 
 								else if($msg){?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php }?>
 								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">

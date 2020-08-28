@@ -49,8 +49,8 @@
                 ?>
 
             </div>
-            <div class="row  border-bottom white-bg dashboard-header">
-                <div class="panel-heading">
+            <div class="row  dashboard-header">
+                <div class="panel-heading" style='padding:0;'>
                     <h2 class="page-title">Manage Machinery</h2>
                 </div>
             </div>
@@ -58,19 +58,18 @@
 
                 <div class="col-lg-12">
 
-                    <h2 class="page-title">Machinery</h2>
 
                     <!-- button style Start -->
                     <div class="navbar">
-                    <div class="container-fluid">
+                    <div class="container-fluid" style='padding-left:7px;'>
                     <h1 class="nav navbar-nav">
-                        <a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal"
+                        <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal"
                             style="color:#fff;" class="small-box-footer"><i
                                 class="glyphicon glyphicon-plus text-blue"></i> Add</a>           
                     </h1>
 
                     <h1 class="nav navbar-nav navbar-right">
-                        <a class="btn btn-lg btn-primary" href="#add2" data-target="#add2" data-toggle="modal"
+                        <a class="btn btn-md btn-primary" href="#add2" data-target="#add2" data-toggle="modal"
                             style="color:#fff;" class="small-box-footer"><i
                                 class="glyphicon glyphicon-plus text-blue"></i> Add category</a>
                     </h1>

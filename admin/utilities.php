@@ -58,8 +58,8 @@ if(isset($_POST['submit']))
                 ?>
                             
                 </div>
-                <div class="row  border-bottom white-bg dashboard-header">
-                <div class="panel-heading"><h4>Utility</h4></div>
+                <div class="row  dashboard-header">
+                <div class="panel-heading" style='padding:0;'><h4>Utility</h4></div>
 				<?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
 				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
 

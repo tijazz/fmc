@@ -135,7 +135,7 @@ div.dataTables_wrapper div.dataTables_filter input{
 
 /* Footers pagination */
 #zctb_previous > a,#zctb_next > a{
-    color:#fff;
+    color:#777;
 }
 
 #zctb_paginate > ul > li.paginate_button.active > a{

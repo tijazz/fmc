@@ -42,22 +42,21 @@
         ?>
             
             <div id="page-wrapper" class="gray-bg dashbard-1">
-                <div class="row border-bottom">
+                <div class="row">
             
                 <?php
                 require_once "public/config/topbar.php";
                 ?>
                             
                 </div>
-                <div class="row  border-bottom white-bg dashboard-header">
-                <div class="panel-heading"><h2 class="page-title">Manage Testimonials</h2></div>
+                <div class="row dashboard-header">
+                <div class="panel-heading" style='padding:0;'><h2 class="page-title">Manage Maintenance</h2></div>
 				</div>
             <div class="row">
                        
                 <div class="col-lg-12">
 
-                    <h2 class="page-title">Configure Testimonials</h2>
-                    <h1><a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a></h1>
+                    <h1><a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a></h1>
                   <!-- Zero Configuration Table -->
 				<div class="panel panel-default">
                 <div class="panel-heading">List Users</div>
