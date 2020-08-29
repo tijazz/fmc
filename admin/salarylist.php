@@ -83,7 +83,7 @@
 									
 									<tbody>
 
-										<?php $sql = "SELECT * from salary";
+										<?php $sql = "SELECT * from employee";
 										$query = $dbh -> prepare($sql);
 										$query->execute();
 										$results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -94,7 +94,7 @@
 										{				?>	
 										<tr>
 											<td><?php echo htmlentities($cnt);?></td>
-										    <td><?php echo htmlentities($result->type);?></td>
+										    <td><?php echo htmlentities($result->table_name);?></td>
                                             <td><?php echo htmlentities($result->name);?></td>
                                             <td><?php echo htmlentities($result->amount);?></td>
                                             <td><?php echo htmlentities($result->employee);?></td>
@@ -106,10 +106,23 @@
                                             <td><?php echo htmlentities($result->add_parameter);?></td>
 
 																						
-											<td>
-											<a href="edit-testimo.php?edit=<?php echo $result->id;?>" onclick="return confirm('Do you want to Edit');">&nbsp; <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-											<a href="testimolist.php?del=<?php echo $result->id;?>;?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
-											</td>
+											<!-- Action Button Start -->
+                                            <td>
+                                            <a data-toggle="modal" href="salaryedit.php?s=<?php echo $result->id;?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                            <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                            <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog model-sm">
+                                                        <div class="modal-content"> </div>
+                                                    </div>
+                                            </div>
+
+                                            <a href="buildinglist.php?del=<?php echo $result->sn;?>"
+                                                onclick="return confirm('Do you want to Delete');"><i
+                                                    class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
+                                        </td>
+
+                                        <!-- Action Button End -->
+
 										</tr>
 										<?php $cnt=$cnt+1; }} ?>
 										
@@ -125,7 +138,8 @@
                 <h4 class="modal-title">Add New Product</h4>
               </div>
               <div class="modal-body">
-              <form action="salary.php" method="POST" class="forma">
+
+                            <form action="salary.php" method="POST" class="forma">
                  <p>
                         <select name="type">
                         <option selected>Salary</option>
@@ -183,7 +197,6 @@
                     </p>
 
                 </form>
-
                     
             </div>
             <div class="modal-footer">
