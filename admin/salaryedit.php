@@ -50,13 +50,13 @@ if (isset($_POST['edit'])) {
     $query->execute(); 
     $msg="Rent Updated Successfully";
     
-    header('location:machinerylist.php');
+    header('location:salarylist.php');
 }
 elseif (isset($_GET['s'])) {
     $sn=$_GET['s'];
     
 
-    $sql = "SELECT * from `machinery` WHERE sn=(:idedit)";
+    $sql = "SELECT * from `employee` WHERE id=(:idedit)";
     $query = $dbh->prepare($sql);
     $query-> bindValue(':idedit', $sn, PDO::PARAM_STR);
     $query->execute();
@@ -64,56 +64,64 @@ elseif (isset($_GET['s'])) {
     
 
 ?>
-<form action="machineryedit.php" method="POST" class="forma">
+              <form action="salaryform.php" method="POST" class="forma">
+                 <p>
+                        <select name="type">
+                        <option selected>Salary</option>
+                        <option >Allowance</option>
+                        <option >Bonus</option>  
+                        </select>
+                    </p>
+					<p>
+                        <label for="name">Name</label>
+                        <input type="text" name="name" value="<?php echo $results->name?>">
+                    </p>
+                    <p>
+                        <label for="amount">Amount Payable</label>
+                        <input type="text" name="amount" value="">
+                    </p>
+                    <p>
+                        <select name="category">
+                        <option disabled selected>Employee status</option>
+                        <option >contract</option>
+                        <option >permanent</option>  
+                        </select>
+                    </p>
 
-<p>
-    <select name="category" id="">
-    <option selected disabled>Select</option>
-    <?php 
-        $sql = "SELECT * FROM `asset` WHERE item LIKE 'Machinery'";
-        $query = $dbh -> prepare($sql);
-        $query->execute();
-        $res=$query->fetchAll(PDO::FETCH_OBJ);
-        $cnt=1;
-        if($query->rowCount() > 0)
-        {
-        foreach($res as $re)
-        {?>
-            <option value="<?php echo htmlentities($re->category);?>">
-                <?php echo htmlentities($re->category);?></option>
-            <?php $cnt=$cnt+1; 
-        }} ?>
-    </select>
-</p>
+                    <p>
+                        <label for="full_name">Description</label>
+                        <input type="text" name="description" value="">
+                    </p>
 
-    <p>
-        <label for="name">Name</label>
-        <input type="text" name="name" value="<?php echo ($results->name);?>">
-    </p>
+                    <p>
+                        <label for="full_name">Eligibity</label>
+                        <input type="text" name="eligibility" value="">
+                    </p>
 
+                    <p>
+                        <label for="amount">Allowance</label>
+                        <input type="text" name="allowance" value="">
+                    </p>
+                    <p>
+                        <label for="amount">Method</label>
+                        <input type="text" name="method" value="">
+                    </p>
+					<p>
+                        <label for="date">Date</label>
+                        <input type="date" name="date" value="2017-06-01">
+                    </p>
+					<p>
+                        <label for="add_parameters">Add Parameter</label>
+                        <input type="textarea" name="add_parameters" value="<?php echo $results->table_name?>">
+                    </p>
+                    
+                    <p>
+                        <button type="submit" name="submit" value="<?php echo $sn?>">
+                            Submit
+                        </button>
+                    </p>
 
-    <p>
-        <label for="description">Description</label>
-        <input type="text" name="description" value="<?php echo ($results->description);?>">
-    </p>
-
-    <p>
-        <label for="snum">Item Serial Number</label>
-        <input type="text" name="snum" value="<?php echo ($results->serial_no);?>">
-    </p>
-
-    <p>
-        <label for="amount">Manufacturer</label>
-        <input type="text" name="manufacturer" value="<?php echo ($results->manufacturer);?>">
-    </p>
-
-    <p>
-        <button type="submit" name="edit" value="<?php echo ($results->sn);?>">
-            Submit
-        </button>
-    </p>
-
-                                        </form>
+                </form>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
