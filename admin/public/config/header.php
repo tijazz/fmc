@@ -28,6 +28,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="public/css/fav-icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="public/css/fav-icons/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="public/css/fav-icons/favicon-16x16.png">
+    <link href="public/css/all.css" rel="stylesheet">
     
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
