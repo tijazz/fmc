@@ -2,7 +2,7 @@
     <div class="sidebar-collapse">
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
-                <div class="dropdown profile-element"> <span>
+                <div class="dropdown profile-element open"> <span>
                     <img alt="image" class="img-profile" src="images/<?php echo ($_SESSION["images"]); ?>">
                 </span>
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="true">
