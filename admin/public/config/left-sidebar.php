@@ -2,7 +2,7 @@
     <div class="sidebar-collapse">
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
-                <div class="dropdown profile-element open"> <span>
+                <div class="dropdown profile-element"> <span>
                     <img alt="image" class="img-profile" src="images/<?php echo ($_SESSION["images"]); ?>">
                 </span>
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="true">
@@ -37,7 +37,8 @@
                     <li class="parentd">
                     <a href="#">
                         <i class="fas fa-truck"></i>
-                        <span class="nav-label">Supply chain management</span></a>
+                        <span class="nav-label">Supply chain management</span><span class="fa arrow"></span>
+                        </a>
                     </li>
                     <li class="parentd">
                         <a href="#">
@@ -78,12 +79,14 @@
                             <i class="fas fa-search"></i>
                             <span class="nav-label">Monitoring and Evaluation</span><span class="fa arrow"></span>
                         </a>
-                        <ul class="nav nav-second-level">                                
-                            <li><a href="employee.php">Employee</a></li>
-                            <li><a href="employeeappraisal.php">Employee Appraisal</a></li>
-                            <li><a href="worker.php">Worker</a></li>
-                            <li><a href="workerappraisal.php">Worker Appraisal</a></li>
+                        <ul class="nav nav-second-level">
+                            <li><a href="#">Landing summary</a></li>                              
+                            <li><a href="employee.php">Field/Pen Management</a></li>
+                            <li><a href="employeeappraisal.php">Field Report</a></li>
+                            <li><a href="worker.php">Employee</a></li>
+                            <li><a href="workerappraisal.php">Workers Management</a></li>
                             <li><a href="weather.php">Weather</a></li>
+                            <li><a href="weather.php">Record Management</a></li>
                             
                         </ul>
                     </li>
@@ -111,7 +114,7 @@
                     <li class='parentd'>
                         <a href="#">
                             <i class="fas fa-chart-line"></i>
-                            <span class="nav-label">Investment Managment</span><span class="fa arrow">
+                            <span class="nav-label">Investment Managment</span><span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
                             <li><a href="#">Landing Summary</a></li>
