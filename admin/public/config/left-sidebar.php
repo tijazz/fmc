@@ -82,12 +82,12 @@
                 </a>
                 <ul class="nav nav-second-level">
                     <li><a href="na.php">Landing summary</a></li>
-                    <li><a href="employee.php">Field/Pen Management</a></li>
-                    <li><a href="employeeappraisal.php">Field Report</a></li>
-                    <li><a href="worker.php">Employee</a></li>
-                    <li><a href="workerappraisal.php">Workers Management</a></li>
-                    <li><a href="weather.php">Weather</a></li>
-                    <li><a href="weather.php">Record Management</a></li>
+                    <li><a href="na.php">Field/Pen Management</a></li>
+                    <li><a href="na.php">Field Report</a></li>
+                    <li><a href="na.php">Employee</a></li>
+                    <li><a href="na.php">Workers Management</a></li>
+                    <li><a href="na.php">Weather</a></li>
+                    <li><a href="na.php">Record Management</a></li>
 
                 </ul>
             </li>
