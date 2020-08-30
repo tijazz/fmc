@@ -97,7 +97,7 @@
 										    <td><?php echo htmlentities($result->type);?></td>
                                             <td><?php echo htmlentities($result->name);?></td>
                                             <td><?php echo htmlentities($result->amount);?></td>
-                                            <td><?php echo htmlentities($result->amount);?></td>
+                                            <td><?php echo $result->$result['name'];?></td>
                                             <td><?php echo htmlentities($result->description);?></td>
                                             <td><?php echo htmlentities($result->eligibility);?></td>
                                             <td><?php echo htmlentities($result->method);?></td>
