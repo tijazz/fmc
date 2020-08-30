@@ -46,11 +46,11 @@
                             <span class="nav-label">Risk Management</span>
                         </a>
                         <ul class="nav nav-second-level">
-                            <li><a href="#">Landing Summary Page</a></li>                               
-                            <li><a href="#">Insurance</a></li>
-                            <li><a href="#">Disaster Analysis</a></li>
-                            <li><a href="#">Pest/Disease Management</a></li>
-                            <li><a href="#">Certification</a></li>
+                            <li><a href="na.php">Landing Summary Page</a></li>                               
+                            <li><a href="na.php">Insurance</a></li>
+                            <li><a href="na.php">Disaster Analysis</a></li>
+                            <li><a href="na.php">Pest/Disease Management</a></li>
+                            <li><a href="na.php">Certification</a></li>
                             
                             
                         </ul>
@@ -62,14 +62,14 @@
                             <span class="nav-label">Inventory management</span><span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
-                            <li><a href="#">Landing Summary Page</a></li>                               
+                            <li><a href="na.php">Landing Summary Page</a></li>                               
                             <li><a href="procurement.php">Procurement</a></li>
-                            <li><a href="#">Product Management</a></li>
-                            <li><a href="#">Ware Housing</a></li>
-                            <li><a href="#">Input Analysis</a></li>
-                            <li><a href="#">output</a></li>
-                            <li><a href="#">Tracking and Report</a></li>
-                            <li><a href="#">Warehousing</a></li>
+                            <li><a href="na.php">Product Management</a></li>
+                            <li><a href="na.php">Ware Housing</a></li>
+                            <li><a href="na.php">Input Analysis</a></li>
+                            <li><a href="na.php">output</a></li>
+                            <li><a href="na.php">Tracking and Report</a></li>
+                            <li><a href="na.php">Warehousing</a></li>
                             
                         </ul>
                     </li>
@@ -80,7 +80,7 @@
                             <span class="nav-label">Monitoring and Evaluation</span><span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
-                            <li><a href="#">Landing summary</a></li>                              
+                            <li><a href="na.php">Landing summary</a></li>                              
                             <li><a href="employee.php">Field/Pen Management</a></li>
                             <li><a href="employeeappraisal.php">Field Report</a></li>
                             <li><a href="worker.php">Employee</a></li>
@@ -117,10 +117,10 @@
                             <span class="nav-label">Investment Managment</span><span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
-                            <li><a href="#">Landing Summary</a></li>
-                            <li><a href="#">Tracking and Performance</a></li>
-                            <li><a href="#">Gallery and Testimonials</a></li>
-                            <li><a href="#">Complaints and Inquiry</a></li>
+                            <li><a href="na.php">Landing Summary</a></li>
+                            <li><a href="na.php">Tracking and Performance</a></li>
+                            <li><a href="na.php">Gallery and Testimonials</a></li>
+                            <li><a href="na.php">Complaints and Inquiry</a></li>
                         </ul>
                     </li>
                     <!-- End investment management -->
