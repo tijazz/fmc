@@ -30,25 +30,34 @@
                 </li>
                 <li class="active">
                     <a href="dashboard.php">
-                        <i class="fa fa-user"></i>
+                        <i class="fas fa-user"></i>
                         <span class="nav-label">Dashboard</span> 
                     </a>
                 </li>
-                <li class="parentd">
+                    <li class="parentd">
                     <a href="#">
-                        <i class="fa fa-truck"></i>
+                        <i class="fas fa-truck"></i>
                         <span class="nav-label">Supply chain management</span></a>
                     </li>
                     <li class="parentd">
                         <a href="#">
-                            <i class="fa fa-bolt"></i>
+                            <i class="fas fa-bolt"></i>
                             <span class="nav-label">Risk Management</span>
                         </a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="#">Landing Summary Page</a></li>                               
+                            <li><a href="#">Insurance</a></li>
+                            <li><a href="#">Disaster Analysis</a></li>
+                            <li><a href="#">Pest/Disease Management</a></li>
+                            <li><a href="#">Certification</a></li>
+                            
+                            
+                        </ul>
                     </li>
                     
                     <li class="parentd">
                         <a href="#">
-                            <i class="fa fa-university"></i>
+                            <i class="fas fa-university"></i>
                             <span class="nav-label">Inventory management</span><span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
@@ -66,7 +75,7 @@
                     
                     <li class="parentd">
                         <a href="#" class="spec">
-                            <i class="fa fa-search"></i>
+                            <i class="fas fa-search"></i>
                             <span class="nav-label">Monitoring and Evaluation</span><span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">                                
@@ -82,7 +91,7 @@
                     
                     <li class='parentd'>
                         <a href="#" class="spec">
-                            <i class="fa fa-money"></i>
+                            <i class="fas fa-money"></i>
                             <span class="nav-label">Financial Management</span><span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
@@ -101,38 +110,26 @@
                     <!-- Investment Management -->
                     <li class='parentd'>
                         <a href="#">
-                            <i class="fa fa-stocks"></i>
+                            <i class="fas fa-chart-line"></i>
                             <span class="nav-label">Investment Managment</span><span class="fa arrow">
                         </a>
                         <ul class="nav nav-second-level">
-                            <li><a href="#">Dashboard</a></li>
+                            <li><a href="#">Landing Summary</a></li>
                             <li><a href="#">Tracking and Performance</a></li>
-                            <li class="parentd">
-                                <a href="#" class='spec'><i class="fa fa-picture-o"></i> <span class="nav-label">Gallery</span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li class="''"><a href="gallery.php">View Gallery</a></li>
-                                    <li><a href="addGallery.php">Add Gallery</a></li>
-                                </ul>
-                                <li class="parentd">
-                                    <a href="#" class='spec'><i class="fa fa-files-o"></i> <span class="nav-label">Testimonial</span><span class="fa arrow"></span></a>
-                                    <ul class="nav nav-second-level">
-                                        <li class="''"><a href="testimolist.php">View Testimonials</a></li>
-                                    </ul>
-                                </li>
-                            </li>
-                            <li><a href="complaints.php">Complaints</a></li>
+                            <li><a href="#">Gallery and Testimonials</a></li>
+                            <li><a href="#">Complaints and Inquiry</a></li>
                         </ul>
                     </li>
                     <!-- End investment management -->
                     
                     <li>
-                        <a href="transaction.php">
-                            <i class="fa fa-star"></i>
-                            <span class="nav-label">Transaction</span>  
+                        <a href="wallet.php">
+                            <i class="fas fa-wallet"></i>
+                            <span class="nav-label">Wallet</span>  
                         </a>
                     </li>
                     
-                    <li>
+                    
                         
                         <li class="parentd">
                             <a href="#" class='spec'><i class="fa fa-edit"></i> <span class="nav-label">Notifications</span><span class="fa arrow"></span></a>
@@ -164,8 +161,8 @@
                             </a>
                         </li>
                         
-                    </ul>
                     
+        </ul>            
                 </div>
                 
             </nav>
