@@ -182,6 +182,11 @@
                                             </p>
 
                                             <p>
+                                                <label for="size">Amount</label>
+                                                <input type="text" name="amount" value="">
+                                            </p>
+
+                                            <p>
                                                 <label for="location">Location</label>
                                                 <input type="text" name="location" value="">
                                             </p>
