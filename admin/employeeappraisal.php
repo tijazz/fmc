@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
         //$error="Something went wrong. Please try again";
         $msg = "Something went wrong. Please try again";
     }
-} 
+}
 ?>
 
 <!DOCTYPE html>
@@ -121,7 +121,6 @@ require_once "public/config/header.php";
                 <div class="col-lg-12 table_holder">
                     <div class="apart_placer end_placer" style="margin-top:1.3rem;">
                         <h2 class="page-title" style="color:#000;">Employees Details</h2>
-                        <a class="green_btn" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"> Add Employee</i></a>
                     </div>
                     <!-- Zero Configuration Table -->
                     <div class="table-cover">
@@ -129,7 +128,7 @@ require_once "public/config/header.php";
                         <div class="table-body_">
                             <?php if ($error) { ?><div class="errorWrap" id="msgshow">
                                     <?php echo htmlentities($error); ?>
-                                </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow">
+                                </div><?php } elseif ($msg) { ?><div class="succWrap" id="msgshow">
                                     <?php echo htmlentities($msg); ?> </div><?php } ?>
                             <table class="employee_table" cellspacing="0" width="100%">
                                 <thead>
@@ -141,16 +140,16 @@ require_once "public/config/header.php";
                                         <th>Gender</th>
                                         <th>Role</th>
                                         <th>Phone</th>
-                                        <th>Contract Start</th>
-                                        <th>Contract End</th>
-                                        <th>Due</th>
+                                        <th>Quality Of Work</th>
+                                        <th>Team Work</th>
+                                        <th>Punctuality</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
 
-                                    <?php $sql = "SELECT * from appraisal Where table_name = 'employee' ";
+                                    <?php $sql = "SELECT * from employee";
                                     $query = $dbh->prepare($sql);
                                     $query->execute();
                                     $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -165,23 +164,20 @@ require_once "public/config/header.php";
                                                 <td><?php echo htmlentities($result->gender); ?></td>
                                                 <td><?php echo htmlentities($result->role); ?></td>
                                                 <td><?php echo htmlentities($result->phone); ?></td>
-                                                <td><?php echo htmlentities($result->contract_start); ?></td>
-                                                <td><?php echo htmlentities($result->contract_end); ?></td>
-                                                
-                                            <a data-toggle="modal" href="employeeedit.php?s=<?php echo $result->id;?>" data-target="#MyModal" data-backdrop="static">&nbsp;
-                                            <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                            <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog model-sm">
-                                                        <div class="modal-content"> </div>
+                                                <td><?php echo htmlentities($result->quality_of_work); ?></td>
+                                                <td><?php echo htmlentities($result->team_work); ?></td>
+                                                <td><?php echo htmlentities($result->punctuality); ?></td>
+                                                <td>
+                                                    <a data-toggle="modal" href="employeeappedit.php?s=<?php echo $result->id;?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                                    <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog model-sm">
+                                                            <div class="modal-content"> </div>
+                                                        </div>
                                                     </div>
-                                            </div>
+                                                </td>
 
-                                            <a href="employee.php?del=<?php echo $result->id;?>"
-                                                onclick="return confirm('Do you want to Delete');"><i
-                                                    class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
-                                        </td>
-
-                                        <!-- Action Button End -->
+                                                <!-- Action Button End -->
                                             </tr>
                                     <?php $cnt = $cnt + 1;
                                         }
@@ -192,81 +188,7 @@ require_once "public/config/header.php";
 
 
 
-                        <div id="add" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                            <div class="modal-dialog">
-                                <div class="modal-content" style="height:auto">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">×</span></button>
-                                        <h4 class="modal-title">Add Employee</h4>
-                                    </div>
-
-                                    <div class="modal-body">
-                                        <form action="employee.php" method="POST" class="forma" enctype="multipart/form-data" onSubmit="return validate()">
-
-                                            <p>
-
-                                                <label for="empname">Employee Name</label>
-                                                <input type="text" name="name" value="" required>
-                                            </p>
-
-                                            <p>
-                                                <label for="email">Email</label>
-                                                <input type="email" name="email" value="" required>
-                                            </p>
-
-                                            <p>
-                                                <label for="password">Password</label>
-                                                <input type="password" name="password" value="" required>
-                                            </p>
-
-                                            <p>
-                                                <label for="gender">Gender</label>
-                                                <select name="gender" required>
-                                                    <option value="">Select</option>
-                                                    <option value="male">Male</option>
-                                                    <option value="female">Female</option>
-                                                </select>
-                                            </p>
-                                            <p>
-                                                <label for="Role">Role</label>
-                                                <input type="role" name="role" value="" required>
-                                            </p>
-                                            <p>
-                                                <label for="Number">Phone Number</label>
-                                                <input type="tel" name="phone" value="" required>
-                                            </p>
-                                            <p>
-                                                <label for="profilepic">Profile Pic</label>
-                                                <input type="file" name="image" value="" required>
-                                            </p>
-                                            <p>
-                                                <label for="Number">Contract Start</label>
-                                                <input type="date" name="contract_start" value="" required>
-                                            </p>
-                                            <p>
-                                                <label for="Number">Contract Due</label>
-                                                <input type="date" name="contract_end" value="" required>
-                                            </p>
-                                            <p>
-                                                <button type="submit" name="submit">
-                                                    Submit
-                                                </button>
-                                            </p>
-
-                                        </form>
-
-
-                                    </div>
-                                    <div class="modal-footer">
-
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!---end of modal dialog 1 -->
-
+                
 
 
 
@@ -314,5 +236,5 @@ require_once "public/config/header.php";
 
 </html>
 
-<?php //} 
+<?php //}
 ?>
