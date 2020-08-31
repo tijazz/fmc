@@ -36,14 +36,16 @@ if (isset($_POST['edit'])) {
     $name=$_POST['name'];
     $description = $_POST['description'];
     $size = $_POST['size'];
+    $amount = $_POST['amount'];
     $location = $_POST['location'];
     $category = $_POST['category'];
     
-    $sql = "UPDATE `building` SET `name`=(:name), `description`=(:description), `size`=(:size), `location`=(:location), `category`=(:category) WHERE sn=(:sn)";
+    $sql = "UPDATE `building` SET `name`=(:name), `description`=(:description), `amount`=(:amount), `size`=(:size), `location`=(:location), `category`=(:category) WHERE sn=(:sn)";
     $query = $dbh->prepare($sql);
     $query-> bindParam(':name', $name, PDO::PARAM_STR);
     $query-> bindParam(':description', $description, PDO::PARAM_STR);
     $query-> bindParam(':size', $size, PDO::PARAM_STR);
+    $query-> bindParam(':amount', $amount, PDO::PARAM_STR);
     $query-> bindParam(':location', $location, PDO::PARAM_STR);
     $query-> bindParam(':category', $category, PDO::PARAM_STR);
     $query-> bindValue(':sn', $sn, PDO::PARAM_STR);
@@ -79,6 +81,11 @@ elseif (isset($_GET['s'])) {
                                             <p>
                                                 <label for="size">Size</label>
                                                 <input type="text" name="size" value="<?php echo ($results->size);?>">
+                                            </p>
+
+                                            <p>
+                                                <label for="size">Amount</label>
+                                                <input type="text" name="amount" value="<?php echo ($results->amount);?>">
                                             </p>
 
                                             <p>
