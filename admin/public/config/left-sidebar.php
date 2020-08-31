@@ -58,7 +58,7 @@
             </li>
 
             <li class="parentd">
-                <a href="#">
+                <a href="#" data-toggle="tooltip" title="Inventory Management">
                     <i class="fas fa-university"></i>
                     <span class="nav-label">Inventory management</span><span class="fa arrow"></span>
                 </a>
