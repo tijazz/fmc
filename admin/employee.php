@@ -17,6 +17,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         $query->execute();
 
         $msg = "Employee Deleted successfully";
+        header('location:employee.php');
     }
 }
 if (isset($_POST['submit'])) {
