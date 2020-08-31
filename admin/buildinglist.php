@@ -96,6 +96,7 @@
                                         <th>Name</th>
                                         <th>Description</th>
                                         <th>Size/capacity</th>
+                                        <th>Amount</th>
                                         <th>Location</th>
                                         <th>Category</th>
                                         <th>Date</th>
@@ -119,6 +120,7 @@
                                         <td><?php echo htmlentities($result->name);?></td>
                                         <td><?php echo htmlentities($result->description);?></td>
                                         <td><?php echo htmlentities($result->size);?></td>
+                                        <td><?php echo htmlentities($result->amount);?></td>
                                         <td><?php echo htmlentities($result->location);?></td>
                                         <td><?php echo htmlentities($result->category);?></td>
                                         <td><?php echo htmlentities($result->date);?></td>
@@ -177,6 +179,11 @@
                                             <p>
                                                 <label for="size">Size</label>
                                                 <input type="text" name="size" value="">
+                                            </p>
+
+                                            <p>
+                                                <label for="size">Amount</label>
+                                                <input type="text" name="amount" value="">
                                             </p>
 
                                             <p>

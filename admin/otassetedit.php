@@ -37,15 +37,17 @@ if (isset($_POST['edit'])) {
     $description = $_POST['description'];
     $quantity = $_POST['quantity'];
     $manufacturer = $_POST['manufacturer'];
+    $amount = $_POST['amount'];
     $status = $_POST['status'];
     $location = $_POST['location'];
 
-    $sql = "UPDATE `other_asset` SET `name`=(:name), `description`=(:description), `quantity`=(:quantity), `manufacturer`=(:manufacturer), `status`=(:status),`location`=(:location) WHERE sn=(:sn)";
+    $sql = "UPDATE `other_asset` SET `name`=(:name), `description`=(:description), `quantity`=(:quantity), `amount`=(:amount), `manufacturer`=(:manufacturer), `status`=(:status),`location`=(:location) WHERE sn=(:sn)";
     $query = $dbh->prepare($sql);
     $query-> bindParam(':name', $name, PDO::PARAM_STR);
     $query-> bindParam(':description', $description, PDO::PARAM_STR);
     $query-> bindParam(':quantity', $quantity, PDO::PARAM_STR);
     $query-> bindParam(':manufacturer', $manufacturer, PDO::PARAM_STR);
+    $query-> bindParam(':amount', $amount, PDO::PARAM_STR);
     $query-> bindParam(':status', $status, PDO::PARAM_STR);
     $query-> bindParam(':location', $location, PDO::PARAM_STR);
     $query-> bindValue(':sn', $sn, PDO::PARAM_STR);
@@ -88,6 +90,11 @@ elseif (isset($_GET['s'])) {
     <p>
         <label for="amount">Manufacturer</label>
         <input type="text" name="manufacturer" value="<?php echo ($results->manufacturer);?>">
+    </p>
+
+    <p>
+        <label for="amount">Amount</label>
+        <input type="text" name="amount" value="<?php echo ($results->amount);?>">
     </p>
 
     <p>
