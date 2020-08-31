@@ -37,14 +37,16 @@ if (isset($_POST['edit'])) {
     $description = $_POST['description'];
     $serial_no = $_POST['snum'];
     $manufacturer = $_POST['manufacturer'];
+    $amount = $_POST['amount'];
     $category = $_POST['category'];
     
-    $sql = "UPDATE `vehicle` SET `name`=(:name), `description`=(:description), `serial_no`=(:serial_no), `manufacturer`=(:manufacturer) WHERE sn=(:sn)";
+    $sql = "UPDATE `vehicle` SET `name`=(:name), `description`=(:description), `amount`=(:amount), `serial_no`=(:serial_no), `manufacturer`=(:manufacturer) WHERE sn=(:sn)";
     $query = $dbh->prepare($sql);
     $query-> bindParam(':name', $name, PDO::PARAM_STR);
     $query-> bindParam(':description', $description, PDO::PARAM_STR);
     $query-> bindParam(':serial_no', $serial_no, PDO::PARAM_STR);
     $query-> bindParam(':manufacturer', $manufacturer, PDO::PARAM_STR);
+    $query-> bindParam(':amount', $amount, PDO::PARAM_STR);
     $query-> bindValue(':sn', $sn, PDO::PARAM_STR);
     $query->execute(); 
     $msg="Rent Updated Successfully";
@@ -85,6 +87,11 @@ elseif (isset($_GET['s'])) {
     <p>
         <label for="amount">Manufacturer</label>
         <input type="text" name="manufacturer" value="<?php echo ($results->manufacturer);?>">
+    </p>
+
+    <p>
+        <label for="amount">Amount</label>
+        <input type="text" name="amount" value="<?php echo ($results->amount);?>">
     </p>
 
     <p>
