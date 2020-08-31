@@ -8,9 +8,8 @@ include('includes/config.php');
 if (strlen($_SESSION['alogin']) == 0) {
     header('location:index.php');
 } else {
-    if (isset($_GET['del']) && isset($_GET['email'])) {
+    if (isset($_GET['del'])) {
         $id = $_GET['del'];
-        $name = $_GET['name'];
 
         $sql = "delete from employee WHERE id=:id";
         $query = $dbh->prepare($sql);
@@ -63,38 +62,7 @@ if (isset($_POST['submit'])) {
         //$error="Something went wrong. Please try again";
         $msg = "Something went wrong. Please try again";
     }
-} else  if (isset($_GET['edit'])) {
-    $editid = $_GET['edit'];
-
-    $file = $_FILES['image']['name'];
-    $file_loc = $_FILES['image']['tmp_name'];
-    $folder = "employee/";
-    $new_file_name = strtolower($file);
-    $final_file = str_replace(' ', '-', $new_file_name);
-
-    $image = $_POST['image'];
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $gender = $_POST['gender'];
-    $role = $_POST['role'];
-    $phone = $_POST['phone'];
-
-    if (move_uploaded_file($file_loc, $folder . $final_file)) {
-        $image = $final_file;
-    }
-
-    $sql = "UPDATE employee SET image=(:image), name=(:name), email=(:email), gender=(:gender), role=(:role),  phone=(:phone) WHERE id=(:idedit)";
-    $query = $dbh->prepare($sql);
-    $query->bindParam(':image', $image, PDO::PARAM_STR);
-    $query->bindParam(':name', $name, PDO::PARAM_STR);
-    $query->bindParam(':email', $email, PDO::PARAM_STR);
-    $query->bindParam(':gender', $gender, PDO::PARAM_STR);
-    $query->bindParam(':role', $role, PDO::PARAM_STR);
-    $query->bindParam(':phone', $phone, PDO::PARAM_STR);
-    $query->bindParam(':idedit', $idedit, PDO::PARAM_STR);
-    $query->execute();
-    $msg = "Information Updated Successfully";
-}
+} 
 ?>
 
 <!DOCTYPE html>
@@ -158,8 +126,10 @@ require_once "public/config/header.php";
                     <div class="table-cover">
                         <!-- <div class="table__">List of employees</div> -->
                         <div class="table-body_">
-                            <?php if ($error) { ?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?>
-                                </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
+                            <?php if ($error) { ?><div class="errorWrap" id="msgshow">
+                                    <?php echo htmlentities($error); ?>
+                                </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow">
+                                    <?php echo htmlentities($msg); ?> </div><?php } ?>
                             <table class="employee_table" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
@@ -204,13 +174,21 @@ require_once "public/config/header.php";
                                                     echo ($newformat <= date('Y-m-d')) ? 'due' : 'not due'; ?></td>
 
                                                 <!-- Action Button Start -->
-                                                <td>
-                                                    <a data-toggle="modal" href="buildingedit.php?edit=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static" href="#add">&nbsp;
-                                                        <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                                    <a href="buildinglist.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
-                                                </td>
+                                        <td>
+                                            <a data-toggle="modal" href="employeeedit.php?s=<?php echo $result->id;?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                            <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                            <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog model-sm">
+                                                        <div class="modal-content"> </div>
+                                                    </div>
+                                            </div>
 
-                                                <!-- Action Button End -->
+                                            <a href="employee.php?del=<?php echo $result->id;?>"
+                                                onclick="return confirm('Do you want to Delete');"><i
+                                                    class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
+                                        </td>
+
+                                        <!-- Action Button End -->
                                             </tr>
                                     <?php $cnt = $cnt + 1;
                                         }
@@ -229,6 +207,7 @@ require_once "public/config/header.php";
                                             <span aria-hidden="true">×</span></button>
                                         <h4 class="modal-title">Add Employee</h4>
                                     </div>
+
                                     <div class="modal-body">
                                         <form action="employee.php" method="POST" class="forma" enctype="multipart/form-data" onSubmit="return validate()">
 
@@ -294,6 +273,12 @@ require_once "public/config/header.php";
                             </div>
                         </div>
                         <!---end of modal dialog 1 -->
+
+
+
+
+
+
 
 
                     </div>
