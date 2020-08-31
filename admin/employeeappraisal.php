@@ -138,7 +138,6 @@ require_once "public/config/header.php";
                                         <th>Image</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Password</th>
                                         <th>Gender</th>
                                         <th>Role</th>
                                         <th>Phone</th>
@@ -151,7 +150,7 @@ require_once "public/config/header.php";
 
                                 <tbody>
 
-                                    <?php $sql = "SELECT * from employee ";
+                                    <?php $sql = "SELECT * from appraisal Where table_name = 'employee' ";
                                     $query = $dbh->prepare($sql);
                                     $query->execute();
                                     $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -163,19 +162,12 @@ require_once "public/config/header.php";
                                                 <td><img src="employee/<?php echo htmlentities($result->image); ?>" style="width:50px; border-radius:50%;" /></td>
                                                 <td><?php echo htmlentities($result->name); ?></td>
                                                 <td><?php echo htmlentities($result->email); ?></td>
-                                                <td><?php echo htmlentities($result->password); ?></td>
                                                 <td><?php echo htmlentities($result->gender); ?></td>
                                                 <td><?php echo htmlentities($result->role); ?></td>
                                                 <td><?php echo htmlentities($result->phone); ?></td>
                                                 <td><?php echo htmlentities($result->contract_start); ?></td>
                                                 <td><?php echo htmlentities($result->contract_end); ?></td>
-                                                <td><?php
-                                                    $time = strtotime($result->contract_end);
-                                                    $newformat = date('Y-m-d', $time);
-                                                    echo ($newformat <= date('Y-m-d')) ? 'due' : 'not due'; ?></td>
-
-                                                <!-- Action Button Start -->
-                                        <td>
+                                                
                                             <a data-toggle="modal" href="employeeedit.php?s=<?php echo $result->id;?>" data-target="#MyModal" data-backdrop="static">&nbsp;
                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
                                             <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
