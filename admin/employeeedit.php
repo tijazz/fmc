@@ -52,7 +52,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                     $image = $final_file;
                 }
 
-                    $sql = "UPDATE `employee` SET `name`=(:name), `email`=(:email), `password`=(:password), `gender`=(:gender), `role`=(:role),  `phone`=(:phone), `contract_start`=(:contract_start), `contract_end`=(:contract_end) WHERE `employee`.`id`=(:editid);";
+                    $sql = "UPDATE `employee` SET `image`=(:image), `name`=(:name), `email`=(:email), `password`=(:password), `gender`=(:gender), `role`=(:role),  `phone`=(:phone), `contract_start`=(:contract_start), `contract_end`=(:contract_end) WHERE `employee`.`id`=(:editid);";
                     $query = $dbh->prepare($sql);
                     $query->bindParam(':image', $image, PDO::PARAM_STR);
                     $query->bindParam(':name', $name, PDO::PARAM_STR);
@@ -66,7 +66,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                     $query->bindValue(':editid', $editid, PDO::PARAM_STR);
                     $query->execute();
                     $msg = "Information Updated Successfully";
-                    echo var_dump($bind);
+                    header('location:employee.php');
                 
             } elseif (isset($_GET['s'])) {
                 $sn = $_GET['s'];
