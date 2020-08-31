@@ -61,19 +61,19 @@
 
                     <!-- button style Start -->
                     <div class="navbar">
-                    <div class="container-fluid" style='padding-left:7px;'>
-                    <h1 class="nav navbar-nav">
-                        <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal"
-                            style="color:#fff;" class="small-box-footer"><i
-                                class="glyphicon glyphicon-plus text-blue"></i> Add</a>           
-                    </h1>
+                        <div class="container-fluid" style='padding-left:7px;'>
+                            <h1 class="nav navbar-nav">
+                                <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal"
+                                    style="color:#fff;" class="small-box-footer"><i
+                                        class="glyphicon glyphicon-plus text-blue"></i> Add</a>
+                            </h1>
 
-                    <h1 class="nav navbar-nav navbar-right">
-                        <a class="btn btn-md btn-primary" href="#add2" data-target="#add2" data-toggle="modal"
-                            style="color:#fff;" class="small-box-footer"><i
-                                class="glyphicon glyphicon-plus text-blue"></i> Add category</a>
-                    </h1>
-                    </div>
+                            <h1 class="nav navbar-nav navbar-right">
+                                <a class="btn btn-md btn-primary" href="#add2" data-target="#add2" data-toggle="modal"
+                                    style="color:#fff;" class="small-box-footer"><i
+                                        class="glyphicon glyphicon-plus text-blue"></i> Add category</a>
+                            </h1>
+                        </div>
                     </div>
                     <!-- button style End -->
 
@@ -92,6 +92,7 @@
                                         <th>Category</th>
                                         <th>Name</th>
                                         <th>Description</th>
+                                        <th>Amount</th>
                                         <th>Manufacturer</th>
                                         <th>Item Serial Number</th>
                                         <th>Date</th>
@@ -115,6 +116,7 @@
                                         <td><?php echo htmlentities($result->category);?></td>
                                         <td><?php echo htmlentities($result->name);?></td>
                                         <td><?php echo htmlentities($result->description);?></td>
+                                        <td><?php echo htmlentities($result->amount);?></td>
                                         <td><?php echo htmlentities($result->manufacturer);?></td>
                                         <td><?php echo htmlentities($result->serial_no);?></td>
                                         <td><?php echo htmlentities($result->date);?></td>
@@ -122,12 +124,14 @@
 
                                         <!-- Action Button Start -->
                                         <td>
-                                            <a data-toggle="modal" href="machineryedit.php?s=<?php echo $result->sn;?>" data-target="#MyModal" data-backdrop="static">&nbsp;
-                                            <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                            <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog model-sm">
-                                                        <div class="modal-content"> </div>
-                                                    </div>
+                                            <a data-toggle="modal" href="machineryedit.php?s=<?php echo $result->sn;?>"
+                                                data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                            <div class="modal fade" id="MyModal" tabindex="-1" role="dialog"
+                                                aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog model-sm">
+                                                    <div class="modal-content"> </div>
+                                                </div>
                                             </div>
 
                                             <a href="machinerylist.php?del=<?php echo $result->sn;?>"
@@ -199,6 +203,11 @@
                                             </p>
 
                                             <p>
+                                                <label for="amount">Amount</label>
+                                                <input type="text" name="amount" value="">
+                                            </p>
+
+                                            <p>
                                                 <button type="submit" name="submit">
                                                     Submit
                                                 </button>
@@ -213,10 +222,10 @@
                                     </div>
 
                                 </div>
-                                
+
                             </div>
                         </div>
-                                        <!--end of modal-dialog-->
+                        <!--end of modal-dialog-->
 
                         <div id="add2" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                             aria-hidden="true" style="display: none;">
@@ -254,11 +263,11 @@
                                     </div>
 
                                 </div>
-                                
+
                             </div>
 
                         </div>
-                                        <!--end of modal-dialog-->
+                        <!--end of modal-dialog-->
 
 
                     </div>
