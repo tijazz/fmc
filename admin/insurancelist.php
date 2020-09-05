@@ -140,8 +140,8 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <td><?php echo htmlentities($result->item); ?></td>
                                                     <td><?php echo htmlentities($result->start_date); ?></td>
                                                     <td><?php echo htmlentities($result->end_date); ?></td>
-                                                    <td><?php echo htmlentities(date("d-m-y") - $result->end_date); ?></td>
-                                                    <td><?php echo htmlentities($result->start_date - date("d-m-y")); ?></td>
+                                                    <td><?php echo htmlentities(date("Y-m-d") - $result->end_date); ?></td>
+                                                    <td><?php echo htmlentities($result->start_date - date("Y-m-d")); ?></td>
                                                     <td><?php echo htmlentities($result->amount); ?></td>
                                                     <td><?php echo htmlentities($result->amount_paid); ?></td>
                                                     <td><?php echo htmlentities($result->amount - $result->amount_paid); ?></td>
