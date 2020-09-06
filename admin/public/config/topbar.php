@@ -127,14 +127,15 @@
 
                         let navTriggerBtn = document.getElementById('slide_left_btn');
                         let BigLeftNav = document.querySelector("#wrapper > nav");
-                        let pageWrapper = document.querySelector('#page-wrapper ');
+                        let pageWrapper = document.querySelector('#page-wrapper');
                         if(window.innerWidth > 763){
                         navTriggerBtn.addEventListener('click',() => {
-                            BigLeftNav.classList.toggle('slide_left_navbar');
-                            pageWrapper.classList.toggle('no_margin_left');
+                            BigLeftNav.classList.toggle('slide_in_navbar');
+                            pageWrapper.classList.toggle('_margin_left');
                         })}
                         else if(window.innerWidth < 763 ){
                             navTriggerBtn.addEventListener('click',() => {
+                            BigLeftNav.classList.toggle('slide_in_navbar');
                             BigLeftNav.classList.toggle('navbar_small');
                             // pageWrapper.classList.toggle('no_margin_left_small_screens');
                             navTriggerBtn.classList.toggle('right_btn');
@@ -142,14 +143,28 @@
                         
                     </script>
                     <style>
+                    /* initally  */
+                    #wrapper > nav{
+                        margin-left:-500px;
+                    }
+
+                    #page-wrapper{
+                        margin-left:0;
+                    }
+                    #wrapper > nav > div{
+                        width:250px;
+                    }
+                    /* end initially */
+
                         /* styles for big screens */
-                        .slide_left_navbar{
-                            margin-left:-500px;
+                        .slide_in_navbar{
+                            margin-left:0 !important;
                             transition:0.4s ease-in-out;
                         }
-                        .no_margin_left{
-                            margin-left:0 !important;
+                        ._margin_left{
+                            margin-left:250px !important;
                         }
+                        /* end styles for huge screens */
                        
                         /* styles for small screens */
                         .right_btn{
@@ -158,9 +173,9 @@
                         }
                         
                         .navbar_small{
-                            /* margin-left:0; */
+                            margin-left:0;
                             /* z-index:1000; */
-                            width:calc(90vw - 2rem) !important;
+                            width:250px !important;
                             display:block !important;
                             background-color:#2f4050;
                         }

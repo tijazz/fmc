@@ -118,7 +118,7 @@
                     <span class="nav-label">Investment Managment</span><span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="na.php">Landing Summary</a></li>
+                    <li><a href="investmentdash.php">Dashboard</a></li>
                     <li><a href="na.php">Tracking and Performance</a></li>
                     <li><a href="na.php">Gallery and Testimonials</a></li>
                     <li><a href="na.php">Complaints and Inquiry</a></li>
