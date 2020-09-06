@@ -1,43 +1,43 @@
 <?php
-        session_start();    
-        error_reporting(0);
-        $error="";
-        $msg="";
-        include('includes/config.php');
-        if(strlen($_SESSION['alogin'])==0)
-            {	
-        header('location:index.php');
-        }
-        else{
-            
-?>
+session_start();    
+error_reporting(0);
+$error="";
+$msg="";
+include('includes/config.php');
+if(strlen($_SESSION['alogin'])==0)
+{	
+    header('location:index.php');
+}
+else{
+    
+    ?>
 
 <!DOCTYPE html>
 <html>
 <?php
-        require_once "public/config/header.php";
-        ?>
+    require_once "public/config/header.php";
+    ?>
 <link rel="stylesheet" href="public/css/investmentdash.css">
 
 <body>
 
     <div id="wrapper">
         <?php
-        require_once "public/config/left-sidebar.php";
-        ?>
+            require_once "public/config/left-sidebar.php";
+            ?>
 
         <div id="page-wrapper" class="gray-bg dashbard-1">
             <div class="row">
 
                 <?php
-                require_once "public/config/topbar.php";
-                ?>
+                    require_once "public/config/topbar.php";
+                    ?>
+                <div class="row-eq-height row info-wrapper">
+                    <h1 style="margin-left:1.2rem;">Investment Management Dashboard</h1>
 
-                <div class="row info-wrapper">
+                    <div class="col-lg-12 real">
 
-                    <div class="col-lg-12">
-
-                        <div class="col-lg-9 col-md-12 col-sm-12 left-details">
+                        <div class="col-lg-9 col-md-12  left-details">
                             <div class="group">
                                 <div class="activity-log shadow">
                                     <div class="headers">
@@ -53,7 +53,7 @@
                                         <li> <span>Added Solar Panels</span> <span>Sola Adeyemo</span> <span>27th
                                                 Aug.</span> </li>
                                     </ul>
-                                    <a href="#" class="rdr">More <span></span></a>
+                                    <a href="operationlist.php" class="rdr">More <span></span></a>
                                 </div>
                                 <div class="farm-details shadow">
                                     <div class="headers">
@@ -172,7 +172,8 @@
                                 <h3>Performance Summary</h3>
                                 <div class="items">
                                     <div class="chart">
-
+                                        <canvas id="myChart" height="300" width="300">
+                                        </canvas>
                                     </div>
 
                                     <div class="performance">
@@ -225,8 +226,102 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-12 col-sm-12 right-details">
-                            <h1>right</h1>
+                        <div class="col-lg-3 col-md-12 col-sm-12 right-details fluid">
+                            <!-- Summary of balance -->
+                            <div class="summary">
+                                <h3>Summary</h3>
+                                <ul>
+                                    <li>Starting Balance <span>8000UIC</span></li>
+                                    <li>Current Balance <span>8300UIC</span></li>
+                                </ul>
+                                <div class="total">
+                                    <div class="positive">
+                                        <span class='plus-sign'></span>
+                                    </div>
+                                    <span class="gain_loss">300UIC</span>
+                                </div>
+                            </div>
+                            <!-- end summary of balance -->
+
+                            <!-- ongoing investments -->
+                            <div class="ongoing_inv">
+                                <div class="header">
+                                    <h4>My Investments</h4>
+                                    <div>
+                                        <input type="text" name="inv" id="" placeholder="Search Investments" onkeyup="filterInvestments()">
+                                        <img src="public/images/search.png" alt="">
+                                    </div>
+
+                                </div>
+                                <ul class="list-investments">
+                                    <li>
+                                        <div class="title_w_date">
+                                            <h4 style="margin-bottom:0;">Adeola Investments</h4>
+                                            <span style="font-size: 1rem;">started 12th Jan,2020</span>
+                                        </div>
+                                        <div class="progress_made">
+                                            <div class="arrows">
+                                                <div class="my_arrow pos"></div><span>50UIC</span>
+                                                &nbsp;&nbsp;
+                                                <div class="my_arrow neg"></div><span>20UIC</span>
+                                            </div>
+                                            <div class="returns">
+                                                Returns : 50UIC
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="title_w_date">
+                                            <h4 style="margin-bottom:0;">Adeola Investments</h4>
+                                            <span style="font-size: 1rem;">started 12th Jan,2020</span>
+                                        </div>
+                                        <div class="progress_made">
+                                            <div class="arrows">
+                                                <div class="my_arrow pos"></div><span>50UIC</span>
+                                                &nbsp;&nbsp;
+                                                <div class="my_arrow neg"></div><span>20UIC</span>
+                                            </div>
+                                            <div class="returns">
+                                                Returns : 50UIC
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="title_w_date">
+                                            <h4 style="margin-bottom:0;">Adeola Investments</h4>
+                                            <span style="font-size: 1rem;">started 12th Jan,2020</span>
+                                        </div>
+                                        <div class="progress_made">
+                                            <div class="arrows">
+                                                <div class="my_arrow pos"></div><span>50UIC</span>
+                                                &nbsp;&nbsp;
+                                                <div class="my_arrow neg"></div><span>20UIC</span>
+                                            </div>
+                                            <div class="returns">
+                                                Returns : 50UIC
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="title_w_date">
+                                            <h4 style="margin-bottom:0;">Adeola Investments</h4>
+                                            <span style="font-size: 1rem;">started 12th Jan,2020</span>
+                                        </div>
+                                        <div class="progress_made">
+                                            <div class="arrows">
+                                                <div class="my_arrow pos"></div><span>50UIC</span>
+                                                &nbsp;&nbsp;
+                                                <div class="my_arrow neg"></div><span>20UIC</span>
+                                            </div>
+                                            <div class="returns">
+                                                Returns : 50UIC
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- end ongoing investments -->
+
                         </div>
 
 
@@ -243,6 +338,9 @@
             color: #fff;
         }
     </style>
+    <?php
+                require_once "public/config/footer.php";
+                ?>
     <script>
         let progresses = document.querySelectorAll('.insider');
         for (var i = 0; i < progresses.length; i++) {
@@ -251,13 +349,53 @@
         }
 
     </script>
-    <?php
-                require_once "public/config/footer.php";
-                ?>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> -->
+    <script>
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'doughnut',
+
+            // The data for our dataset
+            data: {
+                labels: ['Losses', 'Savings'],
+                datasets: [{
+                    label: 'Investment Management',
+                    backgroundColor: ['rgb(255, 59, 59)', 'rgb(49, 255, 214)'],
+                    borderColor: ['rgb(255, 59, 59)', 'rgb(49, 255, 214)'],
+                    data: [25000, 45000]
+                }]
+            },
+
+            // Configuration options go here
+            options: {
+                animation: {
+                    animateScale: false,
+                    duration: 3000,
+                    easing: 'linear'
+                },
+            //     layout: {
+            // padding: {
+            //     left: 100,
+            //     right: 0,
+            //     top: 0,
+            //     bottom: 0,
+            // }},
+            legend:{
+            position:'bottom',
+            display:false,
+            labels:['Losses','Savings']
+        }
+        }});
+    </script>
+<script src="public/js/invdash.js"></script>
+
+
 
 </body>
 
-<!-- Mirrored from webapplayers.com/inspinia_admin-v2.6.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Sep 2016 02:26:53 GMT -->
 
 </html>
 

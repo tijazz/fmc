@@ -12,6 +12,7 @@ h1,h2,h3,h4,h5,h6{color:#fff;}
     background:#26303A;
     border-top-left-radius: 2rem;
     border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
     padding:2rem 3rem;
     display:flex;
     justify-content: flex-end;
@@ -22,11 +23,22 @@ h1,h2,h3,h4,h5,h6{color:#fff;}
 .left-details > div > div{
     background: #55616D;
 }
+/* 
+.real{overflow:hidden;
+} */
+
 
 .right-details{
     background:#394958;
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    padding:2rem 0;
+    height:100%;
+
 }
 
 .group{
@@ -57,7 +69,7 @@ h1,h2,h3,h4,h5,h6{color:#fff;}
     align-items:center;
 }
 
-.activity-log > .rdr span{
+.activity-log > .rdr span,.my_arrow{
     position:relative;
     width:14px;
     height:2px;
@@ -66,7 +78,7 @@ h1,h2,h3,h4,h5,h6{color:#fff;}
     margin-left:4px;
 }
 
-.activity-log > .rdr span::before{
+.activity-log > .rdr span::before,.my_arrow::before{
     position:absolute;
     content:'';
     right:0;
@@ -77,7 +89,7 @@ h1,h2,h3,h4,h5,h6{color:#fff;}
     top:-2px;
 }
 
-.activity-log > .rdr span::after{
+.activity-log > .rdr span::after,.my_arrow::after{
     position:absolute;
     content:'';
     right:0;
@@ -107,7 +119,7 @@ h1,h2,h3,h4,h5,h6{color:#fff;}
 }
 
 .farm-details ul li{
-    display:flex;
+    display:grid;
     justify-content:space-between;
     align-items: center;
     grid-template-columns: 3% 200px 3%;
@@ -208,10 +220,180 @@ h1,h2,h3,h4,h5,h6{color:#fff;}
 
 }
 
+.chart{
+    margin-left:8rem;
+}
+
+#page-wrapper{
+    transition: 0.4s ease;
+}
+
 .insider.neg{
     background:rgb(255, 59, 59);
 }
 
 .insider.pos{
     background:rgb(49, 255, 214);    
+}
+
+.summary,.ongoing_inv{
+    width:90%;
+    background:#55616D;
+    padding:1rem 1.5rem;
+    border-radius:1rem;
+}
+
+.summary ul,.ongoing_inv ul{
+    width:100%;
+    color:#fff;
+}
+
+.summary ul li{
+    display:flex;
+    justify-content: space-between;
+    width:100%;
+    font-size:1.5rem;
+    align-items:center;
+}
+
+.summary ul li:nth-of-type(2){
+    margin-top:1.5rem;
+}
+
+.summary ul li span,.gain_loss{
+    font-size:2rem;
+}
+
+.total{
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    color:#fff;
+}
+
+
+
+.positive{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:30px;
+    width:30px;
+    border-radius:50%;
+    background:#1AB394;
+    margin-right:2rem;
+}
+
+.plus-sign{
+    height:50%;
+    width:2px;
+    background:#fff;
+    position: relative;
+    border-radius:4px;
+}
+
+.plus-sign::before{
+    position:absolute;
+    content:'';
+    height:100%;
+    width:100%;
+    /* top:calc(50% - 2px); */
+    transform:rotate(90deg);
+    background:#fff;
+    border-radius:4px;
+}
+
+/* ongoing investments */
+.ongoing_inv{
+    margin-top:3rem;
+}
+
+.ongoing_inv > .header,.ongoing_inv > .header > div{
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.ongoing_inv > .header > div{
+    height:2.2rem;
+    background:#fff;
+    border-radius:4px;
+    padding:0 0.5rem;
+}
+
+
+.ongoing_inv > .header > div > input{
+    width:80%;
+    height:100%;
+    border:none;
+    outline:none;
+
+}
+
+.list-investments{
+    margin-top:10px;
+}
+
+.list-investments li{
+    display:flex;
+    /* align-items: center; */
+    justify-content:space-between;
+    padding-bottom:8px;
+    border-bottom:1px solid rgba(255, 255, 255, 0.452);
+    margin-top:1.5rem;
+}
+
+.arrows{display:flex;align-items:center;}
+.my_arrow.pos{
+    transform:rotate(-90deg);
+    background:#33f8d1;
+}
+
+.my_arrow.pos::before,.my_arrow.pos::after{
+    background:#33f8d1;
+}
+
+.my_arrow.neg::before,.my_arrow.neg::after{
+    background:rgb(255, 58, 58);
+}
+
+.my_arrow.neg{
+    transform:rotate(90deg);
+    background:rgb(255, 58, 58);
+}
+
+.returns{
+    float:right;
+    margin-top:1rem;
+}
+
+
+.column-flexed{
+    flex-direction:column;
+}
+
+#wrapper > nav{
+    display:block;
+    z-index:100000;
+    position:fixed;
+}
+
+@media(max-width:1125px){
+    .left-details{
+        border-radius:2rem;
+    }
+    .right-details{
+        margin-top:3rem;
+        border-radius:2rem;
+    }
+}
+
+@media(max-width:965px){
+    .group{grid-template-columns:1fr;}
+    .farm-details{margin:3rem 0 0 0;}
+    .items,.group{flex-direction:column;justify-content:center;}
+}
+
+@media(max-width:600px){
+    .chart{margin:0;}
 }

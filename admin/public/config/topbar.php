@@ -146,6 +146,7 @@
                     /* initally  */
                     #wrapper > nav{
                         margin-left:-500px;
+                        display:block;
                     }
 
                     #page-wrapper{
@@ -160,6 +161,7 @@
                         .slide_in_navbar{
                             margin-left:0 !important;
                             transition:0.4s ease-in-out;
+                            display:block;
                         }
                         ._margin_left{
                             margin-left:250px !important;
