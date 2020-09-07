@@ -62,7 +62,6 @@ else{
                                     <ul>
                                         <li><span>Irrigation</span>
                                             <div></div><span class="green-check">
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Generator: Adobe Illustrator 23.0.5, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
                                                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -83,7 +82,7 @@ else{
                                         </li>
                                         <li><span>Pesticides</span>
                                             <div></div><span class="red-check">
-                                                <?xml version="1.0" encoding="utf-8"?>
+                                                
                                                 <!-- Generator: Adobe Illustrator 23.0.5, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
                                                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -104,7 +103,7 @@ else{
                                         </li>
                                         <li><span>Weeding</span>
                                             <div></div><span class="green-check">
-                                                <?xml version="1.0" encoding="utf-8"?>
+                                                
                                                 <!-- Generator: Adobe Illustrator 23.0.5, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
                                                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -125,7 +124,7 @@ else{
                                         </li>
                                         <li><span>Harvesting</span>
                                             <div></div><span class="red-check">
-                                                <?xml version="1.0" encoding="utf-8"?>
+                                                
                                                 <!-- Generator: Adobe Illustrator 23.0.5, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
                                                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -146,7 +145,7 @@ else{
                                         </li>
                                         <li><span>Feyi</span>
                                             <div></div><span class="green-check">
-                                                <?xml version="1.0" encoding="utf-8"?>
+                                                
                                                 <!-- Generator: Adobe Illustrator 23.0.5, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
                                                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
