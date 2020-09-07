@@ -74,7 +74,7 @@
 
                 </ul>
             </li>
-            
+
             <li class="parentd">
                 <a href="#" class="spec">
                     <i class="fas fa-search"></i>
@@ -100,7 +100,7 @@
                 </a>
                 <ul class="nav nav-second-level">
 
-                    <li><a href="#">Landing Summary Page</a></li>
+                    <li><a href="finmgtdash.php">Dashboard</a></li>
                     <li><a href="expenditure.php">Expenditure Log</a></li>
                     <li><a href="income.php">Income Log</a></li>
                     <li><a href="asset.php">Asset</a></li>
@@ -118,7 +118,7 @@
                     <span class="nav-label">Investment Managment</span><span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="na.php">Landing Summary</a></li>
+                    <li><a href="investmentdash.php">Dashboard</a></li>
                     <li><a href="na.php">Tracking and Performance</a></li>
                     <li><a href="na.php">Gallery and Testimonials</a></li>
                     <li><a href="na.php">Complaints and Inquiry</a></li>
@@ -174,17 +174,30 @@
 </nav>
 
 <script>
-let parentds = document.querySelectorAll(".parentd");
-let links = document.querySelectorAll(".parentd > a");
-let links2 = document.querySelectorAll('.parentd2 > a');
-links.forEach((one) => {
-    one.addEventListener("click", () => {
-        one.parentElement.classList.toggle("opened");
+    let parentds = document.querySelectorAll(".parentd");
+    let links = document.querySelectorAll(".parentd > a");
+    let links2 = document.querySelectorAll('.parentd2 > a');
+    links.forEach((one) => {
+        var opened = false;
+        one.addEventListener("click", () => {
+            parentds.forEach((two) => {
+                two.classList.remove('opened');
+            })
+         if(opened==false){
+          one.parentElement.classList.add('opened');
+          opened = true;
+          }else{
+              one.parentElement.classList.remove('opened');
+              opened=false;
+          }
+
+         
+
+        })
     })
-})
-links2.forEach((one) => {
-    one.addEventListener("click", () => {
-        one.parentElement.classList.toggle("opened");
+    links2.forEach((one) => {
+        one.addEventListener("click", () => {
+            one.parentElement.classList.toggle("opened");
+        })
     })
-})
 </script>
