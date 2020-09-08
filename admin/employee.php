@@ -30,13 +30,46 @@ if (isset($_POST['submit'])) {
     $user_id = $_SESSION['id'];
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']);
     $gender = $_POST['gender'];
     $role = $_POST['role'];
     $phone = $_POST['phone'];
     $contract_start = $_POST['contract_start'];
     $contract_end = $_POST['contract_end'];
 
+
+
+    // sending email
+
+    
+
+    $message = '
+    <html>
+    <head>
+    <title>Review Request Reminder</title>
+    </head>
+    <body>
+    <p>Here are the cases requiring your review in December:</p>
+    <table>
+        <tr>
+        <th>Case title</th><th>Category</th><th>Status</th><th>Due date</th>
+        </tr>
+        <tr>
+        <td>Case 1</td><td>Development</td><td>pending</td><td>Dec-20</td>
+        </tr>
+        <tr>
+        <td>Case 1</td><td>DevOps</td><td>pending</td><td>Dec-21</td>
+        </tr>
+    </table>
+    </body>
+    </html>
+    ';
+    $subject = 'Birthday Reminders for August';
+
+    $headers[] = 'MIME-Version: 1.0';
+    $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+
+    mail($email, $subject, $message, [$headers], [$parameters]);
 
     if (move_uploaded_file($file_loc, $folder . $final_file)) {
         $image = $final_file;
@@ -57,13 +90,13 @@ if (isset($_POST['submit'])) {
         $query->execute();
     }
     if ($lastInsertId) {
-        echo "<script type='text/javascript'>alert('Employee Registered Sucessfull!');</script>";
-        echo "<script type='text/javascript'> document.location = 'employee.php'; </script>";
+        // echo "<script type='text/javascript'>alert('Employee Registered Sucessfull!');</script>";
+        // echo "<script type='text/javascript'> document.location = 'employee.php'; </script>";
     } else {
         //$error="Something went wrong. Please try again";
         $msg = "Something went wrong. Please try again";
     }
-} 
+}
 ?>
 
 <!DOCTYPE html>
@@ -77,22 +110,22 @@ require_once "public/config/header.php";
 <head>
     <link rel="stylesheet" href="public/css/new_styles.css">
     <script type="text/javascript">
-        function validate() {
-            var extensions = new Array("jpg", "jpeg");
-            var image_file = document.regform.image.value;
-            var image_length = document.regform.image.value.length;
-            var pos = image_file.lastIndexOf('.') + 1;
-            var ext = image_file.substring(pos, image_length);
-            var final_ext = ext.toLowerCase();
-            for (i = 0; i < extensions.length; i++) {
-                if (extensions[i] == final_ext) {
-                    return true;
+    function validate() {
+        var extensions = new Array("jpg", "jpeg");
+        var image_file = document.regform.image.value;
+        var image_length = document.regform.image.value.length;
+        var pos = image_file.lastIndexOf('.') + 1;
+        var ext = image_file.substring(pos, image_length);
+        var final_ext = ext.toLowerCase();
+        for (i = 0; i < extensions.length; i++) {
+            if (extensions[i] == final_ext) {
+                return true;
 
-                }
             }
-            alert("Image Extension Not Valid (Use Jpg,jpeg)");
-            return false;
         }
+        alert("Image Extension Not Valid (Use Jpg,jpeg)");
+        return false;
+    }
     </script>
 </head>
 
@@ -121,16 +154,17 @@ require_once "public/config/header.php";
                 <div class="col-lg-12 table_holder">
                     <div class="apart_placer end_placer" style="margin-top:1.3rem;">
                         <h2 class="page-title" style="color:#000;">Employees Details</h2>
-                        <a class="green_btn" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"> Add Employee</i></a>
+                        <a class="green_btn" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;"
+                            class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"> Add Employee</i></a>
                     </div>
                     <!-- Zero Configuration Table -->
                     <div class="table-cover">
                         <!-- <div class="table__">List of employees</div> -->
                         <div class="table-body_">
                             <?php if ($error) { ?><div class="errorWrap" id="msgshow">
-                                    <?php echo htmlentities($error); ?>
-                                </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow">
-                                    <?php echo htmlentities($msg); ?> </div><?php } ?>
+                                <?php echo htmlentities($error); ?>
+                            </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow">
+                                <?php echo htmlentities($msg); ?> </div><?php } ?>
                             <table class="employee_table" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
@@ -158,39 +192,42 @@ require_once "public/config/header.php";
                                     $cnt = 1;
                                     if ($query->rowCount() > 0) {
                                         foreach ($results as $result) {                ?>
-                                            <tr>
-                                                <td><?php echo htmlentities($cnt); ?></td>
-                                                <td><img src="employee/<?php echo htmlentities($result->image); ?>" style="width:50px; border-radius:50%;" /></td>
-                                                <td><?php echo htmlentities($result->name); ?></td>
-                                                <td><?php echo htmlentities($result->email); ?></td>
-                                                <td><?php echo htmlentities($result->password); ?></td>
-                                                <td><?php echo htmlentities($result->gender); ?></td>
-                                                <td><?php echo htmlentities($result->role); ?></td>
-                                                <td><?php echo htmlentities($result->phone); ?></td>
-                                                <td><?php echo htmlentities($result->contract_start); ?></td>
-                                                <td><?php echo htmlentities($result->contract_end); ?></td>
-                                                <td><?php
+                                    <tr>
+                                        <td><?php echo htmlentities($cnt); ?></td>
+                                        <td><img src="employee/<?php echo htmlentities($result->image); ?>"
+                                                style="width:50px; border-radius:50%;" /></td>
+                                        <td><?php echo htmlentities($result->name); ?></td>
+                                        <td><?php echo htmlentities($result->email); ?></td>
+                                        <td><?php echo htmlentities($result->password); ?></td>
+                                        <td><?php echo htmlentities($result->gender); ?></td>
+                                        <td><?php echo htmlentities($result->role); ?></td>
+                                        <td><?php echo htmlentities($result->phone); ?></td>
+                                        <td><?php echo htmlentities($result->contract_start); ?></td>
+                                        <td><?php echo htmlentities($result->contract_end); ?></td>
+                                        <td><?php
                                                     $time = strtotime($result->contract_end);
                                                     $newformat = date('Y-m-d', $time);
                                                     echo ($newformat <= date('Y-m-d')) ? 'due' : 'not due'; ?></td>
 
-                                                <!-- Action Button Start -->
+                                        <!-- Action Button Start -->
                                         <td>
-                                            <a data-toggle="modal" href="employeeedit.php?s=<?php echo $result->id;?>" data-target="#MyModal" data-backdrop="static">&nbsp;
-                                            <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                            <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog model-sm">
-                                                        <div class="modal-content"> </div>
-                                                    </div>
+                                            <a data-toggle="modal" href="employeeedit.php?s=<?php echo $result->id; ?>"
+                                                data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                            <div class="modal fade" id="MyModal" tabindex="-1" role="dialog"
+                                                aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog model-sm">
+                                                    <div class="modal-content"> </div>
+                                                </div>
                                             </div>
 
-                                            <a href="employee.php?del=<?php echo $result->id;?>"
+                                            <a href="employee.php?del=<?php echo $result->id; ?>"
                                                 onclick="return confirm('Do you want to Delete');"><i
                                                     class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                         </td>
 
                                         <!-- Action Button End -->
-                                            </tr>
+                                    </tr>
                                     <?php $cnt = $cnt + 1;
                                         }
                                     } ?>
@@ -200,7 +237,8 @@ require_once "public/config/header.php";
 
 
 
-                        <div id="add" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                        <div id="add" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                            aria-hidden="true" style="display: none;">
                             <div class="modal-dialog">
                                 <div class="modal-content" style="height:auto">
                                     <div class="modal-header">
@@ -210,7 +248,8 @@ require_once "public/config/header.php";
                                     </div>
 
                                     <div class="modal-body">
-                                        <form action="employee.php" method="POST" class="forma" enctype="multipart/form-data" onSubmit="return validate()">
+                                        <form action="employee.php" method="POST" class="forma"
+                                            enctype="multipart/form-data" onSubmit="return validate()">
 
                                             <p>
 
@@ -268,7 +307,8 @@ require_once "public/config/header.php";
                                     </div>
                                     <div class="modal-footer">
 
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-default"
+                                            data-dismiss="modal">Close</button>
                                     </div>
                                 </div>
                             </div>
@@ -309,11 +349,11 @@ require_once "public/config/header.php";
     <script src="js/chartData.js"></script>
     <script src="js/main.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
-            setTimeout(function() {
-                $('.succWrap').slideUp("slow");
-            }, 3000);
-        });
+    $(document).ready(function() {
+        setTimeout(function() {
+            $('.succWrap').slideUp("slow");
+        }, 3000);
+    });
     </script>
 
 </body>
