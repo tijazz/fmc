@@ -41,7 +41,8 @@ if (isset($_POST['submit'])) {
     $phone = $_POST['phone'];
     $contract_start = $_POST['contract_start'];
     $contract_end = $_POST['contract_end'];
-
+    $salary = $_POST['salary'];
+    $org = $_SESSION['org'];
 
 
     // sending email
@@ -94,7 +95,7 @@ try {
         $image = $final_file;
 
 
-        $sql = "INSERT INTO employee (`user_id`, `image`, `name`, `email`, `password`, `gender`, `role`, `phone`, `contract_start`, `contract_end`) VALUES(:user_id, :image, :name, :email, :password, :gender, :role, :phone, :contract_start, :contract_end);";
+        $sql = "INSERT INTO employee (`user_id`, `image`, `name`, `email`, `password`, `gender`, `role`, `phone`, `contract_start`, `contract_end`, `salary`, `organization`) VALUES(:user_id, :image, :name, :email, :password, :gender, :role, :phone, :contract_start, :contract_end, :salary, :organization);";
         $query = $dbh->prepare($sql);
         $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
         $query->bindParam(':image', $image, PDO::PARAM_STR);
@@ -106,6 +107,8 @@ try {
         $query->bindParam(':phone', $phone, PDO::PARAM_STR);
         $query->bindParam(':contract_start', $contract_start, PDO::PARAM_STR);
         $query->bindParam(':contract_end', $contract_end, PDO::PARAM_STR);
+        $query->bindParam(':salary', $salary, PDO::PARAM_STR);
+        $query->bindParam(':organization', $organization, PDO::PARAM_STR);
         $query->execute();
 
         header('location:employee.php');
@@ -199,6 +202,7 @@ require_once "public/config/header.php";
                                         <th>Phone</th>
                                         <th>Contract Start</th>
                                         <th>Contract End</th>
+                                        <th>salary</th>
                                         <th>Due</th>
                                         <th>Action</th>
                                     </tr>
@@ -225,6 +229,7 @@ require_once "public/config/header.php";
                                         <td><?php echo htmlentities($result->phone); ?></td>
                                         <td><?php echo htmlentities($result->contract_start); ?></td>
                                         <td><?php echo htmlentities($result->contract_end); ?></td>
+                                        <td><?php echo htmlentities($result->salary); ?></td>
                                         <td><?php
                                                     $time = strtotime($result->contract_end);
                                                     $newformat = date('Y-m-d', $time);
@@ -316,6 +321,12 @@ require_once "public/config/header.php";
                                                 <label for="Number">Contract Due</label>
                                                 <input type="date" name="contract_end" value="" required>
                                             </p>
+
+                                            <p>
+                                                <label for="salary">Salary</label>
+                                                <input type="text" name="salary" value="" required>
+                                            </p>
+
                                             <p>
                                                 <button type="submit" name="submit">
                                                     Submit
