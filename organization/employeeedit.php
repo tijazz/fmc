@@ -47,12 +47,13 @@ if (strlen($_SESSION['alogin']) == 0) {
                 $phone = $_POST['phone'];
                 $contract_start = $_POST['contract_start'];
                 $contract_end = $_POST['contract_end'];
+                $salary = $_POST['salary'];
 
                 if (move_uploaded_file($file_loc, $folder . $final_file)) {
                     $image = $final_file;
                 }
 
-                    $sql = "UPDATE `employee` SET `image`=(:image), `name`=(:name), `email`=(:email), `password`=(:password), `gender`=(:gender), `role`=(:role),  `phone`=(:phone), `contract_start`=(:contract_start), `contract_end`=(:contract_end) WHERE `employee`.`id`=(:editid);";
+                    $sql = "UPDATE `employee` SET `image`=(:image), `name`=(:name), `email`=(:email), `password`=(:password), `gender`=(:gender), `role`=(:role),  `phone`=(:phone), `contract_start`=(:contract_start), `contract_end`=(:contract_end), `salary`=(:salary) WHERE `employee`.`id`=(:editid);";
                     $query = $dbh->prepare($sql);
                     $query->bindParam(':image', $image, PDO::PARAM_STR);
                     $query->bindParam(':name', $name, PDO::PARAM_STR);
@@ -63,6 +64,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                     $query->bindParam(':phone', $phone, PDO::PARAM_STR);
                     $query->bindParam(':contract_start', $contract_start, PDO::PARAM_STR);
                     $query->bindParam(':contract_end', $contract_end, PDO::PARAM_STR);
+                    $query->bindParam(':salary', $salary, PDO::PARAM_STR);
                     $query->bindValue(':editid', $editid, PDO::PARAM_STR);
                     $query->execute();
                     $msg = "Information Updated Successfully";
@@ -125,6 +127,10 @@ if (strlen($_SESSION['alogin']) == 0) {
                     <p>
                         <label for="Number">Contract Due</label>
                         <input type="date" name="contract_end" value="<?php echo $results->contract_end ?>" required>
+                    </p>
+                    <p>
+                        <label for="salary">Salary</label>
+                        <input type="text" name="salary" value="<?php echo $results->salary ?>" required>
                     </p>
                     <p>
                         <button type="submit" name="edit" value="<?php echo $sn ?>">
