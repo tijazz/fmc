@@ -60,14 +60,14 @@ try {
     $mail->isSMTP();                                            // Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'abdullahij951@gmail.com';                     // SMTP username
-    $mail->Password   = 'imfz3jat';                               // SMTP password
+    $mail->Username   = 'dufmanigeria@gmail.com';                     // SMTP username
+    $mail->Password   = 'dufma234';                               // SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
     $mail->Port       = 587;                                    // TCP port to connect to
 
     //Recipients
-    $mail->setFrom('abdullahij951@gmail.com', 'Abdullahi');
-    $mail->addAddress('abdullahij951@gmail.com', 'Jimoh');     // Add a recipient
+    $mail->setFrom('dufmanigeria@gmail.com', 'Abdullahi');
+    $mail->addAddress( $email, $name);     // Add a recipient
     // $mail->addAddress('ellen@example.com');               // Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
     // $mail->addCC('cc@example.com');
@@ -107,10 +107,12 @@ try {
         $query->bindParam(':contract_start', $contract_start, PDO::PARAM_STR);
         $query->bindParam(':contract_end', $contract_end, PDO::PARAM_STR);
         $query->execute();
+
+        header('location:employee.php');
     }
     if ($lastInsertId) {
-        // echo "<script type='text/javascript'>alert('Employee Registered Sucessfull!');</script>";
-        // echo "<script type='text/javascript'> document.location = 'employee.php'; </script>";
+        echo "<script type='text/javascript'>alert('Employee Registered Sucessfull!');</script>";
+        echo "<script type='text/javascript'> document.location = 'employee.php'; </script>";
     } else {
         //$error="Something went wrong. Please try again";
         $msg = "Something went wrong. Please try again";
