@@ -35,7 +35,7 @@ else{
             <div class="row  white-bg dashboard-header">
 
                 <div class="col-sm-12 col-lg-12">
-                    <h2 class="FMS-title">Farm Management Services</h2>
+                    <h2 class="FMS-title"><?php echo $_SESSION['org']?> Farm Management Services</h2>
 
 
                     <div class="holder">
