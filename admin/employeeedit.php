@@ -41,7 +41,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                 $user_id = $_SESSION['id'];
                 $name = $_POST['name'];
                 $email = $_POST['email'];
-                $password = $_POST['password'];
+                $password = md5($_POST['password']);
                 $gender = $_POST['gender'];
                 $role = $_POST['role'];
                 $phone = $_POST['phone'];
