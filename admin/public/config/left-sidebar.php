@@ -35,12 +35,16 @@
                     <span class="nav-label">Dashboard</span>
                 </a>
             </li>
+
+            <!-- Supply Chain Management -->
             <li class="parentd">
                 <a href="#">
                     <i class="fas fa-truck"></i>
                     <span class="nav-label">Supply chain management</span><span class="fa arrow"></span>
                 </a>
             </li>
+
+            <!-- Risk Management -->
             <li class="parentd">
                 <a href="#">
                     <i class="fas fa-bolt"></i>
@@ -57,6 +61,7 @@
                 </ul>
             </li>
 
+            <!-- Inventory Management -->
             <li class="parentd">
                 <a href="#" data-toggle="tooltip" title="Inventory Management: where we Mage our inventory">
                     <i class="fas fa-university"></i>
@@ -64,7 +69,7 @@
                 </a>
                 <ul class="nav nav-second-level">
                     <li><a href="na.php">Landing Summary Page</a></li>
-                    <li><a href="procurement.php">Procurement</a></li>
+                    <li><a href="tangible-asset.php">Procurement</a></li>
                     <li><a href="na.php">Product Management</a></li>
                     <li><a href="na.php">Ware Housing</a></li>
                     <li><a href="na.php">Input Analysis</a></li>
@@ -75,6 +80,7 @@
                 </ul>
             </li>
 
+            <!-- Monitoring and Evaluation -->
             <li class="parentd">
                 <a href="#" class="spec">
                     <i class="fas fa-search"></i>
@@ -92,7 +98,7 @@
                 </ul>
             </li>
 
-
+            <!-- Financial Management -->
             <li class='parentd'>
                 <a href="#" class="spec">
                     <i class="fas fa-money"></i>
@@ -126,6 +132,7 @@
             </li>
             <!-- End investment management -->
 
+            <!-- Wallet -->
             <li>
                 <a href="wallet.php">
                     <i class="fas fa-wallet"></i>
@@ -134,7 +141,7 @@
             </li>
 
 
-
+            <!-- Notifications -->
             <li class="parentd">
                 <a href="#" class='spec'><i class="fa fa-edit"></i> <span class="nav-label">Notifications</span><span
                         class="fa arrow"></span></a>
