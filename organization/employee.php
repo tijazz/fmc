@@ -117,7 +117,7 @@ try {
         $query->bindParam(':contract_start', $contract_start, PDO::PARAM_STR);
         $query->bindParam(':contract_end', $contract_end, PDO::PARAM_STR);
         $query->bindParam(':salary', $salary, PDO::PARAM_STR);
-        $query->bindParam(':organization', $organization, PDO::PARAM_STR);
+        $query->bindParam(':organization', $org, PDO::PARAM_STR);
         $query->execute();
 
         header('location:employee.php');
@@ -195,7 +195,7 @@ require_once "public/config/header.php";
                             <table class="employee_table" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th><?php echo $_SESSION['org']; ?></th>
                                         <th>Image</th>
                                         <th>Name</th>
                                         <th>Email</th>
@@ -213,7 +213,8 @@ require_once "public/config/header.php";
 
                                 <tbody>
 
-                                    <?php $sql = "SELECT * from employee ";
+                                    <?php 
+                                    $sql = "SELECT * FROM `employee` WHERE organization = '" . $_SESSION['org'] ."'";
                                     $query = $dbh->prepare($sql);
                                     $query->execute();
                                     $results = $query->fetchAll(PDO::FETCH_OBJ);
