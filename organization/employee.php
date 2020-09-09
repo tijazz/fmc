@@ -64,10 +64,17 @@ try {
     $mail->Username   = 'dufmanigeria@gmail.com';                     // SMTP username
     $mail->Password   = 'dufma234';                               // SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-    $mail->Port       = 587;                                    // TCP port to connect to
+    $mail->Port       = 587;                                   // TCP port to connect to
 
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        )
+    );
     //Recipients
-    $mail->setFrom('dufmanigeria@gmail.com', 'Abdullahi');
+    $mail->setFrom('dufmanigeria@gmail.com', 'Dufma');
     $mail->addAddress( $email, $name);     // Add a recipient
     // $mail->addAddress('ellen@example.com');               // Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
@@ -111,15 +118,9 @@ try {
         $query->bindParam(':organization', $organization, PDO::PARAM_STR);
         $query->execute();
 
-        header('location:employee.php');
+        // header('location:employee.php');
     }
-    if ($lastInsertId) {
-        echo "<script type='text/javascript'>alert('Employee Registered Sucessfull!');</script>";
-        echo "<script type='text/javascript'> document.location = 'employee.php'; </script>";
-    } else {
-        //$error="Something went wrong. Please try again";
-        $msg = "Something went wrong. Please try again";
-    }
+    
 }
 ?>
 
