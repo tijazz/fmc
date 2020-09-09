@@ -57,22 +57,24 @@ $mail = new PHPMailer(true);
 
 try {
     //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
-    $mail->isSMTP();                                            // Send using SMTP
+    $mail->SMTPDebug = 0;// Enable verbose debug output                  // Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
     $mail->Username   = 'dufmanigeria@gmail.com';                     // SMTP username
-    $mail->Password   = 'dufma234';                               // SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-    $mail->Port       = 587;                                   // TCP port to connect to
+    $mail->Password   = 'dufma234';
+    $mail->SMTPKeepAlive = true;  
+    $mail->isSMTP();                               // SMTP password
+    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+    
+    $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+    $mail->Port       = '465';                                   // TCP port to connect to
 
-    $mail->SMTPOptions = array(
-        'ssl' => array(
-            'verify_peer' => false,
-            'verify_peer_name' => false,
-            'allow_self_signed' => true
-        )
-    );
+    // $mail->SMTPOptions = array(
+    //     'ssl' => array(
+    //         'verify_peer' => false,
+    //         'verify_peer_name' => false,
+    //         'allow_self_signed' => true
+    //     )
+    // );
     //Recipients
     $mail->setFrom('dufmanigeria@gmail.com', 'Dufma');
     $mail->addAddress( $email, $name);     // Add a recipient
@@ -118,7 +120,7 @@ try {
         $query->bindParam(':organization', $organization, PDO::PARAM_STR);
         $query->execute();
 
-        // header('location:employee.php');
+        header('location:employee.php');
     }
     
 }
