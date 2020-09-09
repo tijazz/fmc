@@ -16,6 +16,8 @@ if($query->rowCount() > 0)
 $_SESSION['alogin']=$_POST['username'];
 $_SESSION['id']=$results[0]->id;
 $_SESSION['org']=$results[0]->organization;
+
+// echo $_SESSION['alogin'];
 echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
 } else{
   
