@@ -28,7 +28,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 if (isset($_POST['submit'])) {
     $file = $_FILES['image']['name'];
     $file_loc = $_FILES['image']['tmp_name'];
-    $folder = "../employee";
+    $folder = "../images";
     $new_file_name = strtolower($file);
     $final_file = str_replace(' ', '-', $new_file_name);
 
@@ -222,7 +222,7 @@ require_once "public/config/header.php";
                                         foreach ($results as $result) {                ?>
                                     <tr>
                                         <td><?php echo htmlentities($cnt); ?></td>
-                                        <td><img src="employee/<?php echo htmlentities($result->image); ?>"
+                                        <td><img src="../images<?php echo htmlentities($result->image); ?>"
                                                 style="width:50px; border-radius:50%;" /></td>
                                         <td><?php echo htmlentities($result->name); ?></td>
                                         <td><?php echo htmlentities($result->email); ?></td>
