@@ -120,14 +120,14 @@ else{
                                     <div class="graph">
                                         <div class="line"></div>
                                     </div>
-                                    <span class="rate"><h3>960.13</h3><span class="line_100"> | OUIC</span></span>
+                                    <span class="rate"><h3>960.13</h3><span class="line_100"> | UIC</span></span>
                                 </div>
                                 <div class="debit">
                                     <h3>Debit</h3>
                                     <div class="graph">
                                         <div class="line"></div>
                                     </div>
-                                    <span class="rate"><h3>940.96</h3><span class="line_100"> | OUIC</span></span>
+                                    <span class="rate"><h3>940.96</h3><span class="line_100"> | UIC</span></span>
                                 </div>
                             </div>
                             
