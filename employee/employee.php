@@ -215,7 +215,7 @@ require_once "public/config/header.php";
                                         foreach ($results as $result) {                ?>
                                     <tr>
                                         <td><?php echo htmlentities($cnt); ?></td>
-                                        <td><img src="employee/<?php echo htmlentities($result->image); ?>"
+                                        <td><img src="../images/<?php echo htmlentities($result->image); ?>"
                                                 style="width:50px; border-radius:50%;" /></td>
                                         <td><?php echo htmlentities($result->name); ?></td>
                                         <td><?php echo htmlentities($result->email); ?></td>
