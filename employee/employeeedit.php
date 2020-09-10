@@ -34,7 +34,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                 $file = $_FILES['image']['name'];
                 $file_loc = $_FILES['image']['tmp_name'];
-                $folder = "employee/";
+                $folder = "../images/";
                 $new_file_name = strtolower($file);
                 $final_file = str_replace(' ', '-', $new_file_name);
 

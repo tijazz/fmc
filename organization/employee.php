@@ -28,7 +28,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 if (isset($_POST['submit'])) {
     $file = $_FILES['image']['name'];
     $file_loc = $_FILES['image']['tmp_name'];
-    $folder = "../employee";
+    $folder = "../images/";
     $new_file_name = strtolower($file);
     $final_file = str_replace(' ', '-', $new_file_name);
 
@@ -57,17 +57,26 @@ $mail = new PHPMailer(true);
 
 try {
     //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
-    $mail->isSMTP();                                            // Send using SMTP
+    $mail->SMTPDebug = 0;// Enable verbose debug output                  // Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
     $mail->Username   = 'dufmanigeria@gmail.com';                     // SMTP username
-    $mail->Password   = 'dufma234';                               // SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-    $mail->Port       = 587;                                    // TCP port to connect to
+    $mail->Password   = 'dufma234';
+    $mail->SMTPKeepAlive = true;  
+    $mail->isSMTP();                               // SMTP password
+    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+    
+    $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+    $mail->Port       = '465';                                   // TCP port to connect to
 
+    // $mail->SMTPOptions = array(
+    //     'ssl' => array(
+    //         'verify_peer' => false,
+    //         'verify_peer_name' => false,
+    //         'allow_self_signed' => true
+    //     )
+    // );
     //Recipients
-    $mail->setFrom('dufmanigeria@gmail.com', 'Abdullahi');
+    $mail->setFrom('dufmanigeria@gmail.com', 'Dufma');
     $mail->addAddress( $email, $name);     // Add a recipient
     // $mail->addAddress('ellen@example.com');               // Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
@@ -108,18 +117,12 @@ try {
         $query->bindParam(':contract_start', $contract_start, PDO::PARAM_STR);
         $query->bindParam(':contract_end', $contract_end, PDO::PARAM_STR);
         $query->bindParam(':salary', $salary, PDO::PARAM_STR);
-        $query->bindParam(':organization', $organization, PDO::PARAM_STR);
+        $query->bindParam(':organization', $org, PDO::PARAM_STR);
         $query->execute();
 
         header('location:employee.php');
     }
-    if ($lastInsertId) {
-        echo "<script type='text/javascript'>alert('Employee Registered Sucessfull!');</script>";
-        echo "<script type='text/javascript'> document.location = 'employee.php'; </script>";
-    } else {
-        //$error="Something went wrong. Please try again";
-        $msg = "Something went wrong. Please try again";
-    }
+    
 }
 ?>
 
@@ -192,7 +195,7 @@ require_once "public/config/header.php";
                             <table class="employee_table" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th><?php echo $_SESSION['org']; ?></th>
                                         <th>Image</th>
                                         <th>Name</th>
                                         <th>Email</th>
@@ -210,7 +213,8 @@ require_once "public/config/header.php";
 
                                 <tbody>
 
-                                    <?php $sql = "SELECT * from employee ";
+                                    <?php 
+                                    $sql = "SELECT * FROM `employee` WHERE organization = '" . $_SESSION['org'] ."'";
                                     $query = $dbh->prepare($sql);
                                     $query->execute();
                                     $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -219,7 +223,7 @@ require_once "public/config/header.php";
                                         foreach ($results as $result) {                ?>
                                     <tr>
                                         <td><?php echo htmlentities($cnt); ?></td>
-                                        <td><img src="employee/<?php echo htmlentities($result->image); ?>"
+                                        <td><img src="../images/<?php echo htmlentities($result->image); ?>"
                                                 style="width:50px; border-radius:50%;" /></td>
                                         <td><?php echo htmlentities($result->name); ?></td>
                                         <td><?php echo htmlentities($result->email); ?></td>
