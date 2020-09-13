@@ -4,32 +4,34 @@ include('includes/config.php');
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
     <style>
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
 
-    /* Optional: Makes the sample page fill the window. */
-    html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
- /* Always set the map height explicitly to define the size of the div
+        /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
-    #map {
-        height: 100%;
-    }
-</style>
+        #map {
+            height: 100%;
+        }
+    </style>
 
 </head>
+
 <body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyA-AB-9XZd-iQby-bNLYPFyb0pR2Qw3orw">
-</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyA-AB-9XZd-iQby-bNLYPFyb0pR2Qw3orw">
+    </script>
 
     <div id="map"></div>
     <script>
@@ -38,22 +40,22 @@ include('includes/config.php');
          */
         <?php
         $sql = "SELECT * from locations";
-        $query = $dbh -> prepare($sql);
+        $query = $dbh->prepare($sql);
         $query->execute();
-        $results=$query->fetchAll(PDO::FETCH_ASSOC);
+        $results = $query->fetchAll(PDO::FETCH_ASSOC);
         /* Fetch all of the remaining rows in the result set */
         $indexed = array_map('array_values', $results);
-      //  $array = array_filter($indexed);
-    
+        //  $array = array_filter($indexed);
+
         if (!$results) {
             return null;
         }
         ?>
         var infowindow;
         var map;
-        var red_icon =  'http://maps.google.com/mapfiles/ms/icons/red-dot.png' ;
-        var purple_icon =  'http://maps.google.com/mapfiles/ms/icons/purple-dot.png' ;
-        var locations = <?php echo json_encode($indexed);?>;
+        var red_icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+        var purple_icon = 'http://maps.google.com/mapfiles/ms/icons/purple-dot.png';
+        var locations = <?php echo json_encode($indexed); ?>;
         console.log(locations)
         var myOptions = {
             zoom: 6,
@@ -75,7 +77,7 @@ include('includes/config.php');
          * @param {!number} lng Longitude.
          * @return {string} Concatenated marker id.
          */
-        var getMarkerUniqueId= function(lat, lng) {
+        var getMarkerUniqueId = function(lat, lng) {
             return lat + '_' + lng;
         };
 
@@ -102,18 +104,14 @@ include('includes/config.php');
                 map: map,
                 animation: google.maps.Animation.DROP,
                 id: 'marker_' + markerId,
-                html: "    <div id='info_"+markerId+"'>\n" +
-                "        <table class=\"map1\">\n" +
-                "            <tr>\n" +
-                "                <td><a>User:</a></td>\n" +
-                "                <td><textarea  id='manual_user' placeholder='User'></textarea></td></tr>\n" +
-                "            <tr>" +
-                "            <tr>\n" +
-                "                <td><a>Description:</a></td>\n" +
-                "                <td><textarea  id='manual_description' placeholder='Description'></textarea></td></tr>\n" +
-                "            <tr><td></td><td><input type='button' value='Save' onclick='saveData("+lat+","+lng+")'/></td></tr>\n" +
-                "        </table>\n" +
-                "    </div>"
+                html: "    <div id='info_" + markerId + "'>\n" +
+                    "        <table class=\"map1\">\n" +
+                    "            <tr>\n" +
+                    "            <td><input type='button' value='Select' onclick='saveData(" + lat + "," + lng + ")'/></td></tr>\n" +
+                    "            <tr>\n" +
+                    "            <td id='sta'></td></tr>\n" +
+                    "        </table>\n" +
+                    "    </div>"
             });
             markers[markerId] = marker; // cache marker in markers object
             bindMarkerEvents(marker); // bind right click event to marker
@@ -121,11 +119,23 @@ include('includes/config.php');
         });
 
         /**
+         * SAVE save marker from map.
+         * @param lat  A latitude of marker.
+         * @param lng A longitude of marker.
+         */
+        function saveData(lat, lng) {
+            localStorage.setItem("lat", lat)
+            localStorage.setItem("lng", lng)
+            alert("It is working")
+            document.getElementById("sta").innerHTML = "Selected"
+        }
+
+        /**
          * Binds  click event to given marker and invokes a callback function that will remove the marker from map.
          * @param {!google.maps.Marker} marker A google.maps.Marker instance that the handler will binded.
          */
         var bindMarkerinfo = function(marker) {
-            google.maps.event.addListener(marker, "click", function (point) {
+            google.maps.event.addListener(marker, "click", function(point) {
                 var markerId = getMarkerUniqueId(point.latLng.lat(), point.latLng.lng()); // get marker id by using clicked point's coordinate
                 var marker = markers[markerId]; // find marker
                 infowindow = new google.maps.InfoWindow();
@@ -140,7 +150,7 @@ include('includes/config.php');
          * @param {!google.maps.Marker} marker A google.maps.Marker instance that the handler will binded.
          */
         var bindMarkerEvents = function(marker) {
-            google.maps.event.addListener(marker, "rightclick", function (point) {
+            google.maps.event.addListener(marker, "rightclick", function(point) {
                 var markerId = getMarkerUniqueId(point.latLng.lat(), point.latLng.lng()); // get marker id by using clicked point's coordinate
                 var marker = markers[markerId]; // find marker
                 removeMarker(marker, markerId); // remove it
@@ -161,28 +171,29 @@ include('includes/config.php');
         /**
          * loop through (Mysql) dynamic locations to add markers to map.
          */
-        var i ; var confirmed = 0;
+        var i;
+        var confirmed = 0;
         for (i = 0; i < locations.length; i++) {
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(locations[i][2], locations[i][3]),
                 map: map,
-                icon :   red_icon,
+                icon: red_icon,
                 html: "<div>\n" +
-                "<table class=\"map1\">\n" +
-                "<tr>\n" +
-                "<td><a>User:</a></td>\n" +
-                "<td><textarea disabled id='manual_user' placeholder='User'>"+locations[i][1]+"</textarea></td></tr>\n" +
-                "<td><a>Description:</a></td>\n" +
-                "<td><textarea disabled id='manual_description' placeholder='Description'>"+locations[i][4]+"</textarea></td></tr>\n" +
-                "</table>\n" +
-                "</div>"
+                    "<table class=\"map1\">\n" +
+                    "<tr>\n" +
+                    "<td><a>User:</a></td>\n" +
+                    "<td><textarea disabled id='manual_user' placeholder='User'>" + locations[i][1] + "</textarea></td></tr>\n" +
+                    "<td><a>Description:</a></td>\n" +
+                    "<td><textarea disabled id='manual_description' placeholder='Description'>" + locations[i][4] + "</textarea></td></tr>\n" +
+                    "</table>\n" +
+                    "</div>"
             });
 
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
                 return function() {
                     infowindow = new google.maps.InfoWindow();
-                    confirmed =  locations[i][4] === '1' ?  'checked'  :  0;
-                    $("#confirmed").prop(confirmed,locations[i][5]);
+                    confirmed = locations[i][4] === '1' ? 'checked' : 0;
+                    $("#confirmed").prop(confirmed, locations[i][5]);
                     $("#id").val(locations[i][0]);
                     $("#description").val(locations[i][4]);
                     $("#form").show();
@@ -197,39 +208,26 @@ include('includes/config.php');
          * @param lat  A latitude of marker.
          * @param lng A longitude of marker.
          */
-        function saveData(lat,lng) {
-            var description = document.getElementById('manual_description').value;
-            var user = document.getElementById('manual_user').value;
-            var url = 'map.php?add_location&description=' + description + '&user=' + user + '&lat=' + lat + '&lng=' + lng;
-            window.location.href = url
-        }
-
-
-
+        // function saveData(lat, lng) {
+        //     localStorage.setItem("lat", lat)
+        //     localStorage.setItem("lng", lng)
+        //     alert("It is working")
+        //     document.getElementById("map1").innerHTML = "saved"
+        // }
     </script>
+    <script></script>
 
 
-<?php
+    <?php
 
-if(isset($_GET['description'])) {
-    $lat = $_GET['lat'];
-    $lng = $_GET['lng'];
-    $description = $_GET['description'];
-    $user =$_GET['user'];
-    echo $user;
-    // Inserts new row with place data.
-    $sql="INSERT INTO `locations`(`user`, `description`, `lat`, `lng`) VALUES (:user,:description,:lat,:lng)";
-          $query = $dbh->prepare($sql);
-          $query-> bindParam(':user', $user, PDO::PARAM_STR);
-          $query-> bindParam(':description', $description, PDO::PARAM_STR);
-          $query-> bindParam(':lat', $lat, PDO::PARAM_STR);
-          $query-> bindParam(':lng', $lng, PDO::PARAM_STR);
-          $query->execute(); 
-          $msg="insert successful";  
-}
+    if (isset($_GET['description'])) {
+        $lat = $_GET['lat'];
+        $lng = $_GET['lng'];
+        $description = $_GET['description'];
+        $user = $_GET['user'];
+    }
+    ?>
 
-
-
-?>
 </body>
+
 </html>
