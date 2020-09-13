@@ -117,19 +117,7 @@
                 </ul>
             </li>
 
-            <!-- Investment Management -->
-            <li class='parentd'>
-                <a href="#">
-                    <i class="fas fa-chart-line"></i>
-                    <span class="nav-label">Investment Managment</span><span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level">
-                    <li><a href="investmentdash.php">Dashboard</a></li>
-                    <li><a href="na.php">Tracking and Performance</a></li>
-                    <li><a href="na.php">Gallery and Testimonials</a></li>
-                    <li><a href="na.php">Complaints and Inquiry</a></li>
-                </ul>
-            </li>
+            
             <!-- End investment management -->
 
             <!-- Wallet -->
