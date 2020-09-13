@@ -37,15 +37,23 @@
             </li>
 
             <!-- Supply Chain Management -->
-            <li class="parentd">
+            <?php
+            if ($_SESSION["supply"] == 1) {
+                echo '<li class="parentd">
                 <a href="#">
                     <i class="fas fa-truck"></i>
                     <span class="nav-label">Supply chain management</span><span class="fa arrow"></span>
                 </a>
-            </li>
+            </li>';
+            }
+            ?>
+
 
             <!-- Risk Management -->
-            <li class="parentd">
+
+            <?php
+            if ($_SESSION["risk"] == 1) {
+                echo '<li class="parentd">
                 <a href="#">
                     <i class="fas fa-bolt"></i>
                     <span class="nav-label">Risk Management</span><span class="fa arrow"></span>
@@ -59,10 +67,32 @@
 
 
                 </ul>
-            </li>
+            </li>';
+            }
+            ?>
+
+
+
+            <!-- <li class="parentd">
+                <a href="#">
+                    <i class="fas fa-bolt"></i>
+                    <span class="nav-label">Risk Management</span><span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li><a href="na.php">Landing Summary Page</a></li>
+                    <li><a href="na.php">Insurance</a></li>
+                    <li><a href="na.php">Disaster Analysis</a></li>
+                    <li><a href="na.php">Pest/Disease Management</a></li>
+                    <li><a href="na.php">Certification</a></li>
+
+
+                </ul>
+            </li> -->
 
             <!-- Inventory Management -->
-            <li class="parentd">
+            <?php
+            if ($_SESSION["inventory"] == 1) {
+                echo '<li class="parentd">
                 <a href="#" data-toggle="tooltip" title="Inventory Management: where we Mage our inventory">
                     <i class="fas fa-university"></i>
                     <span class="nav-label">Inventory management</span><span class="fa arrow"></span>
@@ -78,10 +108,35 @@
                     <li><a href="na.php">Warehousing</a></li>
 
                 </ul>
-            </li>
+            </li>';
+            }
+            ?>
+
+
+
+            <!-- <li class="parentd">
+                <a href="#" data-toggle="tooltip" title="Inventory Management: where we Mage our inventory">
+                    <i class="fas fa-university"></i>
+                    <span class="nav-label">Inventory management</span><span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li><a href="na.php">Landing Summary Page</a></li>
+                    <li><a href="tangible-asset.php">Procurement</a></li>
+                    <li><a href="na.php">Product Management</a></li>
+                    <li><a href="na.php">Ware Housing</a></li>
+                    <li><a href="na.php">Input Analysis</a></li>
+                    <li><a href="na.php">output</a></li>
+                    <li><a href="na.php">Tracking and Report</a></li>
+                    <li><a href="na.php">Warehousing</a></li>
+
+                </ul>
+            </li> -->
 
             <!-- Monitoring and Evaluation -->
-            <li class="parentd">
+
+            <?php
+            if ($_SESSION["monitory"] == 1) {
+                echo '<li class="parentd">
                 <a href="#" class="spec">
                     <i class="fas fa-search"></i>
                     <span class="nav-label">Monitoring and Evaluation</span><span class="fa arrow"></span>
@@ -95,9 +150,53 @@
                     <li><a href="na.php">Record Management</a></li>
 
                 </ul>
-            </li>
+            </li>';
+            }
+            ?>
+
+
+            <!-- <li class="parentd">
+                <a href="#" class="spec">
+                    <i class="fas fa-search"></i>
+                    <span class="nav-label">Monitoring and Evaluation</span><span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li><a href="na.php">Landing summary</a></li>
+                    <li><a href="na.php">Field/Pen Management</a></li>
+                    <li><a href="na.php">Field Report</a></li>
+                    <li><a href="worker-dash.php">Worker Management</a></li>
+                    <li><a href="weather-dash.php">Weather</a></li>
+                    <li><a href="na.php">Record Management</a></li>
+
+                </ul>
+            </li> -->
 
             <!-- Financial Management -->
+
+
+            <?php
+            if ($_SESSION["financial"] == 1) {
+                echo '<li class="parentd">
+                <a href="#" class="spec">
+                    <i class="fas fa-money"></i>
+                    <span class="nav-label">Financial Management</span><span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+
+                    <li><a href="finmgtdash.php">Dashboard</a></li>
+                    <li><a href="expenditure.php">Expenditure Log</a></li>
+                    <li><a href="income.php">Income Log</a></li>
+                    <li><a href="asset.php">Asset</a></li>
+                    <li><a href="liability.php">Liability</a></li>
+                    <li><a href="budget.php">Budget</a></li>
+                    <li><a href="transaction.php">Transactions</a></li>
+                    <li><a href="#">Invoices</a></li>
+                </ul>
+            </li>';
+            }
+            ?>
+
+            <!--             
             <li class='parentd'>
                 <a href="#" class="spec">
                     <i class="fas fa-money"></i>
@@ -114,22 +213,11 @@
                     <li><a href="transaction.php">Transactions</a></li>
                     <li><a href="#">Invoices</a></li>
                 </ul>
-            </li>
+            </li> -->
 
-            <!-- Investment Management -->
-            <li class='parentd'>
-                <a href="#">
-                    <i class="fas fa-chart-line"></i>
-                    <span class="nav-label">Investment Managment</span><span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level">
-                    <li><a href="investmentdash.php">Dashboard</a></li>
-                    <li><a href="na.php">Tracking and Performance</a></li>
-                    <li><a href="na.php">Gallery and Testimonials</a></li>
-                    <li><a href="na.php">Complaints and Inquiry</a></li>
-                </ul>
-            </li>
-            <!-- End investment management -->
+
+
+
 
             <!-- Wallet -->
             <li>
@@ -142,8 +230,7 @@
 
             <!-- Notifications -->
             <li class="parentd">
-                <a href="#" class='spec'><i class="fa fa-edit"></i> <span class="nav-label">Notifications</span><span
-                        class="fa arrow"></span></a>
+                <a href="#" class='spec'><i class="fa fa-edit"></i> <span class="nav-label">Notifications</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
 
                     <li><a href="notification-dash.php">Notification Dashboard</a></li>
@@ -156,8 +243,7 @@
 
 
             <li class="parentd">
-                <a href="#" class='spec'><i class="fa fa-users"></i> <span class="nav-label">Users</span><span
-                        class="fa arrow"></span></a>
+                <a href="#" class='spec'><i class="fa fa-users"></i> <span class="nav-label">Users</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="profile.php">My Profile</a></li>
 
@@ -187,15 +273,15 @@
             parentds.forEach((two) => {
                 two.classList.remove('opened');
             })
-         if(opened==false){
-          one.parentElement.classList.add('opened');
-          opened = true;
-          }else{
-              one.parentElement.classList.remove('opened');
-              opened=false;
-          }
+            if (opened == false) {
+                one.parentElement.classList.add('opened');
+                opened = true;
+            } else {
+                one.parentElement.classList.remove('opened');
+                opened = false;
+            }
 
-         
+
 
         })
     })
