@@ -83,7 +83,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <div class="stat-panel-title text-uppercase">Facilities</div>
                                                 </div>
                                             </div>
-                                            <a href="buildinglist.php" class="block-anchor panel-footer text-center">Full
+                                            <a href="ftlist.php" class="block-anchor panel-footer text-center">Full
                                                 Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>
