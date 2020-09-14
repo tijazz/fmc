@@ -37,15 +37,23 @@
             </li>
 
             <!-- Supply Chain Management -->
-            <li class="parentd">
+            <?php
+            if ($_SESSION["supply"] == 1) {
+                echo '<li class="parentd">
                 <a href="#">
                     <i class="fas fa-truck"></i>
                     <span class="nav-label">Supply chain management</span><span class="fa arrow"></span>
                 </a>
-            </li>
+            </li>';
+            }
+            ?>
+
 
             <!-- Risk Management -->
-            <li class="parentd">
+
+            <?php
+            if ($_SESSION["risk"] == 1) {
+                echo '<li class="parentd">
                 <a href="#">
                     <i class="fas fa-bolt"></i>
                     <span class="nav-label">Risk Management</span><span class="fa arrow"></span>
@@ -59,10 +67,14 @@
 
 
                 </ul>
-            </li>
+            </li>';
+            }
+            ?>
 
             <!-- Inventory Management -->
-            <li class="parentd">
+            <?php
+            if ($_SESSION["inventory"] == 1) {
+                echo '<li class="parentd">
                 <a href="#" data-toggle="tooltip" title="Inventory Management: where we Mage our inventory">
                     <i class="fas fa-university"></i>
                     <span class="nav-label">Inventory management</span><span class="fa arrow"></span>
@@ -78,10 +90,18 @@
                     <li><a href="na.php">Warehousing</a></li>
 
                 </ul>
-            </li>
+            </li>';
+            }
+            ?>
+
+
+
 
             <!-- Monitoring and Evaluation -->
-            <li class="parentd">
+
+            <?php
+            if ($_SESSION["monitory"] == 1) {
+                echo '<li class="parentd">
                 <a href="#" class="spec">
                     <i class="fas fa-search"></i>
                     <span class="nav-label">Monitoring and Evaluation</span><span class="fa arrow"></span>
@@ -95,10 +115,18 @@
                     <li><a href="na.php">Record Management</a></li>
 
                 </ul>
-            </li>
+            </li>';
+            }
+            ?>
+
+
 
             <!-- Financial Management -->
-            <li class='parentd'>
+
+
+            <?php
+            if ($_SESSION["financial"] == 1) {
+                echo '<li class="parentd">
                 <a href="#" class="spec">
                     <i class="fas fa-money"></i>
                     <span class="nav-label">Financial Management</span><span class="fa arrow"></span>
@@ -114,22 +142,13 @@
                     <li><a href="transaction.php">Transactions</a></li>
                     <li><a href="#">Invoices</a></li>
                 </ul>
-            </li>
+            </li>';
+            }
+            ?>
 
-            <!-- Investment Management -->
-            <li class='parentd'>
-                <a href="#">
-                    <i class="fas fa-chart-line"></i>
-                    <span class="nav-label">Investment Managment</span><span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level">
-                    <li><a href="investmentdash.php">Dashboard</a></li>
-                    <li><a href="na.php">Tracking and Performance</a></li>
-                    <li><a href="na.php">Gallery and Testimonials</a></li>
-                    <li><a href="na.php">Complaints and Inquiry</a></li>
-                </ul>
-            </li>
-            <!-- End investment management -->
+
+
+
 
             <!-- Wallet -->
             <li>
@@ -178,30 +197,30 @@
 </nav>
 
 <script>
-    let parentds = document.querySelectorAll(".parentd");
-    let links = document.querySelectorAll(".parentd > a");
-    let links2 = document.querySelectorAll('.parentd2 > a');
-    links.forEach((one) => {
-        var opened = false;
-        one.addEventListener("click", () => {
-            parentds.forEach((two) => {
-                two.classList.remove('opened');
-            })
-         if(opened==false){
-          one.parentElement.classList.add('opened');
-          opened = true;
-          }else{
-              one.parentElement.classList.remove('opened');
-              opened=false;
-          }
-
-         
-
+let parentds = document.querySelectorAll(".parentd");
+let links = document.querySelectorAll(".parentd > a");
+let links2 = document.querySelectorAll('.parentd2 > a');
+links.forEach((one) => {
+    var opened = false;
+    one.addEventListener("click", () => {
+        parentds.forEach((two) => {
+            two.classList.remove('opened');
         })
+        if (opened == false) {
+            one.parentElement.classList.add('opened');
+            opened = true;
+        } else {
+            one.parentElement.classList.remove('opened');
+            opened = false;
+        }
+
+
+
     })
-    links2.forEach((one) => {
-        one.addEventListener("click", () => {
-            one.parentElement.classList.toggle("opened");
-        })
+})
+links2.forEach((one) => {
+    one.addEventListener("click", () => {
+        one.parentElement.classList.toggle("opened");
     })
+})
 </script>

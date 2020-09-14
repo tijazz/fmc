@@ -206,7 +206,7 @@ require_once "public/config/header.php";
 
                                 <tbody>
 
-                                    <?php $sql = "SELECT * from employee ";
+                                    <?php $sql = "SELECT * from employee where organization = '". $_SESSION['org'] ."' AND table_name = 'employee'";
                                     $query = $dbh->prepare($sql);
                                     $query->execute();
                                     $results = $query->fetchAll(PDO::FETCH_OBJ);
