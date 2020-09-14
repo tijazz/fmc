@@ -64,7 +64,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <div class="stat-panel-title text-uppercase">Field/pen</div>
                                                 </div>
                                             </div>
-                                            <a href="machinerylist.php" class="block-anchor panel-footer text-center">Full
+                                            <a href="fplist.php" class="block-anchor panel-footer text-center">Full
                                                 Detail <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>
