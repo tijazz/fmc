@@ -29,4 +29,9 @@
 			// you can configure `msgErrorClass` and `msgInvalidFileExtension` as well
 	});
 
+	 $('#zctb').DataTable({
+		 "scrollX": true
+	 });
+	 $('.dataTables_length').addClass('bs-select');
+
  });
