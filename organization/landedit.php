@@ -48,9 +48,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                 $query->execute();
                 $msg = "Rent Updated Successfully";
 
-                echo var_dump($sn);
+                // echo var_dump($sn);
 
-                // header('location:landlist.php');
+                header('location:landlist.php');
             } elseif (isset($_GET['s'])) {
                 $sn = $_GET['s'];
 
