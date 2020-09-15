@@ -104,7 +104,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                     <!-- Action Button Start -->
                                                     <td>
-                                                        <a data-toggle="modal" href="fpedit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <a data-toggle="modal" href="ftedit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
                                                         <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog model-sm">
