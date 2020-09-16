@@ -38,7 +38,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                 </div>
                 <div class="row dashboard-header">
                     <div class="panel-heading" style='padding:0;'>
-                        <h2 class="page-title">Manage Fields/Pens</h2>
+                        <h2 class="page-title">Manage Facilities</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -48,7 +48,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                         <!-- Zero Configuration Table -->
                         <div class="panel panel-default">
-                            <div class="panel-heading">Field/Pen List</div>
+                            <div class="panel-heading">Facilities List</div>
                             <div class="panel-body">
                                 <?php if ($error) { ?><div class="errorWrap" id="msgshow">
                                         <?php echo htmlentities($error); ?>
@@ -59,13 +59,13 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         <tr>
                                             <th>#</th>
                                             <th>Name</th>
-                                            <th>Size</th>
+                                            <th>Dimension</th>
                                             <th>Latitude</th>
                                             <th>Longitude</th>
-                                            <th>Soil type</th>
-                                            <th>pH</th>
-                                            <th>Chemical/Additives</th>
-                                            <th>Active Crops/Pens</th>
+                                            <th>capacity</th>
+                                            <th>Type</th>
+                                            <th>Purpose</th>
+                                            <th>Status</th>
                                             <th>Current Utilization</th>
                                             <th>Start Season</th>
                                             <th>End Season</th>
@@ -91,10 +91,10 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <td><?php echo htmlentities($result->size); ?></td>
                                                     <td><?php echo htmlentities($result->lat); ?></td>
                                                     <td><?php echo htmlentities($result->lng); ?></td>
-                                                    <td><?php echo htmlentities($result->soil_type); ?></td>
-                                                    <td><?php echo htmlentities($result->pH); ?></td>
-                                                    <td><?php echo htmlentities($result->chemical); ?></td>
-                                                    <td><?php echo htmlentities($result->active); ?></td>
+                                                    <td><?php echo htmlentities($result->capacity); ?></td>
+                                                    <td><?php echo htmlentities($result->type); ?></td>
+                                                    <td><?php echo htmlentities($result->purpose); ?></td>
+                                                    <td><?php echo htmlentities($result->status); ?></td>
                                                     <td><?php echo htmlentities($result->utilization); ?></td>
                                                     <td><?php echo htmlentities($result->start_season); ?></td>
                                                     <td><?php echo htmlentities($result->end_season); ?></td>
@@ -104,7 +104,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                     <!-- Action Button Start -->
                                                     <td>
-                                                        <a data-toggle="modal" href="ftedit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <a data-toggle="modal" href="ftedit.php?s=<?php echo $result->sn; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
                                                         <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog model-sm">
