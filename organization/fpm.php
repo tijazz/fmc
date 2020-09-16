@@ -103,7 +103,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <div class="stat-panel-title text-uppercase">Mapping/Tagging</div>
                                                 </div>
                                             </div>
-                                            <a href="tagging.php" class="block-anchor panel-footer text-center">Full
+                                            <a href="maptag.php" class="block-anchor panel-footer text-center">Full
                                                 Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>
@@ -128,7 +128,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <div class="stat-panel-title text-uppercase">Scheduling and Designation</div>
                                                 </div>
                                             </div>
-                                            <a href="vehiclelist.php" class="block-anchor panel-footer text-center">Full
+                                            <a href="scheduling.php" class="block-anchor panel-footer text-center">Full
                                                 Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>
