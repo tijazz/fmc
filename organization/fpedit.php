@@ -95,17 +95,17 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                     <p>
                         <label for="soil_type">Soil Type</label>
-                        <input type="text" name="soil_type" value="<?php echo ($results->lng); ?>">
+                        <input type="text" name="soil_type" value="<?php echo ($results->soil_type); ?>">
                     </p>
 
                     <p>
                         <label for="ph">pH Value</label>
-                        <input type="text" name="ph" value="<?php echo ($results->lng); ?>">
+                        <input type="text" name="ph" value="<?php echo ($results->ph); ?>">
                     </p>
 
                     <p>
                         <label for="chemical">Chemicals</label>
-                        <input type="text" name="chemical" value="<?php echo ($results->lng); ?>">
+                        <input type="text" name="chemical" value="<?php echo ($results->chemicals); ?>">
                     </p>
 
                     <p>
