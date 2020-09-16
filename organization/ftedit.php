@@ -31,10 +31,10 @@ if (strlen($_SESSION['alogin']) == 0) {
             <?php
             if (isset($_POST['edit'])) {
                 $sn = $_POST['edit'];
-                $soil_type = $_POST['soil_type'];
-                $ph = $_POST['ph'];
-                $chemical = $_POST['chemical'];
-                $active = $_POST['active'];
+                $capacity = $_POST['capacity'];
+                $type = $_POST['type'];
+                $purpose = $_POST['purpose'];
+                $status = $_POST['status'];
                 $utilization = $_POST['utilization'];
                 $start_season = $_POST['start_season'];
                 $end_season = $_POST['end_season'];
@@ -42,12 +42,12 @@ if (strlen($_SESSION['alogin']) == 0) {
                 $manager = $_POST['manager'];
                 $fallow = $_POST['fallow'];
 
-                $sql = "UPDATE `locations` SET `soil_type`=:soil_type,`ph`=:ph,`chemical`=:chemical,`active`=:active,`utilization`=:utilization,`start_season`=:start_season,`end_season`=:end_season,`ownership`=:ownership,`fallow`=:fallow,`manager`=:manager WHERE id=(:sn)";
+                $sql = "UPDATE `building` SET `capacity`=:capacity,`type`=:type,`purpose`=:purpose,`status`=:status,`utilization`=:utilization,`start_season`=:start_season,`end_season`=:end_season,`ownership`=:ownership,`fallow`=:fallow,`manager`=:manager WHERE sn=(:sn)";
                 $query = $dbh->prepare($sql);
-                $query->bindParam(':soil_type', $soil_type, PDO::PARAM_STR);
-                $query->bindParam(':ph', $ph, PDO::PARAM_STR);
-                $query->bindParam(':chemical', $chemical, PDO::PARAM_STR);
-                $query->bindParam(':active', $active, PDO::PARAM_STR);
+                $query->bindParam(':capacity', $capacity, PDO::PARAM_STR);
+                $query->bindParam(':type', $type, PDO::PARAM_STR);
+                $query->bindParam(':purpose', $purpose, PDO::PARAM_STR);
+                $query->bindParam(':status', $status, PDO::PARAM_STR);
                 $query->bindParam(':utilization', $utilization, PDO::PARAM_STR);
                 $query->bindParam(':start_season', $start_season, PDO::PARAM_STR);
                 $query->bindParam(':end_season', $end_season, PDO::PARAM_STR);
@@ -58,12 +58,12 @@ if (strlen($_SESSION['alogin']) == 0) {
                 $query->execute();
                 $msg = "Rent Updated Successfully";
 
-                header('location:fplist.php');
+                header('location:ftlist.php');
             } elseif (isset($_GET['s'])) {
                 $sn = $_GET['s'];
 
 
-                $sql = "SELECT * from `locations` WHERE id=(:idedit)";
+                $sql = "SELECT * from `building` WHERE sn=(:idedit)";
                 $query = $dbh->prepare($sql);
                 $query->bindValue(':idedit', $sn, PDO::PARAM_STR);
                 $query->execute();
@@ -71,7 +71,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 
             ?>
-                <form action="fpedit.php" method="POST" class="forma">
+                <form action="ftedit.php" method="POST" class="forma">
                     <p>
                         <label for="name">Name</label>
                         <input type="text" name="name" value="<?php echo ($results->name); ?>" disabled>
@@ -84,33 +84,36 @@ if (strlen($_SESSION['alogin']) == 0) {
                     </p>
 
                     <p>
-                        <label for="location">Latitude</label>
+                        <label for="latitude">Latitude</label>
                         <input type="text" name="latitude" value="<?php echo ($results->lat); ?>" disabled>
                     </p>
 
                     <p>
-                        <label for="location">Longitude</label>
+                        <label for="longitude">Longitude</label>
                         <input type="text" name="longitude" value="<?php echo ($results->lng); ?>" disabled>
                     </p>
 
                     <p>
-                        <label for="soil_type">Soil Type</label>
-                        <input type="text" name="soil_type" value="<?php echo ($results->lng); ?>">
+                        <label for="capacity">Capacity</label>
+                        <input type="text" name="capacity" value="<?php echo ($results->capacity); ?>">
                     </p>
 
                     <p>
-                        <label for="ph">pH Value</label>
-                        <input type="text" name="ph" value="<?php echo ($results->lng); ?>">
+                        <label for="type">Type</label>
+                        <input type="text" name="type" value="<?php echo ($results->type); ?>">
                     </p>
 
                     <p>
-                        <label for="chemical">Chemicals</label>
-                        <input type="text" name="chemical" value="<?php echo ($results->lng); ?>">
+                        <label for="purpose">Purpose</label>
+                        <input type="text" name="purpose" value="<?php echo ($results->purpose); ?>">
                     </p>
 
                     <p>
-                        <label for="active">Active Crops/Pens</label>
-                        <input type="text" name="active" value="<?php echo ($results->active); ?>">
+                        <label for="status">Status</label>
+                        <select name="status">
+                            <option value="full">Active</option>
+                            <option value="lease">Inactive</option>
+                        </select>
                     </p>
 
                     <p>
