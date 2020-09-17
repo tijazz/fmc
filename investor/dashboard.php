@@ -33,12 +33,12 @@ if (strlen($_SESSION['alogin']) == 0) {
                 <div class="row  white-bg dashboard-header">
 
                     <div class="col-sm-12 col-lg-12">
-                        <h2 class="FMS-title">Farm Management Services</h2>
+                        <h2 class="FMS-title"><?php echo $_SESSION['name'] ?> Investment Management</h2>
 
 
                         <div class="holder">
 
-                            
+
 
 
                             <div class="fin-mgt-fm">
@@ -52,7 +52,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                             </div>
 
                             <div class="grouped">
-                                
+
                                 <div class="investments">
                                     <div class="title-fm-spec">Investment Management</div>
                                     <div class="svg-holder line-up">
