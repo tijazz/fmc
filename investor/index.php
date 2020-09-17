@@ -22,7 +22,7 @@
 					$_SESSION['alogin']=$_POST['email'];
 					
 			//		($_SESSION['staffID'] = $results->id);
-					($_SESSION['staffname'] = $results->fullname);
+					($_SESSION['name'] = $results->fullname);
 					($_SESSION['email'] = $results->email);
 					($_SESSION['category'] = $results->category);
 					($_SESSION['unit_value'] = $results->unit_value);
