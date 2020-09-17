@@ -194,33 +194,8 @@ if (strlen($_SESSION['alogin']) == 0) {
                                     <a href="na.php" id="proceed">View</a>
 
                                 </div>
-                                <div class="investments">
-                                    <div class="title-fm-spec">Investment Management</div>
-                                    <div class="svg-holder line-up">
-                                        <div class="trans">
-                                            <div class="green"><i class="fa fa-arrow-up fa-2x"></i></div>
-                                            <span>
-                                                <h3>500UIC</h3>
-                                            </span>
-                                        </div>
-                                        <div class="trans">
-                                            <div class="red"><i class="fa fa-arrow-down fa-2x"></i></div>
-                                            <span>
-                                                <h3>50UIC</h3>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                </div>
+                               
                             </div>
-
-
-
-
-
-
-
-
 
                         </div>
 
