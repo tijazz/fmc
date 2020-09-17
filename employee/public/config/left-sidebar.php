@@ -3,13 +3,13 @@
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element open"> <span>
-                        <img alt="image" class="img-profile" src="images/<?php echo ($_SESSION["images"]); ?>">
+                        <img alt="image" class="img-profile" src="../images/<?php echo ($_SESSION["images"]); ?>">
                     </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="true">
                         <!-- User name -->
                         <span class="clear"> <span class="block m-t-xs">
                                 <strong class="font-bold">
-                                    <?php echo ($_SESSION["staffname"]); ?>
+                                    <?php echo ($_SESSION["name"]); ?>
                                 </strong>
                                 <!-- User position -->
                             </span> <span class="text-muted text-xs block">
