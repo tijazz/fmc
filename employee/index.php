@@ -12,13 +12,24 @@ if (isset($_POST['login'])) {
 	$results = $query->fetchAll(PDO::FETCH_OBJ);
 	if ($query->rowCount() > 0) {
 		$_SESSION['alogin'] = $_POST['username'];
+		$_SESSION['name'] = $results[0]->name;
 		$_SESSION['id'] = $results[0]->id;
-		$_SESSION['org'] = $results[0]->organization;
 		$_SESSION['supply'] = $results[0]->supply;
 		$_SESSION['risk'] = $results[0]->risk;
 		$_SESSION['inventory'] = $results[0]->inventory;
 		$_SESSION['monitory'] = $results[0]->monitory;
 		$_SESSION['financial'] = $results[0]->financial;
+		$_SESSION['images'] = $results[0]->image;
+
+		$sql = "SELECT * FROM organization WHERE id=:id";
+		$query = $dbh->prepare($sql);
+		$query->bindParam(':id', $results[0]->organization, PDO::PARAM_STR);
+		$query->execute();
+		$results = $query->fetchAll(PDO::FETCH_OBJ);
+
+		if ($query->rowCount() > 0) {
+			$_SESSION['org'] = $results[0]->organization;
+		}
 
 		// echo $_SESSION['supply'];
 		echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
