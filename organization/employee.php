@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
     $contract_start = $_POST['contract_start'];
     $contract_end = $_POST['contract_end'];
     $salary = $_POST['salary'];
-    $org = $_SESSION['org'];
+    $org = $_SESSION['id'];
 
 
     // sending email
@@ -195,7 +195,7 @@ require_once "public/config/header.php";
                             <table class="employee_table" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th><?php echo $_SESSION['org']; ?></th>
+                                        <th>#</th>
                                         <th>Image</th>
                                         <th>Name</th>
                                         <th>Email</th>
@@ -214,7 +214,7 @@ require_once "public/config/header.php";
                                 <tbody>
 
                                     <?php 
-                                    $sql = "SELECT * FROM `employee` WHERE organization = '" . $_SESSION['org'] ."'";
+                                    $sql = "SELECT * FROM `employee` WHERE organization = '" . $_SESSION['id'] ."'";
                                     $query = $dbh->prepare($sql);
                                     $query->execute();
                                     $results = $query->fetchAll(PDO::FETCH_OBJ);
