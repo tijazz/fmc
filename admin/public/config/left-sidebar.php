@@ -38,9 +38,9 @@
 
             <!-- Supply Chain Management -->
             <li class="parentd">
-                <a href="#">
+                <a href="organization.php">
                     <i class="fas fa-truck"></i>
-                    <span class="nav-label">Supply chain management</span><span class="fa arrow"></span>
+                    <span class="nav-label">Organization</span>
                 </a>
             </li>
 
@@ -48,90 +48,11 @@
             <li class="parentd">
                 <a href="#">
                     <i class="fas fa-bolt"></i>
-                    <span class="nav-label">Risk Management</span><span class="fa arrow"></span>
+                    <span class="nav-label">Investors</span>
                 </a>
-                <ul class="nav nav-second-level">
-                    <li><a href="na.php">Landing Summary Page</a></li>
-                    <li><a href="na.php">Insurance</a></li>
-                    <li><a href="na.php">Disaster Analysis</a></li>
-                    <li><a href="na.php">Pest/Disease Management</a></li>
-                    <li><a href="na.php">Certification</a></li>
-
-
-                </ul>
             </li>
 
-            <!-- Inventory Management -->
-            <li class="parentd">
-                <a href="#" data-toggle="tooltip" title="Inventory Management: where we Mage our inventory">
-                    <i class="fas fa-university"></i>
-                    <span class="nav-label">Inventory management</span><span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level">
-                    <li><a href="na.php">Landing Summary Page</a></li>
-                    <li><a href="tangible-asset.php">Procurement</a></li>
-                    <li><a href="na.php">Product Management</a></li>
-                    <li><a href="na.php">Ware Housing</a></li>
-                    <li><a href="na.php">Input Analysis</a></li>
-                    <li><a href="na.php">output</a></li>
-                    <li><a href="na.php">Tracking and Report</a></li>
-                    <li><a href="na.php">Warehousing</a></li>
-
-                </ul>
-            </li>
-
-            <!-- Monitoring and Evaluation -->
-            <li class="parentd">
-                <a href="#" class="spec">
-                    <i class="fas fa-search"></i>
-                    <span class="nav-label">Monitoring and Evaluation</span><span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level">
-                    <li><a href="na.php">Landing summary</a></li>
-                    <li><a href="na.php">Field/Pen Management</a></li>
-                    <li><a href="na.php">Field Report</a></li>
-                    <li><a href="employee-dash.php">Employee Management</a></li>
-                    <li><a href="worker-dash.php">Worker Management</a></li>
-                    <li><a href="weather-dash.php">Weather</a></li>
-                    <li><a href="na.php">Record Management</a></li>
-
-                </ul>
-            </li>
-
-            <!-- Financial Management -->
-            <li class='parentd'>
-                <a href="#" class="spec">
-                    <i class="fas fa-money"></i>
-                    <span class="nav-label">Financial Management</span><span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level">
-
-                    <li><a href="finmgtdash.php">Dashboard</a></li>
-                    <li><a href="expenditure.php">Expenditure Log</a></li>
-                    <li><a href="income.php">Income Log</a></li>
-                    <li><a href="asset.php">Asset</a></li>
-                    <li><a href="liability.php">Liability</a></li>
-                    <li><a href="budget.php">Budget</a></li>
-                    <li><a href="transaction.php">Transactions</a></li>
-                    <li><a href="#">Invoices</a></li>
-                </ul>
-            </li>
-
-            <!-- Investment Management -->
-            <li class='parentd'>
-                <a href="#">
-                    <i class="fas fa-chart-line"></i>
-                    <span class="nav-label">Investment Managment</span><span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level">
-                    <li><a href="investmentdash.php">Dashboard</a></li>
-                    <li><a href="na.php">Tracking and Performance</a></li>
-                    <li><a href="na.php">Gallery and Testimonials</a></li>
-                    <li><a href="na.php">Complaints and Inquiry</a></li>
-                </ul>
-            </li>
-            <!-- End investment management -->
-
+            
             <!-- Wallet -->
             <li>
                 <a href="wallet.php">

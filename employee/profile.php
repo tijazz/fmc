@@ -40,12 +40,12 @@ if (strlen($_SESSION['alogin']) == 0) {
                             <div class="profile_info">
                                 <div class="image_circle">
 
-                                    <img alt="image" class="img-profile" src="images/<?php echo ($_SESSION["images"]); ?>">
+                                    <img alt="image" class="img-profile" src="../images/<?php echo ($_SESSION["images"]); ?>">
 
                                     <i class="fa fa-pencil"></i>
                                 </div>
                                 <div class="user_info">
-                                    <span><?php echo ($_SESSION["staffname"]); ?></span>
+                                    <span><?php echo ($_SESSION["name"]); ?></span>
                                 </div>
                             </div>
                         </div>
@@ -65,8 +65,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 <ul class="user_full_info">
 
                                     <?php
-                                    $sql = "SELECT * from employee where id = " . $_SESSION['id'] . " and organization = '" . $_SESSION['org'] . "'";
+                                    $sql = "SELECT * from employee where id = :id";
                                     $query = $dbh->prepare($sql);
+                                    $query->bindParam(':id', $_SESSION['id'], PDO::PARAM_STR);
                                     $query->execute();
                                     $results = $query->fetchAll(PDO::FETCH_OBJ);
                                     $cnt = 1;
@@ -78,31 +79,11 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         ?>
 
                                     <li><i class="fa fa-envelope"></i><span><?php echo $result->name; ?> </span></li>
-                                    <li><i class="fa fa-list-alt"></i><span><?php echo $result->email; ?></span>
-                                    </li>
-                                    <li>
-                                        <p><i class="fa fa-building-o"></i> <i class="fa fa-map-marker"></i></p>
-
-                                        Number of Unit: <span style="color:red"><?php echo $result->password; ?>
-
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <p><i class="fa fa-building-o"></i> <i class="fa fa-map-marker"></i></p>
-
-                                        Amount Invested: <span style="color:red"><?php echo $result->gender; ?>
-
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <p><i class="fa fa-user"></i> <i class="fa fa-map-marker"></i></p>
-
-                                        Expected ROI: <span style="color:green"><?php echo $result->role; ?></span>
-
-                                    </li>
-                                    <li><i class="fa fa-phone"></i> <span>
-                                            <?php echo $result->phone; ?>
-                                        </span></li>
+                                    <li><i class="fa fa-list-alt"></i><span><?php echo $result->email; ?></span></li>
+                                    <li><i class="fa fa-map-marker"></i><span><?php echo $result->password; ?></span></li>
+                                    <li> <i class="fa fa-map-marker"></i><span><?php echo $result->gender; ?></span></li>
+                                    <li> <i class="fa fa-map-marker"></i><span><?php echo $result->role; ?></span></li>
+                                    <li><i class="fa fa-phone"></i><span><?php echo $result->phone; ?></span></li>
                                     <li><span class="edit"><a href="editProfile.php"><i class="fa fa-pencil fa-2x"></i></a></span></li>
                                 </ul>
                             </div>

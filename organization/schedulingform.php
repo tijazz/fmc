@@ -16,25 +16,25 @@ if(isset($_POST['submit']))
 
     $name = $_POST['name'];
     $description = $_POST['description'];
-    $serial_no = $_POST['serial_no'];
-    $manufacturer = $_POST['manufacturer'];
-    $amount = $_POST['amount'];
+    $end = $_POST['end'];
     $user_id = $_SESSION['id'];
-        $org_id = $_SESSION['id'];
+    $org_id = $_SESSION['org'];
+    
 	
-    $sql= "INSERT INTO `vehicle`(`name`, `description`, `user_id`, `serial_no`, `amount`, `manufacturer`, `org_id`) VALUES (:name, :description, :user_id, :serial_no, :amount, :manufacturer, :org_id)";
+    $sql="INSERT INTO `alarm`(`name`, `user_id`, `description`, `org_id`, `end`) VALUES (:name, :user_id, :description, :org_id, :end)";
     $query = $dbh->prepare($sql);
     $query-> bindParam(':name', $name, PDO::PARAM_STR);
     $query-> bindParam(':user_id', $user_id, PDO::PARAM_STR);
     $query-> bindParam(':description', $description, PDO::PARAM_STR);
-    $query-> bindParam(':serial_no', $serial_no, PDO::PARAM_STR);
-    $query-> bindParam(':amount', $amount, PDO::PARAM_STR);
-    $query-> bindParam(':manufacturer', $manufacturer, PDO::PARAM_STR);
-    $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
+    $query-> bindParam(':org_id', $org_id, PDO::PARAM_STR);
+    $query-> bindParam(':end', $end, PDO::PARAM_STR);
     $query->execute(); 
     $msg="Rent Updated Successfully";
+    header('location:schedulingform.php');
 
-    header('location:vehiclelist.php');
+
 }
-}  
-?>
+
+
+
+}

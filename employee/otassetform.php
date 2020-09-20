@@ -22,8 +22,9 @@ if(isset($_POST['submit']))
     $status = $_POST['status'];
     $location = $_POST['location'];
     $user_id = $_SESSION['id'];
+    $org_id = $_SESSION['org_id'];
 	
-    $sql="INSERT INTO `other_asset`(`user_id`, `name`, `description`, `amount`, `quantity`, `manufacturer`, `status`, `location`) VALUES (:user_id, :name, :description, :amount, :quantity, :manufacturer, :status, :location)";
+    $sql= "INSERT INTO `other_asset`(`user_id`, `name`, `description`, `amount`, `quantity`, `manufacturer`, `status`, `location`, `org_id`) VALUES (:user_id, :name, :description, :amount, :quantity, :manufacturer, :status, :location, :org_id)";
     $query = $dbh->prepare($sql);
     $query-> bindParam(':user_id', $user_id, PDO::PARAM_STR);
     $query-> bindParam(':name', $name, PDO::PARAM_STR);
@@ -33,6 +34,7 @@ if(isset($_POST['submit']))
     $query-> bindParam(':manufacturer', $manufacturer, PDO::PARAM_STR);
     $query-> bindParam(':status', $status, PDO::PARAM_STR);
     $query-> bindParam(':location', $location, PDO::PARAM_STR);
+    $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
     $query->execute(); 
     $msg="Rent Updated Successfully";
 

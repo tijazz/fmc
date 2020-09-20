@@ -65,13 +65,13 @@
                             <h1 class="nav navbar-nav">
                                 <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal"
                                     style="color:#fff;" class="small-box-footer"><i
-                                        class="glyphicon glyphicon-plus text-blue"></i> Add</a>
+                                        class="glyphicon glyphicon-plus text-blue"></i> Add Category</a>
                             </h1>
 
                             <h1 class="nav navbar-nav navbar-right">
                                 <a class="btn btn-md btn-primary" href="#add2" data-target="#add2" data-toggle="modal"
                                     style="color:#fff;" class="small-box-footer"><i
-                                        class="glyphicon glyphicon-plus text-blue"></i> Add category</a>
+                                        class="glyphicon glyphicon-plus text-blue"></i> Add Item</a>
                             </h1>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                             <?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?>
                             </div><?php } 
 								else if($msg){?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php }?>
-                            <table id="zctb" class="display table table-dark table-striped table-bordered table-hover"
+                            <table id="zctb tablePreview" class="display table table-dark table-striped table-bordered table-hover"
                                 cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
@@ -102,8 +102,9 @@
 
                                 <tbody>
 
-                                    <?php $sql = "SELECT * from `machinery`";
-										$query = $dbh -> prepare($sql);
+                                    <?php $sql = "SELECT * from `machinery` where org_id = :org_id";
+                                        $query = $dbh -> prepare($sql);
+                                        $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
 										$query->execute();
 										$results=$query->fetchAll(PDO::FETCH_OBJ);
 										$cnt=1;

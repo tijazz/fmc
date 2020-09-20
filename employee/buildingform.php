@@ -21,9 +21,10 @@ if(isset($_POST['submit']))
     $location = $_POST['location'];
     $category = $_POST['category'];
     $user_id = $_SESSION['id'];
+    $org_id = $_SESSION['org_id'];
     
 	
-    $sql="INSERT INTO `building`(`name`, `user_id`, `description`, `amount` `size`, `location`, `category`) VALUES (:name, :user_id, :description, :amount, :size, :location, :category)";
+    $sql= "INSERT INTO `building`(`name`, `user_id`, `description`, `amount` `size`, `location`, `category`, `org_id`) VALUES (:name, :user_id, :description, :amount, :size, :location, :category, :org_id)";
     $query = $dbh->prepare($sql);
     $query-> bindParam(':name', $name, PDO::PARAM_STR);
     $query-> bindParam(':user_id', $user_id, PDO::PARAM_STR);
@@ -32,6 +33,7 @@ if(isset($_POST['submit']))
     $query-> bindParam(':size', $size, PDO::PARAM_STR);
     $query-> bindParam(':location', $location, PDO::PARAM_STR);
     $query-> bindParam(':category', $category, PDO::PARAM_STR);
+        $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
     $query->execute(); 
     $msg="Rent Updated Successfully";
     header('location:buildinglist.php');

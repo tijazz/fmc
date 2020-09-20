@@ -65,13 +65,13 @@
                     <h1 class="nav navbar-nav">
                         <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal"
                             style="color:#fff;" class="small-box-footer"><i
-                                class="glyphicon glyphicon-plus text-blue"></i> Add</a>           
+                                class="glyphicon glyphicon-plus text-blue"></i> Add Category</a>           
                     </h1>
 
                     <h1 class="nav navbar-nav navbar-right">
                         <a class="btn btn-md btn-primary" href="#add2" data-target="#add2" data-toggle="modal"
                             style="color:#fff;" class="small-box-footer"><i
-                                class="glyphicon glyphicon-plus text-blue"></i> Add category</a>
+                                class="glyphicon glyphicon-plus text-blue"></i> Add Items</a>
                     </h1>
                     </div>
                     </div>
@@ -103,8 +103,9 @@
 
                                 <tbody>
 
-                                    <?php $sql = "SELECT * from `administration`";
-										$query = $dbh -> prepare($sql);
+                                    <?php $sql = "SELECT * from `administration` WHERE org_id=:org_id";
+                                        $query = $dbh -> prepare($sql);
+                                        $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
 										$query->execute();
 										$results=$query->fetchAll(PDO::FETCH_OBJ);
 										$cnt=1;

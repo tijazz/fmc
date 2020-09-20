@@ -11,7 +11,7 @@
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
                             <span class="m-r-sm text-muted welcome-message">Welcome
-                                <?php echo ($_SESSION["alogin"]); ?></span>
+                                <?php echo ($_SESSION["name"]); ?></span>
                         </li>
                         <li>
                             <a href="faq.php"><span class="m-r-sm text-muted welcome-message">FAQ</span></a>

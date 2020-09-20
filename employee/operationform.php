@@ -23,9 +23,10 @@ if(isset($_POST['submit']))
     $place = $_POST['place'];
     $status = $_POST['status'];
     $user_id = $_SESSION['id'];
+    $org_id = $_SESSION['org_id'];
     
 	
-    $sql="INSERT INTO `operation`(`user_id`, `name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`) VALUES (:user_id, :name, :description, :quantity, :manufacturer, :location, :category, :place, :status)";
+    $sql= "INSERT INTO `operation`(`user_id`, `name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`, `org_id`) VALUES (:user_id, :name, :description, :quantity, :manufacturer, :location, :category, :place, :status, :org_id)";
     $query = $dbh->prepare($sql);
     $query-> bindParam(':user_id', $user_id, PDO::PARAM_STR);
     $query-> bindParam(':name', $name, PDO::PARAM_STR);
@@ -36,6 +37,7 @@ if(isset($_POST['submit']))
     $query-> bindParam(':category', $category, PDO::PARAM_STR);
     $query-> bindParam(':place', $place, PDO::PARAM_STR);
     $query-> bindParam(':status', $status, PDO::PARAM_STR);
+    $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
     $query->execute(); 
     $msg="Rent Updated Successfully";
     header('location:operationlist.php');

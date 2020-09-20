@@ -3,17 +3,16 @@
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element open"> <span>
-                        <img alt="image" class="img-profile" src="images/<?php echo ($_SESSION["images"]); ?>">
+                        <img alt="image" class="img-profile" src="../images/<?php echo ($_SESSION["images"]); ?>">
                     </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="true">
                         <!-- User name -->
                         <span class="clear"> <span class="block m-t-xs">
                                 <strong class="font-bold">
-                                    <?php echo ($_SESSION["staffname"]); ?>
+                                    <?php echo ($_SESSION["name"]); ?>
                                 </strong>
                                 <!-- User position -->
-                            </span> <span class="text-muted text-xs block">
-                                <?php echo ($_SESSION["category"]); ?> Investor <b class="caret"></b></span> </span>
+                            </span> <span class="text-muted text-xs block"> Investor <b class="caret"></b></span> </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li>
@@ -50,6 +49,14 @@
                     <span class="nav-label">Transaction</span>
                 </a>
             </li>
+
+            <li>
+                <a href="na.php">
+                    <i class="fa fa-star"></i>
+                    <span class="nav-label">Investee</span>
+                </a>
+            </li>
+
             <li class="active">
                 <a class="user__dets" href="#"><i class="fa fa-users"></i> <span class="nav-label">Manage
                         User</span><span id="arrow" class="fa arrow"></span></a>
