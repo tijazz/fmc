@@ -65,13 +65,13 @@
                             <h1 class="nav navbar-nav">
                                 <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal"
                                     style="color:#fff;" class="small-box-footer"><i
-                                        class="glyphicon glyphicon-plus text-blue"></i> Add</a>
+                                        class="glyphicon glyphicon-plus text-blue"></i> Add Category</a>
                             </h1>
 
                             <h1 class="nav navbar-nav navbar-right">
                                 <a class="btn btn-md btn-primary" href="#add2" data-target="#add2" data-toggle="modal"
                                     style="color:#fff;" class="small-box-footer"><i
-                                        class="glyphicon glyphicon-plus text-blue"></i> Add category</a>
+                                        class="glyphicon glyphicon-plus text-blue"></i> Add Item</a>
                             </h1>
                         </div>
                     </div>
