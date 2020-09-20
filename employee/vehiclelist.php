@@ -60,7 +60,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                         <div class="navbar">
                             <div class="container-fluid" style='padding-left:7px;'>
                                 <h1 class="nav navbar-nav">
-                                    <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add</a>
+                                    <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add Category</a>
                                 </h1>
                             </div>
                         </div>
@@ -87,8 +87,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                     <tbody>
 
-                                        <?php $sql = "SELECT * from `vehicle`";
+                                        <?php $sql = "SELECT * from `vehicle` WHERE org_id=:org_id";
                                         $query = $dbh->prepare($sql);
+                                        $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
                                         $query->execute();
                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
                                         $cnt = 1;
