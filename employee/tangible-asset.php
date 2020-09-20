@@ -149,7 +149,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 													<div class="stat-panel-title text-uppercase">Other Tangible Asset</div>
 												</div>
 											</div>
-											<a href="otassetlist" class="block-anchor panel-footer text-center">Full Detail
+											<a href="otassetlist.php" class="block-anchor panel-footer text-center">Full Detail
 												&nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
