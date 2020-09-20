@@ -53,14 +53,28 @@ if (strlen($_SESSION['alogin']) == 0) {
                 </div>
                 <div class="row">
 
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
+
+                        <!-- button style Start -->
+                        <div class="navbar">
+                            <div class="container-fluid" style="padding-left:7px;">
+                                <h1 class="nav navbar-nav">
+                                    <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add</a>
+                                </h1>
+
+                                <h1 class="nav navbar-nav navbar-right">
+                                    <a class="btn btn-md btn-primary" href="#add2" data-target="#add2" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add category</a>
+                                </h1>
+                            </div>
+                        </div>
+                        <!-- button style End -->
                         <!-- Zero Configuration Table -->
                         <div class="panel panel-default">
-                            <div class="panel-heading">Location of Farms</div>
+                            <div class="panel-heading">Alarms</div>
                             <div class="panel-body">
                                 <?php if ($error) { ?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
 
-                                <table id="zctb" class="display table table-dark table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                                <table id="zctb tablePreview" class="display table table-dark table-striped table-bordered table-hover" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -87,7 +101,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <td><?php echo htmlentities($result->description); ?></td>
                                                     <td><?php echo htmlentities($result->start); ?></td>
                                                     <td><?php echo htmlentities($result->end); ?></td>
-                                                    
+
 
 
                                                     <!-- Action Button Start -->
@@ -100,7 +114,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                             </div>
                                                         </div>
 
-                                                        <a href="machinerylist.php?del=<?php echo $result->sn; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
+                                                        <a href="schedulinglist.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                                     </td>
 
                                                     <!-- Action Button End -->
@@ -118,6 +132,55 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                         </div>
                     </div>
+
+                    <div id="add" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog">
+                            <div class="modal-content" style="height:auto">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span></button>
+                                    <h4 id='edit' class="modal-title">Add New Product</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="schedulingform.php" method="POST" class="forma" id="f_edit">
+
+                                        <p>
+                                            <label for="name">Name</label>
+                                            <input type="text" name="name" value="">
+                                        </p>
+
+
+                                        <p>
+                                            <label for="description">Description</label>
+                                            <input type="text" name="description" value="">
+                                        </p>
+
+
+                                        <p>
+                                            <label for="size">end</label>
+                                            <input type="date" name="end" value="">
+                                        </p>
+
+
+                                        <p>
+                                            <button type="submit" name="submit" id="submit">
+                                                Submit
+                                            </button>
+                                        </p>
+
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!--end of modal-dialog-->
 
                 </div>
 
