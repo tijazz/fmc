@@ -29,6 +29,7 @@ if (isset($_POST['login'])) {
 
 		if ($query->rowCount() > 0) {
 			$_SESSION['org'] = $results[0]->organization;
+			$_SESSION['org_id'] = $results[0]->id;
 		}
 
 		// echo $_SESSION['supply'];
