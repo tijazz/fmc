@@ -11,16 +11,20 @@
         }
         else{
             if(isset($_GET['del']))
-                {
+            {
                     $id=$_GET['del'];
 
-                    $sql = "delete from testimonial WHERE id=:id";
+                    $sql = "delete from building WHERE sn=:id";
                     $query = $dbh->prepare($sql);
                     $query -> bindParam(':id',$id, PDO::PARAM_STR);
                     $query -> execute();                
 
                     $msg="Data Deleted successfully";
-                }
+                    header('location:buildinglist.php');
+            }else{
+                
+            }
+            
 
                     
 
@@ -49,30 +53,37 @@
                 ?>
 
             </div>
-            <div class="row  border-bottom white-bg dashboard-header">
-                <div class="panel-heading">
-                    <h2 class="page-title">Manage Building</h2>
+            <div class="row dashboard-header">
+                <div class="panel-heading" style='padding:0;'>
+                    <h2 class="page-title" >Manage Buildings</h2>
                 </div>
             </div>
             <div class="row">
 
                 <div class="col-lg-12">
 
-                    <h2 class="page-title">Building</h2>
-                    <h1>
-                        <a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal"
+
+                    <!-- button style Start -->
+                    <div class="navbar">
+                    <div class="container-fluid" style="padding-left:7px;">
+                    <h1 class="nav navbar-nav">
+                        <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal"
                             style="color:#fff;" class="small-box-footer"><i
-                                class="glyphicon glyphicon-plus text-blue"></i></a>
+                                class="glyphicon glyphicon-plus text-blue"></i> Add</a>           
                     </h1>
 
-                    <h1>
-                        <a class="btn btn-lg btn-primary" href="#add2" data-target="#add2" data-toggle="modal"
+                    <h1 class="nav navbar-nav navbar-right">
+                        <a class="btn btn-md btn-primary" href="#add2" data-target="#add2" data-toggle="modal"
                             style="color:#fff;" class="small-box-footer"><i
-                                class="glyphicon glyphicon-plus text-blue"></i> add category</a>
+                                class="glyphicon glyphicon-plus text-blue"></i> Add category</a>
                     </h1>
+                    </div>
+                    </div>
+                    <!-- button style End -->
+
                     <!-- Zero Configuration Table -->
                     <div class="panel panel-default">
-                        <div class="panel-heading">List Users</div>
+                        <div class="panel-heading">Building list</div>
                         <div class="panel-body">
                             <?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?>
                             </div><?php } 
@@ -85,6 +96,7 @@
                                         <th>Name</th>
                                         <th>Description</th>
                                         <th>Size/capacity</th>
+                                        <th>Amount</th>
                                         <th>Location</th>
                                         <th>Category</th>
                                         <th>Date</th>
@@ -108,18 +120,32 @@
                                         <td><?php echo htmlentities($result->name);?></td>
                                         <td><?php echo htmlentities($result->description);?></td>
                                         <td><?php echo htmlentities($result->size);?></td>
+                                        <td><?php echo htmlentities($result->amount);?></td>
                                         <td><?php echo htmlentities($result->location);?></td>
                                         <td><?php echo htmlentities($result->category);?></td>
                                         <td><?php echo htmlentities($result->date);?></td>
 
+                                        <!-- Action Button Start -->
                                         <td>
-                                            <a href="edit-testimo.php?edit=<?php echo $result->id;?>"
-                                                onclick="return confirm('Do you want to Edit');">&nbsp; <i
-                                                    class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                            <a href="testimolist.php?del=<?php echo $result->id;?>;?>"
+                                            <a data-toggle="modal" href="buildingedit.php?s=<?php echo $result->sn;?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                            <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                            <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog model-sm">
+                                                        <div class="modal-content"> </div>
+                                                    </div>
+                                            </div>
+
+                                            <a href="buildinglist.php?del=<?php echo $result->sn;?>"
                                                 onclick="return confirm('Do you want to Delete');"><i
                                                     class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                         </td>
+
+                                        <!-- Action Button End -->
+                                        
+    
+                                        
+                                    
+
                                     </tr>
                                     <?php $cnt=$cnt+1; }} ?>
 
@@ -134,10 +160,10 @@
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span></button>
-                                        <h4 class="modal-title">Add New Product</h4>
+                                        <h4 id='edit' class="modal-title">Add New Product</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="buildingform.php" method="POST" class="forma">
+                                        <form action="buildingform.php" method="POST" class="forma" id="f_edit">
                                             
                                             <p>
                                                 <label for="name">Name</label>
@@ -153,6 +179,11 @@
                                             <p>
                                                 <label for="size">Size</label>
                                                 <input type="text" name="size" value="">
+                                            </p>
+
+                                            <p>
+                                                <label for="size">Amount</label>
+                                                <input type="text" name="amount" value="">
                                             </p>
 
                                             <p>
@@ -181,7 +212,7 @@
                                             </p>
 
                                             <p>
-                                                <button type="submit" name="submit">
+                                                <button type="submit" name="submit" id="submit">
                                                     Submit
                                                 </button>
                                             </p>
@@ -195,19 +226,11 @@
                                     </div>
 
                                 </div>
-                                <!--end of modal-dialog-->
+                                
                             </div>
 
-                            <!---
-                <div class="col-lg-4">
-                        <?php
-            //    require_once "public/config/right-sidebar.php";
-                ?>
-
-                            </div>
-                                                    -->
                         </div>
-
+<!--end of modal-dialog-->
 
                         <div id="add2" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                             aria-hidden="true" style="display: none;">
@@ -268,7 +291,6 @@
             <?php
                 require_once "public/config/footer.php";
                 ?>
-
 </body>
 
 <!-- Mirrored from webapplayers.com/inspinia_admin-v2.6.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Sep 2016 02:26:53 GMT -->

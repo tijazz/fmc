@@ -1,52 +1,70 @@
         
         <!-- Mainly scripts -->
         <script src="public/js/jquery-2.1.1.js"></script>
-        <script src="public/js/bootstrap.min.js"></script>
-        <script src="../js/plugins/metisMenu/jquery.metisMenu.js"></script>
-        <script src="public/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-        <script src="public/js/plugins/dataTables/datatables.min.js"></script>
-        <script src="public/js/plugins/jasny/jasny-bootstrap.min.js"></script>
-        <script src="public/js/main.js"></script>
-        
+        <script src="public/js/plugins/jquery-ui/jquery-ui.min.js"></script>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="public/js/skycons.js"></script>
-        <!-- GeoCode -->
-        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCSWB8ogOt_P0L7lXpu-tCNTwB-atv9CD0&amp;sensor=false&amp;libraries=places"></script>
-        <script src="public/js/jquery.geocomplete.min.js"></script>
-        <!-- Flot
         <script src="public/js/plugins/flot/jquery.flot.js"></script>
         <script src="public/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
         <script src="public/js/plugins/flot/jquery.flot.spline.js"></script>
         <script src="public/js/plugins/flot/jquery.flot.resize.js"></script>
         <script src="public/js/plugins/flot/jquery.flot.pie.js"></script>
-        -->
-        <!-- Peity 
+
+        <script src="public/js/bootstrap.min.js"></script>
+        <script src="public/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+        <script src="public/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="public/js/plugins/dataTables/datatables.min.js"></script>
+        <script src="public/js/plugins/jasny/jasny-bootstrap.min.js"></script>
+        <script src="public/js/main.js"></script>
+        
+        <script src="js/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="public/js/skycons.js"></script>
+        <!-- GeoCode -->
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCSWB8ogOt_P0L7lXpu-tCNTwB-atv9CD0&amp;sensor=false&amp;libraries=places"></script>
+        <script src="public/js/jquery.geocomplete.min.js"></script>
+
+        <!-- Necessary -->
+
+        <script src="js/bootstrap-select.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.dataTables.min.js"></script>
+        <script src="js/dataTables.bootstrap.min.js"></script>
+        <script src="js/Chart.min.js"></script>
+        <script src="js/fileinput.js"></script>
+        <script src="js/chartData.js"></script>
+        <script src="js/main.js"></script>
+    
+
+        <!-- // Flot -->
+
+        
+        <!-- // Peity  -->
         <script src="public/js/plugins/peity/jquery.peity.min.js"></script>
         <script src="public/js/demo/peity-demo.js"></script>
-         -->
+        
+
         <!-- Custom and plugin javascript -->
         <script src="public/js/inspinia.js"></script>
         <script src="public/js/plugins/pace/pace.min.js"></script>
         
         <!-- jQuery UI -->
-        <script src="public/js/plugins/jquery-ui/jquery-ui.min.js"></script>
         
-        <!-- GITTER
+        <!-- //  GITTER -->
         <script src="public/js/plugins/gritter/jquery.gritter.min.js"></script>
-         -->
-        <!-- Sparkline
+        
+        <!-- // Sparkline -->
         <script src="public/js/plugins/sparkline/jquery.sparkline.min.js"></script>
-         -->
-        <!-- Sparkline demo data 
+        
+        <!-- // sparkline demo data  -->
         <script src="public/js/demo/sparkline-demo.js"></script>
-         -->
-        <!-- ChartJS
+        
+        <!-- // ChartJS -->
         <script src="public/js/plugins/chartJs/Chart.min.js"></script>
-        -->
-        <!-- Toastr 
+    
+        <!-- // Toastr  -->
+        <!-- <script src="public/js/plugins/toastr/toastr.min.js"></script> -->
         <script src="public/js/plugins/toastr/toastr.min.js"></script>
-        -->
+        
         <!-- Slide -->
         <script>
       var skycons = new Skycons({"color": "#ebebeb"}),

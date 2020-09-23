@@ -18,14 +18,17 @@ if(isset($_POST['submit']))
     $name = $_POST['name'];
     $description = $_POST['description'];
     $snum = $_POST['snum'];
+    $amount = $_POST['amount'];
     $manufacturer = $_POST['manufacturer'];
-    echo $description;
+    $user_id = $_SESSION['id'];
 	
-    $sql="INSERT INTO `machinery`(`category`, `name`, `description`, `serial_no`, `manufacturer`) VALUES (:category, :name, :description, :serial_no, :manufacturer)";
+    $sql="INSERT INTO `machinery`(`category`, `name`, `user_id`, `description`, `amount`, `serial_no`, `manufacturer`) VALUES (:category, :name, :user_id, :description, :amount, :serial_no, :manufacturer)";
     $query = $dbh->prepare($sql);
     $query-> bindParam(':category', $category, PDO::PARAM_STR);
     $query-> bindParam(':name', $name, PDO::PARAM_STR);
+    $query-> bindParam(':user_id', $user_id, PDO::PARAM_STR);
     $query-> bindParam(':description', $description, PDO::PARAM_STR);
+    $query-> bindParam(':amount', $amount, PDO::PARAM_STR);
     $query-> bindParam(':serial_no', $snum, PDO::PARAM_STR);
     $query-> bindParam(':manufacturer', $manufacturer, PDO::PARAM_STR);
     $query->execute(); 

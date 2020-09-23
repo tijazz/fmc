@@ -1,128 +1,210 @@
 <nav class="navbar-default navbar-static-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav metismenu" id="side-menu">
-                    <li class="nav-header">
-                        <div class="dropdown profile-element open"> <span>
-                            <img alt="image" class="img-profile" src="images/<?php echo ($_SESSION["images"]); ?>">
-                        </span>
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="true">
-                            <!-- User name -->
-                            <span class="clear"> <span class="block m-t-xs"> 
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element open"> <span>
+                        <img alt="image" class="img-profile" src="images/<?php echo ($_SESSION["images"]); ?>">
+                    </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="true">
+                        <!-- User name -->
+                        <span class="clear"> <span class="block m-t-xs">
                                 <strong class="font-bold">
                                     <?php echo ($_SESSION["staffname"]); ?>
                                 </strong>
                                 <!-- User position -->
                             </span> <span class="text-muted text-xs block">
-                                    <?php echo ($_SESSION["category"]); ?> Investor <b class="caret"></b></span> </span> </a>
-                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li>
-                                    Amount Invested: <span style="color:red"><?php echo ($_SESSION["unit_value"]); ?></span>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    Expected ROI: <span style="color:green"><?php echo ($_SESSION["roi"]); ?></span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="logo-element">
-                            <img src="images/logo.png" alt="" style="height:30px;">
-                        </div>
-                    </li>
-                    <li class="active">
-                        <a href="dashboard.php">
-                            <i class="fa fa-dashboard"></i>
-                            <span class="nav-label">Dashboard</span> 
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-truck"></i>
-                            <span class="nav-label">Supply chain management</span></a>
-                        </li>
+                                <?php echo ($_SESSION["category"]); ?> Investor <b class="caret"></b></span> </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li>
-                            <a href="#">
-                                <i class="fa fa-exclamation-triangle"></i>
-                                <span class="nav-label">Risk Management</span>
-                            </a>
+                            Amount Invested: <span style="color:red"><?php echo ($_SESSION["unit_value"]); ?></span>
                         </li>
-                        
+                        <li class="divider"></li>
                         <li>
-                            <a href="#">
-                                <i class="fa fa-home"></i>
-                                <span class="nav-label">Inventory management</span>
-                            </a>
+                            Expected ROI: <span style="color:green"><?php echo ($_SESSION["roi"]); ?></span>
                         </li>
-                        
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-search"></i>
-                                <span class="nav-label">Monitoring and Evaluation</span> 
-                            </a>
-                        </li>
-                        
-                        <li>
-                            <a href="#" class='user__dets'>
-                                <i class="fa fa-money"></i>
-                                <span class="nav-label">Financial Management</span>
-                                <span id="arrow" class="fa arrow arrow1"></span>
-                            </a>
-                            <ul class="nav nav-second-level collapse in" id="user_dets_list" style="display:none;">
-                                <li><a href="advert.php">Advert</a></li> 
-                                <li><a href="assetform.php">Asset</a></li>          
-                                <li><a href="expendform.php">Expenditure</a></li>
-                                <li><a href="grant.php">Grant</a></li>
-                                <li><a href="incomeform.php">Income</a></li>
-                                <li><a href="item.php">Item</a></li>
-                                <li><a href="legalfees.php">Legal Fees</a></li>
-                                <li><a href="liabilityform.php">Liability</a></li>
-                                <li><a href="maintenanceform.php">Maintenance</a></li>
-                                <li><a href="powerform.php">Power</a></li>
-                                <li><a href="rent.php">Rent</a></li>
-                                <li><a href="salary.php">Salary</a></li>
-                                <li><a href="service.php">Service</a></li>
-                                <li><a href="utilities.php">Utilities</a></li>
-                                <li><a href="purchases.php">Purchaces</a></li>
-                            </ul>
-                        </li>
-                        
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-credit-card"></i>
-                                <span class="nav-label">Investment Managment</span>
-                            </a>
-                        </li>
-                        
-                        <li>
-                            <a href="transaction.php">
-                                <i class="fa fa-star"></i>
-                                <span class="nav-label">Transaction</span>  
-                            </a>
-                        </li>
-                        <li class="active">
-                    <a class="user__dets" href="#"><i class="fa fa-users"></i> <span class="nav-label">Manage User</span><span id="arrow" class="fa arrow"></span></a>
-                    <ul id="user_dets_list" class="nav nav-second-level collapse in" style="display:none;">
-                      <li><a href="Profile.php">View Profile</a></li>                        
-                      <li><a href="editProfile.php">Edit Profile</a></li>                 
-                      <li><a href="notification.php">Notifications</a></li>                  
-                      <li><a href="inquiry.php">Send Inquiry</a></li>                   
-                      <li><a href="complaints.php">Messages</a></li>     
                     </ul>
-                </li>
-                        
-                        <li>
-                            <a href="dashboard.php">
-                                <i class="fa fa-bar-chart"></i>
-                                <span class="nav-label">DUFMA General Dashboard</span>
-                            </a>
-                        </li>
-                       
-                    </ul>
-                    
                 </div>
-            </nav>
-            <style>
-            /* .arrow{transform:rotate(180deg);} */
-            .block{display:block;opacity:1;}
-            .rotated{transform:rotate(180deg);}
-            </style>
-            <script src="public/js/side_bar.js"></script>
+                <div class="logo-element">
+                    <img src="images/logo.png" alt="" style="height:30px;">
+                </div>
+            </li>
+            <li class="active">
+                <a href="dashboard.php">
+                    <i class="fas fa-user"></i>
+                    <span class="nav-label">Dashboard</span>
+                </a>
+            </li>
+
+            <!-- Supply Chain Management -->
+            <li class="parentd">
+                <a href="#">
+                    <i class="fas fa-truck"></i>
+                    <span class="nav-label">Supply chain management</span><span class="fa arrow"></span>
+                </a>
+            </li>
+
+            <!-- Risk Management -->
+            <li class="parentd">
+                <a href="#">
+                    <i class="fas fa-bolt"></i>
+                    <span class="nav-label">Risk Management</span><span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li><a href="na.php">Landing Summary Page</a></li>
+                    <li><a href="na.php">Insurance</a></li>
+                    <li><a href="na.php">Disaster Analysis</a></li>
+                    <li><a href="na.php">Pest/Disease Management</a></li>
+                    <li><a href="na.php">Certification</a></li>
+
+
+                </ul>
+            </li>
+
+            <!-- Inventory Management -->
+            <li class="parentd">
+                <a href="#" data-toggle="tooltip" title="Inventory Management: where we Mage our inventory">
+                    <i class="fas fa-university"></i>
+                    <span class="nav-label">Inventory management</span><span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li><a href="na.php">Landing Summary Page</a></li>
+                    <li><a href="tangible-asset.php">Procurement</a></li>
+                    <li><a href="na.php">Product Management</a></li>
+                    <li><a href="na.php">Ware Housing</a></li>
+                    <li><a href="na.php">Input Analysis</a></li>
+                    <li><a href="na.php">output</a></li>
+                    <li><a href="na.php">Tracking and Report</a></li>
+                    <li><a href="na.php">Warehousing</a></li>
+
+                </ul>
+            </li>
+
+            <!-- Monitoring and Evaluation -->
+            <li class="parentd">
+                <a href="#" class="spec">
+                    <i class="fas fa-search"></i>
+                    <span class="nav-label">Monitoring and Evaluation</span><span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li><a href="na.php">Landing summary</a></li>
+                    <li><a href="na.php">Field/Pen Management</a></li>
+                    <li><a href="na.php">Field Report</a></li>
+                    <li><a href="employee-dash.php">Employee Management</a></li>
+                    <li><a href="worker-dash.php">Worker Management</a></li>
+                    <li><a href="weather-dash.php">Weather</a></li>
+                    <li><a href="na.php">Record Management</a></li>
+
+                </ul>
+            </li>
+
+            <!-- Financial Management -->
+            <li class='parentd'>
+                <a href="#" class="spec">
+                    <i class="fas fa-money"></i>
+                    <span class="nav-label">Financial Management</span><span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+
+                    <li><a href="finmgtdash.php">Dashboard</a></li>
+                    <li><a href="expenditure.php">Expenditure Log</a></li>
+                    <li><a href="income.php">Income Log</a></li>
+                    <li><a href="asset.php">Asset</a></li>
+                    <li><a href="liability.php">Liability</a></li>
+                    <li><a href="budget.php">Budget</a></li>
+                    <li><a href="transaction.php">Transactions</a></li>
+                    <li><a href="#">Invoices</a></li>
+                </ul>
+            </li>
+
+            <!-- Investment Management -->
+            <li class='parentd'>
+                <a href="#">
+                    <i class="fas fa-chart-line"></i>
+                    <span class="nav-label">Investment Managment</span><span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li><a href="investmentdash.php">Dashboard</a></li>
+                    <li><a href="na.php">Tracking and Performance</a></li>
+                    <li><a href="na.php">Gallery and Testimonials</a></li>
+                    <li><a href="na.php">Complaints and Inquiry</a></li>
+                </ul>
+            </li>
+            <!-- End investment management -->
+
+            <!-- Wallet -->
+            <li>
+                <a href="wallet.php">
+                    <i class="fas fa-wallet"></i>
+                    <span class="nav-label">Wallet</span>
+                </a>
+            </li>
+
+
+            <!-- Notifications -->
+            <li class="parentd">
+                <a href="#" class='spec'><i class="fa fa-edit"></i> <span class="nav-label">Notifications</span><span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+
+                    <li><a href="notification-dash.php">Notification Dashboard</a></li>
+                    <li><a href="notification.php">Notification</a></li>
+                </ul>
+            </li>
+
+
+
+
+
+            <li class="parentd">
+                <a href="#" class='spec'><i class="fa fa-users"></i> <span class="nav-label">Users</span><span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="profile.php">My Profile</a></li>
+                    <li><a href="userlist.php">Users list</a></li>
+                    <li><a href="deleteduser.php">Deleted Users</a></li>
+
+                </ul>
+            </li>
+
+            <li>
+                <a href="dashboard.php">
+                    <i class="fa fa-star"></i>
+                    <span class="nav-label">DUFMA General Dashboard</span>
+                </a>
+            </li>
+
+
+        </ul>
+    </div>
+
+</nav>
+
+<script>
+    let parentds = document.querySelectorAll(".parentd");
+    let links = document.querySelectorAll(".parentd > a");
+    let links2 = document.querySelectorAll('.parentd2 > a');
+    links.forEach((one) => {
+        var opened = false;
+        one.addEventListener("click", () => {
+            parentds.forEach((two) => {
+                two.classList.remove('opened');
+            })
+         if(opened==false){
+          one.parentElement.classList.add('opened');
+          opened = true;
+          }else{
+              one.parentElement.classList.remove('opened');
+              opened=false;
+          }
+
+         
+
+        })
+    })
+    links2.forEach((one) => {
+        one.addEventListener("click", () => {
+            one.parentElement.classList.toggle("opened");
+        })
+    })
+</script>

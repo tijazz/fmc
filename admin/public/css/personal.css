@@ -273,6 +273,8 @@ ul{padding:0;list-style:none;}
   width:5px;
   height:40px;
   transition:background 0.5s ease-in-out;
+  border-radius:5px;
+
 }
 
 
@@ -286,19 +288,19 @@ ul{padding:0;list-style:none;}
   background:#1ee2bb;
 }
 
-.parentd ul{
+.parentd > ul{
   display:none;
 }
 
-.parentd a .arrow{
+.parentd > a > .arrow{
   transform:rotate(-90deg);
 }
 
-.opened a .arrow{
+.opened > a > .arrow{
   transform: rotate(90deg);
 }
 
-.opened ul{
+.opened > ul{
   display:block;
 }
 
