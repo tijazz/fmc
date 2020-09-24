@@ -71,7 +71,7 @@
                     <li><a href="na.php">Landing Summary Page</a></li>
                     <li><a href="tangible-asset.php">Procurement</a></li>
                     <li><a href="productlist.php">Product Management</a></li>
-                    <li><a href="warehouse.php">Ware Housing</a></li>
+                    <li><a href="warehouselist.php">Ware Housing</a></li>
                     <li><a href="na.php">Input Analysis</a></li>
                     <li><a href="na.php">output</a></li>
                     <li><a href="na.php">Tracking and Report</a></li>
