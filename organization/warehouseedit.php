@@ -24,31 +24,34 @@ if (strlen($_SESSION['alogin']) == 0) {
 
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title">Edit Product</h4>
+            <h4 class="modal-title">Edit Warehouse</h4>
         </div>
         <div class="modal-body">
 
             <?php
             if (isset($_POST['edit'])) {
                 $sn = $_POST['edit'];
-                $name = $_POST['name'];
-                $amount = $_POST['amount'];
+                $product = $_POST['product']; 
+                $warehouse = $_POST['warehouse'];
+                $quantity = $_POST['quantity'];
+                $status = $_POST['status'];
 
-
-                $sql = "UPDATE `product` SET `name`=(:name), `amount`=(:amount) WHERE id=(:sn)";
+                $sql = "UPDATE `warehouse` SET `product_id`=(:product), `warehouse`=(:warehouse), `quantity`=(:quantity), `status`=(:status) WHERE sn=(:sn)";
                 $query = $dbh->prepare($sql);
-                $query->bindParam(':amount', $amount, PDO::PARAM_STR);
-                $query->bindParam(':name', $name, PDO::PARAM_STR);
+                $query->bindParam(':product', $product, PDO::PARAM_STR);
+                $query->bindParam(':warehouse', $warehouse, PDO::PARAM_STR);
+                $query->bindParam(':quantity', $quantity, PDO::PARAM_STR);
+                $query->bindParam(':status', $status, PDO::PARAM_STR);
                 $query->bindValue(':sn', $sn, PDO::PARAM_STR);
                 $query->execute();
                 $msg = "Product Updated Successfully";
 
-                header('location:productlist.php');
+                header('location:warehouselist.php');
             } elseif (isset($_GET['s'])) {
                 $sn = $_GET['s'];
 
 
-                $sql = "SELECT * from `product` WHERE id=(:idedit)";
+                $sql = "SELECT * from `warehouse` WHERE sn=(:idedit)";
                 $query = $dbh->prepare($sql);
                 $query->bindValue(':idedit', $sn, PDO::PARAM_STR);
                 $query->execute();
@@ -56,12 +59,11 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 
             ?>
-                <form action="productedit.php" method="POST" class="forma">
+                <form action="warehouseedit.php" method="POST" class="forma">
 
                     <p>
                         <label for="product">Products</label>
                         <select name="product" id="">
-                            <option selected disabled>Select</option>
                             <?php
                             $sq = "SELECT * FROM `product` WHERE org_id=:org_id";
                             $qu = $dbh->prepare($sq);
@@ -82,7 +84,6 @@ if (strlen($_SESSION['alogin']) == 0) {
                     <p>
                         <label for="warehouse">WareHouse</label>
                         <select name="warehouse" id="">
-                            <option selected disabled>Select</option>
                             <?php
                             $s = "SELECT * FROM `building` WHERE org_id=:org_id";
                             $q = $dbh->prepare($s);
@@ -102,7 +103,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                     <p>
                         <label for="quantity">Quantity</label>
-                        <input type="text" name="quantity" value="<?php echo $results->name; ?>">
+                        <input type="text" name="quantity" value="<?php echo $results->quantity; ?>">
                     </p>
 
                     <p>
@@ -115,7 +116,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 
                     <p>
-                        <button type="submit" name="edit" value="<?php echo ($results->id); ?>">
+                        <button type="submit" name="edit" value="<?php echo ($results->sn); ?>">
                             Submit
                         </button>
                     </p>
