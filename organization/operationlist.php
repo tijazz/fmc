@@ -51,7 +51,7 @@
             </div>
             <div class="row dashboard-header">
                 <div class="panel-heading" style='padding:0;'>
-                    <h2 class="page-title">Manage Operations</h2>
+                    <h2 class="page-title">Manage Goods/Products</h2>
                 </div>
             </div>
             <div class="row">
@@ -77,7 +77,7 @@
                     <!-- button style End -->
                     <!-- Zero Configuration Table -->
                     <div class="panel panel-default">
-                        <div class="panel-heading">List Operations</div>
+                        <div class="panel-heading">List Goods/Products</div>
                         <div class="panel-body">
                             <?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?>
                             </div><?php } 
@@ -258,7 +258,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <form action="assetcat.php" method="POST" class="forma">
-                                            <p>
+                                            <p hidden>
                                                 <label for="full_name">Item</label>
                                                 <input type="text" name="item" value="operation">
                                             </p>
