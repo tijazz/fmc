@@ -75,7 +75,6 @@
                     <li><a href="na.php">Input Analysis</a></li>
                     <li><a href="na.php">output</a></li>
                     <li><a href="na.php">Tracking and Report</a></li>
-                    <li><a href="na.php">Warehousing</a></li>
 
                 </ul>
             </li>
