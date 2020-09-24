@@ -52,7 +52,7 @@
             </div>
             <div class="row  dashboard-header">
                 <div class="panel-heading" style='padding:0;'>
-                    <h2 class="page-title">Manage Administration</h2>
+                    <h2 class="page-title">Manage Equipment And Devices</h2>
                 </div>
             </div>
             <div class="row">
@@ -154,7 +154,7 @@
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span></button>
-                                        <h4 class="modal-title">Add New Product</h4>
+                                        <h4 class="modal-title">Add Equipment / Device</h4>
                                     </div>
                                     <div class="modal-body">
                                         <form action="administrationform.php" method="POST" class="forma">
