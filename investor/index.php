@@ -52,40 +52,32 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	
+
 	<link rel="stylesheet" href="public/css/bootstrap.min.css">
-	<link rel="stylesheet" href="public/css/style.css">
+	<link rel="stylesheet" href="public/css/login.css">
 
 </head>
 
 <body>
 	<div class="login-page bk-img">
 		<div class="form-content">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3">
-						<h1 class="text-center text-bold mt-4x" style="color:#fff">Login</h1>
-						<div class="well row pt-2x pb-3x bk-light">
-							<div class="col-md-8 col-md-offset-2">
-								<form method="post">
-
-									<label for="" class="text-uppercase text-sm">Your Email</label>
-									<input type="text" placeholder="Username" name="email" class="form-control mb" required>
-
-									<label for="" class="text-uppercase text-sm">Password</label>
-									<input type="password" placeholder="Password" name="password" class="form-control mb" required>
-									<button class="btn btn-primary btn-block" name="login" type="submit">LOGIN</button>
-								</form>
-								<br>
-								<p>Don't Have an Account? <a href="register.php" >Signup</a></p>
-							</div>
+			<h1 class="org-text text-center text-bold mt-" style="color:#fff">Investor Login</h1>
+			<div class="well row pt-2x pb-3x bk-light">
+				<div class=form_holder">
+					<form method="post">
+						<label for="" class="text-uppercase text-sm">Your Username </label>
+						<input type="text" placeholder="Username" name="username" class="form-control mb" required>
+						<label for="" class="text-uppercase text-sm">Password</label>
+						<input type="password" placeholder="Password" name="password" class="form-control mb" required>
+						<div class="cover-tn">
+							<button name="login" type="submit">LOGIN</button>
 						</div>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 
 </body>
 

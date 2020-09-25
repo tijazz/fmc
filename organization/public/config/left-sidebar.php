@@ -68,7 +68,7 @@
                     <span class="nav-label">Inventory management</span><span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="na.php">Landing Summary Page</a></li>
+                    <li><a href="inventorymgmt.php">Landing Summary Page</a></li>
                     <li><a href="tangible-asset.php">Procurement</a></li>
                     <li><a href="na.php">Product Management</a></li>
                     <li><a href="na.php">Ware Housing</a></li>
@@ -117,7 +117,7 @@
                 </ul>
             </li>
 
-            
+
             <!-- End investment management -->
 
             <!-- Wallet -->
@@ -167,7 +167,14 @@
     </div>
 
 </nav>
+<style>
+    @media(min-width:600px) {
 
+        #wrapper>nav>div {
+            position: fixed;
+        }
+    }
+</style>
 <script>
     let parentds = document.querySelectorAll(".parentd");
     let links = document.querySelectorAll(".parentd > a");
@@ -178,15 +185,15 @@
             parentds.forEach((two) => {
                 two.classList.remove('opened');
             })
-         if(opened==false){
-          one.parentElement.classList.add('opened');
-          opened = true;
-          }else{
-              one.parentElement.classList.remove('opened');
-              opened=false;
-          }
+            if (opened == false) {
+                one.parentElement.classList.add('opened');
+                opened = true;
+            } else {
+                one.parentElement.classList.remove('opened');
+                opened = false;
+            }
 
-         
+
 
         })
     })
