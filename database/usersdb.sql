@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2020 at 12:56 PM
+-- Generation Time: Sep 24, 2020 at 06:00 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -152,7 +152,16 @@ INSERT INTO `asset` (`item`, `category`) VALUES
 ('Building', 'warehouse'),
 ('operation', 'seed'),
 ('administration', 'fan'),
-('administration', 'A.C.');
+('administration', 'A.C.'),
+('Machinery', 'tractor'),
+('Building', 'admin'),
+('Building', 'ops'),
+('Building', 'storage'),
+('Building', 'warehouse'),
+('operation', 'seed'),
+('administration', 'fan'),
+('administration', 'A.C.'),
+('Machinery', 'Truck');
 
 -- --------------------------------------------------------
 
@@ -271,7 +280,7 @@ INSERT INTO `employee` (`id`, `user_id`, `image`, `name`, `email`, `password`, `
 (52, 49, 'dark-world.jpg', 'dufma', 'aashoremi@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'male', 'Owner', '08162313162', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, 'Dufma', 'employee', 0, 0, 0, 0, 0),
 (53, 2, 'annotation-2020-08-17-123933.png', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', 'e00cf25ad42683b3df678c61f42c6bda', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, 'jascol', 'employee', 1, 0, 0, 1, 0),
 (54, NULL, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0),
-(55, 1, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, '1', 'employee', 0, 0, 1, 1, 1);
+(55, 1, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, '1', 'employee', 0, 0, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -345,6 +354,12 @@ INSERT INTO `feedback` (`id`, `sender`, `reciver`, `title`, `feedbackdata`, `att
 (21, 'bolaji@gmail.com', 'Admin', 'Password Issue', 'I can\'t sign in to m account. Aadmin kindly help fix it', ' '),
 (19, 'fatai@gmail.com', 'Admin', 'Hands on Java Programming Language', 'I need help with tutoring in Java OOP.', ' '),
 (20, 'fatai@gmail.com', 'Admin', 'Introduction to Object Oriented Technology', 'Avoid to use a param with dot like \":table.column\".\r\nIt will return a error \'PDOException\' with message \'SQLSTATE[HY093]: Invalid parameter number: parameter was not defined\' in ...', ' '),
+(21, 'bolaji@gmail.com', 'Admin', 'Password Issue', 'I can\'t sign in to m account. Aadmin kindly help fix it', ' '),
+(19, 'fatai@gmail.com', 'Admin', 'Hands on Java Programming Language', 'I need help with tutoring in Java OOP.', ' '),
+(20, 'fatai@gmail.com', 'Admin', 'Introduction to Object Oriented Technology', 'Avoid to use a param with dot like \":table.column\".\r\nIt will return a error \'PDOException\' with message \'SQLSTATE[HY093]: Invalid parameter number: parameter was not defined\' in ...', ' '),
+(21, 'bolaji@gmail.com', 'Admin', 'Password Issue', 'I can\'t sign in to m account. Aadmin kindly help fix it', ' '),
+(19, 'fatai@gmail.com', 'Admin', 'Hands on Java Programming Language', 'I need help with tutoring in Java OOP.', ' '),
+(20, 'fatai@gmail.com', 'Admin', 'Introduction to Object Oriented Technology', 'Avoid to use a param with dot like \":table.column\".\r\nIt will return a error \'PDOException\' with message \'SQLSTATE[HY093]: Invalid parameter number: parameter was not defined\' in ...', ' '),
 (21, 'bolaji@gmail.com', 'Admin', 'Password Issue', 'I can\'t sign in to m account. Aadmin kindly help fix it', ' ');
 
 -- --------------------------------------------------------
@@ -364,6 +379,13 @@ CREATE TABLE `gallery` (
 --
 
 INSERT INTO `gallery` (`id`, `imageName`, `created_at`) VALUES
+(1, '838.jpg', '2020-07-03 00:52:16'),
+(4, 'invest-in-the-stock-market.jpg', '2020-07-03 00:54:51'),
+(5, '1556112789graduate-finance-jobs-planning.jpg', '2020-07-03 00:55:26'),
+(1, '838.jpg', '2020-07-03 00:52:16'),
+(4, 'invest-in-the-stock-market.jpg', '2020-07-03 00:54:51'),
+(5, '1556112789graduate-finance-jobs-planning.jpg', '2020-07-03 00:55:26'),
+(0, 'dark-world.jpg', '2020-08-18 19:34:58'),
 (1, '838.jpg', '2020-07-03 00:52:16'),
 (4, 'invest-in-the-stock-market.jpg', '2020-07-03 00:54:51'),
 (5, '1556112789graduate-finance-jobs-planning.jpg', '2020-07-03 00:55:26'),
@@ -832,23 +854,23 @@ INSERT INTO `power` (`id`, `description`, `amount`, `date`) VALUES
 --
 
 CREATE TABLE `product` (
-  `sn` int(6) NOT NULL,
-  `product_id` varchar(255) NOT NULL,
-  `user_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
-  `product_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp()
+  `id` int(6) NOT NULL,
+  `user_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci DEFAULT NULL,
+  `org_id` int(11) DEFAULT NULL,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci DEFAULT NULL,
+  `amount` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`sn`, `product_id`, `user_id`, `product_name`, `quantity`, `date`) VALUES
-(1, 'E007', 'Abdul', 'Feeder', 22, '2020-08-18 23:00:00'),
-(3, 'E005', 'Tijani', 'NPK fetilizer', 57, '2020-09-17 14:56:54'),
-(4, '200B', 'Ade', 'Tractor', 25, '2020-09-17 14:57:51'),
-(5, 'E007', 'Similola', 'Disinfectant', 8, '2020-09-17 15:42:53');
+INSERT INTO `product` (`id`, `user_id`, `org_id`, `name`, `amount`) VALUES
+(1, 'Abdul', NULL, NULL, NULL),
+(3, 'Tijani', NULL, 'NPK fetilizer', 57),
+(4, 'Ade', NULL, 'Tractor', 25),
+(5, 'Similola', 1, 'Disinfectant', 8),
+(6, '1', 1, 'Beans', 100);
 
 -- --------------------------------------------------------
 
@@ -1278,6 +1300,30 @@ INSERT INTO `vehicle` (`sn`, `user_id`, `org_id`, `name`, `description`, `serial
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `warehouse`
+--
+
+CREATE TABLE `warehouse` (
+  `sn` int(6) NOT NULL,
+  `product_id` varchar(255) DEFAULT NULL,
+  `user_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci DEFAULT NULL,
+  `org_id` varchar(11) DEFAULT NULL,
+  `warehouse` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci DEFAULT NULL,
+  `quantity` varchar(11) DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `warehouse`
+--
+
+INSERT INTO `warehouse` (`sn`, `product_id`, `user_id`, `org_id`, `warehouse`, `quantity`, `status`) VALUES
+(1, '5', '1', '1', '', '10', 'closed'),
+(2, '6', '1', '1', '8', '15', 'closed');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `worker`
 --
 
@@ -1452,7 +1498,7 @@ ALTER TABLE `power`
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`sn`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `productsale`
@@ -1518,6 +1564,12 @@ ALTER TABLE `users`
 -- Indexes for table `vehicle`
 --
 ALTER TABLE `vehicle`
+  ADD PRIMARY KEY (`sn`);
+
+--
+-- Indexes for table `warehouse`
+--
+ALTER TABLE `warehouse`
   ADD PRIMARY KEY (`sn`);
 
 --
@@ -1666,7 +1718,7 @@ ALTER TABLE `power`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `sn` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `productsale`
@@ -1733,6 +1785,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `vehicle`
   MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `warehouse`
+--
+ALTER TABLE `warehouse`
+  MODIFY `sn` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `worker`
