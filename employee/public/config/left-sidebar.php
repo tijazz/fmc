@@ -13,7 +13,7 @@
                                 </strong>
                                 <!-- User position -->
                             </span> <span class="text-muted text-xs block">
-                                <?php echo ($_SESSION["category"]); ?> Investor <b class="caret"></b></span> </span>
+                                <?php echo ($_SESSION["category"]); ?> Employee <b class="caret"></b></span> </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li>
