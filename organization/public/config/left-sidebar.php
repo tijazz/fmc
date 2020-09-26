@@ -3,7 +3,7 @@
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element open"> <span>
-                        <img alt="image" class="img-profile" src="images/<?php echo ($_SESSION["images"]); ?>">
+                        <img alt="image" class="img-profile" src="../images/<?php echo ($_SESSION["images"]); ?>">
                     </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="true">
                         <!-- User name -->
@@ -12,8 +12,7 @@
                                     <?php echo ($_SESSION["staffname"]); ?>
                                 </strong>
                                 <!-- User position -->
-                            </span> <span class="text-muted text-xs block">
-                                <?php echo ($_SESSION["category"]); ?> Investor <b class="caret"></b></span> </span>
+                            </span> <span class="text-muted text-xs block"> Organization <b class="caret"></b></span> </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li>
