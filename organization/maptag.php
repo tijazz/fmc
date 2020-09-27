@@ -56,7 +56,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                     <div class="col-lg-12">
                         <!-- Zero Configuration Table -->
                         <div class="panel panel-default">
-                            <div class="panel-heading">Map Tagging Of Locations</div>
+                            <div class="panel-heading">Locations Marked</div>
                             <div class="panel-body">
                                 <?php if ($error) { ?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
                                 <iframe src="tagging.php" width="100%" height="600" style="border:none;">
