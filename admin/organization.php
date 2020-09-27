@@ -59,20 +59,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                     <div class="col-lg-12">
 
 
-                        <!-- button style Start -->
-                        <div class="navbar">
-                            <div class="container-fluid" style="padding-left:7px;">
-                                <h1 class="nav navbar-nav">
-                                    <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add</a>
-                                </h1>
-
-                                <h1 class="nav navbar-nav navbar-right">
-                                    <a class="btn btn-md btn-primary" href="#add2" data-target="#add2" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add category</a>
-                                </h1>
-                            </div>
-                        </div>
-                        <!-- button style End -->
-
+                        
                         <!-- Zero Configuration Table -->
                         <div class="panel panel-default">
                             <div class="panel-heading">Organization list</div>
