@@ -59,7 +59,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                     <div class="col-lg-12">
 
 
-                        
+
                         <!-- Zero Configuration Table -->
                         <div class="panel panel-default">
                             <div class="panel-heading">Organization list</div>
@@ -75,12 +75,14 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 $cnt = 1;
                                 if ($query->rowCount() > 0) {
                                     foreach ($results as $result) { ?>
-                                        <div class="panel" style="width:200px">
-                                            <img class="panel-heading" src="https://www.w3schools.com/howto/img_avatar.png" alt="Card image" style="width:100%">
-                                            <div class="panel-body">
-                                                <h4 class="card-title"><?php echo $result->organization ?></h4>
-                                                <p class="card-text">Our Email is <?php echo $result->email ?> <?php echo $result->organization ?> is an Agricultural Production Company</p>
-                                                <a href="na.php?id=<?php echo $result->id; ?>" class="btn btn-primary">View Details</a>
+                                        <div class="col-lg-3">
+                                            <div class="panel panel-default" style="width:200px;">
+                                                <img class="panel-heading" src="../images/<?php echo $result->image ?>" alt="Card image" style="width:100%">
+                                                <div class="panel-body">
+                                                    <h4 class="card-title"><?php echo $result->organization ?></h4>
+                                                    <p class="card-text">Our Email is <?php echo $result->email ?> <?php echo $result->organization ?> is an Agricultural Production Company</p>
+                                                    <a href="na.php?id=<?php echo $result->id; ?>" class="btn btn-primary">View Details</a>
+                                                </div>
                                             </div>
                                         </div>
                                 <?php }
