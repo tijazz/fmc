@@ -40,19 +40,26 @@
             <li class="parentd">
                 <a href="organization.php">
                     <i class="fas fa-truck"></i>
-                    <span class="nav-label">Organization</span>
+                    <span class="nav-label">Organizations</span>
+                </a>
+            </li>
+
+            <li class="parentd">
+                <a href="employees.php">
+                    <i class="fas fa-truck"></i>
+                    <span class="nav-label">Employees</span>
                 </a>
             </li>
 
             <!-- Risk Management -->
             <li class="parentd">
-                <a href="#">
+                <a href="investor.php">
                     <i class="fas fa-bolt"></i>
                     <span class="nav-label">Investors</span>
                 </a>
             </li>
 
-            
+
             <!-- Wallet -->
             <li>
                 <a href="wallet.php">
@@ -64,8 +71,7 @@
 
             <!-- Notifications -->
             <li class="parentd">
-                <a href="#" class='spec'><i class="fa fa-edit"></i> <span class="nav-label">Notifications</span><span
-                        class="fa arrow"></span></a>
+                <a href="#" class='spec'><i class="fa fa-edit"></i> <span class="nav-label">Notifications</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
 
                     <li><a href="notification-dash.php">Notification Dashboard</a></li>
@@ -78,8 +84,7 @@
 
 
             <li class="parentd">
-                <a href="#" class='spec'><i class="fa fa-users"></i> <span class="nav-label">Users</span><span
-                        class="fa arrow"></span></a>
+                <a href="#" class='spec'><i class="fa fa-users"></i> <span class="nav-label">Users</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="profile.php">My Profile</a></li>
                     <li><a href="userlist.php">Users list</a></li>
@@ -111,15 +116,15 @@
             parentds.forEach((two) => {
                 two.classList.remove('opened');
             })
-         if(opened==false){
-          one.parentElement.classList.add('opened');
-          opened = true;
-          }else{
-              one.parentElement.classList.remove('opened');
-              opened=false;
-          }
+            if (opened == false) {
+                one.parentElement.classList.add('opened');
+                opened = true;
+            } else {
+                one.parentElement.classList.remove('opened');
+                opened = false;
+            }
 
-         
+
 
         })
     })
