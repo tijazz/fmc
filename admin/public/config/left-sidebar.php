@@ -3,17 +3,17 @@
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element open"> <span>
-                        <img alt="image" class="img-profile" src="images/<?php echo ($_SESSION["images"]); ?>">
+                        <img alt="image" class="img-profile" src="../images/<?php echo ($_SESSION["alogin"]); ?>">
                     </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="true">
                         <!-- User name -->
                         <span class="clear"> <span class="block m-t-xs">
                                 <strong class="font-bold">
-                                    <?php echo ($_SESSION["staffname"]); ?>
+                                    <?php echo ($_SESSION["username"]); ?>
                                 </strong>
                                 <!-- User position -->
                             </span> <span class="text-muted text-xs block">
-                                <?php echo ($_SESSION["category"]); ?> Investor <b class="caret"></b></span> </span>
+                                <?php echo ($_SESSION["category"]); ?> Admin </span> </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li>
