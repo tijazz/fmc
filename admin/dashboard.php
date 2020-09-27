@@ -138,7 +138,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             </span>
                                         </div>
                                     </div>
-                                    <a href="employe.php.php" id="proceed">View</a>
+                                    <a href="employees.php" id="proceed">View</a>
                                 </div>
                             </div>
 
