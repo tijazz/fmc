@@ -51,7 +51,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                 </div>
                 <div class="row dashboard-header">
                     <div class="panel-heading" style='padding:0;'>
-                        <h2 class="page-title">Organizations</h2>
+                        <h2 class="page-title">Employees</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -73,18 +73,20 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 $cnt = 1;
                                 if ($query->rowCount() > 0) {
                                     foreach ($results as $result) { ?>
-                                        <div class="panel" style="width:200px">
-                                            <img class="panel-heading" src="https://www.w3schools.com/howto/img_avatar.png" alt="Card image" style="width:100%">
-                                            <div class="panel-body">
-                                                <h4 class="card-title"><?php echo $result->name ?></h4>
-                                                <p class="card-text">Email: <?php echo $result->email ?></p>
-                                                <p class="card-text">Organization: <?php
-                                                                                    $s = "SELECT * from organization WHERE id =" . $result->organization ;
-                                                                                    $q = $dbh->prepare($s);
-                                                                                    $q->execute();
-                                                                                    $res = $q->fetch(PDO::FETCH_OBJ);
-                                                                                    echo $res->organization ?></p>
-                                                <a href="na.php?id=<?php echo $result->id; ?>" class="btn btn-primary">View Details</a>
+                                        <div class="col-lg-3">
+                                            <div class="panel panel-default" style="width:200px;">
+                                                <img class="panel-heading" src="../images/<?php echo $result->image ?>" alt="Card image" style="width:100%">
+                                                <div class="panel-body">
+                                                    <h4 class="card-title"><?php echo $result->name ?></h4>
+                                                    <p class="card-text">Email: <?php echo $result->email ?></p>
+                                                    <p class="card-text">Organization: <?php
+                                                                                        $s = "SELECT * from organization WHERE id =" . $result->organization;
+                                                                                        $q = $dbh->prepare($s);
+                                                                                        $q->execute();
+                                                                                        $res = $q->fetch(PDO::FETCH_OBJ);
+                                                                                        echo $res->organization ?></p>
+                                                    <a href="na.php?id=<?php echo $result->id; ?>" class="btn btn-primary">View Details</a>
+                                                </div>
                                             </div>
                                         </div>
                                 <?php }
