@@ -24,7 +24,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title">Edit Fields/Pens</h4>
+            <h4 class="modal-title">Edit Pens</h4>
         </div>
         <div class="modal-body">
 
@@ -58,8 +58,22 @@ if (strlen($_SESSION['alogin']) == 0) {
                 $query->execute();
                 $msg = "Rent Updated Successfully";
 
-                header('location:fplist.php');
-            } elseif (isset($_GET['s'])) {
+                header('location:plist.php');
+            } elseif (isset($_POST['submit']) && isset($_POST['pen'])) {
+                $sn = $_POST['pen'];
+                $data_type = 'pen';
+
+                $sql = "UPDATE `locations` SET `data_type`=:data_type WHERE id=(:sn)";
+                $query = $dbh->prepare($sql);
+
+                $query->bindParam(':data_type', $data_type, PDO::PARAM_STR);
+
+                $query->bindValue(':sn', $sn, PDO::PARAM_STR);
+                $query->execute();
+                $msg = "Rent Updated Successfully";
+
+                header('location:plist.php');
+            }  elseif (isset($_GET['s'])) {
                 $sn = $_GET['s'];
 
 
@@ -71,7 +85,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 
             ?>
-                <form action="fpedit.php" method="POST" class="forma">
+                <form action="pedit.php" method="POST" class="forma">
                     <p>
                         <label for="name">Name</label>
                         <input type="text" name="name" value="<?php echo ($results->name); ?>" disabled>
