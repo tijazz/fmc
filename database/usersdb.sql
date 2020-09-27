@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 24, 2020 at 06:00 PM
+-- Generation Time: Sep 27, 2020 at 08:37 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -267,20 +267,21 @@ CREATE TABLE `employee` (
   `risk` int(11) NOT NULL DEFAULT 0,
   `monitory` int(11) NOT NULL DEFAULT 0,
   `inventory` int(11) NOT NULL DEFAULT 0,
-  `financial` int(11) NOT NULL DEFAULT 0
+  `financial` int(11) NOT NULL DEFAULT 0,
+  `sign_up_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `employee`
 --
 
-INSERT INTO `employee` (`id`, `user_id`, `image`, `name`, `email`, `password`, `gender`, `role`, `phone`, `contract_start`, `contract_end`, `salary`, `quality_of_work`, `team_work`, `punctuality`, `organization`, `table_name`, `supply`, `risk`, `monitory`, `inventory`, `financial`) VALUES
-(46, 40, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', '8b283e8957f744ae5a1a6add05fc354f', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, 'Dufma', 'employee', 0, 1, 0, 1, 0),
-(49, 40, 'zeroavatar.jpg', 'Hikmat', 'fatai@gmail.com', '88a5d978cad92b8841c91f2d9d299e3a', 'female', 'Oriflame Seller', '08160263667', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, 'Dufma', 'employee', 0, 0, 0, 0, 0),
-(52, 49, 'dark-world.jpg', 'dufma', 'aashoremi@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'male', 'Owner', '08162313162', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, 'Dufma', 'employee', 0, 0, 0, 0, 0),
-(53, 2, 'annotation-2020-08-17-123933.png', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', 'e00cf25ad42683b3df678c61f42c6bda', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, 'jascol', 'employee', 1, 0, 0, 1, 0),
-(54, NULL, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0),
-(55, 1, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, '1', 'employee', 0, 0, 0, 1, 0);
+INSERT INTO `employee` (`id`, `user_id`, `image`, `name`, `email`, `password`, `gender`, `role`, `phone`, `contract_start`, `contract_end`, `salary`, `quality_of_work`, `team_work`, `punctuality`, `organization`, `table_name`, `supply`, `risk`, `monitory`, `inventory`, `financial`, `sign_up_date`) VALUES
+(46, 40, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', '8b283e8957f744ae5a1a6add05fc354f', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, 'Dufma', 'employee', 0, 1, 0, 1, 0, '2020-09-27 16:00:05'),
+(49, 40, 'zeroavatar.jpg', 'Hikmat', 'fatai@gmail.com', '88a5d978cad92b8841c91f2d9d299e3a', 'female', 'Oriflame Seller', '08160263667', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, 'Dufma', 'employee', 0, 0, 0, 0, 0, '2020-09-27 16:00:05'),
+(52, 49, 'dark-world.jpg', 'dufma', 'aashoremi@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'male', 'Owner', '08162313162', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, 'Dufma', 'employee', 0, 0, 0, 0, 0, '2020-09-27 16:00:05'),
+(53, 2, 'annotation-2020-08-17-123933.png', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', 'e00cf25ad42683b3df678c61f42c6bda', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, 'jascol', 'employee', 1, 0, 0, 1, 0, '2020-09-27 16:00:05'),
+(54, NULL, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-09-27 16:00:05'),
+(55, 1, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, '1', 'employee', 0, 0, 0, 1, 0, '2020-09-27 16:00:05');
 
 -- --------------------------------------------------------
 
@@ -539,22 +540,25 @@ CREATE TABLE `locations` (
   `end_season` date DEFAULT NULL,
   `ownership` varchar(50) DEFAULT NULL,
   `fallow` varchar(50) DEFAULT NULL,
-  `manager` varchar(50) DEFAULT NULL
+  `manager` varchar(50) DEFAULT NULL,
+  `data_type` varchar(11) DEFAULT 'data'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `locations`
 --
 
-INSERT INTO `locations` (`id`, `user`, `org_id`, `name`, `lat`, `lng`, `description`, `location_status`, `size`, `soil_type`, `ph`, `chemical`, `active`, `utilization`, `start_season`, `end_season`, `ownership`, `fallow`, `manager`) VALUES
-(21, 'olawale', NULL, NULL, 7.872496, 8.588821, 'farm 3A', 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(22, '', NULL, NULL, 7.146105, 5.126693, '', 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(24, 'hello', NULL, NULL, 8.824571, 8.240799, 'testing', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(25, '', NULL, NULL, 8.951792, 9.697006, '', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(26, '', NULL, NULL, 8.843251, 8.960922, '', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(27, '2', NULL, 'Abdullahi', 9.298905, 9.444320, 'Bypassing', 1, 23, 'loamy', '7', 'qwerty', 'dog', 'rearing', '2020-08-31', '2020-09-14', 'full', '12', 'Abdullahi'),
-(28, '2', NULL, 'Abdullahi', 9.298905, 9.444320, 'Bypassing', 1, 23, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(29, '1', 1, 'camry', 8.669519, 9.114730, 'Bypassing', 1, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `locations` (`id`, `user`, `org_id`, `name`, `lat`, `lng`, `description`, `location_status`, `size`, `soil_type`, `ph`, `chemical`, `active`, `utilization`, `start_season`, `end_season`, `ownership`, `fallow`, `manager`, `data_type`) VALUES
+(21, 'olawale', NULL, NULL, 7.872496, 8.588821, 'farm 3A', 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22, '', NULL, NULL, 7.146105, 5.126693, '', 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(24, 'hello', NULL, NULL, 8.824571, 8.240799, 'testing', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(25, '', NULL, NULL, 8.951792, 9.697006, '', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(26, '', NULL, NULL, 8.843251, 8.960922, '', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(27, '2', NULL, 'Abdullahi', 9.298905, 9.444320, 'Bypassing', 1, 23, 'loamy', '7', 'qwerty', 'dog', 'rearing', '2020-08-31', '2020-09-14', 'full', '12', 'Abdullahi', NULL),
+(28, '2', NULL, 'Abdullahi', 9.298905, 9.444320, 'Bypassing', 1, 23, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(29, '1', 1, 'camry', 8.669519, 9.114730, 'Bypassing', 1, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'field'),
+(30, '1', 1, 'Abdullahi', 0.000000, 0.000000, 'Bypassing', 1, 23, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'field'),
+(31, '1', 1, 'Terminus', 0.000000, 0.000000, 'camry404', 1, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pen');
 
 -- --------------------------------------------------------
 
@@ -662,8 +666,6 @@ CREATE TABLE `member` (
 
 INSERT INTO `member` (`id`, `active`, `fullname`, `email`, `phone`, `category`, `unit`, `unit_value`, `roi`, `pay`, `password`, `realpword`, `date_added`, `images`, `status`) VALUES
 (4, 1, 'bolaji', 'bolaji@gmail.com', '09089089009', 'Silver', 2, 50000, 10000, 1, '0c80c124799585376519959d2374b07c', 'bolaji', '2020-06-15 00:00:00', '', 1),
-(5, 1, 'fatai', 'fatai@gmail.com', '09034412009', 'Gold', 12, 600000, 132000, 1, '88a5d978cad92b8841c91f2d9d299e3a', 'fatai', '2020-06-28 11:37:05', 'zeroavatar.jpg', 1),
-(4, 1, 'bolaji', 'bolaji@gmail.com', '09089089009', 'Silver', 2, 50000, 10000, 1, '0c80c124799585376519959d2374b07c', 'bolaji', '2020-06-15 00:00:00', '', 1),
 (5, 1, 'fatai', 'fatai@gmail.com', '09034412009', 'Gold', 12, 600000, 132000, 1, '88a5d978cad92b8841c91f2d9d299e3a', 'fatai', '2020-06-28 11:37:05', 'zeroavatar.jpg', 1);
 
 -- --------------------------------------------------------
@@ -742,15 +744,16 @@ CREATE TABLE `organization` (
   `username` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `organization` varchar(50) NOT NULL
+  `organization` varchar(50) NOT NULL,
+  `sign_up_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `organization`
 --
 
-INSERT INTO `organization` (`id`, `username`, `email`, `password`, `organization`) VALUES
-(1, 'admin1', 'admin1@admin1.com', 'e00cf25ad42683b3df678c61f42c6bda', 'Dufma');
+INSERT INTO `organization` (`id`, `username`, `email`, `password`, `organization`, `sign_up_date`) VALUES
+(1, 'admin1', 'admin1@admin1.com', 'e00cf25ad42683b3df678c61f42c6bda', 'Dufma', '2020-09-27 15:23:48');
 
 -- --------------------------------------------------------
 
@@ -870,7 +873,8 @@ INSERT INTO `product` (`id`, `user_id`, `org_id`, `name`, `amount`) VALUES
 (3, 'Tijani', NULL, 'NPK fetilizer', 57),
 (4, 'Ade', NULL, 'Tractor', 25),
 (5, 'Similola', 1, 'Disinfectant', 8),
-(6, '1', 1, 'Beans', 100);
+(6, '1', 1, 'Beans', 100),
+(7, '55', 55, 'Abdullahi', 1000000);
 
 -- --------------------------------------------------------
 
@@ -1471,6 +1475,12 @@ ALTER TABLE `maintenance-item`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `member`
+--
+ALTER TABLE `member`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `operation`
 --
 ALTER TABLE `operation`
@@ -1670,7 +1680,7 @@ ALTER TABLE `liabilty`
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `machinery`
@@ -1689,6 +1699,12 @@ ALTER TABLE `maintenance`
 --
 ALTER TABLE `maintenance-item`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `member`
+--
+ALTER TABLE `member`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `operation`
@@ -1718,7 +1734,7 @@ ALTER TABLE `power`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `productsale`
