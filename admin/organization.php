@@ -81,7 +81,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 <div class="panel-body">
                                                     <h4 class="card-title"><?php echo $result->organization ?></h4>
                                                     <p class="card-text">Our Email is <?php echo $result->email ?> <?php echo $result->organization ?> is an Agricultural Production Company</p>
-                                                    <a href="na.php?id=<?php echo $result->id; ?>" class="btn btn-primary">View Details</a>
+                                                    <a href="mainDash.php?id=<?php echo $result->id; ?>" class="btn btn-primary">View Details</a>
                                                 </div>
                                             </div>
                                         </div>
