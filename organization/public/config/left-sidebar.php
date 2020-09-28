@@ -71,8 +71,8 @@
                     <li><a href="tangible-asset.php">Procurement</a></li>
                     <li><a href="productlist.php">Product Management</a></li>
                     <li><a href="warehouselist.php">Ware Housing</a></li>
-                    <li><a href="na.php">Input Analysis</a></li>
-                    <li><a href="na.php">output</a></li>
+                    <li><a href="inputanalysis.php">Input Analysis</a></li>
+                    <li><a href="outputanalysis.php">output</a></li>
                     <li><a href="na.php">Tracking and Report</a></li>
 
                 </ul>
@@ -87,7 +87,7 @@
                 <ul class="nav nav-second-level">
                     <li><a href="na.php">Landing summary</a></li>
                     <li><a href="fpm.php">Field/Pen Management</a></li>
-                    <li><a href="na.php">Field Report</a></li>
+                    <li><a href="fdreport.php">Field Report</a></li>
                     <li><a href="employee-dash.php">Employee Management</a></li>
                     <li><a href="worker-dash.php">Worker Management</a></li>
                     <li><a href="weather-dash.php">Weather</a></li>
@@ -129,8 +129,7 @@
 
             <!-- Notifications -->
             <li class="parentd">
-                <a href="#" class='spec'><i class="fa fa-edit"></i> <span class="nav-label">Notifications</span><span
-                        class="fa arrow"></span></a>
+                <a href="#" class='spec'><i class="fa fa-edit"></i> <span class="nav-label">Notifications</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
 
                     <li><a href="notification-dash.php">Notification Dashboard</a></li>
@@ -143,8 +142,7 @@
 
 
             <li class="parentd">
-                <a href="#" class='spec'><i class="fa fa-users"></i> <span class="nav-label">Users</span><span
-                        class="fa arrow"></span></a>
+                <a href="#" class='spec'><i class="fa fa-users"></i> <span class="nav-label">Users</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="profile.php">My Profile</a></li>
                     <li><a href="userlist.php">Users list</a></li>
