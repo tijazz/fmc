@@ -23,7 +23,7 @@ if(isset($_POST['submit']))
     $place = $_POST['place'];
     $status = $_POST['status'];
     $user_id = $_SESSION['id'];
-        $org_id = $_SESSION['id'];
+    $org_id = $_SESSION['id'];
     
 	
     $sql= "INSERT INTO `operation`(`user_id`, `name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`, `org_id`) VALUES (:user_id, :name, :description, :quantity, :manufacturer, :location, :category, :place, :status, :org_id)";

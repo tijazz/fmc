@@ -3,7 +3,7 @@
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element open"> <span>
-                        <img alt="image" class="img-profile" src="images/<?php echo ($_SESSION["images"]); ?>">
+                        <img alt="image" class="img-profile" src="../images/<?php echo ($_SESSION["images"]); ?>">
                     </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="true">
                         <!-- User name -->
@@ -12,8 +12,7 @@
                                     <?php echo ($_SESSION["staffname"]); ?>
                                 </strong>
                                 <!-- User position -->
-                            </span> <span class="text-muted text-xs block">
-                                <?php echo ($_SESSION["category"]); ?> Investor <b class="caret"></b></span> </span>
+                            </span> <span class="text-muted text-xs block"> Organization <b class="caret"></b></span> </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li>
@@ -68,14 +67,13 @@
                     <span class="nav-label">Inventory management</span><span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="na.php">Landing Summary Page</a></li>
+                    <li><a href="inventorymgmt.php">Landing Summary Page</a></li>
                     <li><a href="tangible-asset.php">Procurement</a></li>
-                    <li><a href="na.php">Product Management</a></li>
-                    <li><a href="na.php">Ware Housing</a></li>
+                    <li><a href="productlist.php">Product Management</a></li>
+                    <li><a href="warehouselist.php">Ware Housing</a></li>
                     <li><a href="na.php">Input Analysis</a></li>
                     <li><a href="na.php">output</a></li>
                     <li><a href="na.php">Tracking and Report</a></li>
-                    <li><a href="na.php">Warehousing</a></li>
 
                 </ul>
             </li>
@@ -117,7 +115,7 @@
                 </ul>
             </li>
 
-            
+
             <!-- End investment management -->
 
             <!-- Wallet -->
@@ -167,7 +165,14 @@
     </div>
 
 </nav>
+<style>
+    @media(min-width:600px) {
 
+        #wrapper>nav>div {
+            position: fixed;
+        }
+    }
+</style>
 <script>
     let parentds = document.querySelectorAll(".parentd");
     let links = document.querySelectorAll(".parentd > a");
@@ -178,15 +183,15 @@
             parentds.forEach((two) => {
                 two.classList.remove('opened');
             })
-         if(opened==false){
-          one.parentElement.classList.add('opened');
-          opened = true;
-          }else{
-              one.parentElement.classList.remove('opened');
-              opened=false;
-          }
+            if (opened == false) {
+                one.parentElement.classList.add('opened');
+                opened = true;
+            } else {
+                one.parentElement.classList.remove('opened');
+                opened = false;
+            }
 
-         
+
 
         })
     })

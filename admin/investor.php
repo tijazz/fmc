@@ -51,7 +51,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                 </div>
                 <div class="row dashboard-header">
                     <div class="panel-heading" style='padding:0;'>
-                        <h2 class="page-title">Organizations</h2>
+                        <h2 class="page-title">Investors</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -60,15 +60,16 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 
 
+
                         <!-- Zero Configuration Table -->
                         <div class="panel panel-default">
-                            <div class="panel-heading">Organization list</div>
+                            <div class="panel-heading">Investor list</div>
                             <div class="panel-body">
                                 <?php if ($error) { ?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?>
                                     </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
 
                                 <?php
-                                $sql = "SELECT * from organization";
+                                $sql = "SELECT * from member";
                                 $query = $dbh->prepare($sql);
                                 $query->execute();
                                 $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -79,9 +80,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <div class="panel panel-default" style="width:200px;">
                                                 <img class="panel-heading" src="../images/<?php echo $result->image ?>" alt="Card image" style="width:100%">
                                                 <div class="panel-body">
-                                                    <h4 class="card-title"><?php echo $result->organization ?></h4>
-                                                    <p class="card-text">Our Email is <?php echo $result->email ?> <?php echo $result->organization ?> is an Agricultural Production Company</p>
-                                                    <a href="mainDash.php?id=<?php echo $result->id; ?>" class="btn btn-primary">View Details</a>
+                                                    <h4 class="card-title">Name: <?php echo $result->fullname ?></h4>
+                                                    <p class="card-text">Email: <?php echo $result->email ?> <?php echo $result->organization ?></p>
+                                                    <a href="na.php?id=<?php echo $result->id; ?>" class="btn btn-primary">View Details</a>
                                                 </div>
                                             </div>
                                         </div>

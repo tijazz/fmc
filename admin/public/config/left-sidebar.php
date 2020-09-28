@@ -3,17 +3,17 @@
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element open"> <span>
-                        <img alt="image" class="img-profile" src="images/<?php echo ($_SESSION["images"]); ?>">
+                        <img alt="image" class="img-profile" src="../images/<?php echo ($_SESSION["alogin"]); ?>">
                     </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="true">
                         <!-- User name -->
                         <span class="clear"> <span class="block m-t-xs">
                                 <strong class="font-bold">
-                                    <?php echo ($_SESSION["staffname"]); ?>
+                                    <?php echo ($_SESSION["username"]); ?>
                                 </strong>
                                 <!-- User position -->
                             </span> <span class="text-muted text-xs block">
-                                <?php echo ($_SESSION["category"]); ?> Investor <b class="caret"></b></span> </span>
+                                <?php echo ($_SESSION["category"]); ?> Admin </span> </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li>
@@ -40,19 +40,26 @@
             <li class="parentd">
                 <a href="organization.php">
                     <i class="fas fa-truck"></i>
-                    <span class="nav-label">Organization</span>
+                    <span class="nav-label">Organizations</span>
+                </a>
+            </li>
+
+            <li class="parentd">
+                <a href="employees.php">
+                    <i class="fas fa-truck"></i>
+                    <span class="nav-label">Employees</span>
                 </a>
             </li>
 
             <!-- Risk Management -->
             <li class="parentd">
-                <a href="#">
+                <a href="investor.php">
                     <i class="fas fa-bolt"></i>
                     <span class="nav-label">Investors</span>
                 </a>
             </li>
 
-            
+
             <!-- Wallet -->
             <li>
                 <a href="wallet.php">
@@ -64,8 +71,7 @@
 
             <!-- Notifications -->
             <li class="parentd">
-                <a href="#" class='spec'><i class="fa fa-edit"></i> <span class="nav-label">Notifications</span><span
-                        class="fa arrow"></span></a>
+                <a href="#" class='spec'><i class="fa fa-edit"></i> <span class="nav-label">Notifications</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
 
                     <li><a href="notification-dash.php">Notification Dashboard</a></li>
@@ -78,8 +84,7 @@
 
 
             <li class="parentd">
-                <a href="#" class='spec'><i class="fa fa-users"></i> <span class="nav-label">Users</span><span
-                        class="fa arrow"></span></a>
+                <a href="#" class='spec'><i class="fa fa-users"></i> <span class="nav-label">Users</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="profile.php">My Profile</a></li>
                     <li><a href="userlist.php">Users list</a></li>
@@ -111,15 +116,15 @@
             parentds.forEach((two) => {
                 two.classList.remove('opened');
             })
-         if(opened==false){
-          one.parentElement.classList.add('opened');
-          opened = true;
-          }else{
-              one.parentElement.classList.remove('opened');
-              opened=false;
-          }
+            if (opened == false) {
+                one.parentElement.classList.add('opened');
+                opened = true;
+            } else {
+                one.parentElement.classList.remove('opened');
+                opened = false;
+            }
 
-         
+
 
         })
     })

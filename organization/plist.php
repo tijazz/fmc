@@ -38,7 +38,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                 </div>
                 <div class="row dashboard-header">
                     <div class="panel-heading" style='padding:0;'>
-                        <h2 class="page-title">Manage Fields/Pens</h2>
+                        <h2 class="page-title">Manage Pens</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -48,7 +48,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                         <div class="navbar">
                             <div class="container-fluid" style='padding-left:7px;'>
                                 <h1 class="nav navbar-nav">
-                                    <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add Field</a>
+                                    <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add Pen</a>
                                 </h1>
 
                             </div>
@@ -58,7 +58,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                         <!-- Zero Configuration Table -->
                         <div class="panel panel-default">
-                            <div class="panel-heading">Field List</div>
+                            <div class="panel-heading">Pen List</div>
                             <div class="panel-body">
                                 <?php if ($error) { ?><div class="errorWrap" id="msgshow">
                                         <?php echo htmlentities($error); ?>
@@ -72,9 +72,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <th>Size</th>
                                             <th>Latitude</th>
                                             <th>Longitude</th>
-                                            <th>Soil type</th>
-                                            <th>pH</th>
-                                            <th>Chemical/Additives</th>
+                                            <th>Capacity</th>
+                                            <th>Type</th>
+                                            <th>Purpose</th>
                                             <th>Active Crops/Pens</th>
                                             <th>Current Utilization</th>
                                             <th>Start Season</th>
@@ -88,7 +88,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                     <tbody>
 
-                                        <?php $sql = "SELECT * from `locations` WHERE org_id=(:org_id) AND data_type='field'";
+                                        <?php $sql = "SELECT * from `locations` WHERE org_id=(:org_id) AND data_type='pen'";
                                         $query = $dbh->prepare($sql);
                                         $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                                         $query->execute();
@@ -115,7 +115,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                     <!-- Action Button Start -->
                                                     <td>
-                                                        <a data-toggle="modal" href="fpedit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <a data-toggle="modal" href="pedit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
                                                         <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog model-sm">
@@ -141,21 +141,22 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                             </div>
 
+
                             <div id="add" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog">
                                     <div class="modal-content" style="height:auto">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">×</span></button>
-                                            <h4 class="modal-title">Add Detail</h4>
+                                            <h4 class="modal-title">Add New Product</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="fpedit.php" method="POST" class="forma">
+                                            <form action="pedit.php" method="POST" class="forma">
 
 
                                                 <p>
                                                     <label for="name">Name</label>
-                                                    <select name="field" id="">
+                                                    <select name="pen" id="">
                                                         <?php
                                                         $sql = "SELECT * FROM `locations` WHERE data_type = 'data'";
                                                         $query = $dbh->prepare($sql);
@@ -190,6 +191,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 </div>
                             </div>
                             <!--end of modal-dialog-->
+
 
 
 

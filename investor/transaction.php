@@ -83,7 +83,7 @@ else{
                     <div class="panel-heading"><h2 class="page-title">Wallet</h2></div>
                 </div>
                 <div class="panel panel-default">
-                    <div class="panel-heading">List Users</div>
+                    <div class="panel-heading">Wallet Details</div>
                     <div class="panel-body">
                         <?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } 
                         else if($msg){?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php }?>

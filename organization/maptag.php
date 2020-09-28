@@ -48,7 +48,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                 </div>
                 <div class="row dashboard-header">
                     <div class="panel-heading">
-                        <h2 class="page-title">Supply Chain Management</h2>
+                        <h2 class="page-title">Locations</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -56,7 +56,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                     <div class="col-lg-12">
                         <!-- Zero Configuration Table -->
                         <div class="panel panel-default">
-                            <div class="panel-heading">Location of Farms</div>
+                            <div class="panel-heading">Locations Marked</div>
                             <div class="panel-body">
                                 <?php if ($error) { ?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
                                 <iframe src="tagging.php" width="100%" height="600" style="border:none;">
