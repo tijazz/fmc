@@ -78,7 +78,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                                 <div class="stat-panel-title text-uppercase">Report</div>
                                                             </div>
                                                         </div>
-                                                        <a href="userlist.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
+                                                        <a href="fieldweeklyreport.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
@@ -89,11 +89,11 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                                 <div class="stat-panel-title text-uppercase">Report</div>
                                                             </div>
                                                         </div>
-                                                        <a href="feedback.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
+                                                        <a href="fieldmonthlyreport.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
                                                     </div>
                                                 </div>
 
-                                                
+
                                             </div>
 
                                         </div>
@@ -115,7 +115,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                                 <div class="stat-panel-title text-uppercase">Report</div>
                                                             </div>
                                                         </div>
-                                                        <a href="userlist.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
+                                                        <a href="penweeklyreport.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
@@ -126,11 +126,11 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                                 <div class="stat-panel-title text-uppercase">Report</div>
                                                             </div>
                                                         </div>
-                                                        <a href="feedback.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
+                                                        <a href="penmonthlyreport.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
                                                     </div>
                                                 </div>
 
-                                                
+
                                             </div>
 
                                         </div>
@@ -154,7 +154,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                                 <div class="stat-panel-title text-uppercase">Report</div>
                                                             </div>
                                                         </div>
-                                                        <a href="userlist.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
+                                                        <a href="facilityweeklyreport.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
@@ -165,7 +165,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                                 <div class="stat-panel-title text-uppercase">Report</div>
                                                             </div>
                                                         </div>
-                                                        <a href="feedback.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
+                                                        <a href="facilitymonthlyreport.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
