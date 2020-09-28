@@ -97,7 +97,15 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             foreach ($results as $result) {                ?>
                                                 <tr>
                                                     <td><?php echo htmlentities($cnt); ?></td>
-                                                    <td><?php echo htmlentities($result->product_id); ?></td>
+                                                    <?php
+                                            $s = "SELECT * FROM `product` WHERE org_id=:org_id";
+                                            $q = $dbh->prepare($s);
+                                            $q->bindParam(':org_id', $result->product_id, PDO::PARAM_STR);
+                                            $q->execute();
+                                            $res = $q->fetch(PDO::FETCH_OBJ);
+
+                                                    ?>
+                                                    <td><?php echo var_dump($res); ?></td>
                                                     <td><?php echo htmlentities($result->quantity); ?></td>
                                                     <td><?php echo htmlentities($result->warehouse); ?></td>
                                                     <td><?php echo htmlentities($result->location); ?></td>
