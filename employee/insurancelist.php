@@ -105,7 +105,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         <?php echo htmlentities($error); ?>
                                     </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow">
                                         <?php echo htmlentities($msg); ?> </div><?php } ?>
-                                <table id="zctb" class="display table table-dark table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                                <table id="zctb tablePreview" class="display table table-dark table-striped table-bordered table-hover" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <th>#</th>
