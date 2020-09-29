@@ -18,9 +18,6 @@ if (strlen($_SESSION['alogin']) == 0) {
 
         $msg = "Data Deleted successfully";
     }
-
-
-
 ?>
 
     <!DOCTYPE html>
@@ -53,7 +50,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                 </div>
                 <div class="row">
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
 
                         <!-- button style Start -->
                         <div class="navbar">
