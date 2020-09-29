@@ -157,8 +157,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <label for="name">Field</label>
                                                     <select name="name" id="">
                                                         <?php
-                                                        $sql = "SELECT * FROM `locations` WHERE data_type = 'field'";
+                                                        $sql = "SELECT * FROM `locations` WHERE data_type = 'field' AND org_id = (:org_id)";
                                                         $query = $dbh->prepare($sql);
+                                                        $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                                                         $query->execute();
                                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
                                                         $cnt = 1;
