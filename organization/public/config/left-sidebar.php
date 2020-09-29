@@ -75,7 +75,7 @@
 =======
                     <li><a href="productlist.php">Product Management</a></li>
                     <li><a href="warehouselist.php">Ware Housing</a></li>
->>>>>>> 8c0dce9844dd0b3d71484069421e5441eb19422b
+
                     <li><a href="inputanalysis.php">Input Analysis</a></li>
                     <li><a href="outputanalysis.php">output</a></li>
                     <li><a href="na.php">Tracking and Report</a></li>
