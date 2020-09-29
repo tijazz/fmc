@@ -49,7 +49,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                 </div>
                 <div class="row dashboard-header">
                     <div class="panel-heading" style='padding:0;'>
-                        <h2 class="page-title">Manage Weekly Fields Reports</h2>
+                        <h2 class="page-title">Manage Weekly Facilities Reports</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -75,11 +75,11 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         <tr>
                                             <th>#</th>
                                             <th>Week</th>
-                                            <th>Field</th>
+                                            <th>Facility</th>
                                             <th>Usage Hours</th>
                                             <th>Activity</th>
                                             <th>Activity Status</th>
-                                            <th>Field Status</th>
+                                            <th>Facility Status</th>
                                             <th>Manager</th>
                                             <th>Action</th>
                                         </tr>
@@ -87,7 +87,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                     <tbody>
 
-                                        <?php $sql = "SELECT * from weeklyreport WHERE org_id = (:org_id) AND type = 'field'";
+                                        <?php $sql = "SELECT * from weeklyreport WHERE org_id = (:org_id) AND type = 'facility'";
                                         $query = $dbh->prepare($sql);
                                         $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                                         $query->execute();
@@ -99,8 +99,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <td><?php echo htmlentities($cnt); ?></td>
                                                     <td><?php echo htmlentities($result->week); ?></td>
                                                     <td><?php
-                                                        $s = "SELECT * FROM `locations` WHERE id = (:id)";
+                                                        $s = "SELECT * FROM `building` WHERE sn = (:id) AND org_id = (:org_id)";
                                                         $q = $dbh->prepare($s);
+                                                        $q->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                                                         $q->bindParam(':id', $result->name, PDO::PARAM_STR);
                                                         $q->execute();
                                                         $res = $q->fetch(PDO::FETCH_OBJ);
@@ -147,7 +148,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <h4 class="modal-title">Create Report</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="fieldweeklyreportform.php" method="POST" class="forma">
+                                            <form action="facilityweeklyreportform.php" method="POST" class="forma">
                                                 <p>
                                                     <label for="week">Week</label>
                                                     <input type="week" name="week">
@@ -157,14 +158,15 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <label for="name">Field</label>
                                                     <select name="name" id="">
                                                         <?php
-                                                        $sql = "SELECT * FROM `locations` WHERE data_type = 'field'";
+                                                        $sql = "SELECT * FROM `building` WHERE org_id = (:org_id)";
                                                         $query = $dbh->prepare($sql);
+                                                        $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                                                         $query->execute();
                                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
                                                         $cnt = 1;
                                                         if ($query->rowCount() > 0) {
                                                             foreach ($results as $result) {                ?>
-                                                                <option value="<?php echo htmlentities($result->id); ?>">
+                                                                <option value="<?php echo htmlentities($result->sn); ?>">
                                                                     <?php echo htmlentities($result->name); ?></option>
                                                         <?php $cnt = $cnt + 1;
                                                             }
