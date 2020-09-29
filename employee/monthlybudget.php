@@ -53,7 +53,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                             <?php if ($error) { ?><div class="errorWrap" id="msgshow">
                                 <?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div
                                 class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
-                            <table id="zctb" class="display table table-striped table-bordered table-hover"
+                            <table id="zctb tablePreview" class="display table table-striped table-bordered table-hover"
                                 cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
@@ -94,7 +94,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                             <?php if ($error) { ?><div class="errorWrap" id="msgshow">
                                 <?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div
                                 class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
-                            <table id="zctb" class="display table table-striped table-bordered table-hover"
+                            <table id="zctb tablePreview" class="display table table-striped table-bordered table-hover"
                                 cellspacing="0" width="100%">
                                 <?php
                                     $months = ["Jan"=>"01", "Feb"=>"02", "Mar"=>"03", "Apr"=>"04", "May"=>"05", "Jun"=>"06", "Jul"=>"07", "Aug"=>"08", "Sep"=>"09", "Oct"=>"10", "Nov"=>"11", "Dec"=>"12"];
@@ -193,7 +193,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                             <?php if ($error) { ?><div class="errorWrap" id="msgshow">
                                 <?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div
                                 class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
-                            <table id="zctb" class="display table table-striped table-bordered table-hover"
+                            <table id="zctb tablePreview" class="display table table-striped table-bordered table-hover"
                                 cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
