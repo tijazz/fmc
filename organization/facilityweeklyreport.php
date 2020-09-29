@@ -99,8 +99,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <td><?php echo htmlentities($cnt); ?></td>
                                                     <td><?php echo htmlentities($result->week); ?></td>
                                                     <td><?php
-                                                        $s = "SELECT * FROM `building` WHERE id = (:id)";
+                                                        $s = "SELECT * FROM `building` WHERE sn = (:id) AND org_id = (:org_id)";
                                                         $q = $dbh->prepare($s);
+                                                        $q->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                                                         $q->bindParam(':id', $result->name, PDO::PARAM_STR);
                                                         $q->execute();
                                                         $res = $q->fetch(PDO::FETCH_OBJ);
@@ -157,14 +158,15 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <label for="name">Field</label>
                                                     <select name="name" id="">
                                                         <?php
-                                                        $sql = "SELECT * FROM `building`";
+                                                        $sql = "SELECT * FROM `building` WHERE org_id = (:org_id)";
                                                         $query = $dbh->prepare($sql);
+                                                        $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                                                         $query->execute();
                                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
                                                         $cnt = 1;
                                                         if ($query->rowCount() > 0) {
                                                             foreach ($results as $result) {                ?>
-                                                                <option value="<?php echo htmlentities($result->id); ?>">
+                                                                <option value="<?php echo htmlentities($result->sn); ?>">
                                                                     <?php echo htmlentities($result->name); ?></option>
                                                         <?php $cnt = $cnt + 1;
                                                             }
