@@ -76,8 +76,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                         <label for="name">Facility</label>
                         <select name="name" id="">
                             <?php
-                            $s = "SELECT * FROM `building`";
+                            $s = "SELECT * FROM `building` WHERE org_id = (:org_id)";
                             $q = $dbh->prepare($s);
+                            $q->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                             $q->execute();
                             $res = $q->fetchAll(PDO::FETCH_OBJ);
                             $cnt = 1;
