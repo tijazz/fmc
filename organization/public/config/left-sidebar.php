@@ -69,17 +69,11 @@
                 <ul class="nav nav-second-level">
                     <li><a href="na.php">Landing Summary Page</a></li>
                     <li><a href="tangible-asset.php">Procurement</a></li>
-<<<<<<< HEAD
-                    <li><a href="na.php">Product Management</a></li>
-                    <li><a href="na.php">Ware Housing</a></li>
-=======
                     <li><a href="productlist.php">Product Management</a></li>
                     <li><a href="warehouselist.php">Ware Housing</a></li>
-
                     <li><a href="inputanalysis.php">Input Analysis</a></li>
                     <li><a href="outputanalysis.php">output</a></li>
                     <li><a href="na.php">Tracking and Report</a></li>
-                    <li><a href="na.php">Warehousing</a></li>
 
                 </ul>
             </li>
