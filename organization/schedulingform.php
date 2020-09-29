@@ -19,8 +19,7 @@ if(isset($_POST['submit']))
     $end = $_POST['end'];
     $user_id = $_SESSION['id'];
     $org_id = $_SESSION['org'];
-    
-	
+      
     $sql="INSERT INTO `alarm`(`name`, `user_id`, `description`, `org_id`, `end`) VALUES (:name, :user_id, :description, :org_id, :end)";
     $query = $dbh->prepare($sql);
     $query-> bindParam(':name', $name, PDO::PARAM_STR);
@@ -34,7 +33,7 @@ if(isset($_POST['submit']))
 
 
 }
-
+ 
 
 
 }
