@@ -17,6 +17,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         $query->execute();
 
         $msg = "Data Deleted successfully";
+        header('location:facilityweeklyreport.php');
     }
 
 
@@ -126,7 +127,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                             </div>
                                                         </div>
 
-                                                        <a href="fieldweeklyreport.php?del=<?php echo $result->sn; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
+                                                        <a href="facilityweeklyreport.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
 
                                                     </td>
 
