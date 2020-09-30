@@ -80,14 +80,13 @@
                     <span class="nav-label">Inventory management</span><span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="na.php">Landing Summary Page</a></li>
+                    <li><a href="inventorymgmt.php">Landing Summary Page</a></li>
                     <li><a href="tangible-asset.php">Procurement</a></li>
-                    <li><a href="na.php">Product Management</a></li>
-                    <li><a href="na.php">Ware Housing</a></li>
-                    <li><a href="na.php">Input Analysis</a></li>
-                    <li><a href="na.php">output</a></li>
+                    <li><a href="productlist.php">Product Management</a></li>
+                    <li><a href="warehouselist.php">Ware Housing</a></li>
+                    <li><a href="inputanalysis.php">Input Analysis</a></li>
+                    <li><a href="outputanalysis.php">output</a></li>
                     <li><a href="na.php">Tracking and Report</a></li>
-                    <li><a href="na.php">Warehousing</a></li>
 
                 </ul>
             </li>';
@@ -109,7 +108,7 @@
                 <ul class="nav nav-second-level">
                     <li><a href="na.php">Landing summary</a></li>
                     <li><a href="fpm.php">Field/Pen Management</a></li>
-                    <li><a href="na.php">Field Report</a></li>
+                    <li><a href="fdreport.php">Field Report</a></li>
                     <li><a href="worker-dash.php">Worker Management</a></li>
                     <li><a href="weather-dash.php">Weather</a></li>
                     <li><a href="na.php">Record Management</a></li>
