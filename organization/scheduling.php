@@ -11,12 +11,13 @@ if (strlen($_SESSION['alogin']) == 0) {
     if (isset($_GET['del'])) {
         $id = $_GET['del'];
 
-        $sql = "delete from testimonial WHERE id=:id";
+        $sql = "delete from alarm WHERE id=:id";
         $query = $dbh->prepare($sql);
         $query->bindParam(':id', $id, PDO::PARAM_STR);
         $query->execute();
 
-        $msg = "Data Deleted successfully";
+        $msg = "Alerm Deleted Successfully";
+		
     }
 ?>
 
@@ -59,9 +60,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                                     <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add</a>
                                 </h1>
 
-                                <h1 class="nav navbar-nav navbar-right">
+                            <!--    <h1 class="nav navbar-nav navbar-right">
                                     <a class="btn btn-md btn-primary" href="#add2" data-target="#add2" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add category</a>
-                                </h1>
+                                </h1> -->
                             </div>
                         </div>
                         <!-- button style End -->
@@ -98,27 +99,23 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <td><?php echo htmlentities($result->description); ?></td>
                                                     <td><?php echo htmlentities($result->start); ?></td>
                                                     <td><?php echo htmlentities($result->end); ?></td>
-
-
-
+													
                                                     <!-- Action Button Start -->
                                                     <td>
-                                                        <a data-toggle="modal" href="machineryedit.php?s=<?php echo $result->sn; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
-                                                            <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                                        <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog model-sm">
-                                                                <div class="modal-content"> </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <a href="schedulinglist.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
+                                                        <!-- <a data-toggle="modal" href="machineryedit.php?s=<?php echo $result->sn; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;<i class="fa fa-pencil"></i></a>   -->                                                 
+                                                        <a href="scheduling.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                                     </td>
-
                                                     <!-- Action Button End -->
-
-
                                                 </tr>
-                                        <?php $cnt = $cnt + 1;
+                                        <?php $cnt = $cnt + 1;											
+										
+										echo '<script type="text/javascript">										
+													var currentDate = new Date();
+													if(currentDate == <?php $result->start ?>){
+													alert("you");
+													}												
+												</script>';				
+										
                                             }
                                         } ?>
 
@@ -136,7 +133,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">×</span></button>
-                                    <h4 id='edit' class="modal-title">Add New Product</h4>
+                                    <h4 id='edit' class="modal-title">Add New Alarms</h4>
                                 </div>
                                 <div class="modal-body">
                                     <form action="schedulingform.php" method="POST" class="forma" id="f_edit">
@@ -151,11 +148,14 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <label for="description">Description</label>
                                             <input type="text" name="description" value="">
                                         </p>
-
+										<p>
+                                            <label for="size">Start</label>
+                                            <input type="datetime-local"  name="start" value="">
+                                        </p>
 
                                         <p>
-                                            <label for="size">end</label>
-                                            <input type="date" name="end" value="">
+                                            <label for="size">End</label>
+                                            <input type="datetime-local"  name="end" value="">
                                         </p>
 
 
@@ -190,17 +190,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                             </div>
                                                     -->
             </div>
-
-
-
-
-
-
-
-
         </div>
-
-
         </div>
 
         </div>
@@ -209,6 +199,24 @@ if (strlen($_SESSION['alogin']) == 0) {
         require_once "public/config/footer.php";
         ?>
 
+			<!-- Loading Scripts -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap-select.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.dataTables.min.js"></script>
+	<script src="js/dataTables.bootstrap.min.js"></script>
+	<script src="js/Chart.min.js"></script>
+	<script src="js/fileinput.js"></script>
+	<script src="js/chartData.js"></script>
+	<script src="js/main.js"></script>
+	<script type="text/javascript">
+				 $(document).ready(function () {          
+					setTimeout(function() {
+						$('.succWrap').slideUp("slow");
+					}, 3000);
+					});
+					
+	</script>
     </body>
 
     <!-- Mirrored from webapplayers.com/inspinia_admin-v2.6.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Sep 2016 02:26:53 GMT -->
