@@ -17,6 +17,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         $query->execute();
 
         $msg = "Data Deleted successfully";
+        header('location:penweeklyreport.php');
     }
 
 
@@ -125,7 +126,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                             </div>
                                                         </div>
 
-                                                        <a href="penweeklyreport.php?del=<?php echo $result->sn; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
+                                                        <a href="penweeklyreport.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
 
                                                     </td>
 
@@ -157,8 +158,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <label for="name">Pen</label>
                                                     <select name="name" id="">
                                                         <?php
-                                                        $sql = "SELECT * FROM `locations` WHERE data_type = 'pen'";
+                                                        $sql = "SELECT * FROM `locations` WHERE data_type = 'pen' AND org_id = :org_id";
                                                         $query = $dbh->prepare($sql);
+                                                        $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                                                         $query->execute();
                                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
                                                         $cnt = 1;

@@ -24,26 +24,26 @@ if (strlen($_SESSION['alogin']) == 0) {
 
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title">Edit Facilities</h4>
+            <h4 class="modal-title">Edit Reports</h4>
         </div>
         <div class="modal-body">
 
             <?php
             if (isset($_POST['edit'])) {
                 $sn = $_POST['edit'];
-                
-                $week = $_POST['week'];
+
+                $month = $_POST['month'];
                 $hours = $_POST['hours'];
                 $name = $_POST['name'];
                 $activity = $_POST['activity'];
                 $activity_status = $_POST['activity_status'];
                 $field_status = $_POST['field_status'];
                 $manager = $_SESSION['id'];
-                $type = "field";
+                $type = "pen";
 
-                $sql = "UPDATE `weeklyreport` SET `week`=:week,`name`=:name,`hours`=:hours,`activity`=:activity,`activity_status`=:activity_status,`field_status`=:field_status WHERE id=(:sn)";
+                $sql = "UPDATE `monthlyreport` SET `month`=:month,`name`=:name,`hours`=:hours,`activity`=:activity,`activity_status`=:activity_status,`field_status`=:field_status WHERE id=(:sn)";
                 $query = $dbh->prepare($sql);
-                $query->bindParam(':week', $week, PDO::PARAM_STR);
+                $query->bindParam(':month', $month, PDO::PARAM_STR);
                 $query->bindParam(':name', $name, PDO::PARAM_STR);
                 $query->bindParam(':hours', $hours, PDO::PARAM_STR);
                 $query->bindParam(':activity', $activity, PDO::PARAM_STR);
@@ -53,12 +53,12 @@ if (strlen($_SESSION['alogin']) == 0) {
                 $query->execute();
                 $msg = "Rent Updated Successfully";
 
-                header('location:fieldweeklyreport.php');
+                header('location:penmonthlyreport.php');
             } elseif (isset($_GET['s'])) {
                 $sn = $_GET['s'];
 
 
-                $sql = "SELECT * from `weeklyreport` WHERE id=(:idedit)";
+                $sql = "SELECT * from `monthlyreport` WHERE id=(:idedit)";
                 $query = $dbh->prepare($sql);
                 $query->bindValue(':idedit', $sn, PDO::PARAM_STR);
                 $query->execute();
@@ -66,17 +66,17 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 
             ?>
-                <form action="fieldweeklyreportedit.php" method="POST" class="forma">
+                <form action="penmonthlyreportedit.php" method="POST" class="forma">
                     <p>
-                        <label for="week">Week</label>
-                        <input type="week" name="week" value="<?php echo $results->week ?>">
+                        <label for="month">month</label>
+                        <input type="month" name="month" value="<?php echo $results->month ?>">
                     </p>
 
                     <p>
-                        <label for="name">Field</label>
+                        <label for="name">pen</label>
                         <select name="name" id="">
                             <?php
-                            $s = "SELECT * FROM `locations` WHERE data_type = 'field' AND org_id = :org_id";
+                            $s = "SELECT * FROM `locations` WHERE data_type = 'pen' AND org_id = org_id";
                             $q = $dbh->prepare($s);
                             $q->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                             $q->execute();
@@ -113,7 +113,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                     </p>
 
                     <p>
-                        <label for="field_status">Field Status</label>
+                        <label for="field_status">pen Status</label>
                         <input type="range" name="field_status" id="" min="1" max="5" step="1" value="<?php echo $result->field_status ?>">
                     </p>
 

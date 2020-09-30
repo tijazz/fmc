@@ -67,7 +67,7 @@
                     <span class="nav-label">Inventory management</span><span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="na.php">Landing Summary Page</a></li>
+                    <li><a href="inventorymgmt.php">Landing Summary Page</a></li>
                     <li><a href="tangible-asset.php">Procurement</a></li>
                     <li><a href="productlist.php">Product Management</a></li>
                     <li><a href="warehouselist.php">Ware Housing</a></li>
