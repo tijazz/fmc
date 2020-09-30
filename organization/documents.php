@@ -25,7 +25,7 @@ if (strlen($_SESSION['alogin']) == 0) {
   {	
 	$file = $_FILES['attachment']['name'];
 	$file_loc = $_FILES['attachment']['tmp_name'];
-	$folder="attachment/";
+	$folder="../attachment/";
 	$new_file_name = strtolower($file);
 	$final_file=str_replace(' ','-',$new_file_name);
 	
@@ -125,7 +125,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 											<td><?php echo htmlentities($cnt);?></td>
                                             <td><?php echo htmlentities($result->name);?></td>
 											<td><?php echo htmlentities($result->description);?></td>                                      
-                                            <td><a href="../organization/attachment/<?php echo htmlentities($result->attachment);?>" target="_blank" ><?php echo htmlentities($result->attachment);?></a></td>
+                                            <td><a href="../attachment/<?php echo htmlentities($result->attachment);?>" target="_blank" ><?php echo htmlentities($result->attachment);?></a></td>
 											<td><?php echo htmlentities($result->time);?></td>    
 										<td>
                                                         <!-- <a data-toggle="modal" href="machineryedit.php?s=<?php echo $result->sn; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;<i class="fa fa-pencil"></i></a>   -->                                                 
