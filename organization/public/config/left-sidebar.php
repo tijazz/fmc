@@ -67,7 +67,7 @@
                     <span class="nav-label">Inventory management</span><span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="na.php">Landing Summary Page</a></li>
+                    <li><a href="inventorymgmt.php">Landing Summary Page</a></li>
                     <li><a href="tangible-asset.php">Procurement</a></li>
                     <li><a href="productlist.php">Product Management</a></li>
                     <li><a href="warehouselist.php">Ware Housing</a></li>
@@ -85,7 +85,7 @@
                     <span class="nav-label">Monitoring and Evaluation</span><span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="na.php">Landing summary</a></li>
+                    <li><a href="m_and_e.php">Landing summary</a></li>
                     <li><a href="fpm.php">Field/Pen Management</a></li>
                     <li><a href="fdreport.php">Field Report</a></li>
                     <li><a href="employee-dash.php">Employee Management</a></li>

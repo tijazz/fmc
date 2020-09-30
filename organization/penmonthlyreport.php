@@ -11,13 +11,13 @@ if (strlen($_SESSION['alogin']) == 0) {
     if (isset($_GET['del'])) {
         $id = $_GET['del'];
 
-        $sql = "delete from weeklyreport WHERE id=:id";
+        $sql = "delete from monthlyreport WHERE id=:id";
         $query = $dbh->prepare($sql);
         $query->bindParam(':id', $id, PDO::PARAM_STR);
         $query->execute();
 
         $msg = "Data Deleted successfully";
-        header('location:facilityweeklyreport.php');
+        header('location:penmonthlyreport.php');
     }
 
 
@@ -50,7 +50,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                 </div>
                 <div class="row dashboard-header">
                     <div class="panel-heading" style='padding:0;'>
-                        <h2 class="page-title">Manage Weekly Facilities Reports</h2>
+                        <h2 class="page-title">Manage monthly Pens Reports</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -75,12 +75,12 @@ if (strlen($_SESSION['alogin']) == 0) {
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Week</th>
-                                            <th>Facility</th>
+                                            <th>month</th>
+                                            <th>Pen</th>
                                             <th>Usage Hours</th>
                                             <th>Activity</th>
                                             <th>Activity Status</th>
-                                            <th>Facility Status</th>
+                                            <th>Pen Status</th>
                                             <th>Manager</th>
                                             <th>Action</th>
                                         </tr>
@@ -88,7 +88,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                     <tbody>
 
-                                        <?php $sql = "SELECT * from weeklyreport WHERE org_id = (:org_id) AND type = 'facility'";
+                                        <?php $sql = "SELECT * from monthlyreport WHERE org_id = (:org_id) AND type = 'pen'";
                                         $query = $dbh->prepare($sql);
                                         $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                                         $query->execute();
@@ -98,11 +98,10 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             foreach ($results as $result) {                ?>
                                                 <tr>
                                                     <td><?php echo htmlentities($cnt); ?></td>
-                                                    <td><?php echo htmlentities($result->week); ?></td>
+                                                    <td><?php echo htmlentities($result->month); ?></td>
                                                     <td><?php
-                                                        $s = "SELECT * FROM `building` WHERE sn = (:id) AND org_id = (:org_id)";
+                                                        $s = "SELECT * FROM `locations` WHERE id = (:id)";
                                                         $q = $dbh->prepare($s);
-                                                        $q->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                                                         $q->bindParam(':id', $result->name, PDO::PARAM_STR);
                                                         $q->execute();
                                                         $res = $q->fetch(PDO::FETCH_OBJ);
@@ -119,7 +118,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                         $res = $q->fetch(PDO::FETCH_OBJ);
                                                         echo htmlentities($res->username); ?></td>
                                                     <td>
-                                                        <a data-toggle="modal" href="fieldweeklyreportedit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <a data-toggle="modal" href="penmonthlyreportedit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
                                                         <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog model-sm">
@@ -127,7 +126,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                             </div>
                                                         </div>
 
-                                                        <a href="facilityweeklyreport.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
+                                                        <a href="penmonthlyreport.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
 
                                                     </td>
 
@@ -149,17 +148,17 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <h4 class="modal-title">Create Report</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="facilityweeklyreportform.php" method="POST" class="forma">
+                                            <form action="penmonthlyreportform.php" method="POST" class="forma">
                                                 <p>
-                                                    <label for="week">Week</label>
-                                                    <input type="week" name="week">
+                                                    <label for="month">month</label>
+                                                    <input type="month" name="month">
                                                 </p>
 
                                                 <p>
-                                                    <label for="name">Field</label>
+                                                    <label for="name">Pen</label>
                                                     <select name="name" id="">
                                                         <?php
-                                                        $sql = "SELECT * FROM `building` WHERE org_id = (:org_id)";
+                                                        $sql = "SELECT * FROM `locations` WHERE data_type = 'pen' AND org_id = :org_id";
                                                         $query = $dbh->prepare($sql);
                                                         $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                                                         $query->execute();
@@ -167,7 +166,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                         $cnt = 1;
                                                         if ($query->rowCount() > 0) {
                                                             foreach ($results as $result) {                ?>
-                                                                <option value="<?php echo htmlentities($result->sn); ?>">
+                                                                <option value="<?php echo htmlentities($result->id); ?>">
                                                                     <?php echo htmlentities($result->name); ?></option>
                                                         <?php $cnt = $cnt + 1;
                                                             }
