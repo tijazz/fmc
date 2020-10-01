@@ -78,7 +78,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                             <?php
                             $s = "SELECT * FROM `locations` WHERE data_type = 'pen' AND org_id = org_id";
                             $q = $dbh->prepare($s);
-                            $q->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
+                            $q->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
                             $q->execute();
                             $res = $q->fetchAll(PDO::FETCH_OBJ);
                             $cnt = 1;
