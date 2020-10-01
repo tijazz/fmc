@@ -29,7 +29,7 @@ body,html{
     background:#fff;
     padding:1rem 2rem;
     border-radius: 10px;
-    box-shadow: 2px 20px 9px 20px rgba(0, 0, 0, 0.198);
+    /* box-shadow: 2px 20px 9px 20px rgba(0, 0, 0, 0.198); */
     transition:0.4s ease;
     text-align:center;
 }
@@ -41,22 +41,10 @@ body,html{
 
 .question-shown{
     top:50%;
+    box-shadow: 2px 4px 8px 1000px rgba(0, 0, 0, 0.198);
 }
 
-.backdrop_org{
-    position:fixed;
-    width:100vw;
-    height:100vh;
-    background:rgba(0, 0, 0, 0.397);
-    z-index:3;
-    opacity: 0;
-    pointer-events: none;
-}
 
-.backdrop-shown{
-    opacity:1;
-    pointer-events: all;
-}
 
 ul{
     list-style: none;

@@ -1,4 +1,8 @@
 * {box-sizing:border-box}
+.panel,.panel-body{
+  overflow:auto;
+}
+
 a:hover{color:#192c29;}
 /* Slideshow container */
 .slideshow-container {

@@ -111,21 +111,21 @@ else{
                                 <div class="transaction">
                                     <h3>Transaction</h3>
                                     <div class="graph">
-                                        <div class="line"></div>
+                                        <div class="liner"></div>
                                     </div>
                                     <span class="rate"><h3>99.96</h3><span class="line_100"> | 100</span></span>
                                 </div>
                                 <div class="credit">
                                     <h3>Credit</h3>
                                     <div class="graph">
-                                        <div class="line"></div>
+                                        <div class="liner"></div>
                                     </div>
                                     <span class="rate"><h3>960.13</h3><span class="line_100"> | OUIC</span></span>
                                 </div>
                                 <div class="debit">
                                     <h3>Debit</h3>
                                     <div class="graph">
-                                        <div class="line"></div>
+                                        <div class="liner"></div>
                                     </div>
                                     <span class="rate"><h3>940.96</h3><span class="line_100"> | OUIC</span></span>
                                 </div>

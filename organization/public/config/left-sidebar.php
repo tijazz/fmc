@@ -28,7 +28,7 @@
                     <img src="images/logo.png" alt="" style="height:30px;">
                 </div>
             </li>
-            <li class="active">
+            <li>
                 <a href="dashboard.php">
                     <i class="fas fa-user"></i>
                     <span class="nav-label">Dashboard</span>
@@ -164,11 +164,19 @@
 
 </nav>
 <style>
+       .panel svg{
+                height:120px;
+                width:120px;
+            }
+            .panel a,.panel a:hover{
+                color:rgb(11, 89, 109) !important;
+            }
     @media(min-width:600px) {
 
         #wrapper>nav>div {
             position: fixed;
         }
+
     }
 </style>
 <script>

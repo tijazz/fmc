@@ -8,7 +8,7 @@
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="true">
                         <!-- User name -->
                         <span class="clear"> <span class="block m-t-xs">
-                                <strong class="font-bold">
+                                <strong class="font-bold white-hover">
                                     <?php echo ($_SESSION["name"]); ?>
                                 </strong>
                                 <!-- User position -->
@@ -82,6 +82,9 @@
 </nav>
 <style>
     /* .arrow{transform:rotate(180deg);} */
+    .white-hover:hover{
+        color:#fff !important;
+    }
     .block {
         display: block;
         opacity: 1;
@@ -90,5 +93,12 @@
     .rotated {
         transform: rotate(180deg);
     }
+    .panel svg{
+                height:120px;
+                width:120px;
+            }
+            .panel a,.panel a:hover{
+                color:rgb(11, 89, 109) !important;
+            }
 </style>
 <script src="public/js/side_bar.js"></script>

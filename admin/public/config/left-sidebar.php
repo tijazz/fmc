@@ -29,7 +29,7 @@
                     <img src="images/logo.png" alt="" style="height:30px;">
                 </div>
             </li>
-            <li class="active">
+            <li>
                 <a href="dashboard.php">
                     <i class="fas fa-user"></i>
                     <span class="nav-label">Dashboard</span>
