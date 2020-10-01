@@ -147,8 +147,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <div class="stat-panel-title text-uppercase">Scheduling and Designation</div>
                                                 </div>
                                             </div>
-                                            <a href="scheduling.php" class="block-anchor panel-footer text-center">Full
-                                                Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
+                                            <a href="scheduling.php" class="block-anchor panel-footer text-center">Alarm
+                                                 &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="documents.php" class="block-anchor panel-footer text-center">Documents &nbsp; <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -188,7 +189,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <div class="stat-panel-title text-uppercase">Activity Log</div>
                                                 </div>
                                             </div>
-                                            <a href="otassetlist" class="block-anchor panel-footer text-center">Full Detail
+                                            <a href="activitylog.php" class="block-anchor panel-footer text-center">Full Detail
                                                 &nbsp; <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>

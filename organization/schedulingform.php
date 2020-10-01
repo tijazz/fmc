@@ -13,28 +13,30 @@
          	
 if(isset($_POST['submit']))
 {
-
+	$user = $_SESSION['id'];
+	$org_id = $_SESSION['org'];
     $name = $_POST['name'];
     $description = $_POST['description'];
+	$start = $_POST['start'];
     $end = $_POST['end'];
-    $user_id = $_SESSION['id'];
-    $org_id = $_SESSION['org'];
-    
+      
+    $sql="INSERT INTO `alarm`(`user`, `org_id`, `name`, `description`, `start`, `end`) VALUES (:user, :org_id, :name, :description, :start, :end)";
 	
-    $sql="INSERT INTO `alarm`(`name`, `user_id`, `description`, `org_id`, `end`) VALUES (:name, :user_id, :description, :org_id, :end)";
     $query = $dbh->prepare($sql);
-    $query-> bindParam(':name', $name, PDO::PARAM_STR);
-    $query-> bindParam(':user_id', $user_id, PDO::PARAM_STR);
-    $query-> bindParam(':description', $description, PDO::PARAM_STR);
+    
+	$query-> bindParam(':user', $user, PDO::PARAM_STR);
     $query-> bindParam(':org_id', $org_id, PDO::PARAM_STR);
+	$query-> bindParam(':name', $name, PDO::PARAM_STR);
+    $query-> bindParam(':description', $description, PDO::PARAM_STR);
+	$query-> bindParam(':start', $start, PDO::PARAM_STR);
     $query-> bindParam(':end', $end, PDO::PARAM_STR);
     $query->execute(); 
-    $msg="Rent Updated Successfully";
-    header('location:schedulingform.php');
+    $msg="Alerm Set Successfully";
+    header('location:scheduling.php');
 
-
+	
 }
+ 
 
-
-
+//$sql="INSERT INTO `alarm`(`name`, `user`, `description`, `org_id`, `end`) VALUES (:name, :user, :description, :org_id, :end)";
 }

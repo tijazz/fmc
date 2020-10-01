@@ -73,7 +73,7 @@
                     <li><a href="warehouselist.php">Ware Housing</a></li>
                     <li><a href="inputanalysis.php">Input Analysis</a></li>
                     <li><a href="outputanalysis.php">output</a></li>
-                    <li><a href="na.php">Tracking and Report</a></li>
+                    <li><a href="activitylog.php">Tracking and Report</a></li>
 
                 </ul>
             </li>
@@ -85,7 +85,7 @@
                     <span class="nav-label">Monitoring and Evaluation</span><span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="na.php">Landing summary</a></li>
+                    <li><a href="m_and_e.php">Landing summary</a></li>
                     <li><a href="fpm.php">Field/Pen Management</a></li>
                     <li><a href="fdreport.php">Field Report</a></li>
                     <li><a href="employee-dash.php">Employee Management</a></li>

@@ -91,7 +91,7 @@
 							<div class="panel-body">
 											<?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } 
 								else if($msg){?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php }?>
-								<table id="zctb" class="userlist_table" cellspacing="0" width="100%">
+								<table id="zctb tablePreview" class="userlist_table" cellspacing="0" width="100%">
 									<thead>
 										<tr>
 										<th style="padding:0 5px 0 8px">#</th>
