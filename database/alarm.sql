@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2020 at 11:57 PM
+-- Generation Time: Sep 30, 2020 at 11:56 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -25,33 +25,36 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `documents`
+-- Table structure for table `alarm`
 --
 
-CREATE TABLE `documents` (
-  `id` int(11) NOT NULL,
+CREATE TABLE `alarm` (
+  `id` int(6) NOT NULL,
+  `user` int(255) NOT NULL,
+  `org_id` int(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `attachment` varchar(255) NOT NULL,
-  `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `start` datetime NOT NULL,
+  `end` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `documents`
+-- Dumping data for table `alarm`
 --
 
-INSERT INTO `documents` (`id`, `name`, `description`, `attachment`, `time`) VALUES
-(20, 'clearing', 'farm clearing and bush burning', 'srecorder.txt', '2020-09-30 12:56:30'),
-(23, 'Ade', 'Burning', '1.jpg', '2020-09-30 22:54:50');
+INSERT INTO `alarm` (`id`, `user`, `org_id`, `name`, `description`, `start`, `end`) VALUES
+(1, 1, 0, 'Ade', 'applying fertilizer', '2020-09-29 19:36:55', '2020-09-29 19:36:00'),
+(3, 1, 0, 'adex', 'clearing', '2020-09-29 19:37:45', '2020-09-29 19:39:00'),
+(4, 1, 0, 'winnie', 'feeding', '2020-09-29 19:38:27', '2020-09-29 10:38:00');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `documents`
+-- Indexes for table `alarm`
 --
-ALTER TABLE `documents`
+ALTER TABLE `alarm`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -59,10 +62,10 @@ ALTER TABLE `documents`
 --
 
 --
--- AUTO_INCREMENT for table `documents`
+-- AUTO_INCREMENT for table `alarm`
 --
-ALTER TABLE `documents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+ALTER TABLE `alarm`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

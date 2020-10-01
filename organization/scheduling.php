@@ -16,7 +16,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         $query->bindParam(':id', $id, PDO::PARAM_STR);
         $query->execute();
 
-        $msg = "Alerm Deleted Successfully";
+        $msg = "Alarm Deleted Successfully";
 		
     }
 ?>
