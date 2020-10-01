@@ -73,7 +73,7 @@
                     <li><a href="warehouselist.php">Ware Housing</a></li>
                     <li><a href="inputanalysis.php">Input Analysis</a></li>
                     <li><a href="outputanalysis.php">output</a></li>
-                    <li><a href="na.php">Tracking and Report</a></li>
+                    <li><a href="activitylog.php">Tracking and Report</a></li>
 
                 </ul>
             </li>
