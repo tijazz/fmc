@@ -88,7 +88,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                     <tbody>
 
-                                        <?php $sql = "SELECT * from `locations` WHERE org_id=(:org_id) AND data_type='pen' AND user_id = :user_id";
+                                        <?php $sql = "SELECT * from `locations` WHERE org_id=(:org_id) AND data_type='pen' AND user = :user_id";
                                         $query = $dbh->prepare($sql);
                                         $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
                                         $query->bindParam(':user_id', $_SESSION['id'], PDO::PARAM_STR);
