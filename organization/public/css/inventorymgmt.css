@@ -3,7 +3,6 @@ body,html{
     /* height:100%; */
     margin:0;
     padding:0;
-    font-family: Roboto !important;
     width:100%;
     overflow-x: hidden;
     position: relative;
@@ -12,8 +11,8 @@ body,html{
 
 #page-wrapper > div.row.dashboard-header,
 #page-wrapper > div:nth-child(3){
-    background:linear-gradient(45deg,#044561,#1ab394);
-
+    background: #171f2786;
+    font-family: Roboto !important;
 }
 
 .trash{
@@ -64,7 +63,7 @@ ul{
     color:#fff;
     align-items: center;
     justify-content: center;
-    background:rgba(33, 29, 29,0.05);
+    background:rgba(209, 208, 208, 0.05);
     border-radius:20px;
     box-shadow:1px 2px 4px 2px rgba(37, 36, 36, 0.15);
 }

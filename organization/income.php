@@ -45,7 +45,7 @@
                     <h2 class="page-title"></h2>
 
                   <!-- Zero Configuration Table -->
-						<div class="panel panel-default" style="background:#b3f3e677;border-radius:5px;box-shadow:1px 1px 4px 2px rgba(110, 104, 104, 0.335);">
+						<div class="panel panel-default panel-outer" >
 							<div class="panel-heading">View Panel</div>
 							<div class="panel-body">
 								<?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } 
@@ -120,9 +120,7 @@
             
         </div>
        <style>
-		.panel,.panel-body{
-            overflow:visible;
-        }
+	
 		   #page-wrapper > div:nth-child(3) > div > div > div.panel-body > div > div > div > a:hover{
 			   color:#fff;
            }

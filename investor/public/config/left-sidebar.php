@@ -28,7 +28,7 @@
                     <img src="images/logo.png" alt="" style="height:30px;">
                 </div>
             </li>
-            <li class="active">
+            <li>
                 <a href="dashboard.php">
                     <i class="fa fa-dashboard"></i>
                     <span class="nav-label">Dashboard</span>
@@ -57,9 +57,9 @@
                 </a>
             </li>
 
-            <li class="active">
+            <li>
                 <a class="user__dets" href="#"><i class="fa fa-users"></i> <span class="nav-label">Manage
-                        User</span><span id="arrow" class="fa arrow"></span></a>
+                        User</span><span id="arrow" class="fa arrow arrow_special"></span></a>
                 <ul id="user_dets_list" class="nav nav-second-level collapse in" style="display:none;">
                     <li><a href="Profile.php">View Profile</a></li>
                     <li><a href="editProfile.php">Edit Profile</a></li>
@@ -81,7 +81,7 @@
     </div>
 </nav>
 <style>
-    /* .arrow{transform:rotate(180deg);} */
+    .arrow_special{transform:rotate(-90deg);}
     .white-hover:hover{
         color:#fff !important;
     }
@@ -90,8 +90,9 @@
         opacity: 1;
     }
 
+
     .rotated {
-        transform: rotate(180deg);
+        transform: rotate(90deg);
     }
     .panel svg{
                 height:120px;
