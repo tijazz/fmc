@@ -9,6 +9,8 @@ if (strlen($_SESSION['alogin']) == 0) {
     header('location:index.php');
 } else {
 
+    
+
 
 
 ?>
@@ -29,6 +31,9 @@ if (strlen($_SESSION['alogin']) == 0) {
         <div class="modal-body">
 
             <?php
+
+
+
             if (isset($_POST['edit'])) {
                 $sn = $_POST['edit'];
                 $soil_type = $_POST['soil_type'];
@@ -59,6 +64,23 @@ if (strlen($_SESSION['alogin']) == 0) {
                 $msg = "Rent Updated Successfully";
 
                 header('location:fplist.php');
+            }elseif (isset($_POST['submit']) && isset($_POST['field'])) {
+                $sn = $_POST['field'];
+                $data_type = 'field';
+
+                $sql = "UPDATE `locations` SET `data_type`=:data_type WHERE id=(:sn)";
+                $query = $dbh->prepare($sql);
+                
+                $query->bindParam(':data_type', $data_type, PDO::PARAM_STR);
+                
+                $query->bindValue(':sn', $sn, PDO::PARAM_STR);
+                $query->execute();
+                $msg = "Rent Updated Successfully";
+
+                header('location:fplist.php');
+
+
+
             } elseif (isset($_GET['s'])) {
                 $sn = $_GET['s'];
 

@@ -112,23 +112,23 @@ body{color:#000;}
     background:rgba(128, 128, 128, 0.198);
 }
 
-.line{
+.liner{
     position:absolute;
     height:100%;
     border-radius: 5px;
 }
 
-.transaction .line{
+.transaction .liner{
     width:80%;
     background:purple;
 }
 
-.credit .line{
+.credit .liner{
     width:90%;
     background:green;
 }
 
-.debit .line{
+.debit .liner{
     width:97%;
     background:red;
 }

@@ -1,4 +1,5 @@
 *{margin:0;padding:0;}
+a{text-decoration:none;}
 html,body{
     min-height:100vh;
     background:linear-gradient(16deg,#108e99,#0d606b,#089b82);

@@ -3,7 +3,7 @@
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element open"> <span>
-                        <img alt="image" class="img-profile" src="images/<?php echo ($_SESSION["images"]); ?>">
+                        <img alt="image" class="img-profile" src="../images/<?php echo ($_SESSION["images"]); ?>">
                     </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="true">
                         <!-- User name -->
@@ -12,8 +12,7 @@
                                     <?php echo ($_SESSION["staffname"]); ?>
                                 </strong>
                                 <!-- User position -->
-                            </span> <span class="text-muted text-xs block">
-                                <?php echo ($_SESSION["category"]); ?> Investor <b class="caret"></b></span> </span>
+                            </span> <span class="text-muted text-xs block"> Organization <b class="caret"></b></span> </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li>
@@ -29,7 +28,7 @@
                     <img src="images/logo.png" alt="" style="height:30px;">
                 </div>
             </li>
-            <li class="active">
+            <li>
                 <a href="dashboard.php">
                     <i class="fas fa-user"></i>
                     <span class="nav-label">Dashboard</span>
@@ -68,14 +67,13 @@
                     <span class="nav-label">Inventory management</span><span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="na.php">Landing Summary Page</a></li>
+                    <li><a href="inventorymgmt.php">Landing Summary Page</a></li>
                     <li><a href="tangible-asset.php">Procurement</a></li>
-                    <li><a href="na.php">Product Management</a></li>
-                    <li><a href="na.php">Ware Housing</a></li>
-                    <li><a href="na.php">Input Analysis</a></li>
-                    <li><a href="na.php">output</a></li>
-                    <li><a href="na.php">Tracking and Report</a></li>
-                    <li><a href="na.php">Warehousing</a></li>
+                    <li><a href="productlist.php">Product Management</a></li>
+                    <li><a href="warehouselist.php">Ware Housing</a></li>
+                    <li><a href="inputanalysis.php">Input Analysis</a></li>
+                    <li><a href="outputanalysis.php">output</a></li>
+                    <li><a href="activitylog.php">Tracking and Report</a></li>
 
                 </ul>
             </li>
@@ -87,9 +85,9 @@
                     <span class="nav-label">Monitoring and Evaluation</span><span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="na.php">Landing summary</a></li>
+                    <li><a href="m_and_e.php">Landing summary</a></li>
                     <li><a href="fpm.php">Field/Pen Management</a></li>
-                    <li><a href="na.php">Field Report</a></li>
+                    <li><a href="fdreport.php">Field Report</a></li>
                     <li><a href="employee-dash.php">Employee Management</a></li>
                     <li><a href="worker-dash.php">Worker Management</a></li>
                     <li><a href="weather-dash.php">Weather</a></li>
@@ -117,7 +115,7 @@
                 </ul>
             </li>
 
-            
+
             <!-- End investment management -->
 
             <!-- Wallet -->
@@ -131,8 +129,7 @@
 
             <!-- Notifications -->
             <li class="parentd">
-                <a href="#" class='spec'><i class="fa fa-edit"></i> <span class="nav-label">Notifications</span><span
-                        class="fa arrow"></span></a>
+                <a href="#" class='spec'><i class="fa fa-edit"></i> <span class="nav-label">Notifications</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
 
                     <li><a href="notification-dash.php">Notification Dashboard</a></li>
@@ -145,8 +142,7 @@
 
 
             <li class="parentd">
-                <a href="#" class='spec'><i class="fa fa-users"></i> <span class="nav-label">Users</span><span
-                        class="fa arrow"></span></a>
+                <a href="#" class='spec'><i class="fa fa-users"></i> <span class="nav-label">Users</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="profile.php">My Profile</a></li>
                     <li><a href="userlist.php">Users list</a></li>
@@ -167,7 +163,22 @@
     </div>
 
 </nav>
+<style>
+       .panel svg{
+                height:120px;
+                width:120px;
+            }
+            .panel a,.panel a:hover{
+                color:rgb(11, 89, 109) !important;
+            }
+    @media(min-width:600px) {
 
+        #wrapper>nav>div {
+            position: fixed;
+        }
+
+    }
+</style>
 <script>
     let parentds = document.querySelectorAll(".parentd");
     let links = document.querySelectorAll(".parentd > a");
@@ -178,15 +189,15 @@
             parentds.forEach((two) => {
                 two.classList.remove('opened');
             })
-         if(opened==false){
-          one.parentElement.classList.add('opened');
-          opened = true;
-          }else{
-              one.parentElement.classList.remove('opened');
-              opened=false;
-          }
+            if (opened == false) {
+                one.parentElement.classList.add('opened');
+                opened = true;
+            } else {
+                one.parentElement.classList.remove('opened');
+                opened = false;
+            }
 
-         
+
 
         })
     })

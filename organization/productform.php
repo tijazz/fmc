@@ -14,19 +14,21 @@
 if(isset($_POST['submit']))
 {
 
-    $product_id = $_POST['product_id'];
-    $user_id = $_POST['user_id'];
-    $product_name = $_POST['product_name'];   
+    $name = $_POST['name'];
+    $amount = $_POST['amount'];
+    $user_id = $_SESSION['id'];
+    $org_id = $_SESSION['id'];
 	
-    $sql="INSERT INTO `product`(`product_id`, `user_id`, `product_name`)
-	VALUES (:product_id, :user_id, :product_name)";
+    $sql="INSERT INTO `product`(`org_id`, `user_id`, `name`, `amount`)
+	VALUES (:org_id, :user_id, :name, :amount)";
     $query = $dbh->prepare($sql);
-    $query-> bindParam(':product_id', $product_id, PDO::PARAM_STR);
-    $query-> bindParam(':user_id', $user_id, PDO::PARAM_STR);
-    $query-> bindParam(':product_name', $product_name, PDO::PARAM_STR);
+    $query-> bindParam(':amount', $amount, PDO::PARAM_STR);
+    $query-> bindParam(':name', $name, PDO::PARAM_STR);
+    $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
+    $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
     $query->execute(); 
     $msg="Product Updated Successfully";
-    header('location:product.php');
+    header('location:productlist.php');
 }
 }  
 ?>

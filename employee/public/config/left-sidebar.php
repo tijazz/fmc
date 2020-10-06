@@ -8,12 +8,12 @@
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="true">
                         <!-- User name -->
                         <span class="clear"> <span class="block m-t-xs">
-                                <strong class="font-bold">
+                                <strong class="font-bold white-hover">
                                     <?php echo ($_SESSION["name"]); ?>
                                 </strong>
                                 <!-- User position -->
                             </span> <span class="text-muted text-xs block">
-                                <?php echo ($_SESSION["category"]); ?> Investor <b class="caret"></b></span> </span>
+                                <?php echo ($_SESSION["category"]); ?> Employee <b class="caret"></b></span> </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li>
@@ -29,7 +29,7 @@
                     <img src="images/logo.png" alt="" style="height:30px;">
                 </div>
             </li>
-            <li class="active">
+            <li>
                 <a href="dashboard.php">
                     <i class="fas fa-user"></i>
                     <span class="nav-label">Dashboard</span>
@@ -80,14 +80,13 @@
                     <span class="nav-label">Inventory management</span><span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="na.php">Landing Summary Page</a></li>
+                    <li><a href="inventorymgmt.php">Landing Summary Page</a></li>
                     <li><a href="tangible-asset.php">Procurement</a></li>
-                    <li><a href="na.php">Product Management</a></li>
-                    <li><a href="na.php">Ware Housing</a></li>
-                    <li><a href="na.php">Input Analysis</a></li>
-                    <li><a href="na.php">output</a></li>
-                    <li><a href="na.php">Tracking and Report</a></li>
-                    <li><a href="na.php">Warehousing</a></li>
+                    <li><a href="productlist.php">Product Management</a></li>
+                    <li><a href="warehouselist.php">Ware Housing</a></li>
+                    <li><a href="inputanalysis.php">Input Analysis</a></li>
+                    <li><a href="outputanalysis.php">output</a></li>
+                    <li><a href="activitylog.php">Tracking and Report</a></li>
 
                 </ul>
             </li>';
@@ -107,9 +106,9 @@
                     <span class="nav-label">Monitoring and Evaluation</span><span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="na.php">Landing summary</a></li>
-                    <li><a href="na.php">Field/Pen Management</a></li>
-                    <li><a href="na.php">Field Report</a></li>
+                    <li><a href="m_and_e.php">Landing summary</a></li>
+                    <li><a href="fpm.php">Field/Pen Management</a></li>
+                    <li><a href="fdreport.php">Field Report</a></li>
                     <li><a href="worker-dash.php">Worker Management</a></li>
                     <li><a href="weather-dash.php">Weather</a></li>
                     <li><a href="na.php">Record Management</a></li>
@@ -195,7 +194,27 @@
     </div>
 
 </nav>
+<style>
+    
+   .white-hover,.white-hover:hover{
+        color:#fff !important;
+    }
+    .block {
+        display: block;
+        opacity: 1;
+    }
 
+    .rotated {
+        transform: rotate(180deg);
+    }
+    .panel svg{
+                height:120px;
+                width:120px;
+            }
+            .panel a,.panel a:hover{
+                color:rgb(11, 89, 109) !important;
+            }
+</style>
 <script>
 let parentds = document.querySelectorAll(".parentd");
 let links = document.querySelectorAll(".parentd > a");

@@ -45,10 +45,20 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                     <div class="col-lg-12">
 
+                        <div class="navbar">
+                            <div class="container-fluid" style='padding-left:7px;'>
+                                <h1 class="nav navbar-nav">
+                                    <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add Field</a>
+                                </h1>
+
+                            </div>
+                        </div>
+                        <!-- button style End -->
+
 
                         <!-- Zero Configuration Table -->
                         <div class="panel panel-default">
-                            <div class="panel-heading">Field/Pen List</div>
+                            <div class="panel-heading">Field List</div>
                             <div class="panel-body">
                                 <?php if ($error) { ?><div class="errorWrap" id="msgshow">
                                         <?php echo htmlentities($error); ?>
@@ -78,7 +88,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                     <tbody>
 
-                                        <?php $sql = "SELECT * from `locations` WHERE org_id=:org_id";
+                                        <?php $sql = "SELECT * from `locations` WHERE org_id=(:org_id) AND data_type='field'";
                                         $query = $dbh->prepare($sql);
                                         $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                                         $query->execute();
@@ -105,7 +115,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                     <!-- Action Button Start -->
                                                     <td>
-                                                        <a data-toggle="modal" href="fpedit.php?s=<?php echo $result->id;?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <a data-toggle="modal" href="fpedit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
                                                         <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog model-sm">
@@ -131,6 +141,55 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                             </div>
 
+                            <div id="add" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                <div class="modal-dialog">
+                                    <div class="modal-content" style="height:auto">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span></button>
+                                            <h4 class="modal-title">Add Detail</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="fpedit.php" method="POST" class="forma">
+
+
+                                                <p>
+                                                    <label for="name">Name</label>
+                                                    <select name="field" id="">
+                                                        <?php
+                                                        $sql = "SELECT * FROM `locations` WHERE data_type = 'data'";
+                                                        $query = $dbh->prepare($sql);
+                                                        $query->execute();
+                                                        $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                                        $cnt = 1;
+                                                        if ($query->rowCount() > 0) {
+                                                            foreach ($results as $result) {                ?>
+                                                                <option value="<?php echo htmlentities($result->id); ?>">
+                                                                    <?php echo htmlentities($result->name); ?></option>
+                                                        <?php $cnt = $cnt + 1;
+                                                            }
+                                                        } ?>
+                                                    </select>
+                                                </p>
+
+                                                <p>
+                                                    <button type="submit" name="submit" value="<?php echo $sn; ?>">
+                                                        Submit
+                                                    </button>
+                                                </p>
+
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!--end of modal-dialog-->
 
 
 

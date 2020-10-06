@@ -69,7 +69,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                     ?>
 
                 </div>
-                <div class="row  border-bottom white-bg dashboard-header">
+                <div class="row  dashboard-header">
                     <div class="panel-heading">
                         <h4>Edit Profile</h4>
                     </div>

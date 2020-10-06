@@ -59,22 +59,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                     <div class="col-lg-12">
 
 
-                        <!-- button style Start -->
-                        <div class="navbar">
-                            <div class="container-fluid" style="padding-left:7px;">
-                                <h1 class="nav navbar-nav">
-                                    <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add</a>
-                                </h1>
-
-                                <h1 class="nav navbar-nav navbar-right">
-                                    <a class="btn btn-md btn-primary" href="#add2" data-target="#add2" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add category</a>
-                                </h1>
-                            </div>
-                        </div>
-                        <!-- button style End -->
 
                         <!-- Zero Configuration Table -->
-                        <div class="panel panel-default">
+                        <div class="panel panel-default panel-outer">
                             <div class="panel-heading">Organization list</div>
                             <div class="panel-body">
                                 <?php if ($error) { ?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?>
@@ -88,12 +75,14 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 $cnt = 1;
                                 if ($query->rowCount() > 0) {
                                     foreach ($results as $result) { ?>
-                                        <div class="panel" style="width:200px">
-                                            <img class="panel-heading" src="https://www.w3schools.com/howto/img_avatar.png" alt="Card image" style="width:100%">
-                                            <div class="panel-body">
-                                                <h4 class="card-title"><?php echo $result->organization ?></h4>
-                                                <p class="card-text">Our Email is <?php echo $result->email ?> <?php echo $result->organization ?> is an Agricultural Production Company</p>
-                                                <a href="na.php?id=<?php echo $result->id; ?>" class="btn btn-primary">View Details</a>
+                                        <div class="col-lg-3">
+                                            <div class="panel panel-default" style="width:200px;">
+                                                <img class="panel-heading" src="../images/<?php echo $result->image ?>" alt="Card image" style="width:100%">
+                                                <div class="panel-body">
+                                                    <h4 class="card-title"><?php echo $result->organization ?></h4>
+                                                    <p class="card-text">Our Email is <?php echo $result->email ?> <?php echo $result->organization ?> is an Agricultural Production Company</p>
+                                                    <a href="mainDash.php?id=<?php echo $result->id; ?>" class="btn btn-primary">View Details</a>
+                                                </div>
                                             </div>
                                         </div>
                                 <?php }
