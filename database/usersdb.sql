@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2020 at 08:37 PM
+-- Generation Time: Oct 06, 2020 at 05:06 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -242,6 +242,27 @@ CREATE TABLE `deleteduser` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `documents`
+--
+
+CREATE TABLE `documents` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `attachment` varchar(255) NOT NULL,
+  `time` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `documents`
+--
+
+INSERT INTO `documents` (`id`, `name`, `description`, `attachment`, `time`) VALUES
+(20, 'clearing', 'farm clearing and bush burning', 'srecorder.txt', '2020-09-30 12:56:30');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `employee`
 --
 
@@ -281,7 +302,7 @@ INSERT INTO `employee` (`id`, `user_id`, `image`, `name`, `email`, `password`, `
 (52, 49, 'dark-world.jpg', 'dufma', 'aashoremi@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'male', 'Owner', '08162313162', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, 'Dufma', 'employee', 0, 0, 0, 0, 0, '2020-09-27 16:00:05'),
 (53, 2, 'annotation-2020-08-17-123933.png', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', 'e00cf25ad42683b3df678c61f42c6bda', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, 'jascol', 'employee', 1, 0, 0, 1, 0, '2020-09-27 16:00:05'),
 (54, NULL, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-09-27 16:00:05'),
-(55, 1, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, '1', 'employee', 0, 0, 0, 1, 0, '2020-09-27 16:00:05');
+(55, 1, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, '1', 'employee', 1, 1, 1, 1, 1, '2020-09-27 16:00:05');
 
 -- --------------------------------------------------------
 
@@ -558,7 +579,9 @@ INSERT INTO `locations` (`id`, `user`, `org_id`, `name`, `lat`, `lng`, `descript
 (28, '2', NULL, 'Abdullahi', 9.298905, 9.444320, 'Bypassing', 1, 23, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (29, '1', 1, 'camry', 8.669519, 9.114730, 'Bypassing', 1, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'field'),
 (30, '1', 1, 'Abdullahi', 0.000000, 0.000000, 'Bypassing', 1, 23, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'field'),
-(31, '1', 1, 'Terminus', 0.000000, 0.000000, 'camry404', 1, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pen');
+(31, '1', 1, 'Terminus', 0.000000, 0.000000, 'camry404', 1, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pen'),
+(32, '', NULL, NULL, 9.255534, 9.004867, '', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'data'),
+(33, '55', 1, 'Abdullahi', 8.669519, 9.114730, 'camry404', 1, 23, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pen');
 
 -- --------------------------------------------------------
 
@@ -667,6 +690,38 @@ CREATE TABLE `member` (
 INSERT INTO `member` (`id`, `active`, `fullname`, `email`, `phone`, `category`, `unit`, `unit_value`, `roi`, `pay`, `password`, `realpword`, `date_added`, `images`, `status`) VALUES
 (4, 1, 'bolaji', 'bolaji@gmail.com', '09089089009', 'Silver', 2, 50000, 10000, 1, '0c80c124799585376519959d2374b07c', 'bolaji', '2020-06-15 00:00:00', '', 1),
 (5, 1, 'fatai', 'fatai@gmail.com', '09034412009', 'Gold', 12, 600000, 132000, 1, '88a5d978cad92b8841c91f2d9d299e3a', 'fatai', '2020-06-28 11:37:05', 'zeroavatar.jpg', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `monthlyreport`
+--
+
+CREATE TABLE `monthlyreport` (
+  `id` int(6) NOT NULL,
+  `user_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci DEFAULT NULL,
+  `org_id` int(11) DEFAULT NULL,
+  `month` varchar(11) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `hours` varchar(11) DEFAULT NULL,
+  `activity` varchar(225) DEFAULT NULL,
+  `activity_status` varchar(11) DEFAULT NULL,
+  `field_status` varchar(11) DEFAULT NULL,
+  `manager` varchar(50) DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `monthlyreport`
+--
+
+INSERT INTO `monthlyreport` (`id`, `user_id`, `org_id`, `month`, `name`, `hours`, `activity`, `activity_status`, `field_status`, `manager`, `type`) VALUES
+(1, '1', 1, '2020-09', '29', '1', 'hope you work this time around', 'Completed', '5', '1', 'field'),
+(2, '1', 1, '2020-09', '31', '2', 'here is todays activity', 'Completed', '3', '1', 'pen'),
+(3, '1', 1, '2020-09', '8', '2', 'hey you there. I feeling you', 'Completed', '3', '1', 'facility'),
+(4, '55', 1, '2020-09', '8', '2', 'trying for the employee', 'Completed', '3', '55', 'facility'),
+(5, '55', 55, '2020-10', '31', '1', 'superman', 'Completed', '3', '55', 'pen'),
+(6, '55', 1, '2020-10', '31', '1', 'Nonsense', 'Completed', '3', '55', 'pen');
 
 -- --------------------------------------------------------
 
@@ -1328,12 +1383,47 @@ INSERT INTO `warehouse` (`sn`, `product_id`, `user_id`, `org_id`, `warehouse`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `weeklyreport`
+--
+
+CREATE TABLE `weeklyreport` (
+  `id` int(6) NOT NULL,
+  `user_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci DEFAULT NULL,
+  `org_id` int(11) DEFAULT NULL,
+  `week` varchar(11) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `hours` varchar(11) DEFAULT NULL,
+  `activity` varchar(225) DEFAULT NULL,
+  `activity_status` varchar(11) DEFAULT NULL,
+  `field_status` varchar(11) DEFAULT NULL,
+  `manager` varchar(50) DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `weeklyreport`
+--
+
+INSERT INTO `weeklyreport` (`id`, `user_id`, `org_id`, `week`, `name`, `hours`, `activity`, `activity_status`, `field_status`, `manager`, `type`) VALUES
+(1, '1', 1, '2020-W40', '29', '1', 'wssdd', 'Completed', '3', '1', 'field'),
+(2, '1', 1, '2020-W40', '29', '1', 'wssdd', 'Completed', '3', '1', 'field'),
+(3, '1', 1, '2020-W40', '31', '2', 'sdfds', 'Completed', '3', '1', 'pen'),
+(4, '1', 1, '2020-W40', '30', '2', 'qwert key board', 'Completed', '3', '1', 'field'),
+(5, '1', 1, '2020-W40', '', '2', 'qwert key board', 'Completed', '3', '1', 'field'),
+(6, '1', 1, '2020-W40', '', '2', 'qwert key board', 'Completed', '3', '1', 'field'),
+(10, '1', 1, '2020-W40', '8', '3', 'try again', 'Completed', '3', '1', 'facility'),
+(11, '1', 1, '2020-W40', '8', '2', 'there you are ', 'Completed', '3', '1', 'facility');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `worker`
 --
 
 CREATE TABLE `worker` (
   `id` int(6) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
+  `org_id` int(11) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
@@ -1353,8 +1443,8 @@ CREATE TABLE `worker` (
 -- Dumping data for table `worker`
 --
 
-INSERT INTO `worker` (`id`, `user_id`, `image`, `name`, `email`, `gender`, `role`, `phone`, `contract_start`, `contract_end`, `salary`, `quality_of_work`, `team_work`, `punctuality`, `table_name`) VALUES
-(1, 2, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', 'male', 'Developer', '08061266260', '2020-07-27', '2020-09-06', NULL, 'rejected', 'notsatisfactory', 'satisfactory', 'worker');
+INSERT INTO `worker` (`id`, `user_id`, `org_id`, `image`, `name`, `email`, `gender`, `role`, `phone`, `contract_start`, `contract_end`, `salary`, `quality_of_work`, `team_work`, `punctuality`, `table_name`) VALUES
+(1, 2, NULL, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', 'male', 'Developer', '08061266260', '2020-07-27', '2020-09-06', NULL, 'rejected', 'notsatisfactory', 'satisfactory', 'worker');
 
 --
 -- Indexes for dumped tables
@@ -1401,6 +1491,12 @@ ALTER TABLE `asset_amount`
 --
 ALTER TABLE `building`
   ADD PRIMARY KEY (`sn`);
+
+--
+-- Indexes for table `documents`
+--
+ALTER TABLE `documents`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `employee`
@@ -1478,6 +1574,12 @@ ALTER TABLE `maintenance-item`
 -- Indexes for table `member`
 --
 ALTER TABLE `member`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `monthlyreport`
+--
+ALTER TABLE `monthlyreport`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1583,6 +1685,12 @@ ALTER TABLE `warehouse`
   ADD PRIMARY KEY (`sn`);
 
 --
+-- Indexes for table `weeklyreport`
+--
+ALTER TABLE `weeklyreport`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `worker`
 --
 ALTER TABLE `worker`
@@ -1627,6 +1735,12 @@ ALTER TABLE `asset_amount`
 --
 ALTER TABLE `building`
   MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `documents`
+--
+ALTER TABLE `documents`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `employee`
@@ -1680,7 +1794,7 @@ ALTER TABLE `liabilty`
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `machinery`
@@ -1705,6 +1819,12 @@ ALTER TABLE `maintenance-item`
 --
 ALTER TABLE `member`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `monthlyreport`
+--
+ALTER TABLE `monthlyreport`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `operation`
@@ -1807,6 +1927,12 @@ ALTER TABLE `vehicle`
 --
 ALTER TABLE `warehouse`
   MODIFY `sn` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `weeklyreport`
+--
+ALTER TABLE `weeklyreport`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `worker`

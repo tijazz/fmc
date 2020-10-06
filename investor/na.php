@@ -27,15 +27,15 @@
         require_once "public/config/left-sidebar.php";
         ?>
             
-            <div id="page-wrapper" class="gray-bg dashbard-1">
-                <div class="row border-bottom">
+            <div id="page-wrapper" class="gray-bg dashbard-1" style="background:rgba(0,0,0,0)">
+                <div class="row ">
             
                 <?php
                 require_once "public/config/topbar.php";
                 ?>
                             
                 </div>
-                <div class="row  border-bottom white-bg dashboard-header">
+                <div class="row dashboard-header">
                 <div class="panel-heading"><h2 class="page-title">Information</h2></div>
 				</div>
             <div class="row">
@@ -45,12 +45,14 @@
                     <h2 class="page-title"></h2>
 
                   <!-- Zero Configuration Table -->
-						<div class="panel panel-default panel-outer">
+						<div class="panel panel-default panel-outer" >
 							<div class="panel-heading">View</div>
 							<div class="panel-body">
 								
                                 <div class="d-flex flex-row justify-content-center">
-                                    <div class="p-2"><span style="font-size: 3em; color: #FFFFFF;"><i class="fas fa-exclamation-circle fa-7x p-2"></i></span></div>
+                                    <div class="p-2"><span>
+                                        <img src="public/images/decline.png" alt="">
+                                    </span></div>
                                     <div class="p-2"><p style="font-size: 3em; color: #FFFFFF;">Not Available. Coming Soon!</p></div>
                                 </div>                                     
                             

@@ -208,6 +208,28 @@ else{
             ?>
             
         </body>
+        <script>
+        
+        var liners = document.querySelectorAll('.liner');
+        var divs = document.querySelectorAll('.payment_summaries > div')
+        window.addEventListener('DOMContentLoaded',() =>{
+            liners.forEach(liner => {
+            if(liner.parentElement.parentElement.classList.contains('transaction') ||
+            liner.parentElement.parentElement.classList.contains('debit'))
+            {
+                liner.classList.add('eighty')
+            }
+            if(liner.parentElement.parentElement.classList.contains('credit')){
+                liner.classList.add('ninety')
+            }
+        })
+        divs.forEach(div => {
+            div.classList.add('showme')
+        })
+        })
+      
+
+        </script>
         
         </html>
         

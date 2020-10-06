@@ -7,7 +7,17 @@ a:hover{color:#192c29;}
   margin: auto;
 }
 ul{padding:0;list-style:none;}
+.panel-outer{
+  background:#171f2786; 
+  border:none;
+  box-shadow:1px 3px 9px 3px rgba(182, 182, 182, 0.061);
+}
 
+.panel-outer  .panel{
+  background:#bbbec036; 
+  border:none;
+  color:#fff;
+}
 /* Hide the images by default */
 .mySlides,.mySlides2 {
   display: none;

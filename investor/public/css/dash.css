@@ -91,30 +91,6 @@ body,html{
     border:10px solid orange;
     overflow:hidden;
     position: relative;
-    display:flex;
-    align-items:center;
-    justify-content: center;
-}
-
-.circle h2{
-    text-align: center;
-}
-
-.circle h2 span{
-    display: block;
-    font-size:1.2rem;
-}
-
-.rental_yields h1{
-    margin-left:4rem;
-}
-
-.current_value .circle{
-    border:10px solid rgb(24, 150, 223);
-}
-
-.total_earnings .circle{
-    border:10px solid rgb(13, 156, 97);    
 }
 
 .current_value .circle,.total_earnings .circle{margin-top:1rem;}
@@ -153,18 +129,14 @@ body,html{
     top:0;
     border-radius:3px;
     height:100%;
-    width:0;
 }
 
 .red_me{
     background:red;
-    transition:2s ease;
-
 }
 
 .green_me{
     background:rgb(116, 187, 11);
-    transition:2s ease;
 }
 
 .right .header{
@@ -223,14 +195,6 @@ body,html{
     overflow:hidden;
     border-radius:10px;
     box-shadow: 1px 2px 4px 3px rgba(255, 255, 255, 0.048);
-    transform:translateY(30px);
-    transition: 0.4s ease;
-    opacity:0;
-}
-
-.eval-up{
-    transform:translateY(0);
-    opacity:1;
 }
 
 .eval_img{

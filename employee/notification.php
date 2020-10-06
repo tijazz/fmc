@@ -36,7 +36,7 @@
                 ?>
                             
                 </div>
-                <div class="row  border-bottom white-bg dashboard-header">
+                <div class="row  dashboard-header">
                 <div class="panel-heading"><h2 class="page-title">Notifications</h2></div>
 				</div>
             <div class="row">
@@ -46,11 +46,7 @@
                     <h2 class="page-title"></h2>
 
                   <!-- Zero Configuration Table -->
-                        <div class="panel panel-default" style="
-                        background: #b3f3e677;
-                        border-radius: 5px;
-                        box-shadow: 1px 1px 4px 2px rgba(110, 104, 104, 0.335);
-                    ">
+                        <div class="panel panel-default panel-outer" >
 							<div class="panel-heading">Users Activity log</div>
 							<div class="panel-body">
 								<?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } 

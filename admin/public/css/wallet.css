@@ -119,19 +119,53 @@ body{color:#000;}
 }
 
 .transaction .liner{
-    width:80%;
+    width:0;
     background:purple;
+    transition: 1s ease;
 }
 
 .credit .liner{
-    width:90%;
+    width:0;
     background:green;
+    transition: 1s ease;
 }
 
 .debit .liner{
-    width:97%;
+    width:0;
     background:red;
+    transition: 1s ease;
 }
+
+.transaction .eighty,.debit .eighty,.credit .eighty{
+    width:80%;
+    transition-delay: 1.4s;
+}
+
+.payment_summaries > div{
+    transform:translateY(30px);
+    opacity:0;
+    transition:0.5s ease;
+}
+
+.payment_summaries > div:nth-of-type(2){
+    transition-delay: 0.5s;
+}
+
+.payment_summaries > div:nth-of-type(3){
+    transition-delay: 1s;
+}
+
+.payment_summaries > div.showme{
+    transform:translateY(0);
+    opacity:1;
+}
+
+
+.transaction .ninety,.debit .ninety,.credit .ninety{
+    width:97%;
+    transition-delay: 1.4s;
+}
+
 
 .rate{float:right;}
 .rate h3{display:inline;font-size:26px;color: rgb(39, 38, 38);}

@@ -85,7 +85,6 @@ if (strlen($_SESSION['alogin']) == 0) {
             <div class="row">
                 <div >
                     <!-- content -->
-                    <div class="backdrop_org"></div>
                     <div class="question">
                         <form action="">
                             <p>Are you sure you want to delete this entry?</p>
@@ -344,7 +343,6 @@ if (strlen($_SESSION['alogin']) == 0) {
  let canceller = document.querySelector(".cancel")
     let del_item = document.querySelector("p.del_item");
     let del_modal = document.querySelector('.question');
-    let backdrop_org = document.querySelector('.backdrop_org');
     let del_btns = document.querySelectorAll('.del_btn');
     let summary = document.querySelector(".wrapper > div.summ > div");
     let h1 = document.querySelector("h1.summ_h1");
@@ -360,17 +358,12 @@ if (strlen($_SESSION['alogin']) == 0) {
             var quantity = del_btns[i].parentElement.parentElement.querySelector('td:nth-of-type(3)').innerHTML;
             del_item.textContent = item + ' (' + quantity + ')';
             del_modal.classList.add('question-shown');
-            backdrop_org.classList.add('backdrop-shown')
         })
     }
-    backdrop_org.addEventListener('click', () => {
-        del_modal.classList.remove('question-shown');
-        backdrop_org.classList.remove('backdrop-shown')
-    })
+  
 
     canceller.addEventListener('click', () => {
         del_modal.classList.remove('question-shown');
-        backdrop_org.classList.remove('backdrop-shown')
     })
 </script>
 

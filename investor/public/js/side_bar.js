@@ -5,7 +5,8 @@ var arrow = document.querySelectorAll("#arrow");
 
 user_trigger[0].addEventListener("click",function(){
     user_dets_list[0].classList.toggle("block");
-    arrow[0].classList.toggle('arrow1_rotate');
+    arrow[0].classList.toggle('rotated');
+    // arrow[0].classList.toggle('arrow_special');
 });
 
 user_trigger[1].addEventListener("click",function(){

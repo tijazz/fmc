@@ -59,7 +59,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                     <div class="col-lg-12">
 
                         <!-- Zero Configuration Table -->
-                        <div class="panel panel-default">
+                        <div class="panel panel-default panel-outer">
                             <div class="panel-heading">Employees list</div>
                             <div class="panel-body">
                                 <?php if ($error) { ?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?>
