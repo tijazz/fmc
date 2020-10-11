@@ -61,7 +61,7 @@ CREATE TABLE `administration` (
   `category` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `place` varchar(50) NOT NULL,
   `status` varchar(50) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp()
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -109,7 +109,7 @@ CREATE TABLE `alarm` (
   `org_id` int(11) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
   `description` varchar(50) DEFAULT NULL,
-  `start` datetime DEFAULT current_timestamp(),
+  `start` timestamp DEFAULT current_timestamp(),
   `end` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -175,7 +175,7 @@ CREATE TABLE `asset_amount` (
   `asset_id` int(11) NOT NULL,
   `asset_type` varchar(50) DEFAULT NULL,
   `amount` int(50) DEFAULT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp()
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -250,7 +250,7 @@ CREATE TABLE `documents` (
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `attachment` varchar(255) NOT NULL,
-  `time` datetime NOT NULL DEFAULT current_timestamp()
+  `time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -289,7 +289,7 @@ CREATE TABLE `employee` (
   `monitory` int(11) NOT NULL DEFAULT 0,
   `inventory` int(11) NOT NULL DEFAULT 0,
   `financial` int(11) NOT NULL DEFAULT 0,
-  `sign_up_date` datetime NOT NULL DEFAULT current_timestamp()
+  `sign_up_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -599,7 +599,7 @@ CREATE TABLE `machinery` (
   `serial_no` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `manufacturer` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `amount` int(50) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp(),
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `table_name` varchar(50) NOT NULL DEFAULT 'machinery'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -628,7 +628,7 @@ CREATE TABLE `maintenance` (
   `type` varchar(50) NOT NULL,
   `description` varchar(50) NOT NULL,
   `amount` int(100) NOT NULL,
-  `Time` time(6) NOT NULL DEFAULT current_timestamp(),
+  `Time` timestamp NOT NULL DEFAULT current_timestamp(),
   `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -775,7 +775,7 @@ CREATE TABLE `operation` (
   `category` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `place` varchar(50) NOT NULL,
   `status` varchar(50) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp()
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -800,7 +800,7 @@ CREATE TABLE `organization` (
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `organization` varchar(50) NOT NULL,
-  `sign_up_date` datetime NOT NULL DEFAULT current_timestamp()
+  `sign_up_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -827,7 +827,7 @@ CREATE TABLE `other_asset` (
   `status` varchar(50) NOT NULL,
   `location` varchar(50) NOT NULL,
   `amount` int(50) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp(),
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `table_name` varchar(50) NOT NULL DEFAULT 'other_asset'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -966,7 +966,7 @@ CREATE TABLE `product sales` (
   `id` int(11) NOT NULL,
   `Transaction number` int(50) NOT NULL,
   `Sale employee name` varchar(30) NOT NULL,
-  `Business transaction date` date NOT NULL DEFAULT current_timestamp(),
+  `Business transaction date` timestamp NOT NULL DEFAULT current_timestamp(),
   `Product name` varchar(50) NOT NULL,
   `Product description` varchar(50) NOT NULL,
   `Price of product per unit` int(11) NOT NULL,
@@ -1002,7 +1002,7 @@ CREATE TABLE `purchases` (
   `ppunit` varchar(255) NOT NULL,
   `qitem` varchar(255) NOT NULL,
   `amount` int(255) NOT NULL,
-  `time` time(6) NOT NULL,
+  `time` timestamp NOT NULL,
   `date` date NOT NULL,
   `add_parameters` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1096,7 +1096,7 @@ CREATE TABLE `salary` (
   `eligibility` varchar(100) NOT NULL,
   `method` varchar(50) NOT NULL,
   `allowance to be debited` int(11) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp(),
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `Add parameter` varchar(50) NOT NULL,
   `employee_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1341,7 +1341,7 @@ CREATE TABLE `vehicle` (
   `serial_no` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `manufacturer` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `amount` int(50) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp(),
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `table_name` varchar(50) NOT NULL DEFAULT 'vehicle'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
