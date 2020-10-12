@@ -22,7 +22,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         $query->execute();
 
         $msg = "Employee Deleted successfully";
-        header('location:employee.php');
+        header('location:employeeappraisal.php');
     }
 
     if (isset($_POST['submit'])) {
@@ -146,7 +146,7 @@ require_once "public/config/header.php";
                                         foreach ($results as $result) {                ?>
                                             <tr>
                                                 <td><?php echo htmlentities($cnt); ?></td>
-                                                <td><?php echo htmlentities($result->date); ?></td>
+                                                <td><?php echo htmlentities(date("Y-m-d", strtotime($result->date))); ?></td>
                                                 <?php
                                                 $sq = "SELECT * FROM `employee` WHERE id = :id";
                                                 $qu = $dbh->prepare($sq);
