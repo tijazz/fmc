@@ -117,10 +117,12 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                     <p>
                         <label for="gender">Gender</label>
-                        <select name="gender">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
+                        <input list="gender" type="text" name="gender" value="<?php echo $results->gender ?>">
+
+                        <datalist id="gender">
+                            <option value="Female">
+                            <option value="Male">
+                        </datalist>
                     </p>
                     <p>
                         <label for="phone">Phone</label>
@@ -174,19 +176,24 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                     <p>
                         <label for="contract_type">Contract Type</label>
-                        <select name="contract_type">
+                        <input list="contract_type" type="text" name="contract_type" value="<?php echo $results->contract_type ?>">
+
+                        <datalist id="contract_type">
                             <option value="permanent">Permanent</option>
                             <option value="part-time">Part-time</option>
-                        </select>
+                        </datalist>
                     </p>
 
                     <p>
                         <label for="status">Status</label>
-                        <select name="status">
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
-                        </select>
+                        <input list="status" type="text" name="status" value="<?php echo $results->status ?>">
+
+                        <datalist id="status">
+                            <option value="Active">
+                            <option value="Inactive">
+                        </datalist>
                     </p>
+
 
                     <p>
                         <button type="submit" name="edit" value="<?php echo $results->id ?>">
