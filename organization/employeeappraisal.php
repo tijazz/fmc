@@ -35,14 +35,15 @@ if (strlen($_SESSION['alogin']) == 0) {
         $resp = $_POST['resp'];
         $manager_rating = $_POST['manager_rating'];
         $date = $_POST['date'];
+        $data_type = 'employee';
 
 
 
 
 
 
-        $sql = "INSERT INTO `appraisal`(`user_id`, `org_id`, `empwor_id`, `manager`, `resp`, `manager_rating`, `date`) 
-        VALUES (:user_id, :org_id, :empwor_id, :manager, :resp, :manager_rating, :date)";
+        $sql = "INSERT INTO `appraisal`(`user_id`, `org_id`, `empwor_id`, `manager`, `resp`, `manager_rating`, `date`, `data_type`) 
+        VALUES (:user_id, :org_id, :empwor_id, :manager, :resp, :manager_rating, :date, :data_type)";
         $query = $dbh->prepare($sql);
         $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
         $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
@@ -51,6 +52,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         $query->bindParam(':resp', $resp, PDO::PARAM_STR);
         $query->bindParam(':manager_rating', $manager_rating, PDO::PARAM_STR);
         $query->bindParam(':date', $date, PDO::PARAM_STR);
+        $query->bindParam(':data_type', $data_type, PDO::PARAM_STR);
         $query->execute();
 
 
@@ -136,9 +138,10 @@ require_once "public/config/header.php";
                                 <tbody>
 
                                     <?php
-                                    $sql = "SELECT * FROM `appraisal` WHERE org_id = :org_id";
+                                    $sql = "SELECT * FROM `appraisal` WHERE org_id = :org_id AND data_type = :data_type";
                                     $query = $dbh->prepare($sql);
                                     $query->bindValue(":org_id", $_SESSION['id'], PDO::PARAM_STR);
+                                    $query->bindValue(":data_type", "employee", PDO::PARAM_STR);
                                     $query->execute();
                                     $results = $query->fetchAll(PDO::FETCH_OBJ);
                                     $cnt = 1;
