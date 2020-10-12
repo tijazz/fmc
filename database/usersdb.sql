@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2020 at 05:06 PM
+-- Generation Time: Oct 13, 2020 at 12:09 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -69,9 +69,9 @@ CREATE TABLE `administration` (
 --
 
 INSERT INTO `administration` (`sn`, `user_id`, `org_id`, `name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`, `date`) VALUES
-(1, 2, NULL, 'dsl', 'dcl iron', '12', 'Abdullahi', 'Oyo', 'A.C.', 'ibadan', 'in stock', '2020-08-16'),
-(3, 2, NULL, 'Abdullahi Temidayo Jimoh', 'camry404', '12', 'Adullahi', 'Oyo, Nigeria.', 'fan', 'ibadan', 'out stock', '2020-08-27'),
-(4, 1, 1, 'Terminus', 'camry404', '12', 'jat', 'Oyo, Nigeria.', 'fan', 'ibadan', 'in stock', '2020-09-20');
+(1, 2, NULL, 'dsl', 'dcl iron', '12', 'Abdullahi', 'Oyo', 'A.C.', 'ibadan', 'in stock', '2020-08-16 00:00:00'),
+(3, 2, NULL, 'Abdullahi Temidayo Jimoh', 'camry404', '12', 'Adullahi', 'Oyo, Nigeria.', 'fan', 'ibadan', 'out stock', '2020-08-27 00:00:00'),
+(4, 1, 1, 'Terminus', 'camry404', '12', 'jat', 'Oyo, Nigeria.', 'fan', 'ibadan', 'in stock', '2020-09-20 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -109,7 +109,7 @@ CREATE TABLE `alarm` (
   `org_id` int(11) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
   `description` varchar(50) DEFAULT NULL,
-  `start` timestamp DEFAULT current_timestamp(),
+  `start` timestamp NOT NULL DEFAULT current_timestamp(),
   `end` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -122,12 +122,27 @@ CREATE TABLE `alarm` (
 CREATE TABLE `appraisal` (
   `id` int(6) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
+  `org_id` int(11) DEFAULT NULL,
   `empwor_id` int(11) DEFAULT NULL,
-  `quality_of_work` varchar(50) NOT NULL,
-  `team_work` varchar(50) NOT NULL,
-  `punctuality` varchar(50) NOT NULL,
-  `table_name` varchar(50) NOT NULL DEFAULT 'appraisal'
+  `manager` int(11) DEFAULT NULL,
+  `resp` varchar(50) DEFAULT NULL,
+  `major_acp` varchar(50) DEFAULT NULL,
+  `minor_acp` varchar(50) DEFAULT NULL,
+  `manager_com` varchar(225) DEFAULT NULL,
+  `manager_rating` varchar(225) DEFAULT NULL,
+  `date` timestamp(6) NULL DEFAULT NULL,
+  `data_type` varchar(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `appraisal`
+--
+
+INSERT INTO `appraisal` (`id`, `user_id`, `org_id`, `empwor_id`, `manager`, `resp`, `major_acp`, `minor_acp`, `manager_com`, `manager_rating`, `date`, `data_type`) VALUES
+(2, 1, 1, 55, 55, 'You are Working. Updating ...', NULL, NULL, NULL, '3', '2020-10-11 23:00:00.000000', 'employee'),
+(3, 1, 1, 1, 55, 'the workers are working', NULL, NULL, NULL, '3', '2020-10-11 23:00:00.000000', 'worker'),
+(4, 1, 1, 1, 55, 'getting work done', NULL, NULL, NULL, '3', '2020-10-12 23:00:00.000000', 'worker'),
+(5, 1, 1, 58, 55, 'trying to get the work done', NULL, NULL, NULL, '3', '0000-00-00 00:00:00.000000', 'employee');
 
 -- --------------------------------------------------------
 
@@ -183,8 +198,8 @@ CREATE TABLE `asset_amount` (
 --
 
 INSERT INTO `asset_amount` (`id`, `user_id`, `asset_id`, `asset_type`, `amount`, `date`) VALUES
-(1, '2', 1, 'machinery', 1000000, '2020-08-28'),
-(2, '2', 1, 'machinery', 1000000, '2020-08-28');
+(1, '2', 1, 'machinery', 1000000, '2020-08-28 00:00:00'),
+(2, '2', 1, 'machinery', 1000000, '2020-08-28 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -269,16 +284,28 @@ INSERT INTO `documents` (`id`, `name`, `description`, `attachment`, `time`) VALU
 CREATE TABLE `employee` (
   `id` int(6) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
+  `org_id` int(11) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
+  `address` varchar(225) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
   `gender` varchar(255) DEFAULT NULL,
   `role` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
+  `kin` varchar(50) DEFAULT NULL,
+  `kin_phone` varchar(50) DEFAULT NULL,
+  `job_location` varchar(50) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `department` varchar(50) DEFAULT NULL,
   `contract_start` varchar(11) DEFAULT NULL,
   `contract_end` varchar(11) DEFAULT NULL,
   `salary` varchar(50) DEFAULT NULL,
+  `bank_name` varchar(50) DEFAULT NULL,
+  `bank_acct_no` varchar(50) DEFAULT NULL,
+  `contract_type` varchar(50) DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL,
   `quality_of_work` varchar(50) DEFAULT NULL,
   `team_work` varchar(50) DEFAULT NULL,
   `punctuality` varchar(50) DEFAULT NULL,
@@ -296,13 +323,17 @@ CREATE TABLE `employee` (
 -- Dumping data for table `employee`
 --
 
-INSERT INTO `employee` (`id`, `user_id`, `image`, `name`, `email`, `password`, `gender`, `role`, `phone`, `contract_start`, `contract_end`, `salary`, `quality_of_work`, `team_work`, `punctuality`, `organization`, `table_name`, `supply`, `risk`, `monitory`, `inventory`, `financial`, `sign_up_date`) VALUES
-(46, 40, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', '8b283e8957f744ae5a1a6add05fc354f', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, 'Dufma', 'employee', 0, 1, 0, 1, 0, '2020-09-27 16:00:05'),
-(49, 40, 'zeroavatar.jpg', 'Hikmat', 'fatai@gmail.com', '88a5d978cad92b8841c91f2d9d299e3a', 'female', 'Oriflame Seller', '08160263667', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, 'Dufma', 'employee', 0, 0, 0, 0, 0, '2020-09-27 16:00:05'),
-(52, 49, 'dark-world.jpg', 'dufma', 'aashoremi@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'male', 'Owner', '08162313162', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, 'Dufma', 'employee', 0, 0, 0, 0, 0, '2020-09-27 16:00:05'),
-(53, 2, 'annotation-2020-08-17-123933.png', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', 'e00cf25ad42683b3df678c61f42c6bda', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, 'jascol', 'employee', 1, 0, 0, 1, 0, '2020-09-27 16:00:05'),
-(54, NULL, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-09-27 16:00:05'),
-(55, 1, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'male', 'Developer', '+2348061266260', '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, '1', 'employee', 1, 1, 1, 1, 1, '2020-09-27 16:00:05');
+INSERT INTO `employee` (`id`, `user_id`, `org_id`, `image`, `name`, `address`, `email`, `username`, `password`, `gender`, `role`, `phone`, `kin`, `kin_phone`, `job_location`, `dob`, `department`, `contract_start`, `contract_end`, `salary`, `bank_name`, `bank_acct_no`, `contract_type`, `status`, `quality_of_work`, `team_work`, `punctuality`, `organization`, `table_name`, `supply`, `risk`, `monitory`, `inventory`, `financial`, `sign_up_date`) VALUES
+(46, 40, NULL, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', NULL, 'abdullahij951@gmail.com', NULL, '8b283e8957f744ae5a1a6add05fc354f', 'male', 'Developer', '+2348061266260', NULL, NULL, NULL, NULL, NULL, '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Dufma', 'employee', 0, 1, 0, 1, 0, '2020-09-26 23:00:00'),
+(49, 40, NULL, 'zeroavatar.jpg', 'Hikmat', NULL, 'fatai@gmail.com', NULL, '88a5d978cad92b8841c91f2d9d299e3a', 'female', 'Oriflame Seller', '08160263667', NULL, NULL, NULL, NULL, NULL, '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Dufma', 'employee', 0, 0, 0, 0, 0, '2020-09-26 23:00:00'),
+(52, 49, NULL, 'dark-world.jpg', 'dufma', NULL, 'aashoremi@gmail.com', NULL, '81dc9bdb52d04dc20036dbd8313ed055', 'male', 'Owner', '08162313162', NULL, NULL, NULL, NULL, NULL, '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Dufma', 'employee', 0, 0, 0, 0, 0, '2020-09-26 23:00:00'),
+(53, 2, NULL, 'annotation-2020-08-17-123933.png', 'Abdullahi Temidayo Jimoh', NULL, 'abdullahij951@gmail.com', NULL, 'e00cf25ad42683b3df678c61f42c6bda', 'male', 'Developer', '+2348061266260', NULL, NULL, NULL, NULL, NULL, '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'jascol', 'employee', 1, 0, 0, 1, 0, '2020-09-26 23:00:00'),
+(54, NULL, NULL, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', NULL, 'abdullahij951@gmail.com', NULL, '81dc9bdb52d04dc20036dbd8313ed055', 'male', 'Developer', '+2348061266260', NULL, NULL, NULL, NULL, NULL, '2020-08-31', '2020-10-11', '150000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-09-26 23:00:00'),
+(55, 1, 1, NULL, 'Abdullahi Temidayo Jimoh', '', 'abdullahij951@gmail.com', NULL, 'e10adc3949ba59abbe56e057f20f883e', 'Male', 'Developer', '+2348061266260', '', '', '', '0000-00-00', 'Developer', '2020-08-31', '2020-10-11', '150000', '', '', 'permanent', 'Active', NULL, NULL, NULL, '1', 'employee', 1, 1, 1, 1, 1, '2020-09-26 23:00:00'),
+(56, 1, NULL, NULL, 'Abdullahi Temidayo Jimoh', 'Borehole Area, Aroje, Ogbomoso, Oyo State.', 'abdullahij951@gmail.com', NULL, 'ef9c4de9ac1e9a98c15e55f39bd0e47e', 'male', NULL, '+2348061266260', '', '', '', '0000-00-00', '', NULL, NULL, '', '', '', 'permanent', 'active', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-10-11 22:10:01'),
+(57, 1, NULL, NULL, 'Abdullahi Temidayo Jimoh', 'Borehole Area, Aroje, Ogbomoso, Oyo State.', 'abdullahij951@gmail.com', NULL, '9f3be05aa998ef91c248fa85488cb406', 'male', NULL, '+2348061266260', '', '', '', '0000-00-00', '', NULL, NULL, '', '', '', 'permanent', 'active', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-10-11 22:11:07'),
+(58, 1, 1, NULL, 'Abdullahi Temidayo Jimoh', 'Borehole Area, Aroje, Ogbomoso, Oyo State.', 'abdullahij951@gmail.com', NULL, 'ba9efe632eae7716a16f64b7043792b1', 'male', NULL, '+2348061266260', '', '', '', '0000-00-00', '', NULL, NULL, '', '', '', 'permanent', 'active', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-10-11 22:12:26'),
+(59, 1, 1, NULL, 'Abdullahi Temidayo Jimoh', 'Borehole Area, Aroje, Ogbomoso, Oyo State.', 'abdullahij951@gmail.com', NULL, '6ef06a2495a48c6d6be6242f631399b7', 'male', NULL, '+2348061266260', '', '', '', '2020-10-12', '', NULL, NULL, '', '', '', 'permanent', 'active', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-10-11 23:04:22');
 
 -- --------------------------------------------------------
 
@@ -608,13 +639,13 @@ CREATE TABLE `machinery` (
 --
 
 INSERT INTO `machinery` (`sn`, `user_id`, `org_id`, `category`, `name`, `description`, `serial_no`, `manufacturer`, `amount`, `date`, `table_name`) VALUES
-(1, 2, NULL, 'tractor', 'james', 'a player', '123235655', 'dangote', 1200, '2020-08-12', 'machinery'),
-(3, 2, NULL, 'tractor', 'Terminus', 'For this month', '45323453', 'Adullahi', 0, '2020-08-12', 'machinery'),
-(5, 2, NULL, 'tractor', 'Abdullahi ', 'Bypassing', '45323453', 'Q&S', 0, '2020-08-20', 'machinery'),
-(7, 2, NULL, 'tractor', 'Abdullahi', 'Bypassing', '45323453', 'jat', 11000, '2020-08-27', 'machinery'),
-(8, 2, NULL, 'tractor', 'Abdullahi', 'Bypassing', '45323453', 'jat', 1000000, '2020-08-31', 'machinery'),
-(9, 1, 0, 'tractor', 'Abdullahi', 'camry404', '45323453', 'jat', 1000000, '2020-09-20', 'machinery'),
-(10, 1, 1, 'tractor', 'Abdullahi', 'Bypassing', '45323453', 'jat', 1000000, '2020-09-20', 'machinery');
+(1, 2, NULL, 'tractor', 'james', 'a player', '123235655', 'dangote', 1200, '2020-08-12 00:00:00', 'machinery'),
+(3, 2, NULL, 'tractor', 'Terminus', 'For this month', '45323453', 'Adullahi', 0, '2020-08-12 00:00:00', 'machinery'),
+(5, 2, NULL, 'tractor', 'Abdullahi ', 'Bypassing', '45323453', 'Q&S', 0, '2020-08-20 00:00:00', 'machinery'),
+(7, 2, NULL, 'tractor', 'Abdullahi', 'Bypassing', '45323453', 'jat', 11000, '2020-08-27 00:00:00', 'machinery'),
+(8, 2, NULL, 'tractor', 'Abdullahi', 'Bypassing', '45323453', 'jat', 1000000, '2020-08-31 00:00:00', 'machinery'),
+(9, 1, 0, 'tractor', 'Abdullahi', 'camry404', '45323453', 'jat', 1000000, '2020-09-20 00:00:00', 'machinery'),
+(10, 1, 1, 'tractor', 'Abdullahi', 'Bypassing', '45323453', 'jat', 1000000, '2020-09-20 00:00:00', 'machinery');
 
 -- --------------------------------------------------------
 
@@ -637,7 +668,7 @@ CREATE TABLE `maintenance` (
 --
 
 INSERT INTO `maintenance` (`id`, `serial no`, `type`, `description`, `amount`, `Time`, `date`) VALUES
-(1, 12345678, 'Buildings', 'Repair of SInk', 100000, '21:29:28.000000', '2020-07-13 20:29:28');
+(1, 12345678, 'Buildings', 'Repair of SInk', 100000, '0000-00-00 00:00:00', '2020-07-13 20:29:28');
 
 -- --------------------------------------------------------
 
@@ -783,10 +814,10 @@ CREATE TABLE `operation` (
 --
 
 INSERT INTO `operation` (`sn`, `user_id`, `org_id`, `name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`, `date`) VALUES
-(1, 2, NULL, 'corn', 'treated corn', '15', 'covas', 'Oyo', 'seed', 'ibadan', 'in stock', '2020-08-16'),
-(2, 2, NULL, 'Abdullahi', 'Bypassing', '15', 'jat', 'Oyo', 'seed', 'Ghana', 'in stock', '2020-08-21'),
-(3, 2, NULL, 'Abdullahi Temidayo Jimoh', 'camry404', '12', 'jat', 'Oyo', 'seed', 'ibadan', 'in stock', '2020-08-27'),
-(4, 1, 1, 'Abdullahi', 'Bypassing', '12', 'jat', 'Oyo, Nigeria.', 'seed', 'ibadan', 'out stock', '2020-09-20');
+(1, 2, NULL, 'corn', 'treated corn', '15', 'covas', 'Oyo', 'seed', 'ibadan', 'in stock', '2020-08-16 00:00:00'),
+(2, 2, NULL, 'Abdullahi', 'Bypassing', '15', 'jat', 'Oyo', 'seed', 'Ghana', 'in stock', '2020-08-21 00:00:00'),
+(3, 2, NULL, 'Abdullahi Temidayo Jimoh', 'camry404', '12', 'jat', 'Oyo', 'seed', 'ibadan', 'in stock', '2020-08-27 00:00:00'),
+(4, 1, 1, 'Abdullahi', 'Bypassing', '12', 'jat', 'Oyo, Nigeria.', 'seed', 'ibadan', 'out stock', '2020-09-20 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -836,10 +867,10 @@ CREATE TABLE `other_asset` (
 --
 
 INSERT INTO `other_asset` (`sn`, `user_id`, `org_id`, `name`, `description`, `quantity`, `manufacturer`, `status`, `location`, `amount`, `date`, `table_name`) VALUES
-(1, 0, NULL, 'hoe', 'iron hoe', '12', 'jat', 'in storage', 'Oyo', 1000000, '2020-08-16', 'other_asset'),
-(4, 2, NULL, 'Abdullahi Temidayo Jimoh', 'Bypassing', '12', 'Adullahi', 'in use', 'Oyo', 0, '2020-08-27', 'other_asset'),
-(5, 2, NULL, 'Terminus', 'Bypassing', '12', 'jat', 'in storage', 'Nigeria.', 1000000, '2020-08-31', 'other_asset'),
-(6, 1, 1, 'Abdullahi', 'Bypassing', '12', 'jat', 'in storage', 'Nigeria.', 1000000, '2020-09-20', 'other_asset');
+(1, 0, NULL, 'hoe', 'iron hoe', '12', 'jat', 'in storage', 'Oyo', 1000000, '2020-08-16 00:00:00', 'other_asset'),
+(4, 2, NULL, 'Abdullahi Temidayo Jimoh', 'Bypassing', '12', 'Adullahi', 'in use', 'Oyo', 0, '2020-08-27 00:00:00', 'other_asset'),
+(5, 2, NULL, 'Terminus', 'Bypassing', '12', 'jat', 'in storage', 'Nigeria.', 1000000, '2020-08-31 00:00:00', 'other_asset'),
+(6, 1, 1, 'Abdullahi', 'Bypassing', '12', 'jat', 'in storage', 'Nigeria.', 1000000, '2020-09-20 00:00:00', 'other_asset');
 
 -- --------------------------------------------------------
 
@@ -986,7 +1017,7 @@ CREATE TABLE `product sales` (
 --
 
 INSERT INTO `product sales` (`id`, `Transaction number`, `Sale employee name`, `Business transaction date`, `Product name`, `Product description`, `Price of product per unit`, `Quantity of product sold`, `Discount`, `Total income for product sold`, `Total number/quantity of product sold`, `Payment method`, `Customer’s name`, `Customer phone`, `type`, `Add parameter`) VALUES
-(1, 0, '', '2020-07-17', '', '', 0, 0, 0, 0, 0, '', 'Abdullahi', '2147483647', '', '');
+(1, 0, '', '2020-07-17 00:00:00', '', '', 0, 0, 0, 0, 0, '', 'Abdullahi', '2147483647', '', '');
 
 -- --------------------------------------------------------
 
@@ -1002,7 +1033,7 @@ CREATE TABLE `purchases` (
   `ppunit` varchar(255) NOT NULL,
   `qitem` varchar(255) NOT NULL,
   `amount` int(255) NOT NULL,
-  `time` timestamp NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `date` date NOT NULL,
   `add_parameters` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1012,7 +1043,7 @@ CREATE TABLE `purchases` (
 --
 
 INSERT INTO `purchases` (`id`, `sn`, `name`, `description`, `ppunit`, `qitem`, `amount`, `time`, `date`, `add_parameters`) VALUES
-(1, '001', 'sugar', 'tea', '10', '4', 2300, '03:32:00.000000', '2016-09-01', 'nothing');
+(1, '001', 'sugar', 'tea', '10', '4', 2300, '0000-00-00 00:00:00', '2016-09-01', 'nothing');
 
 -- --------------------------------------------------------
 
@@ -1106,8 +1137,8 @@ CREATE TABLE `salary` (
 --
 
 INSERT INTO `salary` (`id`, `type`, `name`, `amount payable`, `employee status`, `description`, `eligibility`, `method`, `allowance to be debited`, `date`, `Add parameter`, `employee_id`) VALUES
-(1, 'Salary', 'Abdullahi Temidayo Jimoh', 1000000, 'contract', 'Bypassing', 'yes', 'transfer', 100000, '2020-08-29', 'employee', 10),
-(2, 'Salary', 'Saheed Adigun', 1245677, 'permanent', 'camry404', 'yes', 'transfer', 100000, '2020-08-29', 'employee', 11);
+(1, 'Salary', 'Abdullahi Temidayo Jimoh', 1000000, 'contract', 'Bypassing', 'yes', 'transfer', 100000, '2020-08-29 00:00:00', 'employee', 10),
+(2, 'Salary', 'Saheed Adigun', 1245677, 'permanent', 'camry404', 'yes', 'transfer', 100000, '2020-08-29 00:00:00', 'employee', 11);
 
 -- --------------------------------------------------------
 
@@ -1350,11 +1381,11 @@ CREATE TABLE `vehicle` (
 --
 
 INSERT INTO `vehicle` (`sn`, `user_id`, `org_id`, `name`, `description`, `serial_no`, `manufacturer`, `amount`, `date`, `table_name`) VALUES
-(1, 2, NULL, 'camry', 'camry404', '123453221', 'toyota', 1233, '2020-08-16', 'vehicle'),
-(4, 2, NULL, 'sienna', 'a long vehicle', '1234434', 'mezidis', 0, '2020-08-21', 'vehicle'),
-(7, 0, NULL, 'Terminus', '2', '1234434', 'covas', 0, '2020-08-27', 'vehicle'),
-(8, 2, NULL, 'Abdullahi', 'Bypassing', '1234434', 'jat', 1000000, '2020-08-31', 'vehicle'),
-(9, 1, 1, 'Abdullahi', 'Bypassing', '1234434', 'jat', 1000000, '2020-09-20', 'vehicle');
+(1, 2, NULL, 'camry', 'camry404', '123453221', 'toyota', 1233, '2020-08-16 00:00:00', 'vehicle'),
+(4, 2, NULL, 'sienna', 'a long vehicle', '1234434', 'mezidis', 0, '2020-08-21 00:00:00', 'vehicle'),
+(7, 0, NULL, 'Terminus', '2', '1234434', 'covas', 0, '2020-08-27 00:00:00', 'vehicle'),
+(8, 2, NULL, 'Abdullahi', 'Bypassing', '1234434', 'jat', 1000000, '2020-08-31 00:00:00', 'vehicle'),
+(9, 1, 1, 'Abdullahi', 'Bypassing', '1234434', 'jat', 1000000, '2020-09-20 00:00:00', 'vehicle');
 
 -- --------------------------------------------------------
 
@@ -1426,25 +1457,37 @@ CREATE TABLE `worker` (
   `org_id` int(11) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
+  `address` varchar(225) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `gender` varchar(255) DEFAULT NULL,
   `role` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
+  `kin` varchar(50) DEFAULT NULL,
+  `kin_phone` varchar(50) DEFAULT NULL,
+  `job_location` varchar(50) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `department` varchar(50) DEFAULT NULL,
   `contract_start` varchar(11) DEFAULT NULL,
   `contract_end` varchar(11) DEFAULT NULL,
-  `salary` int(50) DEFAULT NULL,
+  `salary` varchar(50) DEFAULT NULL,
+  `bank_name` varchar(50) DEFAULT NULL,
+  `bank_acct_no` varchar(50) DEFAULT NULL,
+  `contract_type` varchar(50) DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL,
   `quality_of_work` varchar(50) DEFAULT NULL,
   `team_work` varchar(50) DEFAULT NULL,
   `punctuality` varchar(50) DEFAULT NULL,
-  `table_name` varchar(50) NOT NULL DEFAULT 'worker'
+  `organization` varchar(50) DEFAULT NULL,
+  `table_name` varchar(50) NOT NULL DEFAULT 'employee',
+  `sign_up_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `worker`
 --
 
-INSERT INTO `worker` (`id`, `user_id`, `org_id`, `image`, `name`, `email`, `gender`, `role`, `phone`, `contract_start`, `contract_end`, `salary`, `quality_of_work`, `team_work`, `punctuality`, `table_name`) VALUES
-(1, 2, NULL, 'zeroavatar.jpg', 'Abdullahi Temidayo Jimoh', 'abdullahij951@gmail.com', 'male', 'Developer', '08061266260', '2020-07-27', '2020-09-06', NULL, 'rejected', 'notsatisfactory', 'satisfactory', 'worker');
+INSERT INTO `worker` (`id`, `user_id`, `org_id`, `image`, `name`, `address`, `email`, `gender`, `role`, `phone`, `kin`, `kin_phone`, `job_location`, `dob`, `department`, `contract_start`, `contract_end`, `salary`, `bank_name`, `bank_acct_no`, `contract_type`, `status`, `quality_of_work`, `team_work`, `punctuality`, `organization`, `table_name`, `sign_up_date`) VALUES
+(1, 1, 1, NULL, 'Saheed Adigun', '24, Amina way, university of ibadan, ibadan, oyo state Nigeria', 'atuewi@gmail.com', '', NULL, '08109312880', '', '', '', '0000-00-00', '', NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, NULL, 'employee', '2020-10-12 21:56:23');
 
 --
 -- Indexes for dumped tables
@@ -1722,7 +1765,7 @@ ALTER TABLE `alarm`
 -- AUTO_INCREMENT for table `appraisal`
 --
 ALTER TABLE `appraisal`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `asset_amount`
@@ -1746,7 +1789,7 @@ ALTER TABLE `documents`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `expenditure`
