@@ -101,6 +101,11 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                     <img src="../images/<?php echo $results->image ?>" alt="<?php echo $results->image ?>" style="border-radius: 50%; height:100px; width:100px;">
                     <p>
+                        <label for="profilepic">Profile Pic</label>
+                        <input type="file" name="image" value="<?php echo $results->image ?>">
+                    </p>
+
+                    <p>
                         <label for="name">Employee Name</label>
                         <input type="text" name="name" value="<?php echo $results->name ?>">
                     </p>
@@ -128,10 +133,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                         <label for="phone">Phone</label>
                         <input type="tel" name="phone" value="<?php echo $results->phone ?>">
                     </p>
-                    <p>
-                        <label for="profilepic">Profile Pic</label>
-                        <input type="file" name="image" value="<?php echo $results->image ?>">
-                    </p>
+
 
                     <p>
                         <label for="kin">Kin</label>
