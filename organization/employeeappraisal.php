@@ -296,7 +296,7 @@ require_once "public/config/header.php";
                     </div>
 
                 </div>
-                -->
+                
             </div>
 
         </div>
