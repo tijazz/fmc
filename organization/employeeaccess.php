@@ -96,8 +96,9 @@ require_once "public/config/header.php";
 
                                 <tbody>
 
-                                    <?php $sql = "SELECT * from employee";
+                                    <?php $sql = "SELECT * from employee WHERE org_id = :org_id";
                                     $query = $dbh->prepare($sql);
+                                    $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                                     $query->execute();
                                     $results = $query->fetchAll(PDO::FETCH_OBJ);
                                     $cnt = 1;
