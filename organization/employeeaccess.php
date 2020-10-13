@@ -113,11 +113,11 @@ require_once "public/config/header.php";
                                         <td><?php echo htmlentities($result->gender); ?></td>
                                         <td><?php echo htmlentities($result->role); ?></td>
                                         <td><?php echo htmlentities($result->phone); ?></td>
-                                        <td><?php echo htmlentities(= ($result->supply==) ? 'YES' : 'NO'); ?></td>
-                                        <td><?php echo htmlentities($result->risk); ?></td>
-                                        <td><?php echo htmlentities($result->inventory); ?></td>
-                                        <td><?php echo htmlentities($result->monitory); ?></td>
-                                        <td><?php echo htmlentities($result->financial); ?></td>
+                                        <td><?php echo $result->supply==1 ? 'YES' : 'NO'; ?></td>
+                                        <td><?php echo $result->risk==1 ? 'YES' : 'NO'; ?></td>
+                                        <td><?php echo $result-> inventory == 1 ? 'YES' : 'NO';?></td>
+                                        <td><?php echo $result-> monitory == 1 ? 'YES' : 'NO'; ?></td>
+                                        <td><?php echo $result-> financial == 1 ? 'YES' : 'NO'; ?></td>
                                         <td>
                                             <a data-toggle="modal"
                                                 href="employeeaccessedit.php?s=<?php echo $result->id; ?>"
