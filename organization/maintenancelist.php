@@ -11,12 +11,13 @@ if (strlen($_SESSION['alogin']) == 0) {
     if (isset($_GET['del'])) {
         $id = $_GET['del'];
 
-        $sql = "delete from testimonial WHERE id=:id";
+        $sql = "delete from machinery WHERE id=:id";
         $query = $dbh->prepare($sql);
         $query->bindParam(':id', $id, PDO::PARAM_STR);
         $query->execute();
 
         $msg = "Data Deleted successfully";
+        header('location:machinerylist.php');
     }
 
 
@@ -74,7 +75,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                         <!-- button style End -->
                         <!-- Zero Configuration Table -->
                         <div class="panel panel-default">
-                            <div class="panel-heading">List Users</div>
+                            <div class="panel-heading">List Maintenance</div>
                             <div class="panel-body">
                                 <?php if ($error) { ?><div class="errorWrap" id="msgshow">
                                         <?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
@@ -94,27 +95,45 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                     <tbody>
 
-                                        <?php $sql = "SELECT * from maintenance WHERE org_id = :org_id";
+                                        <?php
+                                        $sql = "SELECT * from maintenance WHERE org_id = :org_id";
                                         $query = $dbh->prepare($sql);
                                         $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
                                         $query->execute();
                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
                                         $cnt = 1;
                                         if ($query->rowCount() > 0) {
-                                            foreach ($results as $result) {                ?>
+                                            foreach ($results as $result) {
+                                                $type = $result->type;
+                                                $s = "SELECT * from " . $type . " WHERE sn = :sn";
+                                                $q = $dbh->prepare($s);
+                                                $q->bindParam(':sn', $result->item_id, PDO::PARAM_STR);
+                                                $q->execute();
+                                                $res = $q->fetch(PDO::FETCH_OBJ);         ?>
                                                 <tr>
                                                     <td><?php echo htmlentities($cnt); ?></td>
-                                                    <td><?php echo htmlentities($result->item_id); ?></td>
+                                                    <td><?php echo htmlentities($res->sn); ?></td>
                                                     <td><?php echo htmlentities($result->description); ?></td>
-                                                    <td><?php echo htmlentities($result->item_id); ?></td>
-                                                    <td><?php echo htmlentities($result->item_id); ?></td>
+                                                    <td><?php echo htmlentities($result->type); ?></td>
+                                                    <td><?php echo htmlentities($res->name); ?></td>
                                                     <td><?php echo htmlentities($result->amount); ?></td>
-                                                    <td><?php echo htmlentities($result->created_at); ?></td>
+                                                    <td><?php echo htmlentities($result->date); ?></td>
 
+
+                                                    <!-- Action Button Start -->
                                                     <td>
-                                                        <a href="maintenanceform.php?edit=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Edit');">&nbsp; <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                                        <a data-toggle="modal" href="maintenanceedit.php?s=<?php echo $result->id; ?>&type=<?php echo $result->type; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                            <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                                        <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog model-sm">
+                                                                <div class="modal-content"> </div>
+                                                            </div>
+                                                        </div>
+
                                                         <a href="maintenancelist.php?del=<?php echo $result->id; ?>;?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                                     </td>
+
+                                                    <!-- Action Button End -->
                                                 </tr>
                                         <?php $cnt = $cnt + 1;
                                             }
