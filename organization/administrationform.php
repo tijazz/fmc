@@ -22,8 +22,8 @@ if(isset($_POST['submit']))
     $category = $_POST['category'];
     $place = $_POST['place'];
     $status = $_POST['status'];
-    $user_id = $_SESSION['id'];
-    $org_id = $_SESSION['id'];
+    $user_id = $_SESSION['user_id'];
+    $org_id = $_SESSION['org_id'];
     
 	
     $sql= "INSERT INTO `administration`(`user_id`, `name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`, `org_id`) VALUES (:user_id, :name, :description, :quantity, :manufacturer, :location, :category, :place, :status, :org_id)";
