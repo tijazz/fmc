@@ -104,7 +104,7 @@
 
                                     <?php $sql = "SELECT * from `machinery` where org_id = :org_id";
                                         $query = $dbh -> prepare($sql);
-                                        $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
+                                        $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
 										$query->execute();
 										$results=$query->fetchAll(PDO::FETCH_OBJ);
 										$cnt=1;

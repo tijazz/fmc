@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
         return $password;
     }
 
-    $user_id = $_SESSION['id'];
+    $user_id = $_SESSION['user_id'];
     $name = $_POST['name'];
     $address = $_POST['address'];
     $email = $_POST['email'];
@@ -65,7 +65,7 @@ if (isset($_POST['submit'])) {
     $bank_acct_no = $_POST['bank_acct_no'];
     $contract_type = $_POST['contract_type'];
     $status = $_POST['status'];
-    $org_id = $_SESSION['id'];
+    $org_id = $_SESSION['org_id'];
 
 
 

@@ -22,7 +22,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 
 
-        $user_id = $_SESSION['id'];
+        $user_id = $_SESSION['user_id'];
         $name = $_POST['name'];
         $address = $_POST['address'];
         $email = $_POST['email'];
@@ -38,7 +38,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         $bank_acct_no = $_POST['bank_acct_no'];
         $contract_type = $_POST['contract_type'];
         $status = $_POST['status'];
-        $org_id = $_SESSION['id'];
+        $org_id = $_SESSION['org_id'];
 
         echo "it is also working";
 
