@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
     $new_file_name = strtolower($file);
     $final_file = str_replace(' ', '-', $new_file_name);
 
-    
+
 
     $user_id = $_SESSION['user_id'];
     $name = $_POST['name'];
@@ -55,7 +55,7 @@ if (isset($_POST['submit'])) {
 
 
 
-    
+
 
     if (move_uploaded_file($file_loc, $folder . $final_file)) {
         $image = $final_file;
@@ -191,8 +191,9 @@ require_once "public/config/header.php";
                                 <tbody>
 
                                     <?php
-                                    $sql = "SELECT * FROM `worker` WHERE org_id = '" . $_SESSION['id'] . "'";
+                                    $sql = "SELECT * FROM `worker` WHERE org_id = :org_id";
                                     $query = $dbh->prepare($sql);
+                                    $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
                                     $query->execute();
                                     $results = $query->fetchAll(PDO::FETCH_OBJ);
                                     $cnt = 1;
