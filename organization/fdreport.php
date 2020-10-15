@@ -188,18 +188,7 @@ if (strlen($_SESSION['alogin']) == 0) {
             require_once "public/config/footer.php";
             ?>
     </body>
-<style>
-.tab-pane{
-    position:absolute;
-    top:5rem;
-    left:0;
-    width:100%;
-}
-.nav-tabs > li > a,.active{color:#fff;}
-.nav-tabs > li > a:hover{
-    background:transparent;
-}
-</style>
+
     <!-- Mirrored from webapplayers.com/inspinia_admin-v2.6.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Sep 2016 02:26:53 GMT -->
 
     </html>

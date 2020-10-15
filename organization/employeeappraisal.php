@@ -28,8 +28,8 @@ if (strlen($_SESSION['alogin']) == 0) {
     if (isset($_POST['submit'])) {
 
 
-        $user_id = $_SESSION['id'];
-        $org_id = $_SESSION['id'];
+        $user_id = $_SESSION['user_id'];
+        $org_id = $_SESSION['org_id'];
         $empwor_id = $_POST['empwor_id'];
         $manager = $_POST['manager'];
         $resp = $_POST['resp'];
