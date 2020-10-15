@@ -20,8 +20,8 @@ if(isset($_POST['submit']))
     $snum = $_POST['snum'];
     $amount = $_POST['amount'];
     $manufacturer = $_POST['manufacturer'];
-    $user_id = $_SESSION['id'];
-    $org_id=$_SESSION['id'];
+    $user_id = $_SESSION['user_id'];
+    $org_id=$_SESSION['org_id'];
 	
     $sql= "INSERT INTO `machinery`(`category`, `name`, `user_id`, `description`, `amount`, `serial_no`, `manufacturer`, `org_id`) VALUES (:category, :name, :user_id, :description, :amount, :serial_no, :manufacturer, :org_id)";
     $query = $dbh->prepare($sql);

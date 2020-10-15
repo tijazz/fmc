@@ -37,7 +37,7 @@ if(isset($_POST['submit']))
     $query-> bindParam(':category', $category, PDO::PARAM_STR);
     $query-> bindParam(':place', $place, PDO::PARAM_STR);
     $query-> bindParam(':status', $status, PDO::PARAM_STR);
-        $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
+    $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
     $query->execute(); 
     $msg="Rent Updated Successfully";
     header('location:administrationlist.php');

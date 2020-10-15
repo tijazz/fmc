@@ -20,8 +20,8 @@ if(isset($_POST['submit']))
     $amount = $_POST['amount'];
     $location = $_POST['location'];
     $category = $_POST['category'];
-    $user_id = $_SESSION['id'];
-    $org_id = $_SESSION['id'];
+    $user_id = $_SESSION['user_id'];
+    $org_id = $_SESSION['org_id'];
     
 	
     $sql="INSERT INTO `building`(`name`, `user_id`, `description`, `amount`, `size`, `location`, `category`, `org_id`) VALUES (:name, :user_id, :description, :amount, :size, :location, :category, :org_id)";

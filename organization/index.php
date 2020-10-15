@@ -14,9 +14,9 @@ $results=$query->fetchAll(PDO::FETCH_OBJ);
 if($query->rowCount() > 0)
 {
 $_SESSION['alogin']=$_POST['username'];
-$_SESSION['id']=$results[0]->id;
-$_SESSION['org']=$results[0]->organization;
-// echo $_SESSION['org'];
+$_SESSION['org_id']=$results[0]->id;
+$_SESSION['org_name']=$results[0]->organization;
+$_SESSION['user_id'] = 0;
 echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
 } else{
   
