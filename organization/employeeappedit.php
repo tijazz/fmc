@@ -93,7 +93,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                             <?php
                             $s = "SELECT * FROM `employee` WHERE org_id = :org_id";
                             $q = $dbh->prepare($s);
-                            $q->bindValue(":org_id", $_SESSION['id'], PDO::PARAM_STR);
+                            $q->bindValue(":org_id", $_SESSION['org_id'], PDO::PARAM_STR);
                             $q->execute();
                             $rs = $q->fetchAll(PDO::FETCH_OBJ);
                             $cnt = 1;

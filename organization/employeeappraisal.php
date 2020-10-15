@@ -140,7 +140,7 @@ require_once "public/config/header.php";
                                     <?php
                                     $sql = "SELECT * FROM `appraisal` WHERE org_id = :org_id AND data_type = :data_type";
                                     $query = $dbh->prepare($sql);
-                                    $query->bindValue(":org_id", $_SESSION['id'], PDO::PARAM_STR);
+                                    $query->bindValue(":org_id", $_SESSION['org_id'], PDO::PARAM_STR);
                                     $query->bindValue(":data_type", "employee", PDO::PARAM_STR);
                                     $query->execute();
                                     $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -220,7 +220,7 @@ require_once "public/config/header.php";
                                                     <?php
                                                     $sql = "SELECT * FROM `employee` WHERE org_id = :org_id";
                                                     $query = $dbh->prepare($sql);
-                                                    $query->bindValue(":org_id", $_SESSION['id'], PDO::PARAM_STR);
+                                                    $query->bindValue(":org_id", $_SESSION['org_id'], PDO::PARAM_STR);
                                                     $query->execute();
                                                     $results = $query->fetchAll(PDO::FETCH_OBJ);
                                                     $cnt = 1;
@@ -239,7 +239,7 @@ require_once "public/config/header.php";
                                                     <?php
                                                     $sql = "SELECT * FROM `employee` WHERE org_id = :org_id";
                                                     $query = $dbh->prepare($sql);
-                                                    $query->bindValue(":org_id", $_SESSION['id'], PDO::PARAM_STR);
+                                                    $query->bindValue(":org_id", $_SESSION['org_id'], PDO::PARAM_STR);
                                                     $query->execute();
                                                     $results = $query->fetchAll(PDO::FETCH_OBJ);
                                                     $cnt = 1;
