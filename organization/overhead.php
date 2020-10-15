@@ -204,10 +204,10 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                         </metadata>
                                                     </svg>
                                                     <div class="stat-panel-number h1 "><?php echo htmlentities($query); ?></div>
-                                                    <div class="stat-panel-title text-uppercase">Raw Materials</div>
+                                                    <div class="stat-panel-title text-uppercase">Advert</div>
                                                 </div>
                                             </div>
-                                            <a href="rawmaterials.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
+                                            <a href="advertlist.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
