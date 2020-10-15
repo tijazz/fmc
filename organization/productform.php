@@ -16,8 +16,8 @@ if(isset($_POST['submit']))
 
     $name = $_POST['name'];
     $amount = $_POST['amount'];
-    $user_id = $_SESSION['id'];
-    $org_id = $_SESSION['id'];
+    $user_id = $_SESSION['user_id'];
+    $org_id = $_SESSION['org_id'];
 	
     $sql="INSERT INTO `product`(`org_id`, `user_id`, `name`, `amount`)
 	VALUES (:org_id, :user_id, :name, :amount)";
