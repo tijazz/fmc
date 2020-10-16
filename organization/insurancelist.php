@@ -30,13 +30,15 @@ if (strlen($_SESSION['alogin']) == 0) {
         $amount_paid = $_POST['amount_paid'];
         $period = $_POST['period'];
         $company = $_POST['company'];
-        $user_id = $_SESSION['id'];
+        $user_id = $_SESSION['user_id'];
+        $org_id = $_SESSION['org_id'];
 
 
-        $sql = "INSERT INTO `insurance`(`user_id`, `name`, `item`, `start_date`, `end_date`, `amount`, `amount_paid`, `period`, `company`) VALUES (:user_id, :name, :item, :start_date, :end_date, :amount, :amount_paid, :period, :company)";
+        $sql = "INSERT INTO `insurance`(`user_id`, `org_id`, `name`, `item`, `start_date`, `end_date`, `amount`, `amount_paid`, `period`, `company`) VALUES (:user_id, :org_id, :name, :item, :start_date, :end_date, :amount, :amount_paid, :period, :company)";
         $query = $dbh->prepare($sql);
-        $query->bindParam(':name', $name, PDO::PARAM_STR);
         $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+        $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
         $query->bindParam(':item', $item, PDO::PARAM_STR);
         $query->bindParam(':start_date', $start_date, PDO::PARAM_STR);
         $query->bindParam(':end_date', $end_date, PDO::PARAM_STR);
@@ -127,8 +129,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                     <tbody>
 
-                                        <?php $sql = "SELECT * from `insurance`";
+                                        <?php $sql = "SELECT * from `insurance` WHERE `org_id` = :org_id";
                                         $query = $dbh->prepare($sql);
+                                        $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
                                         $query->execute();
                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
                                         $cnt = 1;
