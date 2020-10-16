@@ -214,7 +214,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         <div class="panel panel-default">
                                             <div class="panel-body bk-info text-light">
                                                 <div class="stat-panel text-center">
-                                                    
+
                                                     <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="dollar-coin" x="0px" y="0px" viewBox="0 0 1010 1010" xml:space="preserve">
                                                         <g id="dollar-coin-dollar-coin">
                                                             <circle id="dollar-coin-label" fill="#ACAF48" cx="505" cy="505" r="505" />
@@ -255,7 +255,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         <div class="panel panel-default">
                                             <div class="panel-body bk-primary text-light">
                                                 <div class="stat-panel text-center">
-                                                    
+
                                                     <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="euro-bill" x="0px" y="0px" viewBox="0 0 1010 1010" xml:space="preserve">
                                                         <g id="euro-bill-euro-bill">
                                                             <path id="euro-bill-label" fill="#ACAF48" d="M1010 505c0 278.904-226.106 505-505 505C226.086 1010 0 783.904 0 505S226.086 0 505 0c278.894 0 505 226.096 505 505z" />
@@ -289,10 +289,10 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                         </metadata>
                                                     </svg>
                                                     <div class="stat-panel-number h1 "></div>
-                                                    <div class="stat-panel-title text-uppercase">Project Expenses</div>
+                                                    <div class="stat-panel-title text-uppercase">Rent</div>
                                                 </div>
                                             </div>
-                                            <a href="expenditurelist.php" class="block-anchor panel-footer text-center">Full Detail <i class="fa fa-arrow-right"></i></a>
+                                            <a href="rentlist.php" class="block-anchor panel-footer text-center">Full Detail <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -326,10 +326,48 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                         </g>
                                                     </svg>
                                                     <div class="stat-panel-number h1 "></div>
-                                                    <div class="stat-panel-title text-uppercase">Maintenance</div>
+                                                    <div class="stat-panel-title text-uppercase">Legal Fees</div>
                                                 </div>
                                             </div>
-                                            <a href="Maintenancelist.php" class="block-anchor panel-footer text-center">Full Detail <i class="fa fa-arrow-right"></i></a>
+                                            <a href="legallist.php" class="block-anchor panel-footer text-center">Full Detail <i class="fa fa-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body bk-primary text-light">
+                                                <div class="stat-panel text-center">
+                                                    <svg id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
+                                                        <g>
+                                                            <g>
+                                                                <path d="m291.935 497.062h-71.87c-83.186 0-150.863-67.677-150.863-150.863v-53.774c0-4.268 3.459-7.726 7.726-7.726 4.268 0 7.726 3.459 7.726 7.726v53.774c0 74.666 60.744 135.41 135.41 135.41h71.87c74.665 0 135.409-60.744 135.409-135.41v-53.774c0-4.268 3.459-7.726 7.726-7.726 4.268 0 7.726 3.459 7.726 7.726v53.774c.002 83.186-67.674 150.863-150.86 150.863z" fill="#d8e2f1" />
+                                                            </g>
+                                                            <path d="m362.756 364.474c-71.171 12.674-142.341 12.674-213.512 0-24.874-4.429-42.922-26.18-42.922-51.445l20.126-20.604h245.957l33.273 20.604c0 25.265-18.048 47.016-42.922 51.445z" fill="#eab14d" />
+                                                            <path d="m375.2 292.425v20.604c0 25.265-18.048 47.016-42.922 51.445-30.506 5.432-61.011 8.529-91.516 9.304 40.665 1.034 81.33-2.063 121.995-9.304 24.874-4.429 42.922-26.18 42.922-51.445z" fill="#e49542" />
+                                                            <path d="m430.997 157.473v99.68l-28.289 20.604h-291.242l-30.463-20.604v-99.68c0-31.163 11.486-59.658 30.463-81.456 12.712-14.629 28.814-26.249 47.069-33.646 14.402-5.851 30.143-9.066 46.636-9.066h101.658c16.493 0 32.234 3.214 46.636 9.066 18.255 7.397 34.357 19.017 47.069 33.646 18.976 21.798 30.463 50.293 30.463 81.456z" fill="#eab14d" />
+                                                            <path d="m400.534 76.017c-12.712-14.629-28.814-26.249-47.069-33.646-14.402-5.851-30.143-9.066-46.636-9.066h-28.289c16.493 0 32.234 3.214 46.636 9.066 18.255 7.397 34.357 19.017 47.069 33.646 18.976 21.799 30.463 50.293 30.463 81.456v120.284l28.289-20.604v-99.68c0-31.163-11.487-59.658-30.463-81.456z" fill="#e49542" />
+                                                            <path d="m445.565 313.029h-379.13c-11.546 0-20.907-9.36-20.907-20.907v-14.059c0-11.546 9.36-20.907 20.907-20.907h379.131c11.546 0 20.907 9.36 20.907 20.907v14.059c-.001 11.547-9.361 20.907-20.908 20.907z" fill="#df6b57" />
+                                                            <path d="m445.565 257.156h-25.255c11.547 0 20.907 9.36 20.907 20.907v14.059c0 11.546-9.36 20.907-20.907 20.907h25.255c11.547 0 20.907-9.36 20.907-20.907v-14.059c0-11.547-9.36-20.907-20.907-20.907z" fill="#dd544f" />
+                                                            <path d="m282.038 149.569h-52.076c-5.433 0-9.973-4.135-10.479-9.545l-11.458-122.465c-.882-9.421 6.53-17.559 15.993-17.559h63.964c9.462 0 16.875 8.138 15.993 17.559l-11.458 122.465c-.506 5.41-5.046 9.545-10.479 9.545z" fill="#df6b57" />
+                                                            <path d="m287.982 0h-5.178l-11.433 122.202c-.506 5.409-5.046 9.545-10.479 9.545h-42.183l.774 8.279c.506 5.409 5.046 9.545 10.479 9.545h52.076c5.433 0 9.973-4.135 10.479-9.545l11.458-122.465c.882-9.423-6.53-17.561-15.993-17.561z" fill="#dd544f" />
+                                                            <path d="m158.535 42.371v54.486c0 13.001-10.539 23.54-23.54 23.54-12.99 0-23.529-10.539-23.529-23.54v-20.84c12.712-14.629 28.814-26.249 47.069-33.646z" fill="#e49542" />
+                                                            <path d="m400.534 76.017v20.841c0 13.001-10.539 23.54-23.529 23.54-13.001 0-23.54-10.539-23.54-23.54v-54.487c18.255 7.397 34.357 19.017 47.069 33.646z" fill="#e49542" />
+                                                            <path d="m372.246 76.017c9.369 10.762 16.907 23.159 22.144 36.701 3.816-4.184 6.145-9.75 6.145-15.86v-20.841c-12.712-14.629-28.814-26.249-47.069-33.646v16.088c6.852 5.193 13.15 11.079 18.78 17.558z" fill="#e28424" />
+                                                            <g>
+                                                                <path d="m305.992 200.222h-99.984c-4.268 0-7.726-3.459-7.726-7.726 0-4.268 3.459-7.726 7.726-7.726h99.984c4.268 0 7.726 3.459 7.726 7.726 0 4.268-3.459 7.726-7.726 7.726z" fill="#e49542" />
+                                                            </g>
+                                                            <g>
+                                                                <path d="m277.147 230.397h-42.294c-4.268 0-7.726-3.459-7.726-7.726 0-4.268 3.459-7.726 7.726-7.726h42.294c4.268 0 7.726 3.459 7.726 7.726 0 4.268-3.459 7.726-7.726 7.726z" fill="#e49542" />
+                                                            </g>
+                                                            <path d="m302.436 512h-92.872c-6.563 0-11.884-5.32-11.884-11.884v-21.43c0-6.563 5.32-11.884 11.884-11.884h92.872c6.563 0 11.884 5.32 11.884 11.884v21.43c0 6.564-5.321 11.884-11.884 11.884z" fill="#365e7d" />
+                                                            <path d="m302.436 466.802h-21.147c6.563 0 11.884 5.32 11.884 11.884v21.431c0 6.563-5.32 11.884-11.884 11.884h21.147c6.563 0 11.884-5.32 11.884-11.884v-21.431c0-6.563-5.321-11.884-11.884-11.884z" fill="#2b4d66" />
+                                                        </g>
+                                                    </svg>
+                                                    <div class="stat-panel-number h1 "></div>
+                                                    <div class="stat-panel-title text-uppercase">Light and Power</div>
+                                                </div>
+                                            </div>
+                                            <a href="powerlist.php" class="block-anchor panel-footer text-center">Full Detail <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>
 
