@@ -286,14 +286,7 @@
                                 <!--end of modal-dialog-->
                             </div>
 
-                            <!---
-                <div class="col-lg-4">
-                        <?php
-            //    require_once "public/config/right-sidebar.php";
-                ?>
-
-                            </div>
-                                                    -->
+                            
                         </div>
 
                     </div>

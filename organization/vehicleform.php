@@ -19,8 +19,8 @@ if(isset($_POST['submit']))
     $serial_no = $_POST['serial_no'];
     $manufacturer = $_POST['manufacturer'];
     $amount = $_POST['amount'];
-    $user_id = $_SESSION['id'];
-        $org_id = $_SESSION['id'];
+    $user_id = $_SESSION['user_id'];
+    $org_id = $_SESSION['org_id'];
 	
     $sql= "INSERT INTO `vehicle`(`name`, `description`, `user_id`, `serial_no`, `amount`, `manufacturer`, `org_id`) VALUES (:name, :description, :user_id, :serial_no, :amount, :manufacturer, :org_id)";
     $query = $dbh->prepare($sql);

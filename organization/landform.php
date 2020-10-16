@@ -19,8 +19,8 @@ if(isset($_POST['submit']))
     $size = $_POST['size'];
     $lat = $_POST['lat'];
     $lng = $_POST['lng'];
-    $user_id = $_SESSION['id'];
-    $org_id = $_SESSION['id'];
+    $user_id = $_SESSION['user_id'];
+    $org_id = $_SESSION['org_id'];
 	
     $sql="INSERT INTO `locations`(`name`, `user`, `description`, `size`, `lat`, `lng`, `org_id`) VALUES (:name, :user, :description, :size, :lat, :lng, :org_id)";
     $query = $dbh->prepare($sql);

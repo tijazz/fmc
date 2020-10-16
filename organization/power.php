@@ -18,7 +18,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         $qitem = $_POST['qitem'];
         $amount = $_POST['amount'];
 
-        $sql = "INSERT INTO rent (user_id, org_id, name, description, ppunit, qitem, amount) VALUES (:user_id, :org_id, :name, :description, :ppunit, :qitem, :amount)";
+        $sql = "INSERT INTO power (user_id, org_id, name, description, ppunit, qitem, amount) VALUES (:user_id, :org_id, :name, :description, :ppunit, :qitem, :amount)";
         $query = $dbh->prepare($sql);
         $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
         $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
@@ -28,7 +28,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         $query->bindParam(':qitem', $qitem, PDO::PARAM_STR);
         $query->bindParam(':amount', $amount, PDO::PARAM_STR);
         $query->execute();
-        $msg = "rent Updated Successfully";
-        header('location:rentlist.php');
+        $msg = "power Updated Successfully";
+        header('location:powerlist.php');
     }
 }
