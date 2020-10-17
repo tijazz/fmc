@@ -11,54 +11,42 @@ if (strlen($_SESSION['alogin']) == 0) {
     if (isset($_GET['del'])) {
         $id = $_GET['del'];
 
-        $sql = "delete from insurance WHERE id=:id";
+        $sql = "delete from security WHERE id=:id";
         $query = $dbh->prepare($sql);
         $query->bindParam(':id', $id, PDO::PARAM_STR);
         $query->execute();
 
         $msg = "Data Deleted successfully";
-        header('location:insurancelist.php');
     }
 
     if (isset($_POST['submit'])) {
-
-        $name = $_POST['name'];
-        $item = $_POST['item'];
-        $start_date = $_POST['start_date'];
-        $end_date = $_POST['end_date'];
-        $amount = $_POST['amount'];
-        $amount_paid = $_POST['amount_paid'];
-        $period = $_POST['period'];
-        $company = $_POST['company'];
         $user_id = $_SESSION['user_id'];
         $org_id = $_SESSION['org_id'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $ppunit = $_POST['ppunit'];
+        $qitem = $_POST['qitem'];
+        $amount = $_POST['amount'];
 
-
-        $sql = "INSERT INTO `insurance`(`user_id`, `org_id`, `name`, `item`, `start_date`, `end_date`, `amount`, `amount_paid`, `period`, `company`) VALUES (:user_id, :org_id, :name, :item, :start_date, :end_date, :amount, :amount_paid, :period, :company)";
+        $sql = "INSERT INTO security (user_id, org_id, name, ppunit, qitem, amount) VALUES (:user_id, :org_id, :name, :ppunit, :qitem, :amount)";
         $query = $dbh->prepare($sql);
         $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
         $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
         $query->bindParam(':name', $name, PDO::PARAM_STR);
-        $query->bindParam(':item', $item, PDO::PARAM_STR);
-        $query->bindParam(':start_date', $start_date, PDO::PARAM_STR);
-        $query->bindParam(':end_date', $end_date, PDO::PARAM_STR);
+        $query->bindParam(':ppunit', $ppunit, PDO::PARAM_STR);
+        $query->bindParam(':qitem', $qitem, PDO::PARAM_STR);
         $query->bindParam(':amount', $amount, PDO::PARAM_STR);
-        $query->bindParam(':amount_paid', $amount_paid, PDO::PARAM_STR);
-        $query->bindParam(':period', $period, PDO::PARAM_STR);
-        $query->bindParam(':company', $company, PDO::PARAM_STR);
         $query->execute();
-        $msg = "Rent Updated Successfully";
-        header('location:insurancelist.php');
+        $msg = "security Updated Successfully";
+        header('location:securitylist.php');
     }
-
-
 
 
 ?>
 
     <!DOCTYPE html>
     <html>
-
+    <link rel="stylesheet" href="public/css/new_styles.css">
 
     <?php
     require_once "public/config/header.php";
@@ -79,57 +67,44 @@ if (strlen($_SESSION['alogin']) == 0) {
                     ?>
 
                 </div>
-                <div class="row dashboard-header">
-                    <div class="panel-heading" style='padding:0;'>
-                        <h2 class="page-title">Manage Insurance</h2>
-                    </div>
+                <div class="row  white-bg dashboard-header">
                 </div>
                 <div class="row">
 
                     <div class="col-lg-12">
-
-
                         <!-- button style Start -->
                         <div class="navbar">
                             <div class="container-fluid" style="padding-left:7px;">
                                 <h1 class="nav navbar-nav">
-                                    <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add Insurance</a>
+                                    <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add Category</a>
                                 </h1>
+
                             </div>
                         </div>
                         <!-- button style End -->
 
                         <!-- Zero Configuration Table -->
                         <div class="panel panel-default">
-                            <div class="panel-heading">Insurance list</div>
+                            <div class="panel-heading">security list</div>
                             <div class="panel-body">
-                                <?php if ($error) { ?><div class="errorWrap" id="msgshow">
-                                        <?php echo htmlentities($error); ?>
-                                    </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow">
-                                        <?php echo htmlentities($msg); ?> </div><?php } ?>
+                                <?php if ($error) { ?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?>
+                                    </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
                                 <table id="zctb tablePreview" class="display table table-dark table-striped table-bordered table-hover" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <th>#</th>
                                             <th>Name</th>
-                                            <th>Item Insured</th>
-                                            <th>Start Date</th>
-                                            <th>End Date</th>
-                                            <th>Duration Left</th>
-                                            <th>Duration Covered</th>
-                                            <th>Amount</th>
-                                            <th>Amount Paid</th>
-                                            <th>Balance</th>
-                                            <th>Insurance Rate</th>
-                                            <th>Period Currently Insured</th>
-                                            <th>Insurance Company</th>
+                                            <th>Amount per unit/person</th>
+                                            <th>No. of personnel/Quantity</th>
+                                            <th>Total Amount</th>
+                                            <th>Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
 
-                                        <?php $sql = "SELECT * from `insurance` WHERE `org_id` = :org_id";
+                                        <?php $sql = "SELECT * from security WHERE org_id = :org_id";
                                         $query = $dbh->prepare($sql);
                                         $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
                                         $query->execute();
@@ -140,21 +115,13 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 <tr>
                                                     <td><?php echo htmlentities($cnt); ?></td>
                                                     <td><?php echo htmlentities($result->name); ?></td>
-                                                    <td><?php echo htmlentities($result->item); ?></td>
-                                                    <td><?php echo htmlentities($result->start_date); ?></td>
-                                                    <td><?php echo htmlentities($result->end_date); ?></td>
-                                                    <td><?php echo htmlentities(date("Y-m-d") - $result->end_date); ?></td>
-                                                    <td><?php echo htmlentities($result->start_date - date("Y-m-d")); ?></td>
+                                                    <td><?php echo htmlentities($result->ppunit); ?></td>
+                                                    <td><?php echo htmlentities($result->qitem); ?></td>
                                                     <td><?php echo htmlentities($result->amount); ?></td>
-                                                    <td><?php echo htmlentities($result->amount_paid); ?></td>
-                                                    <td><?php echo htmlentities($result->amount - $result->amount_paid); ?></td>
-                                                    <td><?php echo htmlentities($result->amount / 12); ?></td>
-                                                    <td><?php echo htmlentities($result->period); ?></td>
-                                                    <td><?php echo htmlentities($result->company); ?></td>
-
+                                                    <td><?php echo htmlentities($result->date); ?></td>
                                                     <!-- Action Button Start -->
                                                     <td>
-                                                        <a data-toggle="modal" href="insuranceedit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <a data-toggle="modal" href="securityedit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
                                                         <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog model-sm">
@@ -162,15 +129,10 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                             </div>
                                                         </div>
 
-                                                        <a href="insurancelist.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
+                                                        <a href="securitylist.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                                     </td>
 
                                                     <!-- Action Button End -->
-
-
-
-
-
                                                 </tr>
                                         <?php $cnt = $cnt + 1;
                                             }
@@ -179,66 +141,62 @@ if (strlen($_SESSION['alogin']) == 0) {
                                     </tbody>
                                 </table>
                             </div>
-
                             <div id="add" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog">
                                     <div class="modal-content" style="height:auto">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">×</span></button>
-                                            <h4 id='edit' class="modal-title">Add New Product</h4>
+                                            <h4 class="modal-title">Add New Product</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="insurancelist.php" method="POST" class="forma" id="f_edit">
+                                            <form action="securitylist.php" method="POST" class="forma">
 
                                                 <p>
-                                                    <label for="name">Name of Insurance</label>
-                                                    <input type="text" name="name" value="">
-                                                </p>
-
-
-                                                <p>
-                                                    <label for="item">Item Insured</label>
-                                                    <input type="text" name="item" value="">
-                                                </p>
-
-                                                <p>
-                                                    <label for="start_date">Start Date</label>
-                                                    <input type="date" name="start_date" value="">
+                                                    <label for="full_name">Category</label>
+                                                    <select name="name" id="">
+                                                        <option value="cctv"></option>
+                                                        <option value="gatemen">Gatemen</option>
+                                                        <option value="other">Other</option>
+                                                    </select>
                                                 </p>
 
                                                 <p>
-                                                    <label for="end_date">End Date</label>
-                                                    <input type="date" name="end_date" value="">
+                                                    <label for="ppunit">Amount per unit/person</label>
+                                                    <input type="text" name="ppunit" value="0" id="ppunit">
+                                                </p>
+                                                <p>
+                                                    <label for="qitem">No. of personnel/Quantity</label>
+                                                    <input type="text" name="qitem" value="0" id="qitem">
                                                 </p>
 
                                                 <p>
-                                                    <label for="amount">Amount</label>
-                                                    <input type="text" name="amount" value="">
+                                                    <label for="amount">Total Amount</label>
+                                                    <input type="text" name="amount" value="0" id="amount">
                                                 </p>
 
-                                                <p>
-                                                    <label for="amount_paid">Amount Paid</label>
-                                                    <input type="text" name="amount_paid" value="">
-                                                </p>
+                                                <script>
+                                                    $("#amount").click(function() {
+                                                        var amt = $('#ppunit').val();
+
+                                                        var qua = $('#qitem').val();
+
+                                                        var amount = parseInt(amt) * parseInt(qua);
+
+                                                        $("#amount").val(amount);
+                                                    });
+                                                </script>
+
 
                                                 <p>
-                                                    <label for="size">Period</label>
-                                                    <input type="text" name="period" value="">
-                                                </p>
-
-                                                <p>
-                                                    <label for="size">Company</label>
-                                                    <input type="text" name="company" value="">
-                                                </p>
-
-                                                <p>
-                                                    <button type="submit" name="submit" id="submit">
+                                                    <button type="submit" name="submit">
                                                         Submit
                                                     </button>
                                                 </p>
 
                                             </form>
+
+
                                         </div>
                                         <div class="modal-footer">
 
@@ -246,13 +204,28 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         </div>
 
                                     </div>
-
+                                    <!--end of modal-dialog-->
                                 </div>
+                            </div>
+
+                        </div>
+
+                        <!---
+                <div class="col-lg-4">
+                        <?php
+                        //    require_once "public/config/right-sidebar.php";
+                        ?>
 
                             </div>
-                            <!--end of modal-dialog-->
-                        </div>
+                                                    -->
                     </div>
+
+
+
+
+
+
+
 
                 </div>
 
@@ -264,6 +237,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         <?php
         require_once "public/config/footer.php";
         ?>
+
     </body>
 
     <!-- Mirrored from webapplayers.com/inspinia_admin-v2.6.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Sep 2016 02:26:53 GMT -->
