@@ -99,7 +99,7 @@
 													<div class="stat-panel-title text-uppercase">Depreciation Cost</div>
 												</div>
 											</div>
-											<a href="#" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="depreciation.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
                                     <div class="col-md-3">
