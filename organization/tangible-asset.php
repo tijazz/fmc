@@ -191,7 +191,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 													</svg>
 													<div class="stat-panel-number h1 "><?php echo htmlentities($query); ?>
 													</div>
-													<div class="stat-panel-title text-uppercase">Administration</div>
+													<div class="stat-panel-title text-uppercase">Equipment And Devices</div>
 												</div>
 											</div>
 											<a href="administrationlist.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
@@ -212,7 +212,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 													</svg>
 													<div class="stat-panel-number h1 "><?php echo htmlentities($regbd2); ?>
 													</div>
-													<div class="stat-panel-title text-uppercase">Operation</div>
+													<div class="stat-panel-title text-uppercase">Goods and Products</div>
 												</div>
 											</div>
 											<a href="operationlist.php" class="block-anchor panel-footer text-center">Full
