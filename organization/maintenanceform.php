@@ -8,6 +8,9 @@ include('includes/config.php');
 if (strlen($_SESSION['alogin']) == 0) {
     header('location:index.php');
 } else {
+
+echo "It is working";
+
     if (isset($_POST['submit'])) {
         $user_id = $_SESSION['user_id'];
         $org_id = $_SESSION['org_id'];
