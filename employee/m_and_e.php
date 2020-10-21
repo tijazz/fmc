@@ -25,10 +25,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 <!DOCTYPE html>
 <html>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Monitoring and Evaluation</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Monitoring and Evaluation</title>
 <link rel="stylesheet" href="public/css/m_and_e.css">
 
 <?php
@@ -92,12 +92,14 @@ if (strlen($_SESSION['alogin']) == 0) {
                                     </div>
                                     <div class="portfolio">
                                         <h5 class='me_title'>
-                                            <img src="public/images/icons8-contact-50.png" alt="">
                                             <span>Portfolio</span>
                                         </h5>
                                         <div class="cirle_container">
                                             <div class="circle">
-
+                                                <h2>400
+                                                    <span>
+                                                        ROI
+                                                    </span></h2>
                                             </div>
                                         </div>
                                     </div>
@@ -107,7 +109,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         </h5>
                                         <div class="cirle_container">
                                             <div class="circle">
-
+                                                <h2>
+                                                    &#8358;20,000
+                                                </h2>
                                             </div>
                                         </div>
                                     </div>
@@ -117,7 +121,10 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         </h5>
                                         <div class="cirle_container">
                                             <div class="circle">
-
+                                                <h2>
+                                                    450
+                                                    <span>ROI</span>
+                                                </h2>
                                             </div>
                                         </div>
                                     </div>
@@ -128,6 +135,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <img src="public/images/icons8-neutral-trading-50.png" alt="">
                                             <span>Total Earnings</span>
                                         </h5>
+                                        <h1>&#8358;20,000.00</h1>
                                     </div>
                                     <div class="invested_locations">
                                         <h5 class='me_title'>
@@ -169,7 +177,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                             </div>
                             <div class="search-employee">
                                 <div class="search_employee">
-                                    <input type="text" name="search_employee" id="" placeholder="Search Employees">
+                                    <input type="text" name="search_employee" id="" placeholder="Search Employees"
+                                        onkeyup="searchEmployees()">
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
                                     <!DOCTYPE svg
                                         PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -205,9 +215,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                                     </div>
                                     <div class="eval_dets">
                                         <div>
-                                            <h3>Adeola Fayehun</h3>
-                                            <span>Supervisor</span>
-                                            <span>Started: 27th Aug 2018</span>
+                                            <h3>Justin Dustin</h3>
+                                            <span>Educator</span>
+                                            <span>Started: 20th Aug 2018</span>
                                         </div>
                                     </div>
                                 </div>
@@ -247,21 +257,47 @@ if (strlen($_SESSION['alogin']) == 0) {
 <!-- for investment progress -->
 <script>
     let investments = document.querySelectorAll('.investment');
-    for (let i = 0; i < investments.length; i++) {
-        perc = investments[i].querySelector('.perc').innerText;
-        loaderperc = investments[i].querySelector('.lo')
-        loader = perc.split('%')[0]
-        loaderNum = Number(loader)
-        var insider = loaderperc.querySelector('div')
-        insider.style.width = perc;
+    let searchE = document.querySelector('.search_employee input')
+    let Employees = document.querySelectorAll('.eval_dets > div')
+    let evals = document.querySelectorAll('.eval')
 
-        if (loaderNum > 50) {
-            insider.classList.add('green_me')
-        } else {
-            insider.classList.add('red_me')
+
+
+    window.addEventListener('DOMContentLoaded', () => {
+        for (let i = 0; i < investments.length; i++) {
+            perc = investments[i].querySelector('.perc').innerText;
+            loaderperc = investments[i].querySelector('.lo')
+            loader = perc.split('%')[0]
+            loaderNum = Number(loader)
+            var insider = loaderperc.querySelector('div')
+            insider.style.width = perc;
+
+            if (loaderNum > 50) {
+                insider.classList.add('green_me')
+            } else {
+                insider.classList.add('red_me')
+            }
         }
+        evals.forEach(eval => {
+            eval.classList.add('eval-up')
+        })
+    })
+
+    function searchEmployees() {
+        let employee = searchE.value.toUpperCase();
+        Employees.forEach(emp => {
+            text = emp.textContent || emp.innerText
+            if (text.toUpperCase().indexOf(employee) > -1) {
+                emp.parentElement.parentElement.style.display = 'block'
+            }
+            else {
+                emp.parentElement.parentElement.style.display = 'none'
+            }
+        })
     }
+
 </script>
+
 </html>
 
 <?php } ?>

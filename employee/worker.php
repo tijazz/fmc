@@ -1,5 +1,10 @@
 <?php
 session_start();
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 error_reporting(0);
 $error = "";
@@ -23,45 +28,66 @@ if (strlen($_SESSION['alogin']) == 0) {
 if (isset($_POST['submit'])) {
     $file = $_FILES['image']['name'];
     $file_loc = $_FILES['image']['tmp_name'];
-    $folder = "worker/";
+    $folder = "../images/";
     $new_file_name = strtolower($file);
     $final_file = str_replace(' ', '-', $new_file_name);
 
-    $user_id = $_SESSION['id'];
+
+
+    $user_id = $_SESSION['user_id'];
     $name = $_POST['name'];
+    $address = $_POST['address'];
     $email = $_POST['email'];
     $gender = $_POST['gender'];
-    $role = $_POST['role'];
     $phone = $_POST['phone'];
-    $contract_start = $_POST['contract_start'];
-    $contract_end = $_POST['contract_end'];
+    $kin = $_POST['kin'];
+    $kin_phone = $_POST['kin_phone'];
+    $job_location = $_POST['job_location'];
+    $dob = $_POST['dob'];
+    $department = $_POST['department'];
+    $salary = $_POST['salary'];
+    $bank_name = $_POST['bank_name'];
+    $bank_acct_no = $_POST['bank_acct_no'];
+    $contract_type = $_POST['contract_type'];
+    $status = $_POST['status'];
+    $org_id = $_SESSION['org_id'];
+
+
+
+
 
 
     if (move_uploaded_file($file_loc, $folder . $final_file)) {
         $image = $final_file;
+    }
+
+    $sql = "INSERT INTO worker (`user_id`, `org_id`, `image`, `name`, `address`, `email`, `gender`, `phone`, `kin`, `kin_phone`, `job_location`, `dob`, `department`, `salary`, `bank_name`, `bank_acct_no`, `contract_type`, `status`) 
+        VALUES(:user_id, :org_id, :image, :name, :address, :email, :gender, :phone, :kin, :kin_phone, :job_location, :dob, :department, :salary,  :bank_name, :bank_acct_no, :contract_type, :status);";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+    $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
+    $query->bindParam(':image', $image, PDO::PARAM_STR);
+    $query->bindParam(':name', $name, PDO::PARAM_STR);
+    $query->bindParam(':email', $email, PDO::PARAM_STR);
+    $query->bindParam(':address', $address, PDO::PARAM_STR);
+    $query->bindParam(':gender', $gender, PDO::PARAM_STR);
+    $query->bindParam(':phone', $phone, PDO::PARAM_STR);
+    $query->bindParam(':kin', $kin, PDO::PARAM_STR);
+    $query->bindParam(':kin_phone', $kin_phone, PDO::PARAM_STR);
+    $query->bindParam(':job_location', $job_location, PDO::PARAM_STR);
+    $query->bindParam(':dob', $dob, PDO::PARAM_STR);
+    $query->bindParam(':department', $department, PDO::PARAM_STR);
+    $query->bindParam(':salary', $salary, PDO::PARAM_STR);
+    $query->bindParam(':bank_name', $bank_name, PDO::PARAM_STR);
+    $query->bindParam(':bank_acct_no', $bank_acct_no, PDO::PARAM_STR);
+    $query->bindParam(':contract_type', $contract_type, PDO::PARAM_STR);
+    $query->bindParam(':status', $status, PDO::PARAM_STR);
+    $query->execute();
 
 
-        $sql = "INSERT INTO worker (`user_id`, `image`, `name`, `email`, `gender`, `role`, `phone`, `contract_start`, `contract_end`) VALUES(:user_id, :image, :name, :email, :gender, :role, :phone, :contract_start, :contract_end);";
-        $query = $dbh->prepare($sql);
-        $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
-        $query->bindParam(':image', $image, PDO::PARAM_STR);
-        $query->bindParam(':name', $name, PDO::PARAM_STR);
-        $query->bindParam(':email', $email, PDO::PARAM_STR);
-        $query->bindParam(':gender', $gender, PDO::PARAM_STR);
-        $query->bindParam(':role', $role, PDO::PARAM_STR);
-        $query->bindParam(':phone', $phone, PDO::PARAM_STR);
-        $query->bindParam(':contract_start', $contract_start, PDO::PARAM_STR);
-        $query->bindParam(':contract_end', $contract_end, PDO::PARAM_STR);
-        $query->execute();
-    }
-    if ($lastInsertId) {
-        echo "<script type='text/javascript'>alert('worker Registered Sucessfull!');</script>";
-        echo "<script type='text/javascript'> document.location = 'worker.php'; </script>";
-    } else {
-        //$error="Something went wrong. Please try again";
-        $msg = "Something went wrong. Please try again";
-    }
-} 
+
+    header('location:worker.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -109,47 +135,65 @@ require_once "public/config/header.php";
                 ?>
 
             </div>
-            <div class="row  border-bottom white-bg dashboard-header">
+            <div class="row dashboard-header">
                 <div class="panel-heading">
-                    <h2 class="page-title">Manage worker</h2>
+                    <h2 class="page-title">Manage Worker</h2>
                 </div>
             </div>
-            <div class="row" style="background:#fff;">
+            <div class="row">
 
-                <div class="col-lg-12 table_holder">
-                    <div class="apart_placer end_placer" style="margin-top:1.3rem;">
-                        <h2 class="page-title" style="color:#000;">workers Details</h2>
-                        <a class="green_btn" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"> Add worker</i></a>
+                <div class="col-lg-12">
+
+                    <!-- button style Start -->
+                    <div class="navbar">
+                        <div class="container-fluid" style="padding-left:7px;">
+                            <h1 class="nav navbar-nav">
+                                <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add Worker</a>
+                            </h1>
+                        </div>
                     </div>
+                    <!-- button style End -->
+
                     <!-- Zero Configuration Table -->
-                    <div class="table-cover">
-                        <!-- <div class="table__">List of workers</div> -->
-                        <div class="table-body_">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Workers list</div>
+                        <div class="panel-body">
                             <?php if ($error) { ?><div class="errorWrap" id="msgshow">
                                     <?php echo htmlentities($error); ?>
                                 </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow">
                                     <?php echo htmlentities($msg); ?> </div><?php } ?>
-                            <table class="worker_table" cellspacing="0" width="100%">
+                            <table id="zctb tablePreview" class="display table table-dark table-striped table-bordered table-hover" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>Image</th>
-                                        <th>Name</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Permanent Address</th>
                                         <th>Email</th>
                                         <th>Gender</th>
-                                        <th>Role</th>
                                         <th>Phone</th>
-                                        <th>Contract Start</th>
-                                        <th>Contract End</th>
-                                        <th>Due</th>
+                                        <th>Next of Kin</th>
+                                        <th>Next of Kin Contact</th>
+                                        <th>Job Location</th>
+                                        <th>D.O.B</th>
+                                        <th>Department</th>
+                                        <th>Date Employed</th>
+                                        <th>Salary</th>
+                                        <th>Bank Name</th>
+                                        <th>Bank Account Number</th>
+                                        <th>Contract Type</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
 
-                                    <?php $sql = "SELECT * from worker ";
+                                    <?php
+                                    $sql = "SELECT * FROM `worker` WHERE org_id = :org_id";
                                     $query = $dbh->prepare($sql);
+                                    $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
                                     $query->execute();
                                     $results = $query->fetchAll(PDO::FETCH_OBJ);
                                     $cnt = 1;
@@ -157,35 +201,38 @@ require_once "public/config/header.php";
                                         foreach ($results as $result) {                ?>
                                             <tr>
                                                 <td><?php echo htmlentities($cnt); ?></td>
-                                                <td><img src="worker/<?php echo htmlentities($result->image); ?>" style="width:50px; border-radius:50%;" /></td>
+                                                <td><img src="../images/<?php echo htmlentities($result->image); ?>" style="width:50px; border-radius:50%;" /></td>
                                                 <td><?php echo htmlentities($result->name); ?></td>
+                                                <td><?php echo htmlentities($result->name); ?></td>
+                                                <td><?php echo htmlentities($result->address); ?></td>
                                                 <td><?php echo htmlentities($result->email); ?></td>
                                                 <td><?php echo htmlentities($result->gender); ?></td>
-                                                <td><?php echo htmlentities($result->role); ?></td>
                                                 <td><?php echo htmlentities($result->phone); ?></td>
-                                                <td><?php echo htmlentities($result->contract_start); ?></td>
-                                                <td><?php echo htmlentities($result->contract_end); ?></td>
-                                                <td><?php
-                                                    $time = strtotime($result->contract_end);
-                                                    $newformat = date('Y-m-d', $time);
-                                                    echo ($newformat <= date('Y-m-d')) ? 'due' : 'not due'; ?></td>
-
+                                                <td><?php echo htmlentities($result->kin); ?></td>
+                                                <td><?php echo htmlentities($result->kin_phone); ?></td>
+                                                <td><?php echo htmlentities($result->job_location); ?></td>
+                                                <td><?php echo htmlentities($result->dob); ?></td>
+                                                <td><?php echo htmlentities($result->department); ?></td>
+                                                <td><?php echo htmlentities($result->sign_up_date); ?></td>
+                                                <td><?php echo htmlentities($result->salary); ?></td>
+                                                <td><?php echo htmlentities($result->bank_name); ?></td>
+                                                <td><?php echo htmlentities($result->bank_acct_no); ?></td>
+                                                <td><?php echo htmlentities($result->contract_type); ?></td>
+                                                <td><?php echo htmlentities($result->status); ?></td>
                                                 <!-- Action Button Start -->
-                                        <td>
-                                            <a data-toggle="modal" href="workeredit.php?s=<?php echo $result->id;?>" data-target="#MyModal" data-backdrop="static">&nbsp;
-                                            <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                            <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog model-sm">
-                                                        <div class="modal-content"> </div>
+                                                <td>
+                                                    <a data-toggle="modal" href="workeredit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                                    <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog model-sm">
+                                                            <div class="modal-content"> </div>
+                                                        </div>
                                                     </div>
-                                            </div>
 
-                                            <a href="worker.php?del=<?php echo $result->id;?>"
-                                                onclick="return confirm('Do you want to Delete');"><i
-                                                    class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
-                                        </td>
+                                                    <a href="worker.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
+                                                </td>
 
-                                        <!-- Action Button End -->
+                                                <!-- Action Button End -->
                                             </tr>
                                     <?php $cnt = $cnt + 1;
                                         }
@@ -210,44 +257,99 @@ require_once "public/config/header.php";
 
                                             <p>
 
-                                                <label for="empname">worker Name</label>
-                                                <input type="text" name="name" value="" required>
+                                                <label for="name">worker Name</label>
+                                                <input type="text" name="name" value="">
+                                            </p>
+
+                                            <p>
+                                                <label for="address">Address</label>
+                                                <input type="address" name="address" value="">
                                             </p>
 
                                             <p>
                                                 <label for="email">Email</label>
-                                                <input type="email" name="email" value="" required>
+                                                <input type="email" name="email" value="">
                                             </p>
-
 
                                             <p>
                                                 <label for="gender">Gender</label>
-                                                <select name="gender" required>
-                                                    <option value="">Select</option>
-                                                    <option value="male">Male</option>
-                                                    <option value="female">Female</option>
-                                                </select>
+                                                <input list="gender" type="text" name="gender" value="">
+
+                                                <datalist id="gender">
+                                                    <option value="Female">
+                                                    <option value="Male">
+                                                </datalist>
                                             </p>
                                             <p>
-                                                <label for="Role">Role</label>
-                                                <input type="role" name="role" value="" required>
-                                            </p>
-                                            <p>
-                                                <label for="Number">Phone Number</label>
-                                                <input type="tel" name="phone" value="" required>
+                                                <label for="phone">Phone</label>
+                                                <input type="tel" name="phone" value="">
                                             </p>
                                             <p>
                                                 <label for="profilepic">Profile Pic</label>
-                                                <input type="file" name="image" value="" required>
+                                                <input type="file" name="image" value="">
                                             </p>
+
                                             <p>
-                                                <label for="Number">Contract Start</label>
-                                                <input type="date" name="contract_start" value="" required>
+                                                <label for="kin">Kin</label>
+                                                <input type="text" name="kin" value="">
                                             </p>
+
                                             <p>
-                                                <label for="Number">Contract Due</label>
-                                                <input type="date" name="contract_end" value="" required>
+                                                <label for="kin_phone">Kin Phone Number</label>
+                                                <input type="tel" name="kin_phone" value="">
                                             </p>
+
+                                            <p>
+                                                <label for="job_location">Job Location</label>
+                                                <input type="address" name="job_location" value="">
+                                            </p>
+
+                                            <p>
+                                                <label for="dob">Date Of Birth</label>
+                                                <input type="date" name="dob" value="">
+                                            </p>
+
+                                            <p>
+                                                <label for="department">Department</label>
+                                                <input type="text" name="department" value="">
+                                            </p>
+
+
+                                            <p>
+                                                <label for="salary">Salary</label>
+                                                <input type="text" name="salary" value="">
+                                            </p>
+
+                                            <p>
+                                                <label for="bank_name">Bank Name</label>
+                                                <input type="text" name="bank_name" value="">
+                                            </p>
+
+                                            <p>
+                                                <label for="bank_acct_no">Bank Account Number</label>
+                                                <input type="text" name="bank_acct_no" value="">
+                                            </p>
+
+                                            <p>
+                                                <label for="contract_type">Contract Type</label>
+                                                <input list="contract_type" type="text" name="contract_type" value="">
+
+                                                <datalist id="contract_type">
+                                                    <option value="permanent">Permanent</option>
+                                                    <option value="part-time">Part-time</option>
+                                                </datalist>
+                                            </p>
+
+                                            <p>
+                                                <label for="status">Status</label>
+                                                <input list="status" type="text" name="status" value="">
+
+                                                <datalist id="status">
+                                                    <option value="Active">
+                                                    <option value="Inactive">
+                                                </datalist>
+                                            </p>
+
                                             <p>
                                                 <button type="submit" name="submit">
                                                     Submit

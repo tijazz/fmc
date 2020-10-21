@@ -158,6 +158,9 @@
 		   #page-wrapper > div:nth-child(3) > div > div > div.panel-body > div > div > div > a:hover{
 			   color:#fff;
 		   }
+		   svg{stroke:#fff;fill:#fff;}
+           .panel a{color:#1ab394;}
+           .panel a:hover{color:#085747 !important;}
 	   </style>
         <?php
                 require_once "public/config/footer.php";

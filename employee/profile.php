@@ -45,7 +45,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                     <i class="fa fa-pencil"></i>
                                 </div>
                                 <div class="user_info">
-                                    <span><?php echo ($_SESSION["name"]); ?></span>
+                                    <span><?php echo ($_SESSION["org"]); ?></span>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 <ul class="user_full_info">
 
                                     <?php
-                                    $sql = "SELECT * from employee where id = :id";
+                                    $sql = "SELECT * from organization where id = :id";
                                     $query = $dbh->prepare($sql);
                                     $query->bindParam(':id', $_SESSION['id'], PDO::PARAM_STR);
                                     $query->execute();

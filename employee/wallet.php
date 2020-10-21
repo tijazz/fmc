@@ -111,21 +111,21 @@ else{
                                 <div class="transaction">
                                     <h3>Transaction</h3>
                                     <div class="graph">
-                                        <div class="liner"></div>
+                                        <div class="line"></div>
                                     </div>
                                     <span class="rate"><h3>99.96</h3><span class="line_100"> | 100</span></span>
                                 </div>
                                 <div class="credit">
                                     <h3>Credit</h3>
                                     <div class="graph">
-                                        <div class="liner"></div>
+                                        <div class="line"></div>
                                     </div>
                                     <span class="rate"><h3>960.13</h3><span class="line_100"> | OUIC</span></span>
                                 </div>
                                 <div class="debit">
                                     <h3>Debit</h3>
                                     <div class="graph">
-                                        <div class="liner"></div>
+                                        <div class="line"></div>
                                     </div>
                                     <span class="rate"><h3>940.96</h3><span class="line_100"> | OUIC</span></span>
                                 </div>
@@ -208,26 +208,7 @@ else{
             ?>
             
         </body>
-        <script>
-              
-              var liners = document.querySelectorAll('.liner');
-        var divs = document.querySelectorAll('.payment_summaries > div')
-        window.addEventListener('DOMContentLoaded',() =>{
-            liners.forEach(liner => {
-            if(liner.parentElement.parentElement.classList.contains('transaction') ||
-            liner.parentElement.parentElement.classList.contains('debit'))
-            {
-                liner.classList.add('eighty')
-            }
-            if(liner.parentElement.parentElement.classList.contains('credit')){
-                liner.classList.add('ninety')
-            }
-        })
-        divs.forEach(div => {
-            div.classList.add('showme')
-        })
-        })
-        </script>
+        
         </html>
         
         <?php } ?>

@@ -67,7 +67,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                             <?php
                             $sq = "SELECT * FROM `product` WHERE org_id=:org_id";
                             $qu = $dbh->prepare($sq);
-                            $qu->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                            $qu->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                             $qu->execute();
                             $res = $qu->fetchAll(PDO::FETCH_OBJ);
                             $cnt = 1;
@@ -87,7 +87,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                             <?php
                             $s = "SELECT * FROM `building` WHERE org_id=:org_id";
                             $q = $dbh->prepare($s);
-                            $q->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                            $q->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                             $q->execute();
                             $rs = $q->fetchAll(PDO::FETCH_OBJ);
                             $cnt = 1;

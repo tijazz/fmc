@@ -8,30 +8,6 @@ include('includes/config.php');
 if (strlen($_SESSION['alogin']) == 0) {
     header('location:index.php');
 } else {
-    if (isset($_GET['del'])) {
-        $id = $_GET['del'];
-
-        $sql = "delete from faq WHERE id=:id";
-        $query = $dbh->prepare($sql);
-        $query->bindParam(':id', $id, PDO::PARAM_STR);
-        $query->execute();
-
-        header('location:faq.php');
-    }
-
-    if (isset($_POST['submit'])) {
-
-        $question = $_POST['question'];
-        $answer = $_POST['answer'];
-
-        $sql = "INSERT INTO `faq`(`question`, `answer`) VALUES (:question, :answer)";
-        $query = $dbh->prepare($sql);
-        $query->bindParam(':question', $question, PDO::PARAM_STR);
-        $query->bindParam(':answer', $answer, PDO::PARAM_STR);
-        $query->execute();
-
-        header('location:faq.php');
-    }
 
 
 
@@ -98,58 +74,22 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h4 class="panel-title">
-                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $cnt?>">
-                                                            <?php echo $result->question?></a>
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $cnt ?>">
+                                                            <?php echo $result->question ?></a>
+                                                        </h4>
                                                 </div>
-                                                <div id="collapse<?php echo $cnt?>" class="panel-collapse collapse in">
-                                                    <div class="panel-body"><?php echo $result->answer?></div>
+                                                <div id="collapse<?php echo $cnt ?>" class="panel-collapse collapse in">
+                                                    <div class="panel-body"><?php echo $result->answer ?></div>
                                                 </div>
                                             </div>
 
-                                    <?php $cnt++; }
+                                    <?php $cnt++;
+                                        }
                                     } ?>
 
                                 </div>
                                 <!-- Ending -->
 
-                            </div>
-                            <div id="add" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                <div class="modal-dialog">
-                                    <div class="modal-content" style="height:auto">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">×</span></button>
-                                            <h4 class="modal-title">Add New Product</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="faq.php" method="POST" class="forma">
-                                                <p>
-                                                    <label for="full_name">Question</label>
-                                                    <input type="text" name="question">
-                                                </p>
-
-
-                                                <p>
-                                                    <label for="answer">Answer</label>
-                                                    <textarea name="answer" id="" cols="30" rows="10"></textarea>
-
-                                                </p>
-                                                <p>
-                                                    <button type="submit" name="submit">
-                                                        Submit
-                                                    </button>
-                                                </p>
-
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        </div>
-
-                                    </div>
-                                    <!--end of modal-dialog-->
-                                </div>
                             </div>
 
                         </div>
