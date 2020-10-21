@@ -89,7 +89,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                         <?php $sql = "SELECT * from weeklyreport WHERE org_id = (:org_id) AND type = 'field'";
                                         $query = $dbh->prepare($sql);
-                                        $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
+                                        $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
                                         $query->execute();
                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
                                         $cnt = 1;
@@ -161,7 +161,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                         $sql = "SELECT * FROM `locations` WHERE data_type = 'field' AND org_id = (:org_id)";
                                                         $query = $dbh->prepare($sql);
-                                                        $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
+                                                        $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
 
                                                         $query->execute();
                                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
