@@ -73,7 +73,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 <table id="zctb tablePreview" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
-                                            <th><?php echo $_SESSION['user_id'];?></th>
+                                            <th>#</th>
                                             <th>Week</th>
                                             <th>Field</th>
                                             <th>Usage Hours</th>
