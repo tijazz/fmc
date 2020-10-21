@@ -13,7 +13,7 @@ if (isset($_POST['login'])) {
 	if ($query->rowCount() > 0) {
 		$_SESSION['alogin'] = $_POST['username'];
 		$_SESSION['name'] = $results[0]->name;
-		$_SESSION['id'] = $results[0]->id;
+		$_SESSION['user_id'] = $results[0]->id;
 		$_SESSION['supply'] = $results[0]->supply;
 		$_SESSION['risk'] = $results[0]->risk;
 		$_SESSION['inventory'] = $results[0]->inventory;
