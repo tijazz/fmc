@@ -14,7 +14,7 @@
 if(isset($_POST['submit']))
 {
 
-        $user_id = $_SESSION['org_id'];
+        $user_id = $_SESSION['user_id'];
         $org_id = $_SESSION['org_id'];
         $week = $_POST['week'];
         $hours = $_POST['hours'];
