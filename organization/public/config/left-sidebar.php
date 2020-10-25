@@ -25,7 +25,7 @@
                     </ul>
                 </div>
                 <div class="logo-element">
-                    <img src="images/logo.png" alt="" style="height:30px;">
+                    <img src="../images/logo.png" alt="" style="height:30px;">
                 </div>
             </li>
             <li>
@@ -62,7 +62,7 @@
 
             <!-- Inventory Management -->
             <li class="parentd">
-                <a href="#" data-toggle="tooltip" title="Inventory Management: where we Mage our inventory">
+                <a href="#">
                     <i class="fas fa-university"></i>
                     <span class="nav-label">Inventory management</span><span class="fa arrow"></span>
                 </a>

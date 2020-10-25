@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="public/css/notifications.css">
 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
         <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#" id='slide_left_btn'><i
@@ -54,7 +53,6 @@
             <p>Your flock has been fed by Mr.Olayinks</p>
         </li>
     </ul>
-    <script src="public/js/notifications.js"></script>
 <!-- Temporary fix to the navbar issue -->
 <script>
     let navTriggerBtn = document.getElementById('slide_left_btn');

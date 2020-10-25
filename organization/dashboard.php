@@ -300,7 +300,22 @@ th.sorting::after {
 }
 </style>
 <!-- Mirrored from webapplayers.com/inspinia_admin-v2.6.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Sep 2016 02:26:53 GMT -->
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            toastr.options = {
+                closeButton: true,
+                progressBar: true,
+                showMethod: 'slideDown',
+                timeOut: 4000
+            };
+            toastr.success('Your Number 1 farm management company.', 'Welcome to DUFMA');
+            
+        }, 1300);
+        
 
+    });
+</script>
 </html>
 
 <?php } ?>

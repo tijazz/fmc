@@ -29,7 +29,6 @@ if (strlen($_SESSION['alogin']) == 0) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Monitoring and Evaluation</title>
-<link rel="stylesheet" href="public/css/m_and_e.css">
 
 <?php
     require_once "public/config/header.php";

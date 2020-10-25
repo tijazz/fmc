@@ -26,7 +26,7 @@
                     </ul>
                 </div>
                 <div class="logo-element">
-                    <img src="images/logo.png" alt="" style="height:30px;">
+                    <img src="../images/logo.png" alt="" style="height:30px;">
                 </div>
             </li>
             <li>

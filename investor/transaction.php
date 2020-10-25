@@ -208,7 +208,11 @@ else{
             ?>
             
         </body>
-        
+        <style>
+            .panel,.panel-body,.right{
+                background:#fff;
+            }
+        </style>
         </html>
         
         <?php } ?>

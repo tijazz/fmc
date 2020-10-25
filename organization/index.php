@@ -38,7 +38,7 @@ echo "<script type='text/javascript'> document.location = 'dashboard.php'; </scr
 	<meta name="author" content="">
 
 	<link rel="stylesheet" href="../public/css/bootstrap.min.css">
-	<link rel="stylesheet" href="public/css/login.css">
+	<link rel="stylesheet" href="../public/css/login.css">
 
 </head>
 
