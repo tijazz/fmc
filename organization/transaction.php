@@ -56,9 +56,7 @@
 
         <!DOCTYPE html>
         <html>
-        <link rel="stylesheet" href="public/css/transaction.css">
-        <link rel="stylesheet" href="public/css/new_styles.css">
-
+    
         <?php
         require_once "public/config/header.php";
         ?>

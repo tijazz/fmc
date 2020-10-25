@@ -250,6 +250,11 @@ if (strlen($_SESSION['alogin']) == 0) {
             width: 5px;
             background: red !important;
         }
+        @media(max-width:600px){
+            .grouped{
+                grid-column:1/3;
+            }
+        }
     </style>
     <!-- Mirrored from webapplayers.com/inspinia_admin-v2.6.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Sep 2016 02:26:53 GMT -->
 

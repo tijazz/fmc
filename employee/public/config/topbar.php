@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="public/css/notifications.css">
 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
         <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#" id='slide_left_btn'><i class="fa fa-bars"></i> </a>
@@ -79,6 +78,10 @@
     #wrapper>nav {
         margin-left: -500px;
         display: block;
+        position: fixed;
+        z-index: 1000;
+        width:250px;
+    /* margin-top: -60px; */
     }
 
     #page-wrapper {

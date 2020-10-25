@@ -6,29 +6,32 @@
 
     <title>DUFMA | Dashboard</title>
 
-    <link href="public/css/bootstrap.min.css" rel="stylesheet">
-    <link href="public/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../public/font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <!-- Toastr style -->
-    <link href="public/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <link href="../public/css/plugins/toastr/toastr.min.css" rel="stylesheet">
 
-    <link href="public/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
-    <link href="public/css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
+    <link href="../public/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
+    <link href="../public/css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
 
-    <link href="public/css/animate.css" rel="stylesheet">
-    <link href="public/css/style.css" rel="stylesheet">
-    <link href="public/css/personal.css" rel="stylesheet">
-    <link href="public/css/Emeka-css.css" rel="stylesheet">
-    <link href="public/css/profile.css" rel="stylesheet">
-    <link href="public/css/form.css" rel="stylesheet">
+    <link href="../public/css/inventorymgmt.css" rel="stylesheet">
+    <link href="../public/css/animate.css" rel="stylesheet">
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/personal.css" rel="stylesheet">
+    <link href="../public/css/Emeka-css.css" rel="stylesheet">
+    <link href="../public/css/profile.css" rel="stylesheet">
+    <link href="../public/css/form.css" rel="stylesheet">
+    <link href="../public/css/m_and_e.css" rel="stylesheet">
+    <link href="../public/css/notifications.css" rel="stylesheet">
 
 
     <!-- Icon style -->
-    <link rel="icon" type="image/png" sizes="192x192" href="public/css/fav-icons/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="public/css/fav-icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="public/css/fav-icons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="public/css/fav-icons/favicon-16x16.png">
-    <link href="public/css/all.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="192x192" href="../public/css/fav-icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../public/css/fav-icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../public/css/fav-icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../public/css/fav-icons/favicon-16x16.png">
+    <link href="../public/css/all.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -52,6 +55,7 @@
     #map {
         height: 100%;
     }
+    .workzone .right{background-color: #fff;}
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 

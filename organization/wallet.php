@@ -206,7 +206,9 @@ else{
             <?php
             require_once "public/config/footer.php";
             ?>
-            
+            <style>
+                .panel,.panel-body{background:#fff !important;}
+            </style>
         </body>
         
         </html>

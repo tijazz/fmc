@@ -42,7 +42,7 @@
                             <div class="profile_info">
                                 <div class="image_circle">
                                   
-                                    <img alt="image" class="img-profile" src="images/<?php echo ($_SESSION["images"]); ?>">
+                                    <img alt="image" class="img-profile" src='../images/<?php echo ($_SESSION["images"]); ?>'>
                    
                                     <i class="fa fa-pencil"></i>
                                 </div>

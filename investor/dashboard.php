@@ -21,7 +21,6 @@ if (strlen($_SESSION['alogin']) == 0) {
             <?php
             require_once "public/config/left-sidebar.php";
             ?>
-            <link rel="stylesheet" href="public/css/m_and_e.css">
 
             <div id="page-wrapper" class=" dashbard-1">
                 <div class="row">

@@ -56,7 +56,6 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="public/css/inventorymgmt.css">
 
 <?php
     require_once "public/config/header.php";
@@ -64,7 +63,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 <body>
 
-    <div id="wrapper">
+    <div id="wrapper inventory_duf">
         <?php
             require_once "public/config/left-sidebar.php";
             ?>

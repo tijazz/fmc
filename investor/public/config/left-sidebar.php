@@ -102,4 +102,3 @@
                 color:rgb(11, 89, 109) !important;
             }
 </style>
-<script src="public/js/side_bar.js"></script>
