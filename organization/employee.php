@@ -68,56 +68,33 @@ if (isset($_POST['submit'])) {
     $org_id = $_SESSION['org_id'];
 
 
-
-
-    // sending email
-
-
-
-
-
     // Load Composer's autoloader
     require '../vendor/autoload.php';
 
     // Instantiation and passing `true` enables exceptions
     $mail = new PHPMailer(true);
 
+
     try {
         //Server settings
         $mail->SMTPDebug = 0; // Enable verbose debug output                  // Send using SMTP
-        $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-        $mail->Username   = 'dufmanigeria@gmail.com';                     // SMTP username
-        $mail->Password   = 'dufma234';
-        $mail->SMTPKeepAlive = true;
+        $mail->Host       = 'mail.dufma.ng';                    // Set the SMTP server to send through
+        $mail->Username   = 'admin@dufma.ng';                     // SMTP username
+        $mail->Password   = 'ADEMOLA789@';
+       $mail->SMTPKeepAlive = true;
         $mail->isSMTP();                               // SMTP password
         $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
 
         $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
         $mail->Port       = '465';                                   // TCP port to connect to
-
-        // $mail->SMTPOptions = array(
-        //     'ssl' => array(
-        //         'verify_peer' => false,
-        //         'verify_peer_name' => false,
-        //         'allow_self_signed' => true
-        //     )
-        // );
-        //Recipients
-        $mail->setFrom('dufmanigeria@gmail.com', 'Dufma');
-        $mail->addAddress($email, $name);     // Add a recipient
-        // $mail->addAddress('ellen@example.com');               // Name is optional
-        // $mail->addReplyTo('info@example.com', 'Information');
-        // $mail->addCC('cc@example.com');
-        // $mail->addBCC('bcc@example.com');
-
-        // Attachments
-        // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-
+   $mail->setFrom('admin@dufma.ng', 'Dufma');
+        $mail->addAddress($email, $name);    
+        
+     
         // Content
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = 'Login Details';
-        $mail->Body    = "This is your login details:<br> email: " . $email . "<br>Password: " .  $password;
+        $mail->Body    = "This is your login details:<br> email: " . $email . "<br>Password: " .  $password . "<br>Link: http://fmc.dufma.ng/";
         $mail->AltBody = "This is your email " . $email . " and Password " .  $password;
 
         $mail->send();
