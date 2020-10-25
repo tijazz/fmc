@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2020 at 09:59 AM
+-- Generation Time: Oct 25, 2020 at 08:44 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -213,14 +213,14 @@ CREATE TABLE `building` (
   `sn` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `org_id` int(11) DEFAULT NULL,
-  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci DEFAULT NULL,
-  `description` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci DEFAULT NULL,
-  `size` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `description` varchar(50) DEFAULT NULL,
+  `size` varchar(50) DEFAULT NULL,
   `amount` int(50) DEFAULT NULL,
-  `location` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci DEFAULT NULL,
+  `location` varchar(50) DEFAULT NULL,
   `lat` varchar(50) DEFAULT NULL,
   `lng` varchar(50) DEFAULT NULL,
-  `category` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci DEFAULT NULL,
+  `category` varchar(50) DEFAULT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `table_name` varchar(50) NOT NULL DEFAULT 'building',
   `capacity` int(50) DEFAULT NULL,
@@ -336,7 +336,8 @@ INSERT INTO `employee` (`id`, `user_id`, `org_id`, `image`, `name`, `address`, `
 (57, 1, NULL, NULL, 'Abdullahi Temidayo Jimoh', 'Borehole Area, Aroje, Ogbomoso, Oyo State.', 'abdullahij951@gmail.com', NULL, '9f3be05aa998ef91c248fa85488cb406', 'male', NULL, '+2348061266260', '', '', '', '0000-00-00', '', NULL, NULL, '', '', '', 'permanent', 'active', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-10-11 22:11:07'),
 (58, 1, 1, NULL, 'Abdullahi Temidayo Jimoh', 'Borehole Area, Aroje, Ogbomoso, Oyo State.', 'abdullahij951@gmail.com', NULL, 'ba9efe632eae7716a16f64b7043792b1', 'male', NULL, '+2348061266260', '', '', '', '0000-00-00', '', NULL, NULL, '', '', '', 'permanent', 'active', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-10-11 22:12:26'),
 (59, 1, 1, NULL, 'Abdullahi Temidayo Jimoh', 'Borehole Area, Aroje, Ogbomoso, Oyo State.', 'abdullahij951@gmail.com', NULL, '6ef06a2495a48c6d6be6242f631399b7', 'male', NULL, '+2348061266260', '', '', '', '2020-10-12', '', NULL, NULL, '', '', '', 'permanent', 'active', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-10-11 23:04:22'),
-(60, 0, 1, NULL, 'Abdullahi Temidayo Jimoh', 'Borehole Area, Aroje, Ogbomoso, Oyo State.', 'abdullahij951@gmail.com', NULL, '61833d7ee14d94597e51c6df4066fa3d', '', NULL, '+2348061266260', '', '', '', '0000-00-00', '', NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-10-15 10:17:14');
+(60, 0, 1, NULL, 'Abdullahi Temidayo Jimoh', 'Borehole Area, Aroje, Ogbomoso, Oyo State.', 'abdullahij951@gmail.com', NULL, '61833d7ee14d94597e51c6df4066fa3d', '', NULL, '+2348061266260', '', '', '', '0000-00-00', '', NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-10-15 10:17:14'),
+(61, 0, 1, NULL, 'Abdullahi  Jimoh', 'Borehole Area, Aroje, Ogbomoso, Oyo State.', 'abdullahij951@gmail.com', NULL, '73eebd76cb633c7c0ef459ceb32160d1', '', NULL, '+2348061266260', '', '', '', '0000-00-00', '', NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-10-17 14:18:03');
 
 -- --------------------------------------------------------
 
@@ -848,19 +849,22 @@ INSERT INTO `operation` (`sn`, `user_id`, `org_id`, `name`, `description`, `quan
 
 CREATE TABLE `organization` (
   `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `organization` varchar(50) NOT NULL,
-  `sign_up_date` timestamp NOT NULL DEFAULT current_timestamp()
+  `username` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  `organization` varchar(50) DEFAULT NULL,
+  `image` varchar(50) DEFAULT NULL,
+  `sign_up_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `table_name` varchar(50) NOT NULL DEFAULT 'organization'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `organization`
 --
 
-INSERT INTO `organization` (`id`, `username`, `email`, `password`, `organization`, `sign_up_date`) VALUES
-(1, 'admin1', 'admin1@admin1.com', 'e00cf25ad42683b3df678c61f42c6bda', 'Dufma', '2020-09-27 15:23:48');
+INSERT INTO `organization` (`id`, `username`, `email`, `password`, `organization`, `image`, `sign_up_date`, `table_name`) VALUES
+(1, 'admin1', 'admin1@admin1.com', 'e00cf25ad42683b3df678c61f42c6bda', 'Dufma', NULL, '2020-09-27 15:23:48', 'organization'),
+(3, 'abdullahij951', 'abdullahij951@gmail.com', '6515523fb9fe3308897a5df81763ea46', 'University of Ibadan', NULL, '2020-10-25 16:23:49', 'organization');
 
 -- --------------------------------------------------------
 
@@ -1085,23 +1089,19 @@ INSERT INTO `purchases` (`id`, `user_id`, `org_id`, `sn`, `name`, `description`,
 
 CREATE TABLE `rawmaterials` (
   `id` int(6) NOT NULL,
-  `id_rawmaterials` varchar(255) NOT NULL,
-  `qty_rawmaterials` varchar(255) NOT NULL,
-  `cost_unit` varchar(255) NOT NULL,
-  `tot_cost_qty` varchar(255) NOT NULL,
-  `tot_cost_rawmaterials` varchar(255) NOT NULL,
-  `per_rawmaterials_cost` varchar(255) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `add_parameters` varchar(255) NOT NULL
+  `id_rawmaterials` varchar(255) DEFAULT NULL,
+  `qty_rawmaterials` varchar(255) DEFAULT NULL,
+  `amount` varchar(255) DEFAULT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rawmaterials`
 --
 
-INSERT INTO `rawmaterials` (`id`, `id_rawmaterials`, `qty_rawmaterials`, `cost_unit`, `tot_cost_qty`, `tot_cost_rawmaterials`, `per_rawmaterials_cost`, `date`, `add_parameters`) VALUES
-(12, '006', '6', '200', '1200', '6000', '20', '2020-08-30 00:56:40', 'nothing'),
-(14, '006', '6', '60', '360', '600', '600', '2020-08-30 00:56:40', 'something');
+INSERT INTO `rawmaterials` (`id`, `id_rawmaterials`, `qty_rawmaterials`, `amount`, `date`) VALUES
+(12, '006', '6', '1200', '2020-08-30 00:56:40'),
+(14, '006', '6', '360', '2020-08-30 00:56:40');
 
 -- --------------------------------------------------------
 
@@ -1120,16 +1120,15 @@ CREATE TABLE `rent` (
   `qitem` varchar(255) DEFAULT NULL,
   `amount` int(255) DEFAULT NULL,
   `time` timestamp NOT NULL DEFAULT current_timestamp(),
-  `date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `add_parameters` varchar(255) NOT NULL
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rent`
 --
 
-INSERT INTO `rent` (`id`, `user_id`, `org_id`, `sn`, `name`, `description`, `ppunit`, `qitem`, `amount`, `time`, `date`, `add_parameters`) VALUES
-(1, 0, 1, NULL, 'pen', 'Bypassing', '10', '367', 3670, '2020-10-16 10:55:06', '2020-10-16 10:55:06', '');
+INSERT INTO `rent` (`id`, `user_id`, `org_id`, `sn`, `name`, `description`, `ppunit`, `qitem`, `amount`, `time`, `date`) VALUES
+(1, 0, 1, NULL, 'pen', 'Bypassing', '10', '367', 3670, '2020-10-16 10:55:06', '2020-10-16 10:55:06');
 
 -- --------------------------------------------------------
 
@@ -1232,6 +1231,31 @@ CREATE TABLE `service` (
 INSERT INTO `service` (`id`, `transaction`, `salename`, `date`, `productname`, `description`, `price`, `quantity`, `discount`, `amount`, `totalquantity`, `method`, `customername`, `phone`, `type`, `add_parameter`) VALUES
 (0, '123', 'otun', '2020-07-02', 'boska', 'brown', 100, 3, 20, 200, 200, 'transfer', 'tunde', '08039412009', 'Weekly', 'nothing'),
 (0, '12325544', 'Abdullahi', '2020-08-07', 'ybnl', 'Buy Fuel', 1200, 15, 200, 15000, 15, 'transfer', 'method', '+2348061266', 'Daily', 'qw');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `slm`
+--
+
+CREATE TABLE `slm` (
+  `id` int(255) NOT NULL,
+  `user_id` int(6) DEFAULT NULL,
+  `org_id` int(6) DEFAULT NULL,
+  `asset_id` varchar(255) DEFAULT NULL,
+  `asset_type` varchar(255) DEFAULT NULL,
+  `asset_life` varchar(225) DEFAULT NULL,
+  `ope_cost` varchar(255) DEFAULT NULL,
+  `salvage` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `slm`
+--
+
+INSERT INTO `slm` (`id`, `user_id`, `org_id`, `asset_id`, `asset_type`, `asset_life`, `ope_cost`, `salvage`) VALUES
+(13, 0, 1, '10', 'machinery', '6', '1200', '25000'),
+(16, 0, 1, '8', 'building', '6', '2300', '230000');
 
 -- --------------------------------------------------------
 
@@ -1506,7 +1530,11 @@ INSERT INTO `weeklyreport` (`id`, `user_id`, `org_id`, `week`, `name`, `hours`, 
 (5, '1', 1, '2020-W40', '', '2', 'qwert key board', 'Completed', '3', '1', 'field'),
 (6, '1', 1, '2020-W40', '', '2', 'qwert key board', 'Completed', '3', '1', 'field'),
 (10, '1', 1, '2020-W40', '8', '3', 'try again', 'Completed', '3', '1', 'facility'),
-(11, '1', 1, '2020-W40', '8', '2', 'there you are ', 'Completed', '3', '1', 'facility');
+(11, '1', 1, '2020-W40', '8', '2', 'there you are ', 'Completed', '3', '1', 'facility'),
+(12, NULL, NULL, '2020-W43', NULL, '1', 'trying', 'Completed', '3', NULL, 'field'),
+(13, '1', 1, '2020-W43', NULL, '3', 'coming', 'Completed', '3', '1', 'field'),
+(14, '1', 1, '2020-W43', NULL, '2', 'heloo', 'Completed', '3', '1', 'field'),
+(15, '55', 1, '2020-W43', NULL, '2', 'get ready', 'Completed', '3', '1', 'field');
 
 -- --------------------------------------------------------
 
@@ -1762,6 +1790,12 @@ ALTER TABLE `security`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `slm`
+--
+ALTER TABLE `slm`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `transactions`
 --
 ALTER TABLE `transactions`
@@ -1883,7 +1917,7 @@ ALTER TABLE `documents`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `expenditure`
@@ -1973,7 +2007,7 @@ ALTER TABLE `operation`
 -- AUTO_INCREMENT for table `organization`
 --
 ALTER TABLE `organization`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `other_asset`
@@ -2036,6 +2070,12 @@ ALTER TABLE `security`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `slm`
+--
+ALTER TABLE `slm`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
@@ -2093,7 +2133,7 @@ ALTER TABLE `warehouse`
 -- AUTO_INCREMENT for table `weeklyreport`
 --
 ALTER TABLE `weeklyreport`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `worker`
