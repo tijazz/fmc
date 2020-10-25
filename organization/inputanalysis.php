@@ -27,9 +27,7 @@
         <html>
 		<head>
         <title>Input Analysis</title>        
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/Chart.min.js"></script>
-		<link rel="stylesheet" href="public/css/new_styles.css">
+      
 
         <?php
         require_once "public/config/header.php";

@@ -29,6 +29,7 @@
         <script src="../public/js/chartData.js"></script>
         <script src="../public/js/main.js"></script>
 <script src="../public/js/notifications.js"></script>
+<script src="../public/js/invdash.js"></script>
     
 
         <!-- // ChartJS -->

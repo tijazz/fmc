@@ -1,5 +1,10 @@
 <?php
 session_start();
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 error_reporting(0);
 $error = "";
@@ -8,19 +13,85 @@ include('includes/config.php');
 if (strlen($_SESSION['alogin']) == 0) {
     header('location:index.php');
 } else {
-    if (isset($_GET['del'])) {
-        $id = $_GET['del'];
 
-        $sql = "delete from building WHERE sn=:id";
+    if (isset($_POST['submit'])) {
+       
+
+        function random_password($length)
+        {
+            //A list of characters that can be used in our
+            //random password.
+            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!-.[]?*()';
+            //Create a blank string.
+            $password = '';
+            //Get the index of the last character in our $characters string.
+            $characterListLength = mb_strlen($characters, '8bit') - 1;
+            //Loop from 1 to the $length that was specified.
+            foreach (range(1, $length) as $i) {
+                $password .= $characters[random_int(0, $characterListLength)];
+            }
+            return $password;
+        }
+
+        $organization = $_POST['organization'];
+        $email = $_POST['email'];
+        $password = random_password(6);
+        $user= explode("@", $email);
+        $username = $user[0];
+
+
+
+        // Load Composer's autoloader
+        require '../vendor/autoload.php';
+
+        // Instantiation and passing `true` enables exceptions
+        $mail = new PHPMailer(true);
+
+
+        try {
+            //Server settings
+            $mail->SMTPDebug = 0; // Enable verbose debug output                  // Send using SMTP
+            $mail->Host       = 'mail.dufma.ng';                    // Set the SMTP server to send through
+            $mail->Username   = 'admin@dufma.ng';                     // SMTP username
+            $mail->Password   = 'ADEMOLA789@';
+            $mail->SMTPKeepAlive = true;
+            $mail->isSMTP();                               // SMTP password
+            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+
+            $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+            $mail->Port       = '465';                                   // TCP port to connect to
+            $mail->setFrom('admin@dufma.ng', 'Dufma');
+            $mail->addAddress($email, $organization);
+
+
+            // Content
+            $mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = 'Login Details';
+            $mail->Body    = "This is your login details:<br> email: " . $email . "<br>Username: " .  $username . "<br>Password: " .  $password . "<br>Link: http://fmc.dufma.ng/";
+            $mail->AltBody = "This is your email " . $email . "<br>Username: " .  $username . " and Password " .  $password;
+
+            $mail->send();
+            echo 'Message has been sent';
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+
+
+        if (move_uploaded_file($file_loc, $folder . $final_file)) {
+            $image = $final_file;
+        }
+
+        $sql = "INSERT INTO organization (`username`, `email`, `password`, `organization`) 
+        VALUES(:username, :email, :password, :organization);";
         $query = $dbh->prepare($sql);
-        $query->bindParam(':id', $id, PDO::PARAM_STR);
+        $query->bindParam(':username', $username, PDO::PARAM_STR);
+        $query->bindParam(':email', $email, PDO::PARAM_STR);
+        $query->bindParam(':password', md5($password), PDO::PARAM_STR);
+        $query->bindParam(':organization', $organization, PDO::PARAM_STR);
         $query->execute();
 
-        $msg = "Data Deleted successfully";
-        header('location:buildinglist.php');
-    } else {
+        header('location:organization.php');
     }
-
 
 
 
@@ -58,7 +129,15 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                     <div class="col-lg-12">
 
-
+                        <!-- button style Start -->
+                        <div class="navbar">
+                            <div class="container-fluid" style="padding-left:7px;">
+                                <h1 class="nav navbar-nav">
+                                    <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> New Organization</a>
+                                </h1>
+                            </div>
+                        </div>
+                        <!-- button style End -->
 
                         <!-- Zero Configuration Table -->
                         <div class="panel panel-default panel-outer">
@@ -88,13 +167,52 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 <?php }
                                 } ?>
 
-
-
                             </div>
-
-
-
                         </div>
+
+
+
+                        <div id="add" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="height:auto">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span></button>
+                                        <h4 class="modal-title">New Organization</h4>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <form action="organization.php" method="POST" class="forma" enctype="multipart/form-data" onSubmit="return validate()">
+
+                                            <p>
+
+                                                <label for="organization">Organization Name</label>
+                                                <input type="text" name="organization" value="">
+                                            </p>
+
+                                            <p>
+                                                <label for="email">Email</label>
+                                                <input type="email" name="email" value="">
+                                            </p>
+
+                                            <p>
+                                                <button type="submit" name="submit">
+                                                    Submit
+                                                </button>
+                                            </p>
+
+                                        </form>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!---end of modal dialog 1 -->
 
 
                     </div>

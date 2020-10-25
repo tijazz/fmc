@@ -14,7 +14,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         
         $product = $_POST['product'];
         $user_id = $_SESSION['id'];
-        $org_id = $_SESSION['org_id'];
+        $org_id = $_SESSION['id'];
         $warehouse = $_POST['warehouse'];
         $quantity = $_POST['quantity'];
         $status = $_POST['status'];

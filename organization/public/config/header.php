@@ -24,6 +24,8 @@
     <link href="../public/css/form.css" rel="stylesheet">
     <link href="../public/css/m_and_e.css" rel="stylesheet">
     <link href="../public/css/notifications.css" rel="stylesheet">
+    <link href="../public/css/finmgtdash.css" rel="stylesheet">
+    <link href="../public/css/investmentdash.css" rel="stylesheet">
 
 
     <!-- Icon style -->

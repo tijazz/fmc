@@ -88,13 +88,11 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                     <tbody>
 
-                                        <?php $sql = "SELECT * from monthlyreport WHERE (org_id = (:org_id)) AND (type = 'facility' AND user_id = (:user_id))";
+                                        <?php $sql = "SELECT * from monthlyreport WHERE org_id = (:org_id) AND type = 'facility'";
                                         $query = $dbh->prepare($sql);
-                                        $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
-                                        $query->bindParam(':user_id', $_SESSION['id'], PDO::PARAM_STR);
+                                        $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                                         $query->execute();
                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
-
                                         $cnt = 1;
                                         if ($query->rowCount() > 0) {
                                             foreach ($results as $result) {                ?>
@@ -104,7 +102,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <td><?php
                                                         $s = "SELECT * FROM `building` WHERE sn = (:id) AND org_id = (:org_id)";
                                                         $q = $dbh->prepare($s);
-                                                        $q->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                                                        $q->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                                                         $q->bindParam(':id', $result->name, PDO::PARAM_STR);
                                                         $q->execute();
                                                         $res = $q->fetch(PDO::FETCH_OBJ);
@@ -163,7 +161,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                         <?php
                                                         $sql = "SELECT * FROM `building` WHERE org_id = (:org_id)";
                                                         $query = $dbh->prepare($sql);
-                                                        $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                                                        $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                                                         $query->execute();
                                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
                                                         $cnt = 1;

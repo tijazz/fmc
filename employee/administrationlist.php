@@ -52,7 +52,7 @@
             </div>
             <div class="row  dashboard-header">
                 <div class="panel-heading" style='padding:0;'>
-                    <h2 class="page-title">Manage Administration</h2>
+                    <h2 class="page-title">Manage Equipment And Devices</h2>
                 </div>
             </div>
             <div class="row">
@@ -71,7 +71,7 @@
                     <h1 class="nav navbar-nav navbar-right">
                         <a class="btn btn-md btn-primary" href="#add2" data-target="#add2" data-toggle="modal"
                             style="color:#fff;" class="small-box-footer"><i
-                                class="glyphicon glyphicon-plus text-blue"></i> Add Items</a>
+                                class="glyphicon glyphicon-plus text-blue"></i> Add Item</a>
                     </h1>
                     </div>
                     </div>
@@ -103,7 +103,7 @@
 
                                 <tbody>
 
-                                    <?php $sql = "SELECT * from `administration` WHERE org_id=:org_id";
+                                    <?php $sql = "SELECT * from `administration`  WHERE org_id=:org_id";
                                         $query = $dbh -> prepare($sql);
                                         $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
 										$query->execute();
@@ -154,7 +154,7 @@
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span></button>
-                                        <h4 class="modal-title">Add New Product</h4>
+                                        <h4 class="modal-title">Add Equipment / Device</h4>
                                     </div>
                                     <div class="modal-body">
                                         <form action="administrationform.php" method="POST" class="forma">
@@ -286,14 +286,7 @@
                                 <!--end of modal-dialog-->
                             </div>
 
-                            <!---
-                <div class="col-lg-4">
-                        <?php
-            //    require_once "public/config/right-sidebar.php";
-                ?>
-
-                            </div>
-                                                    -->
+                            
                         </div>
 
                     </div>

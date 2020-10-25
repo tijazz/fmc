@@ -22,7 +22,7 @@ if(isset($_POST['submit']))
     $status = $_POST['status'];
     $location = $_POST['location'];
     $user_id = $_SESSION['id'];
-    $org_id = $_SESSION['org_id'];
+    $org_id = $_SESSION['id'];
 	
     $sql= "INSERT INTO `other_asset`(`user_id`, `name`, `description`, `amount`, `quantity`, `manufacturer`, `status`, `location`, `org_id`) VALUES (:user_id, :name, :description, :amount, :quantity, :manufacturer, :status, :location, :org_id)";
     $query = $dbh->prepare($sql);

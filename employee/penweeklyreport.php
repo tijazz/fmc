@@ -88,10 +88,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                     <tbody>
 
-                                        <?php $sql = "SELECT * from weeklyreport WHERE org_id = (:org_id) AND type = 'pen' AND user_id = :user_id";
+                                        <?php $sql = "SELECT * from weeklyreport WHERE org_id = (:org_id) AND type = 'pen'";
                                         $query = $dbh->prepare($sql);
-                                        $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
-                                        $query->bindParam(':user_id', $_SESSION['id'], PDO::PARAM_STR);
+                                        $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
                                         $query->execute();
                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
                                         $cnt = 1;

@@ -53,7 +53,6 @@
             <p>Your flock has been fed by Mr.Olayinks</p>
         </li>
     </ul>
-    <script src="public/js/notifications.js"></script>
 <!-- Temporary fix to the navbar issue -->
 <script>
     let navTriggerBtn = document.getElementById('slide_left_btn');

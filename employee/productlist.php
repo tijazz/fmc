@@ -83,10 +83,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                     <tbody>
 
-                                        <?php $sql = "SELECT * from `product` WHERE org_id=:org_id AND user_id = :uer_id";
+                                        <?php $sql = "SELECT * from `product` WHERE org_id=:org_id";
                                         $query = $dbh->prepare($sql);
                                         $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
-                                        $query->bindParam(':user_id', $_SESSION['id'], PDO::PARAM_STR);
                                         $query->execute();
                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
                                         $cnt = 1;

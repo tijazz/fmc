@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('includes/config.php');
 ?>
 
@@ -29,6 +30,20 @@ include('includes/config.php');
 </head>
 
 <body>
+    <?php
+    $sql = "SELECT * from locations WHERE org_id =(:org_id) ";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
+    $query->execute();
+    $results = $query->fetchAll(PDO::FETCH_ASSOC);
+    /* Fetch all of the remaining rows in the result set */
+    $indexed = array_map('array_values', $results);
+    //  $array = array_filter($indexed);
+
+    if (!$results) {
+        return null;
+    }
+    ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyA-AB-9XZd-iQby-bNLYPFyb0pR2Qw3orw">
     </script>
@@ -38,20 +53,7 @@ include('includes/config.php');
         /**
          * Create new map
          */
-        <?php
-        $sql = "SELECT * from locations";
-        $query = $dbh->prepare($sql);
-        $query->execute();
-        $results = $query->fetchAll(PDO::FETCH_ASSOC);
-        /* Fetch all of the remaining rows in the result set */
-        $indexed = array_map('array_values', $results);
-        //  $array = array_filter($indexed);
 
-
-        if (!$results) {
-            return null;
-        }
-        ?>
         var infowindow;
         var map;
         var red_icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
@@ -126,10 +128,10 @@ include('includes/config.php');
         var confirmed = 0;
         for (i = 0; i < locations.length; i++) {
             marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[i][3], locations[i][4]),
+                position: new google.maps.LatLng(locations[i][4], locations[i][5]),
                 map: map,
                 icon: red_icon,
-                html: "<div id='display'><p><b> "+ locations[i][2] +" </b><br><i>  "+ locations[i][5] +" </i></p></div>"
+                html: "<div id='display'><p><b> " + locations[i][3] + " </b><br><i>  " + locations[i][6] + " </i></p></div>"
             });
 
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
