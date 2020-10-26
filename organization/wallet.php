@@ -209,92 +209,118 @@ if (strlen($_SESSION['alogin']) == 0) {
                             </div>
 
                             <div class="transactions_wrapper">
-                            <ul class="transactions general">
-                                <?php
-                                $sql = "SELECT * FROM wallet WHERE org_id=:org_id and user_id=:user_id";
-                                $query = $dbh->prepare($sql);
-                                $query->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_STR);
-                                $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
-                                $query->execute();
-                                $results = $query->fetchAll(PDO::FETCH_OBJ);
-                                $cnt = 1;
-                                if ($query->rowCount() > 0) {
-                                    foreach ($results as $result) {                ?>
-                                        <li>
-                                            <span><?php echo htmlentities($result->trans_ref); ?></span>
-                                            <span><?php echo htmlentities($result->date); ?></span>
-                                            <span class="status"><?php echo htmlentities($result->status); ?></span>
-                                            <span><?php echo ($result->amount < 0) ? 'Debit' : 'Credit'; ?></span>
-                                            <span><?php echo htmlentities($result->amount); ?>UC</span>
-                                            <div class="transaction_details">
-                                                <div class="receiver">
-                                                    <h3>To</h3>
-                                                    <h1><?php echo htmlentities($result->send_to); ?></h1>
+                                <ul class="transactions general">
+                                    <?php
+                                    $sql = "SELECT * FROM wallet WHERE org_id=:org_id and user_id=:user_id";
+                                    $query = $dbh->prepare($sql);
+                                    $query->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_STR);
+                                    $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                                    $query->execute();
+                                    $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                    $cnt = 1;
+                                    if ($query->rowCount() > 0) {
+                                        foreach ($results as $result) {                ?>
+                                            <li>
+                                                <span><?php echo htmlentities($result->trans_ref); ?></span>
+                                                <span><?php echo htmlentities($result->date); ?></span>
+                                                <span class="status"><?php echo htmlentities($result->status); ?></span>
+                                                <span><?php echo ($result->amount < 0) ? 'Debit' : 'Credit'; ?></span>
+                                                <span><?php echo htmlentities($result->amount); ?>UC</span>
+                                                <div class="transaction_details">
+                                                    <div class="receiver">
+                                                        <h3>To</h3>
+                                                        <h1><?php echo htmlentities($result->send_to); ?></h1>
+                                                    </div>
+                                                    <div class="invoice">
+                                                        <h3>Invoice Ticket</h3>
+                                                        <h2><?php echo htmlentities($result->description); ?></h2>
+                                                    </div>
+                                                    <div class="bank">
+                                                        <h3>Bank</h3>
+                                                        <h2>UBA</h2>
+                                                    </div>
+                                                    <?php echo ($result->status < 0) ? '<a href="" class="pay_cta">Pay Now</a>' : ''; ?>
                                                 </div>
-                                                <div class="invoice">
-                                                    <h3>Invoice Ticket</h3>
-                                                    <h2><?php echo htmlentities($result->description); ?></h2>
+                                            </li>
+                                    <?php $cnt = $cnt + 1;
+                                        }
+                                    } ?>
+                                </ul>
+                                <ul class="transactions outgoing">
+                                    <?php
+                                    $sql = "SELECT * FROM wallet WHERE (org_id=:org_id and user_id=:user_id) AND status = 'sent'";
+                                    $query = $dbh->prepare($sql);
+                                    $query->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_STR);
+                                    $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                                    $query->execute();
+                                    $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                    $cnt = 1;
+                                    if ($query->rowCount() > 0) {
+                                        foreach ($results as $result) {                ?>
+                                            <li>
+                                                <span><?php echo htmlentities($result->trans_ref); ?></span>
+                                                <span><?php echo htmlentities($result->date); ?></span>
+                                                <span class="status"><?php echo htmlentities($result->status); ?></span>
+                                                <span><?php echo ($result->amount < 0) ? 'Debit' : 'Credit'; ?></span>
+                                                <span><?php echo htmlentities($result->amount); ?>UC</span>
+                                                <div class="transaction_details">
+                                                    <div class="receiver">
+                                                        <h3>To</h3>
+                                                        <h1><?php echo htmlentities($result->send_to); ?></h1>
+                                                    </div>
+                                                    <div class="invoice">
+                                                        <h3>Invoice Ticket</h3>
+                                                        <h2><?php echo htmlentities($result->description); ?></h2>
+                                                    </div>
+                                                    <div class="bank">
+                                                        <h3>Bank</h3>
+                                                        <h2>UBA</h2>
+                                                    </div>
+                                                    <?php echo ($result->status < 0) ? '<a href="" class="pay_cta">Pay Now</a>' : ''; ?>
                                                 </div>
-                                                <div class="bank">
-                                                    <h3>Bank</h3>
-                                                    <h2>UBA</h2>
+                                            </li>
+                                    <?php $cnt = $cnt + 1;
+                                        }
+                                    } ?>
+                                </ul>
+                                <ul class="transactions incoming">
+                                    <?php
+                                    $sql = "SELECT * FROM wallet WHERE (org_id=:org_id and user_id=:user_id) AND status = 'received'";
+                                    $query = $dbh->prepare($sql);
+                                    $query->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_STR);
+                                    $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                                    $query->execute();
+                                    $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                    $cnt = 1;
+                                    if ($query->rowCount() > 0) {
+                                        foreach ($results as $result) {                ?>
+                                            <li>
+                                                <span><?php echo htmlentities($result->trans_ref); ?></span>
+                                                <span><?php echo htmlentities($result->date); ?></span>
+                                                <span class="status"><?php echo htmlentities($result->status); ?></span>
+                                                <span><?php echo ($result->amount < 0) ? 'Debit' : 'Credit'; ?></span>
+                                                <span><?php echo htmlentities($result->amount); ?>UC</span>
+                                                <div class="transaction_details">
+                                                    <div class="receiver">
+                                                        <h3>To</h3>
+                                                        <h1><?php echo htmlentities($result->send_to); ?></h1>
+                                                    </div>
+                                                    <div class="invoice">
+                                                        <h3>Invoice Ticket</h3>
+                                                        <h2><?php echo htmlentities($result->description); ?></h2>
+                                                    </div>
+                                                    <div class="bank">
+                                                        <h3>Bank</h3>
+                                                        <h2>UBA</h2>
+                                                    </div>
+                                                    <?php echo ($result->status < 0) ? '<a href="" class="pay_cta">Pay Now</a>' : ''; ?>
                                                 </div>
-                                                <?php echo ($result->status < 0) ? '<a href="" class="pay_cta">Pay Now</a>' : ''; ?>
-                                            </div>
-                                        </li>
-                                <?php $cnt = $cnt + 1;
-                                    }
-                                } ?>
-                            </ul>
-                            <ul class="transactions outgoing">
-                                <li>
-                                    <span>Outgoing</span>
-                                    <span>Outgoing</span>
-                                    <span class="status">Outgoing</span>
-                                    <span>Outgoing</span>
-                                    <span>Outgoing</span>
-                                    <div class="transaction_details">
-                                        <div class="receiver">
-                                            <h3>To</h3>
-                                            <h1>FullName</h1>
-                                        </div>
-                                        <div class="invoice">
-                                            <h3>Invoice Ticket</h3>
-                                            <h2>Details</h2>
-                                        </div>
-                                        <div class="bank">
-                                            <h3>Bank</h3>
-                                            <h2>UBA</h2>
-                                        </div>
-                                        <a href="" class="pay_cta">Pay Now</a>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="transactions incoming">
-                                <li>
-                                    <span>Incoming</span>
-                                    <span>Incoming</span>
-                                    <span class="status">Incoming</span>
-                                    <span>Incoming</span>
-                                    <span>Incoming</span>
-                                    <div class="transaction_details">
-                                        <div class="receiver">
-                                            <h3>To</h3>
-                                            <h1>FullName</h1>
-                                        </div>
-                                        <div class="invoice">
-                                            <h3>Invoice Ticket</h3>
-                                            <h2>Details</h2>
-                                        </div>
-                                        <div class="bank">
-                                            <h3>Bank</h3>
-                                            <h2>UBA</h2>
-                                        </div>
-                                        <a href="" class="pay_cta">Pay Now</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                                            </li>
+                                    <?php $cnt = $cnt + 1;
+                                        }
+                                    } ?>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
