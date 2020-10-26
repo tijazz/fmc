@@ -79,6 +79,42 @@ if (strlen($_SESSION['alogin']) == 0) {
                         <h2 class="page-title">Wallet</h2>
                     </div>
                 </div>
+                <?php
+
+                function trans($d)
+                {
+                    $sql = "SELECT SUM(amount) as total FROM wallet WHERE org_id=:org_id and user_id=:user_id";
+                    $query = $d->prepare($sql);
+                    $query->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_STR);
+                    $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                    $query->execute();
+                    $result = $query->fetch(PDO::FETCH_OBJ);
+                    return $result->total;
+                }
+
+                function debit($d)
+                {
+                    $sql = "SELECT SUM(amount) as total FROM wallet WHERE amount < 0 AND (org_id=:org_id and user_id=:user_id)";
+                    $query = $d->prepare($sql);
+                    $query->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_STR);
+                    $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                    $query->execute();
+                    $result = $query->fetch(PDO::FETCH_OBJ);
+                    return $result->total;
+                }
+
+                function credit($d)
+                {
+                    $sql = "SELECT SUM(amount) as total FROM wallet WHERE amount > 0 AND (org_id=:org_id and user_id=:user_id)";
+                    $query = $d->prepare($sql);
+                    $query->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_STR);
+                    $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                    $query->execute();
+                    $result = $query->fetch(PDO::FETCH_OBJ);
+                    return $result->total;
+                }
+                ?>
+
                 <div class="panel panel-default">
                     <div class="panel-heading">List Users</div>
                     <div class="panel-body">
@@ -88,7 +124,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                         <div class="mini_side_nav">
                             <h3>UIC Balance</h3>
                             <span>
-                                <h2>3000UIC</h2>
+                                <h2><?php echo trans($dbh); ?>UIC</h2>
                             </span>
                             <ul class="transaction_actions">
                                 <li><i class="fa fa-money"></i> Transaction History</li>
@@ -109,40 +145,28 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 <div class="transaction">
                                     <h3>Transaction</h3>
                                     <div class="graph">
-                                        <div class="line"></div>
+                                        <div class="line" style="width:<?php echo (abs(debit($dbh)) + credit($dbh)) * 100 / trans($dbh); ?>%"></div>
                                     </div>
                                     <span class="rate">
-                                        <h3>99.96</h3><span class="line_100"> | 100</span>
+                                        <h3><?php echo trans($dbh); ?></h3><span class="line_100"> | OUIC</span>
                                     </span>
                                 </div>
                                 <div class="credit">
                                     <h3>Credit</h3>
                                     <div class="graph">
-                                        <div class="line"></div>
+                                        <div class="line" style="width:<?php echo credit($dbh) * 100 / (abs(debit($dbh)) + credit($dbh)); ?>%"></div>
                                     </div>
                                     <span class="rate">
-                                        <?php
-                                        $sql = "SELECT SUM(amount) as total FROM wallet WHERE amount > 0";
-                                        $query = $dbh->prepare($sql);
-                                        $query->execute();
-                                        $result = $query->fetch(PDO::FETCH_OBJ);
-                                        ?>
-                                        <h3><?php echo $result->total; ?></h3><span class="line_100"> | OUIC</span>
+                                        <h3><?php echo credit($dbh); ?></h3><span class="line_100"> | OUIC</span>
                                     </span>
                                 </div>
                                 <div class="debit">
                                     <h3>Debit</h3>
                                     <div class="graph">
-                                        <div class="line"></div>
+                                        <div class="line" style="width:<?php echo abs(debit($dbh)) * 100 / (abs(debit($dbh)) + credit($dbh)); ?>%"></div>
                                     </div>
                                     <span class="rate">
-                                        <?php
-                                        $sql = "SELECT SUM(amount) as total FROM wallet WHERE amount < 0";
-                                        $query = $dbh->prepare($sql);
-                                        $query->execute();
-                                        $result = $query->fetch(PDO::FETCH_OBJ);
-                                        ?>
-                                        <h3><?php echo abs($result->total); ?></h3><span class="line_100"> | OUIC</span>
+                                        <h3><?php echo abs(debit($dbh)); ?></h3><span class="line_100"> | OUIC</span>
                                     </span>
                                 </div>
                             </div>
