@@ -61,12 +61,42 @@ else{
     <?php
     require_once "public/config/header.php";
     ?>
-    <link href="public/css/wallet.css" rel="stylesheet">
     
     
     <body>
         
-        <div id="wrapper">
+        <div id="wrapper" class="wallet">
+            <div class="wallet_backdrop not_visible"></div>
+            <div class="wallet_fund not_visible">
+                <form action="" class="wallet_fund_form">
+                    <h2 style="margin:0;margin-bottom:1rem;">Fund Wallet</h2>
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email_address" id="email_address">
+                    <label for="amount">Amount</label>
+                    <input type="number" name="amount" id="amount" min="0">
+                    <input type="submit" value="Fund Wallet">
+                </form>
+            </div>
+            <div class="uic_transfer not_visible">
+                <form action="" class="uic_transfer_form">
+                    <h2 style="margin:0;margin-bottom:1rem;">Transfer UIC</h2>
+                    <label for="account">Account</label>
+                    <input type="text" name="account" id="email_address">
+                    <label for="amount">Amount</label>
+                    <input type="number" name="amount" id="amount" min="0">
+                    <input type="submit" value="Transfer">
+                </form>
+            </div>
+            <div class="fund_withdraw not_visible">
+                <form action="" class="fund_withdraw_form">
+                    <h2 style="margin:0;margin-bottom:1rem;">Withdraw Funds</h2>
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email_address" id="email_address">
+                    <label for="amount">Amount</label>
+                    <input type="number" name="amount" id="amount" min="0">
+                    <input type="submit" value="Withdraw Funds">
+                </form>
+            </div>
             <?php
             require_once "public/config/left-sidebar.php";
             ?>
@@ -94,38 +124,38 @@ else{
                             <span><h2>3000UIC</h2></span>
                             <ul class="transaction_actions">
                                 <li><i class="fa fa-money"></i>    Transaction History</li>
-                                <li><i class="fa fa-credit-card"></i>   Fund Wallet</li>
-                                <li><i class="fa fa-bank"></i>    Transfer UIC</li>
-                                <li><i class="fa fa-suitcase"></i>     Withdraw Funds</li>
+                                <li id='fund_wallet'><i class="fa fa-credit-card"></i>   Fund Wallet</li>
+                                <li id="transfer_uic"><i class="fa fa-bank"></i>    Transfer UIC</li>
+                                <li id='withdraw_funds'><i class="fa fa-suitcase"></i>     Withdraw Funds</li>
                             </ul>
                         </div>
                         <div class="right">
                             <div class="headers">
                                 <div class="mini-headers">
-                                    <div class="active"><span >General Transactions</span></div>
-                                    <div><span>Incoming Transactions</span></div>
-                                    <div><span>Outgoing Transactions</span></div>
+                                    <div class="active gen"><span >General Transactions</span></div>
+                                    <div class="inc"><span>Incoming Transactions</span></div>
+                                    <div class="out"><span>Outgoing Transactions</span></div>
                                 </div>
                             </div>
                             <div class="payment_summaries">
                                 <div class="transaction">
                                     <h3>Transaction</h3>
                                     <div class="graph">
-                                        <div class="line"></div>
+                                        <div class="liner"></div>
                                     </div>
                                     <span class="rate"><h3>99.96</h3><span class="line_100"> | 100</span></span>
                                 </div>
                                 <div class="credit">
                                     <h3>Credit</h3>
                                     <div class="graph">
-                                        <div class="line"></div>
+                                        <div class="liner"></div>
                                     </div>
                                     <span class="rate"><h3>960.13</h3><span class="line_100"> | OUIC</span></span>
                                 </div>
                                 <div class="debit">
                                     <h3>Debit</h3>
                                     <div class="graph">
-                                        <div class="line"></div>
+                                        <div class="liner"></div>
                                     </div>
                                     <span class="rate"><h3>940.96</h3><span class="line_100"> | OUIC</span></span>
                                 </div>
@@ -138,8 +168,8 @@ else{
                                 <div><span>Debit/Credit</span></div>
                                 <div><span>Amount</span></div>
                             </div>
-                            
-                            <ul class="transactions">
+                            <div class="transactions_wrapper">
+                            <ul class="transactions general">
                                 <?php 
                                 $email = $_SESSION['alogin'];
                                 $sql = "SELECT * FROM transactions INNER JOIN member ON transactions.user_id = member.id WHERE email = (:email)";
@@ -176,6 +206,54 @@ else{
                                         </li>
                                         <?php $cnt=$cnt+1; }} ?>
                                     </ul>
+                                    <ul class="transactions outgoing">
+                                        <li>
+                                            <span>Outgoing</span>
+                                            <span>Outgoing</span>
+                                            <span class="status">Outgoing</span>
+                                            <span>Outgoing</span>
+                                            <span>Outgoing</span>
+                                            <div class="transaction_details">
+                                                <div class="receiver">
+                                                    <h3>To</h3>
+                                                    <h1>FullName</h1>
+                                                </div>
+                                                <div class="invoice">
+                                                    <h3>Invoice Ticket</h3>
+                                                    <h2>Details</h2>
+                                                </div>
+                                                <div class="bank">
+                                                    <h3>Bank</h3>
+                                                    <h2>UBA</h2>
+                                                </div>
+                                                <a href="" class="pay_cta">Pay Now</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <ul class="transactions incoming">
+                                        <li>
+                                            <span>Incoming</span>
+                                            <span>Incoming</span>
+                                            <span class="status">Incoming</span>
+                                            <span>Incoming</span>
+                                            <span>Incoming</span>
+                                            <div class="transaction_details">
+                                                <div class="receiver">
+                                                    <h3>To</h3>
+                                                    <h1>FullName</h1>
+                                                </div>
+                                                <div class="invoice">
+                                                    <h3>Invoice Ticket</h3>
+                                                    <h2>Details</h2>
+                                                </div>
+                                                <div class="bank">
+                                                    <h3>Bank</h3>
+                                                    <h2>UBA</h2>
+                                                </div>
+                                                <a href="" class="pay_cta">Pay Now</a>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div> 
                             </div>
                             
@@ -188,6 +266,7 @@ else{
                                 </div>
                             -->
                         </div>
+                    </div>
                         
                         
                         
@@ -206,6 +285,7 @@ else{
             <?php
             require_once "public/config/footer.php";
             ?>
+            <script src="../public/js/wallet.js"></script>
             
         </body>
         

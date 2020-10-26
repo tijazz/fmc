@@ -1,5 +1,6 @@
+/* Wallet.php styling */
+
 *{box-sizing: border-box;}
-body{color:#000;}
 
 #page-wrapper{
     padding-left:0;
@@ -112,23 +113,23 @@ body{color:#000;}
     background:rgba(128, 128, 128, 0.198);
 }
 
-.line{
+.liner{
     position:absolute;
     height:100%;
     border-radius: 5px;
 }
 
-.transaction .line{
+.transaction .liner{
     width:80%;
     background:purple;
 }
 
-.credit .line{
+.credit .liner{
     width:90%;
     background:green;
 }
 
-.debit .line{
+.debit .liner{
     width:97%;
     background:red;
 }
@@ -248,4 +249,106 @@ body{color:#000;}
     padding-top:10px;
 }
 }
+
+
+
+/* Toggling of display of transactions */
+.transactions{
+    display:none;
+}
+
+.transactions.showing{
+    display:block;
+}
+
+.wallet_backdrop{
+    height:100vh;
+    width:100vw;
+    position: fixed;
+    background:rgba(0, 0, 0, 0.239);
+    z-index:10;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+}
+
+.not_visible{
+    opacity:0;
+    pointer-events: none;
+}
+
+.visible{
+    opacity:1;
+    pointer-events: all;
+}
+
+
+.wallet_fund,.uic_transfer,.fund_withdraw{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    z-index:11;
+    background:#fff;
+    /* min-width:250px; */
+    min-width:300px;
+    padding:1rem 3rem 2rem 3rem;
+    border-radius:5px;
+    box-shadow:0 20px 40px 3px rgba(204, 204, 204, 0.171);
+}
+
+.wallet_fund_form,.uic_transfer_form,.fund_withdraw_form{
+    margin:auto;
+    display: block;
+}
+
+.fund_withdraw_form #email_address,
+.uic_transfer_form #email_address,
+.wallet_fund_form #email_address,
+.wallet_fund_form #amount{
+    padding:0.5rem 0.2rem;
+    width:100%;
+    border-radius:3px;
+    border:2px solid #ccc;
+}
+
+.wallet_fund_form input,
+.uic_transfer_form input,
+.fund_withdraw_form input
+{
+    margin-bottom:1rem;
+    display:block;
+    outline:none;
+}
+
+.wallet_fund_form input[type='submit'],
+.uic_transfer_form input[type='submit'],
+.fund_withdraw_form input[type='submit']
+{
+    background:#1ab394;
+    color:#fff;
+    border:none;
+    padding:0.8rem 1rem;
+    margin:auto;
+    border-radius:2px;
+}
+
+.wallet .panel,
+.wallet .panel-body{
+    background:#fff;
+}
+
+.mini-headers div{
+color:#000;}
+
+
+.transactions{
+color:#000;}
+
+
+
+
+
+
+
+
 

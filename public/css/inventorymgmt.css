@@ -2,12 +2,6 @@
     font-size:1rem;
 }
 
-#page-wrapper > div.row.dashboard-header,
-#page-wrapper > div:nth-child(3){
-    background: #171f2786;
-    font-family: Roboto !important;
-}
-
 .trash{
     color:red;
 }

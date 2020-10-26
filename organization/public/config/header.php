@@ -15,17 +15,20 @@
     <link href="../public/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
     <link href="../public/css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
 
-    <link href="../public/css/inventorymgmt.css" rel="stylesheet">
     <link href="../public/css/animate.css" rel="stylesheet">
     <link href="../public/css/style.css" rel="stylesheet">
     <link href="../public/css/personal.css" rel="stylesheet">
     <link href="../public/css/Emeka-css.css" rel="stylesheet">
     <link href="../public/css/profile.css" rel="stylesheet">
     <link href="../public/css/form.css" rel="stylesheet">
-    <link href="../public/css/m_and_e.css" rel="stylesheet">
     <link href="../public/css/notifications.css" rel="stylesheet">
-    <link href="../public/css/finmgtdash.css" rel="stylesheet">
+    <link href="../public/css/all.css" rel="stylesheet">
+    <link href="../public/css/leftnav.css" rel="stylesheet">
     <link href="../public/css/investmentdash.css" rel="stylesheet">
+    <link href="../public/css/inventorymgmt.css" rel="stylesheet">
+    <link href="../public/css/wallet.css" rel="stylesheet">
+    <link href="../public/css/finmgtdash.css" rel="stylesheet">
+    <link href="../public/css/m_and_e.css" rel="stylesheet">
 
 
     <!-- Icon style -->
@@ -33,7 +36,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../public/css/fav-icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="../public/css/fav-icons/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../public/css/fav-icons/favicon-16x16.png">
-    <link href="../public/css/all.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -42,6 +44,7 @@
     <!-- <link rel="stylesheet" href="public/css/boot.css" /> -->
 
     <!-- tooltips -->
+    
     
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -57,7 +60,6 @@
     #map {
         height: 100%;
     }
-    .workzone .right{background-color: #fff;}
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
