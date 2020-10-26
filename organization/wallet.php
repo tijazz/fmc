@@ -172,7 +172,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                             </div>
 
                             <div class="transaction_header">
-                                <div><span>Type</span></div>
+                                <div><span>Transaction Reference Number</span></div>
                                 <div><span>Date</span></div>
                                 <div><span>Status</span></div>
                                 <div><span>Debit/Credit</span></div>
@@ -191,7 +191,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 if ($query->rowCount() > 0) {
                                     foreach ($results as $result) {                ?>
                                         <li>
-                                            <span><?php echo htmlentities($result->description); ?></span>
+                                            <span><?php echo htmlentities($result->trans_ref); ?></span>
                                             <span><?php echo htmlentities($result->date); ?></span>
                                             <span class="status"><?php echo htmlentities($result->status); ?></span>
                                             <span><?php echo ($result->amount < 0) ? 'Debit' : 'Credit'; ?></span>
