@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2020 at 08:44 PM
+-- Generation Time: Oct 27, 2020 at 08:19 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -1477,6 +1477,32 @@ INSERT INTO `vehicle` (`sn`, `user_id`, `org_id`, `name`, `description`, `serial
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `wallet`
+--
+
+CREATE TABLE `wallet` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `org_id` int(11) DEFAULT NULL,
+  `amount` int(50) DEFAULT NULL,
+  `description` varchar(50) DEFAULT NULL,
+  `send_to` varchar(50) DEFAULT NULL,
+  `trans_ref` varchar(50) DEFAULT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `wallet`
+--
+
+INSERT INTO `wallet` (`id`, `user_id`, `org_id`, `amount`, `description`, `send_to`, `trans_ref`, `date`, `status`) VALUES
+(1, 0, 1, 1000000, 'payment for Land', 'Temidayo', '124267836827628', '2020-10-26 13:49:56', 'received'),
+(2, 0, 1, -200000, 'payment for Land', 'Temidayo', '1242678368344', '2020-10-26 13:50:02', 'sent');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `warehouse`
 --
 
@@ -1579,7 +1605,8 @@ CREATE TABLE `worker` (
 
 INSERT INTO `worker` (`id`, `user_id`, `org_id`, `image`, `name`, `address`, `email`, `gender`, `role`, `phone`, `kin`, `kin_phone`, `job_location`, `dob`, `department`, `contract_start`, `contract_end`, `salary`, `bank_name`, `bank_acct_no`, `contract_type`, `status`, `quality_of_work`, `team_work`, `punctuality`, `organization`, `table_name`, `sign_up_date`) VALUES
 (1, 1, 1, NULL, 'Saheed Adigun', '24, Amina way, university of ibadan, ibadan, oyo state Nigeria', 'atuewi@gmail.com', '', NULL, '08109312880', '', '', '', '0000-00-00', '', NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, NULL, 'employee', '2020-10-12 21:56:23'),
-(2, 0, 1, NULL, 'Abdullahi Temidayo Jimoh', 'Borehole Area, Aroje, Ogbomoso, Oyo State.', 'abdullahij951@gmail.com', '', NULL, '+2348061266260', '', '', '', '0000-00-00', '', NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, NULL, 'employee', '2020-10-15 10:23:31');
+(2, 0, 1, NULL, 'Abdullahi Temidayo Jimoh', 'Borehole Area, Aroje, Ogbomoso, Oyo State.', 'abdullahij951@gmail.com', '', NULL, '+2348061266260', '', '', '', '0000-00-00', '', NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, NULL, 'employee', '2020-10-15 10:23:31'),
+(3, 0, 1, NULL, 'Saheed Adigun', '24, Amina way, university of ibadan, ibadan, oyo state Nigeria', 'atuewi@gmail.com', '', NULL, '08109312880', '', '', '', '0000-00-00', '', NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, NULL, 'employee', '2020-10-27 19:18:12');
 
 --
 -- Indexes for dumped tables
@@ -1842,6 +1869,12 @@ ALTER TABLE `utilities`
 --
 ALTER TABLE `vehicle`
   ADD PRIMARY KEY (`sn`);
+
+--
+-- Indexes for table `wallet`
+--
+ALTER TABLE `wallet`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `warehouse`
@@ -2124,6 +2157,12 @@ ALTER TABLE `vehicle`
   MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `wallet`
+--
+ALTER TABLE `wallet`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `warehouse`
 --
 ALTER TABLE `warehouse`
@@ -2139,7 +2178,7 @@ ALTER TABLE `weeklyreport`
 -- AUTO_INCREMENT for table `worker`
 --
 ALTER TABLE `worker`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
