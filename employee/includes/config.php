@@ -1,9 +1,18 @@
-﻿<?php 
+﻿<?php
 // DB credentials.
-define('DB_HOST','localhost');
-define('DB_USER','root');
-define('DB_PASS','');
-define('DB_NAME','usersDB');
+
+if ($_SERVER['SERVER_NAME'] == 'localhost') {
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
+    define('DB_NAME', 'usersDB');
+} else {
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'demishoc_tj');
+    define('DB_PASS', 'Tijaniazeez92@');
+    define('DB_NAME', 'demishoc_fmc');
+}
+
 // Establish database connection.
 try
 {
@@ -13,4 +22,4 @@ catch (PDOException $e)
 {
 exit("Error: " . $e->getMessage());
 }
-?>
+
