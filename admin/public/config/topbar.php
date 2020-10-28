@@ -13,15 +13,42 @@
             <span class="m-r-sm text-muted welcome-message">Welcome
                 <?php echo ($_SESSION["alogin"]); ?></span>
         </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                <i class="fa fa-envelope"></i>  <span class="label label-warning">160</span>
+            </a>
+            <ul class="dropdown-menu dropdown-messages">
+                <li>
+                    <div class="dropdown-messages-box">
+                        <a href="profile.html" class="pull-left">
+                            <img alt="image" class="img-circle" src="public/images/farm.jpg">
+                        </a>
+                        <div class="media-body">
+                            <small class="pull-right">46h ago</small>
+                            <strong>Your Farm humidity level</strong> has risen <strong>past 70%</strong>. <br>
+                            <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                        </div>
+                    </div>
+                </li>
+                <li class="divider"></li>
+                
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                <i class="fa fa-bell"></i>  <span class="label label-pill label-danger count" style="border-radius:10px;"></span>
+            </a>
+            <ul class="dropdown-menu dropdown-alerts">                                                                   
+        </ul>
         <li>
             <a href="faq.php"><span class="m-r-sm text-muted welcome-message">FAQ</span></a>
         </li>
-        <li class="dropdown notifier">
+        <!-- <li class="dropdown notifier">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                     <i class="fa fa-bell"></i> <span class="label label-primary"></span>
                 </a>
     
-            </li>
+            </li> -->
     
             <!-- setting 
                              <li>
@@ -116,3 +143,37 @@
         background-color: #2f4050;
     }
 </style>
+
+ 
+<script>
+    $(document).ready(function(){
+    // updating the view with notifications using ajax
+    function load_unseen_notification(view = '')
+    {
+     $.ajax({
+      url:"fetch.php",
+      method:"POST",
+      data:{view:view},
+      dataType:"json",
+      success:function(data)
+      {
+       $('.dropdown-menu').html(data.notification);
+       if(data.unseen_notification > 0)
+       {
+        $('.count').html(data.unseen_notification);
+       }
+      }
+     });
+    }
+    load_unseen_notification();
+    
+    // load new notifications
+    $(document).on('click', '.dropdown-toggle', function(){
+     $('.count').html('');
+     load_unseen_notification('yes');
+    });
+    setInterval(function(){
+     load_unseen_notification();;
+    }, 5000);
+    });
+    </script>
