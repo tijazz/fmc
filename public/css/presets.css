@@ -1,0 +1,72 @@
+.flex{
+    display:flex;
+}
+
+.column{
+    flex-direction:column;
+}
+
+.a_cent{
+    align-items:center;
+}
+
+.j_cent{
+    justify-content: center;
+}
+
+.parent{
+    position:relative;
+}
+
+.parent a svg{
+    height:10px;
+    transform:translateY(1.5px)
+}
+
+.child{
+    position: absolute;
+    left:0;
+    background:#fff;
+    box-shadow: 1px 1px 20px 3px rgba(204, 204, 204, 0.239);
+    /* padding:1rem 1.5rem; */
+    width:180%;
+    display:none;
+}
+
+.child_show{
+    display:block;
+}
+
+.child li{
+    line-height:1rem;
+    padding:0.8rem;
+    transition:0.2s ease;
+}
+
+.child li:hover{
+    background:rgba(204, 204, 204, 0.301);
+}
+
+.child li a{
+    color:#000;
+}
+
+.parent{
+    cursor: pointer;
+}
+
+.parent:hover .child{
+    display:block;
+}
+
+.parent:hover > a{
+    color:green;
+}
+
+.parent:hover > a svg{
+    fill:green
+}
+
+.parent:hover a svg{
+    transform:rotate(180deg);
+}
