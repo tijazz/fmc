@@ -11,8 +11,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 
     if (isset($_POST['submit'])) {
 
-        $user_id = $_SESSION['id'];
-        $org_id = $_SESSION['id'];
+        $user_id = $_SESSION['user_id'];
+        $org_id = $_SESSION['org_id'];
         $month = $_POST['month'];
         $hours = $_POST['hours'];
         $name = $_POST['name'];
