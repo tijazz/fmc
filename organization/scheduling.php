@@ -18,6 +18,27 @@ if (strlen($_SESSION['alogin']) == 0) {
 
         $msg = "Data Deleted successfully";
     }
+
+
+    if (isset($_POST['submit'])) {
+
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $end = $_POST['end'];
+        $user_id = $_SESSION['user_id'];
+        $org_id = $_SESSION['org_id'];
+
+        $sql = "INSERT INTO `alarm`(`name`, `user_id`, `description`, `org_id`, `end`) VALUES (:name, :user_id, :description, :org_id, :end)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+        $query->bindParam(':description', $description, PDO::PARAM_STR);
+        $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
+        $query->bindParam(':end', $end, PDO::PARAM_STR);
+        $bind = $query->execute();
+        $msg = "Rent Updated Successfully";
+        header('location:scheduling.php');
+    }
 ?>
 
     <!DOCTYPE html>
@@ -57,10 +78,6 @@ if (strlen($_SESSION['alogin']) == 0) {
                             <div class="container-fluid" style="padding-left:7px;">
                                 <h1 class="nav navbar-nav">
                                     <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add</a>
-                                </h1>
-
-                                <h1 class="nav navbar-nav navbar-right">
-                                    <a class="btn btn-md btn-primary" href="#add2" data-target="#add2" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add category</a>
                                 </h1>
                             </div>
                         </div>
@@ -103,13 +120,56 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                     <!-- Action Button Start -->
                                                     <td>
-                                                        <a data-toggle="modal" href="machineryedit.php?s=<?php echo $result->sn; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <a data-toggle="modal" href="#edit<?= $cnt ?>" data-toggle="modal" data-target="#edit<?= $cnt ?>">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                                        <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog model-sm">
-                                                                <div class="modal-content"> </div>
+
+                                                        <div class="modal fade" id="edit<?= $cnt ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" style="height:auto">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">×</span></button>
+                                                                        <h4 class="modal-title">Add Detail</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form action="scheduling.php" method="POST" class="forma" id="f_edit">
+
+                                                                            <p>
+                                                                                <label for="name">Name</label>
+                                                                                <input type="text" name="name" value="<?= $result->name ?>">
+                                                                            </p>
+
+
+                                                                            <p>
+                                                                                <label for="description">Description</label>
+                                                                                <input type="text" name="description" value="<?= $result->description ?>">
+                                                                            </p>
+
+
+                                                                            <p>
+                                                                                <label for="size">end</label>
+                                                                                <input type="date" name="end" value="<?= $result->end ?>">
+                                                                            </p>
+
+
+                                                                            <p>
+                                                                                <button type="submit" name="submit" id="submit">
+                                                                                    Submit
+                                                                                </button>
+                                                                            </p>
+
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </div>
+
+                                                                </div>
+
                                                             </div>
                                                         </div>
+                                                        <!--end of modal-dialog-->
 
                                                         <a href="schedulinglist.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                                     </td>
@@ -136,10 +196,10 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">×</span></button>
-                                    <h4 id='edit' class="modal-title">Add New Product</h4>
+                                    <h4 id='edit' class="modal-title">Add New Schedule</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="schedulingform.php" method="POST" class="forma" id="f_edit">
+                                    <form action="scheduling.php" method="POST" class="forma" id="f_edit">
 
                                         <p>
                                             <label for="name">Name</label>
