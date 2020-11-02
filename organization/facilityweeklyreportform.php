@@ -11,15 +11,15 @@ if (strlen($_SESSION['alogin']) == 0) {
 
     if (isset($_POST['submit'])) {
 
-        $user_id = $_SESSION['id'];
-        $org_id = $_SESSION['id'];
+        $user_id = $_SESSION['org_id'];
+        $org_id = $_SESSION['user_id'];
         $week = $_POST['week'];
         $hours = $_POST['hours'];
         $name = $_POST['name'];
         $activity = $_POST['activity'];
         $activity_status = $_POST['activity_status'];
         $field_status = $_POST['field_status'];
-        $manager = $_SESSION['id'];
+        $manager = $_SESSION['org_id'];
         $type = "facility";
 
 
