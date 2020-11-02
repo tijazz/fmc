@@ -38,7 +38,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                 $activity = $_POST['activity'];
                 $activity_status = $_POST['activity_status'];
                 $field_status = $_POST['field_status'];
-                $manager = $_SESSION['id'];
+                $manager = $_SESSION['org_id'];
                 $type = "pen";
 
                 $sql = "UPDATE `weeklyreport` SET `week`=:week,`name`=:name,`hours`=:hours,`activity`=:activity,`activity_status`=:activity_status,`field_status`=:field_status WHERE id=(:sn)";
@@ -78,7 +78,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                             <?php
                             $s = "SELECT * FROM `locations` WHERE data_type = 'pen' AND org_id = org_id";
                             $q = $dbh->prepare($s);
-                            $q->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
+                            $q->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
                             $q->execute();
                             $res = $q->fetchAll(PDO::FETCH_OBJ);
                             $cnt = 1;
