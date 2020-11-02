@@ -38,7 +38,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                 $activity = $_POST['activity'];
                 $activity_status = $_POST['activity_status'];
                 $field_status = $_POST['field_status'];
-                $manager = $_SESSION['org_id'];
+                $manager = $_SESSION['user_id'];
                 $type = "facility";
 
                 $sql = "UPDATE `monthlyreport` SET `month`=:month,`name`=:name,`hours`=:hours,`activity`=:activity,`activity_status`=:activity_status,`field_status`=:field_status WHERE id=(:sn)";

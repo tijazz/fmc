@@ -22,7 +22,7 @@ if(isset($_POST['submit']))
         $activity = $_POST['activity'];
         $activity_status = $_POST['activity_status'];
         $field_status = $_POST['field_status'];
-        $manager = $_SESSION['org_id'];
+        $manager = $_SESSION['user_id'];
         $type = "pen";
 
 

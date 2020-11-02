@@ -110,12 +110,12 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <td><?php echo htmlentities($result->activity_status); ?></td>
                                                     <td><?php echo htmlentities($result->field_status); ?></td>
                                                     <td><?php
-                                                        $s = "SELECT * FROM `organization` WHERE id = (:id)";
+                                                        $s =  $result->manager == 0 ? "SELECT * FROM `organization` WHERE id = (:id)" : "SELECT * FROM `employee` WHERE id = (:id)";
                                                         $q = $dbh->prepare($s);
                                                         $q->bindParam(':id', $result->manager, PDO::PARAM_STR);
                                                         $q->execute();
                                                         $res = $q->fetch(PDO::FETCH_OBJ);
-                                                        echo htmlentities($res->username); ?></td>
+                                                        echo htmlentities($result->manager == 0 ? $result->manager : $res->name);  ?></td>
                                                     <td>
                                                         <a data-toggle="modal" href="fieldweeklyreportedit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;

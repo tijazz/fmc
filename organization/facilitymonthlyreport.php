@@ -114,7 +114,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <td><?php
 
                                                         $s =  $result->manager == 0 ? "SELECT * FROM `organization` WHERE id = (:id)" : "SELECT * FROM `employee` WHERE id = (:id)";
-                                                        // $s = "SELECT * FROM `organization` WHERE id = (:id)";
+                                                        // $s =  $result->manager == 0 ? "SELECT * FROM `organization` WHERE id = (:id)" : "SELECT * FROM `employee` WHERE id = (:id)";
                                                         $q = $dbh->prepare($s);
                                                         $q->bindParam(':id', $result->manager, PDO::PARAM_STR);
                                                         $q->execute();
