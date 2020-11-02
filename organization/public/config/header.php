@@ -41,25 +41,26 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.5/css/weather-icons.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    
     <!-- <link rel="stylesheet" href="public/css/boot.css" /> -->
 
     <!-- tooltips -->
-    
-    
+
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    
+
     <script>
-    $(document).ready(function() {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
     </script>
     <!-- Map -->
     <style>
-    #map {
-        height: 100%;
-    }
+        #map {
+            height: 100%;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
