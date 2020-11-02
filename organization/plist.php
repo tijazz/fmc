@@ -157,7 +157,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                                         <h4 class="modal-title">Add Detail</h4>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <form action="pedit.php" method="POST" class="forma">
+                                                                        <form action="plist.php" method="POST" class="forma">
                                                                             <p>
                                                                                 <label for="name">Name</label>
                                                                                 <input type="text" name="name" value="<?php echo ($result->name); ?>" disabled>
