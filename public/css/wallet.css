@@ -3,7 +3,7 @@
 *{box-sizing: border-box;}
 
 #page-wrapper{
-    padding-left:0;
+    padding-left:1rem;
     padding-right: 1rem;
 }
 
@@ -348,7 +348,21 @@ color:#000;}
 
 
 
+.notification-table h5{
+    color:#000;
+}
 
+.wallet .right{
+    background:#fff !important;
+}
+
+.wallet .line_100{
+    color:#000;
+}
+
+.panel-body{
+    overflow:auto;
+}
 
 
 
