@@ -33,7 +33,7 @@ include('includes/config.php');
     <?php
     $sql = "SELECT * from locations WHERE org_id =(:org_id) ";
     $query = $dbh->prepare($sql);
-    $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
+    $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
     $query->execute();
     $results = $query->fetchAll(PDO::FETCH_ASSOC);
     /* Fetch all of the remaining rows in the result set */
