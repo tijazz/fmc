@@ -51,6 +51,34 @@ if (strlen($_SESSION['alogin']) == 0) {
         header('location:insurancelist.php');
     }
 
+    if (isset($_POST['edit'])) {
+        $name = $_POST['name'];
+        $item = $_POST['item'];
+        $start_date = $_POST['start_date'];
+        $end_date = $_POST['end_date'];
+        $amount = $_POST['amount'];
+        $amount_paid = $_POST['amount_paid'];
+        $period = $_POST['period'];
+        $company = $_POST['company'];
+        $id = $_POST['edit'];
+
+        $sql = "UPDATE `insurance` SET `name`=(:name), `item`=(:item), `start_date`=(:start_date), `end_date`=(:end_date), `amount`=(:amount), `amount_paid`=(:amount_paid), `period`=(:period), `company`=(:company) WHERE id=(:id)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindParam(':item', $item, PDO::PARAM_STR);
+        $query->bindParam(':start_date', $start_date, PDO::PARAM_STR);
+        $query->bindParam(':end_date', $end_date, PDO::PARAM_STR);
+        $query->bindParam(':amount', $amount, PDO::PARAM_STR);
+        $query->bindParam(':amount_paid', $amount_paid, PDO::PARAM_STR);
+        $query->bindParam(':period', $period, PDO::PARAM_STR);
+        $query->bindParam(':company', $company, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Rent Updated Successfully";
+
+        header('location:insurancelist.php');
+    }
+
 
 
 
@@ -154,13 +182,80 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                     <!-- Action Button Start -->
                                                     <td>
-                                                        <a data-toggle="modal" href="insuranceedit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <a data-toggle="modal" href="#edit<?= $cnt ?>" data-toggle="modal" data-target="#edit<?= $cnt ?>">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                                        <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog model-sm">
-                                                                <div class="modal-content"> </div>
+
+                                                        <div class="modal fade" id="edit<?= $cnt ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" style="height:auto">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">×</span></button>
+                                                                        <h4 class="modal-title">Add Detail</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form action="insurancelist.php" method="POST" class="forma" id="f_edit">
+
+                                                                            <p>
+                                                                                <label for="name">Name of Insurance</label>
+                                                                                <input type="text" name="name" value="<?php echo $result->name ?>">
+                                                                            </p>
+
+
+                                                                            <p>
+                                                                                <label for="item">Item Insured</label>
+                                                                                <input type="text" name="item" value="<?php echo $result->item ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="start_date">Start Date</label>
+                                                                                <input type="date" name="start_date" value="<?php echo $result->start_date ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="end_date">End Date</label>
+                                                                                <input type="date" name="end_date" value="<?php echo $result->end_date ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="amount">Amount</label>
+                                                                                <input type="text" name="amount" value="<?php echo $result->amount ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="amount_paid">Amount Paid</label>
+                                                                                <input type="text" name="amount_paid" value="<?php echo $result->amount_paid ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="size">Period</label>
+                                                                                <input type="text" name="period" value="<?php echo $result->period ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="size">Company</label>
+                                                                                <input type="text" name="company" value="<?php echo $result->company ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <button type="submit" name="edit" value="<?php echo $result->id ?>">
+                                                                                    Submit
+                                                                                </button>
+                                                                            </p>
+
+                                                                        </form>
+
+                                                                    </div>
+                                                                    <div class="modal-footer">
+
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </div>
+
+                                                                </div>
+
                                                             </div>
                                                         </div>
+                                                        <!--end of modal-dialog-->
 
                                                         <a href="insurancelist.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                                     </td>
