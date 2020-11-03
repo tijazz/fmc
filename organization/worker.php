@@ -119,7 +119,6 @@ if (strlen($_SESSION['alogin']) == 0) {
         $status = $_POST['status'];
         $org_id = $_SESSION['org_id'];
 
-        echo "it is also working";
 
         if (move_uploaded_file($file_loc, $folder . $final_file)) {
             $image = $final_file;
