@@ -19,7 +19,54 @@ if (strlen($_SESSION['alogin']) == 0) {
         $msg = "Data Deleted successfully";
         header('location:machinerylist.php');
     }
+    if (isset($_POST['edit'])) {
+        $id = $_POST['edit'];
+        $type = $_POST['type'];
+        $item_id = $_POST['item_id'];
+        $description = $_POST['description'];
+        $amount = $_POST['amount'];
+        $date = $_POST['date'];
 
+        $bind = $sql = "UPDATE `maintenance` SET `item_id`=(:item_id), `type`=(:type), `description`=(:description), `amount`=(:amount), `date`=(:date) WHERE id=(:id)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':item_id', $item_id, PDO::PARAM_STR);
+        $query->bindParam(':type', $type, PDO::PARAM_STR);
+        $query->bindParam(':description', $description, PDO::PARAM_STR);
+        $query->bindParam(':amount', $amount, PDO::PARAM_STR);
+        $query->bindParam(':date', $date, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Rent Updated Successfully";
+
+
+
+        header('location:maintenancelist.php');
+    }
+
+    if (isset($_POST['submit'])) {
+        $user_id = $_SESSION['user_id'];
+        $org_id = $_SESSION['org_id'];
+        $type = $_POST['type'];
+        $item_id = $_POST['item_id'];
+        $description = $_POST['description'];
+        $amount = $_POST['amount'];
+        $date = $_POST['date'];
+
+
+        $sql = "INSERT INTO `maintenance` (`org_id`, `user_id`, `item_id`, `type`, `description`, `amount`, `date`) VALUES (:org_id, :user_id, :item_id, :type, :description, :amount, :date)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
+        $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+        $query->bindParam(':item_id', $item_id, PDO::PARAM_STR);
+        $query->bindParam(':type', $type, PDO::PARAM_STR);
+        $query->bindParam(':description', $description, PDO::PARAM_STR);
+        $query->bindParam(':amount', $amount, PDO::PARAM_STR);
+        $query->bindParam(':date', $date, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Maintenance Updated";
+
+        header('location:maintenancelist.php');
+    }
 
 
 ?>
@@ -105,14 +152,14 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         if ($query->rowCount() > 0) {
                                             foreach ($results as $result) {
                                                 $type = $result->type;
-                                                $s = "SELECT * from " . $type . " WHERE sn = :sn";
+                                                $s = "SELECT * from " . $type . " WHERE id = :id";
                                                 $q = $dbh->prepare($s);
-                                                $q->bindParam(':sn', $result->item_id, PDO::PARAM_STR);
+                                                $q->bindParam(':id', $result->item_id, PDO::PARAM_STR);
                                                 $q->execute();
                                                 $res = $q->fetch(PDO::FETCH_OBJ);         ?>
                                                 <tr>
                                                     <td><?php echo htmlentities($cnt); ?></td>
-                                                    <td><?php echo htmlentities($res->sn); ?></td>
+                                                    <td><?php echo htmlentities($res->id); ?></td>
                                                     <td><?php echo htmlentities($result->description); ?></td>
                                                     <td><?php echo htmlentities($result->type); ?></td>
                                                     <td><?php echo htmlentities($res->name); ?></td>
@@ -122,13 +169,78 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                     <!-- Action Button Start -->
                                                     <td>
-                                                        <a data-toggle="modal" href="maintenanceedit.php?s=<?php echo $result->id; ?>&type=<?php echo $result->type; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <a data-toggle="modal" href="#edit<?= $cnt ?>" data-toggle="modal" data-target="#edit<?= $cnt ?>">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                                        <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog model-sm">
-                                                                <div class="modal-content"> </div>
+
+                                                        <div class="modal fade" id="edit<?= $cnt ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" style="height:auto">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">×</span></button>
+                                                                        <h4 class="modal-title">Add Detail</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+
+                                                                        <form action="maintenancelist.php" method="POST" class="forma">
+                                                                            <input type="text" name="type" value="<?php echo $type ?>" hidden>
+                                                                            <p>
+                                                                                <label for="name">Name</label>
+                                                                                <select name="item_id" id="">
+                                                                                    <?php
+                                                                                    $s = "SELECT * from " . $type . " WHERE org_id = :org_id";
+                                                                                    $q = $dbh->prepare($s);
+                                                                                    $q->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                                                                                    $q->execute();
+                                                                                    $res = $q->fetchAll(PDO::FETCH_OBJ);
+                                                                                    $cnt = 1;
+                                                                                    if ($query->rowCount() > 0) {
+                                                                                        foreach ($res as $re) { ?>
+                                                                                            <option value="<?php echo $re->id ?>" <?php echo $result->item_id == $re->id ? 'SELECTED' : 'nothing'; ?>><?php echo $re->name ?></option>
+
+                                                                                    <?php }
+                                                                                    }             ?>
+
+                                                                                </select>
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <?echo var_dump($result) ?>
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="description">Description</label>
+                                                                                <input type="text" name="description" value="<?php echo $result->description ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="amount">Amount</label>
+                                                                                <input type="text" name="amount" value="<?php echo $result->amount ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="date">Date</label>
+                                                                                <input type="date" name="date" value="<?php echo $result->date ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <button type="submit" name="edit" value="<?php echo $result->id ?>">
+                                                                                    Submit
+                                                                                </button>
+                                                                            </p>
+
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </div>
+
+                                                                </div>
+
                                                             </div>
                                                         </div>
+                                                        <!--end of modal-dialog-->
 
                                                         <a href="maintenancelist.php?del=<?php echo $result->id; ?>;?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                                     </td>
@@ -167,7 +279,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                         $cnt = 1;
                                                         if ($query->rowCount() > 0) {
                                                             foreach ($results as $result) { ?>
-                                                                <option value="<?php echo $result->sn ?>"><?php echo $result->name ?></option>
+                                                                <option value="<?php echo $result->id ?>"><?php echo $result->name ?></option>
 
                                                         <?php }
                                                         }             ?>
@@ -220,7 +332,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <h4 class="modal-title">Machinery</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="maintenanceform.php" method="POST" class="forma">
+                                            <form action="maintenancelist.php" method="POST" class="forma">
                                                 <input type="text" name="type" value="machinery" hidden>
                                                 <p>
                                                     <label for="name">Name</label>
@@ -235,7 +347,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                         $cnt = 1;
                                                         if ($query->rowCount() > 0) {
                                                             foreach ($results as $result) { ?>
-                                                                <option value="<?php echo $result->sn ?>"><?php echo $result->name ?></option>
+                                                                <option value="<?php echo $result->id ?>"><?php echo $result->name ?></option>
 
                                                         <?php }
                                                         }             ?>
@@ -289,7 +401,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <h4 class="modal-title">Vehicle</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="maintenanceform.php" method="POST" class="forma">
+                                            <form action="maintenancelist.php" method="POST" class="forma">
                                                 <input type="text" name="type" value="vehicle" hidden>
                                                 <p>
                                                     <label for="name">Name</label>
@@ -304,7 +416,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                         $cnt = 1;
                                                         if ($query->rowCount() > 0) {
                                                             foreach ($results as $result) { ?>
-                                                                <option value="<?php echo $result->sn ?>"><?php echo $result->name ?></option>
+                                                                <option value="<?php echo $result->id ?>"><?php echo $result->name ?></option>
 
                                                         <?php }
                                                         }             ?>
