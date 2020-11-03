@@ -14,7 +14,7 @@
                 {
                     $id=$_GET['del'];
 
-                    $sql = "delete from testimonial WHERE id=:id";
+                    $sql = "delete from expenditure WHERE id=:id";
                     $query = $dbh->prepare($sql);
                     $query -> bindParam(':id',$id, PDO::PARAM_STR);
                     $query -> execute();                
