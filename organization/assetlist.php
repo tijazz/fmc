@@ -18,7 +18,44 @@ if (strlen($_SESSION['alogin']) == 0) {
 
         $msg = "Data Deleted successfully";
     }
+    if (isset($_POST['submit'])) {
+        $asset_id = $_POST['asset_id'];
+        $asset_type = $_POST['asset_type'];
+        $amount = $_POST['amount'];
+        $user_id = $_SESSION['id'];
 
+        $sql = "INSERT INTO `asset_amount`( `user_id`, `asset_id`, `asset_type`, `amount`) VALUES (':user_id', :asset_id, :asset_type, :amount)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+        $query->bindParam(':asset_id', $asset_id, PDO::PARAM_STR);
+        $query->bindParam(':asset_type', $asset_type, PDO::PARAM_STR);
+        $query->bindParam(':amount', $amount, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Feedback Send";
+        header('location:assetlist.php');
+    }
+
+    if (isset($_POST['edit'])) {
+        $id = $_POST['edit'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $serial_no = $_POST['snum'];
+        $manufacturer = $_POST['manufacturer'];
+        $category = $_POST['category'];
+
+        $sql = "UPDATE `assetamount` SET `name`=(:name), `description`=(:description), `serial_no`=(:serial_no), `manufacturer`=(:manufacturer), `category`=(:category) WHERE id=(:id)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindParam(':description', $description, PDO::PARAM_STR);
+        $query->bindParam(':serial_no', $serial_no, PDO::PARAM_STR);
+        $query->bindParam(':manufacturer', $manufacturer, PDO::PARAM_STR);
+        $query->bindParam(':category', $category, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Rent Updated Successfully";
+
+        header('location:assetlist.php');
+    }
 
 
 ?>
@@ -78,13 +115,13 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                     <tbody>
 
-                                        <?php $sql = "SELECT sn, name, description, date, amount, table_name FROM building
+                                        <?php $sql = "SELECT id, name, description, date, amount, table_name FROM building
                                                     UNION
-                                                    SELECT sn, name, description, date, amount, table_name FROM machinery
+                                                    SELECT id, name, description, date, amount, table_name FROM machinery
                                                     UNION
-                                                    SELECT sn, name, description, date, amount, table_name FROM vehicle
+                                                    SELECT id, name, description, date, amount, table_name FROM vehicle
                                                     UNION
-                                                    SELECT sn, name, description, date, amount, table_name FROM other_asset
+                                                    SELECT id, name, description, date, amount, table_name FROM other_asset
                                                     ORDER BY date;";
                                         $query = $dbh->prepare($sql);
                                         $query->execute();
@@ -105,15 +142,62 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                     <!-- Action Button Start -->
                                                     <td>
-                                                        <a data-toggle="modal" href="assetedit.php?s=1&name=<?php echo $result->name; ?>&asset_type=<?php echo $result->table_name; ?>&asset_id=<?php echo $result->sn; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <a data-toggle="modal" href="#edit<?= $cnt ?>" data-toggle="modal" data-target="#edit<?= $cnt ?>">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                                        <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog model-sm">
-                                                                <div class="modal-content"> </div>
+
+                                                        <div class="modal fade" id="edit<?= $cnt ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" style="height:auto">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">×</span></button>
+                                                                        <h4 class="modal-title">Add Detail</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+
+                                                                        <form action="assetlist.php" method="POST" class="forma">
+
+                                                                            <p>
+                                                                                <label for="name">Name</label>
+                                                                                <input type="text" name="name" value="<?php echo $name; ?>" readonly=readonly>
+                                                                            </p>
+
+
+                                                                            <p>
+                                                                                <label for="description">Asset Type</label>
+                                                                                <input type="text" name="asset_type" value="<?php echo $asset_type; ?>" readonly=readonly>
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="amount">amount</label>
+                                                                                <input type="text" name="amount" value="">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="id">Asset ID</label>
+                                                                                <input type="text" name="asset_id" value="<?php echo $asset_id; ?>" readonly=readonly>
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <button type="submit" name="submit" value="">
+                                                                                    Submit
+                                                                                </button>
+                                                                            </p>
+
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </div>
+
+                                                                </div>
+
                                                             </div>
                                                         </div>
+                                                        <!--end of modal-dialog-->
 
-                                                        <a href="#assetlist.php?del=<?php echo $result->sn; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
+                                                        <a href="#assetlist.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                                     </td>
 
                                                     <!-- Action Button End -->
@@ -135,7 +219,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <h4 class="modal-title">Add New Product</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="assetform.php" method="POST" class="forma">
+                                            <form action="assetlist.php" method="POST" class="forma">
                                                 <p>
                                                     <label for="full_name">Full Name</label>
                                                     <input type="text" name="full_name" disabled value="<?php echo $name; ?>">
