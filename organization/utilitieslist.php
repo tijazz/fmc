@@ -19,7 +19,47 @@ if (strlen($_SESSION['alogin']) == 0) {
         $msg = "Data Deleted successfully";
     }
 
+    if (isset($_POST['edit'])) {
 
+        $id = $_POST['edit'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $amount = $_POST['amount'];
+
+        $sql = "UPDATE `utilities` SET `name`=(:name), `description`=(:description),  `amount`=(:amount) WHERE id=(:id)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindParam(':description', $description, PDO::PARAM_STR);
+        $query->bindParam(':amount', $amount, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Rent Updated Successfully";
+
+        header('location:utilitieslist.php');
+    }
+
+    if (isset($_POST['submit'])) {
+
+        $user_id = $_SESSION['user_id'];
+        $org_id = $_SESSION['org_id'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $amount = $_POST['amount'];
+
+
+
+        $sql = "INSERT INTO utilities (user_id, org_id, name, description, amount) VALUES (:user_id, :org_id, :name, :description, :amount)";
+        $query = $dbh->prepare($sql);
+        $bind = $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
+        $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindParam(':description', $description, PDO::PARAM_STR);
+        $query->bindParam(':amount', $amount, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Utility Updated";
+
+        header('location:utilitieslist.php');
+    }
 
 ?>
 
@@ -106,13 +146,53 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                     <!-- Action Button Start -->
                                                     <td>
-                                                        <a data-toggle="modal" href="utilitiesedit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <a data-toggle="modal" href="#edit<?= $cnt ?>" data-toggle="modal" data-target="#edit<?= $cnt ?>">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                                        <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog model-sm">
-                                                                <div class="modal-content"> </div>
+
+                                                        <div class="modal fade" id="edit<?= $cnt ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" style="height:auto">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">×</span></button>
+                                                                        <h4 class="modal-title">Add Detail</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+
+                                                                        <form action="utilitieslist.php" method="POST" class="forma">
+
+                                                                            <p>
+                                                                                <label for="full_name">Name of Utility</label>
+                                                                                <input type="text" name="name" value="<?php echo $result->name ?>">
+                                                                            </p>
+                                                                            <p>
+                                                                                <label for="full_name">Description</label>
+                                                                                <input type="text" name="description" value="<?php echo $result->description ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="amount">Amount of Utility</label>
+                                                                                <input type="text" name="amount" value="<?php echo $result->amount ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <button type="submit" name="edit" value="<?php echo $result->id ?>">
+                                                                                    Submit
+                                                                                </button>
+                                                                            </p>
+
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </div>
+
+                                                                </div>
+
                                                             </div>
                                                         </div>
+                                                        <!--end of modal-dialog-->
 
                                                         <a href="utilitieslist.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                                     </td>
@@ -135,7 +215,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <h4 class="modal-title">Add New Utility</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="utilities.php" method="POST" class="forma">
+                                            <form action="utilitieslist.php" method="POST" class="forma">
 
                                                 <p>
                                                     <label for="full_name">Name of Utility</label>
