@@ -23,4 +23,23 @@ catch (PDOException $e)
 exit("Error: " . $e->getMessage());
 }
 
+
+function notify($dbh, $user_id, $org_id, $message){
+    $sql = " INSERT INTO `notification`(`user_id`, `org_id`, `message`) VALUES (:user_id, :org_id, :message)";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+    $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
+    $query->bindParam(':message', $message, PDO::PARAM_STR);
+    $query->execute();
+}
+
+function sendnotify($dbh, $org_id){
+    $sql = "SELECT * from  notification where org_id = (:org_id) order by time DESC";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
+    $query->execute();
+    $results = $query->fetchAll(PDO::FETCH_OBJ);
+    return json_encode($results);
+}
+
 ?>
