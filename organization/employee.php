@@ -22,6 +22,8 @@ if (strlen($_SESSION['alogin']) == 0) {
         $query->execute();
 
         $msg = "Employee Deleted successfully";
+
+        notify($dbh, $_SESSION['user_id'], $_SESSION['org_id'], $msg);
         header('location:employee.php');
     }
 
