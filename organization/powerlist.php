@@ -18,8 +18,49 @@ if (strlen($_SESSION['alogin']) == 0) {
 
         $msg = "Data Deleted successfully";
     }
+    if (isset($_POST['edit'])) {
+        $id = $_POST['edit'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $ppunit = $_POST['ppunit'];
+        $qitem = $_POST['qitem'];
+        $amount = $_POST['amount'];
 
+        $sql = "UPDATE `power` SET `name`=(:name), `description`=(:description), `ppunit`=(:ppunit), `qitem`=(:qitem), `amount`=(:amount) WHERE id=(:id)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindParam(':description', $description, PDO::PARAM_STR);
+        $query->bindParam(':ppunit', $ppunit, PDO::PARAM_STR);
+        $query->bindParam(':qitem', $qitem, PDO::PARAM_STR);
+        $query->bindParam(':amount', $amount, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "power Updated Successfully";
 
+        header('location:powerlist.php');
+    }
+    if (isset($_POST['submit'])) {
+        $user_id = $_SESSION['user_id'];
+        $org_id = $_SESSION['org_id'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $ppunit = $_POST['ppunit'];
+        $qitem = $_POST['qitem'];
+        $amount = $_POST['amount'];
+
+        $sql = "INSERT INTO power (user_id, org_id, name, description, ppunit, qitem, amount) VALUES (:user_id, :org_id, :name, :description, :ppunit, :qitem, :amount)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+        $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindParam(':description', $description, PDO::PARAM_STR);
+        $query->bindParam(':ppunit', $ppunit, PDO::PARAM_STR);
+        $query->bindParam(':qitem', $qitem, PDO::PARAM_STR);
+        $query->bindParam(':amount', $amount, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "power Updated Successfully";
+        header('location:powerlist.php');
+    }
 
 ?>
 
@@ -98,13 +139,53 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <td><?php echo htmlentities($result->date); ?></td>
                                                     <!-- Action Button Start -->
                                                     <td>
-                                                        <a data-toggle="modal" href="poweredit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <a data-toggle="modal" href="#edit<?= $cnt ?>" data-toggle="modal" data-target="#edit<?= $cnt ?>">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                                        <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog model-sm">
-                                                                <div class="modal-content"> </div>
+
+                                                        <div class="modal fade" id="edit<?= $cnt ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" style="height:auto">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">×</span></button>
+                                                                        <h4 class="modal-title">Add Detail</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form action="powerlist.php" method="POST" class="forma">
+
+                                                                            <p>
+                                                                                <label for="full_name">Name of Item</label>
+                                                                                <input type="text" name="name" value="<?php echo $result->name ?>">
+                                                                            </p>
+                                                                            <p>
+                                                                                <label for="full_name">Description</label>
+                                                                                <input type="text" name="description" value="<?php echo $result->description ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="amount">Cost</label>
+                                                                                <input type="text" name="amount" value="<?php echo $result->amount ?>" id="amount">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <button type="submit" name="edit" value="<?php echo $result->id ?>">
+                                                                                    Submit
+                                                                                </button>
+                                                                            </p>
+
+                                                                        </form>
+
+                                                                    </div>
+                                                                    <div class="modal-footer">
+
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </div>
+
+                                                                </div>
+
                                                             </div>
                                                         </div>
+                                                        <!--end of modal-dialog-->
 
                                                         <a href="powerlist.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                                     </td>
@@ -127,7 +208,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <h4 class="modal-title">Add New Product</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="power.php" method="POST" class="forma">
+                                            <form action="powerlist.php" method="POST" class="forma">
 
                                                 <p>
                                                     <label for="full_name">Name of Item</label>
@@ -143,7 +224,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <input type="text" name="amount" value="0" id="amount">
                                                 </p>
 
-                                                
+
                                                 <p>
                                                     <button type="submit" name="submit">
                                                         Submit
