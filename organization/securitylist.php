@@ -41,6 +41,27 @@ if (strlen($_SESSION['alogin']) == 0) {
         header('location:securitylist.php');
     }
 
+    if (isset($_POST['edit'])) {
+        $id = $_POST['edit'];
+        $name = $_POST['name'];
+
+        $ppunit = $_POST['ppunit'];
+        $qitem = $_POST['qitem'];
+        $amount = $_POST['amount'];
+
+        $sql = "UPDATE `security` SET `name`=(:name), `ppunit`=(:ppunit), `qitem`=(:qitem), `amount`=(:amount) WHERE id=(:id)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindParam(':ppunit', $ppunit, PDO::PARAM_STR);
+        $query->bindParam(':qitem', $qitem, PDO::PARAM_STR);
+        $query->bindParam(':amount', $amount, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "security Updated Successfully";
+
+        header('location:securitylist.php');
+    }
+
 
 ?>
 
@@ -121,13 +142,75 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <td><?php echo htmlentities($result->date); ?></td>
                                                     <!-- Action Button Start -->
                                                     <td>
-                                                        <a data-toggle="modal" href="securityedit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <a data-toggle="modal" href="#edit<?= $cnt ?>" data-toggle="modal" data-target="#edit<?= $cnt ?>">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                                        <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog model-sm">
-                                                                <div class="modal-content"> </div>
+
+                                                        <div class="modal fade" id="edit<?= $cnt ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" style="height:auto">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">×</span></button>
+                                                                        <h4 class="modal-title">Add Detail</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+
+                                                                        <form action="securitylist.php" method="POST" class="forma">
+
+                                                                            <p>
+                                                                                <label for="full_name">Category</label>
+                                                                                <select name="name" id="">
+                                                                                    <option value="cctv" <?php $result->name == 'cctv' ? "SELECTED" : "1" ?>>CCTV</option>
+                                                                                    <option value="gatemen" <?php $result->name == 'gateman' ? "SELECTED" : "2" ?>>Gatemen</option>
+                                                                                    <option value="other" <?php $result->name == 'other' ? "SELECTED" : "3" ?>>Other</option>
+                                                                                </select>
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="id">Price per Unit of Item</label>
+                                                                                <input type="text" name="ppunit" value="<?php echo $result->ppunit ?>" id="ppunit">
+                                                                            </p>
+                                                                            <p>
+                                                                                <label for="full_name">Quantity of Item</label>
+                                                                                <input type="text" name="qitem" value="<?php echo $result->qitem ?>" id="qitem">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="amount">Cost</label>
+                                                                                <input type="text" name="amount" value="<?php echo $result->amount ?>" id="amount">
+                                                                            </p>
+
+                                                                            <script>
+                                                                                $("#amount").click(function() {
+                                                                                    var amt = $('#ppunit').val();
+
+                                                                                    var qua = $('#qitem').val();
+
+                                                                                    var amount = parseInt(amt) * parseInt(qua);
+
+                                                                                    $("#amount").val(amount);
+                                                                                });
+                                                                            </script>
+
+
+                                                                            <p>
+                                                                                <button type="submit" name="edit" value="<?php echo $result->id ?>">
+                                                                                    Submit
+                                                                                </button>
+                                                                            </p>
+
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </div>
+
+                                                                </div>
+
                                                             </div>
                                                         </div>
+                                                        <!--end of modal-dialog-->
 
                                                         <a href="securitylist.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                                     </td>
