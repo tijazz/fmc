@@ -52,7 +52,7 @@
                         box-shadow: 1px 1px 4px 2px rgba(110, 104, 104, 0.335);
                     ">
 							<div class="panel-heading">Users Activity log</div>
-							<div class="panel-body">
+							<div class="panel-body notification-table>
 								<?php if($error){?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } 
 								else if($msg){?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php }?>
                                                                     
@@ -105,7 +105,11 @@
                 ?>
 
     </body>
-    
+    <style>
+        h5{
+            color:#000;
+        }
+    </style>
     <!-- Mirrored from webapplayers.com/inspinia_admin-v2.6.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Sep 2016 02:26:53 GMT -->
     </html>
     

@@ -105,7 +105,9 @@
                 ?>
 
     </body>
-    
+    <style>
+        h5{color:#000;}
+    </style>
     <!-- Mirrored from webapplayers.com/inspinia_admin-v2.6.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Sep 2016 02:26:53 GMT -->
     </html>
     

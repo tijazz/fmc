@@ -13,12 +13,12 @@
             <span class="m-r-sm text-muted welcome-message">Welcome
                 <?php echo ($_SESSION["alogin"]); ?></span>
         </li>
-        <li class="dropdown">
+        <li class="dropdown notifier">
             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                <i class="fa fa-envelope"></i>  <span class="label label-warning">160</span>
+                <i class="fa fa-bell notification-bell"></i>  <span class="label label-primary"></span>
             </a>
-            <ul class="dropdown-menu dropdown-messages">
-                <li>
+            <ul class="dropdown-menu dropdown-messages notifications_">
+                <li class="user_notification">
                     <div class="dropdown-messages-box">
                         <a href="profile.html" class="pull-left">
                             <img alt="image" class="img-circle" src="public/images/farm.jpg">
@@ -31,16 +31,47 @@
                     </div>
                 </li>
                 <li class="divider"></li>
-                
+                <li class="user_notification">
+                    <div class="dropdown-messages-box">
+                        <a href="profile.html" class="pull-left">
+                            <img alt="image" class="img-circle" src="public/images/farm.jpg">
+                        </a>
+                        <div class="media-body">
+                            <small class="pull-right">46h ago</small>
+                            <strong>The ongoing protests</strong> has risen <strong>past 70%</strong>. <br>
+                            <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                        </div>
+                    </div>
+                </li>
+                <li class="divider"></li>
+                <li class="user_notification">
+                    <div class="dropdown-messages-box">
+                        <a href="profile.html" class="pull-left">
+                            <img alt="image" class="img-circle" src="public/images/farm.jpg">
+                        </a>
+                        <div class="media-body">
+                            <small class="pull-right">46h ago</small>
+                            <strong>The sheep </strong> have <strong>hibernated</strong>. <br>
+                            <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                        </div>
+                    </div>
+                </li>
+                <li class="divider"></li>
+                <li class="user_notification">
+                    <div class="dropdown-messages-box">
+                        <a href="profile.html" class="pull-left">
+                            <img alt="image" class="img-circle" src="public/images/farm.jpg">
+                        </a>
+                        <div class="media-body">
+                            <small class="pull-right">46h ago</small>
+                            <strong>Your Farm humidity level</strong> has risen <strong>past 70%</strong>. <br>
+                            <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </li>
-        <li class="dropdown">
-            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                <i class="fa fa-bell"></i>  <span class="label label-pill label-danger count" style="border-radius:10px;"></span>
-            </a>
-            <ul class="dropdown-menu dropdown-alerts">                                                                   
-        </ul>
-        <li>
+       
             <a href="faq.php"><span class="m-r-sm text-muted welcome-message">FAQ</span></a>
         </li>
         <!-- <li class="dropdown notifier">
@@ -64,22 +95,7 @@
         </ul>
     
     </nav>
-    <div class="backdrop"></div>
-    <ul class="notifications__">
-        <i class="fa fa-bell notification-bell"></i>
-        <li>
-            <span><span>27th Aug, 2020</span> <span>9PM</span></span>
-            <p>Your flock has been fed by Mr.Olayinks</p>
-        </li>
-        <li>
-            <span><span>27th Aug, 2020</span> <span>9PM</span></span>
-            <p>Your flock has been fed by Mr.Olayinks</p>
-        </li>
-        <li>
-            <span><span>27th Aug, 2020</span> <span>9PM</span></span>
-            <p>Your flock has been fed by Mr.Olayinks</p>
-        </li>
-    </ul>
+
 <!-- Temporary fix to the navbar issue -->
 <script>
     let navTriggerBtn = document.getElementById('slide_left_btn');
