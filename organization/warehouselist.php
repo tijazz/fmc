@@ -11,7 +11,7 @@ if (strlen($_SESSION['alogin']) == 0) {
     if (isset($_GET['del'])) {
         $id = $_GET['del'];
 
-        $sql = "delete from warehouse WHERE sn=:id";
+        $sql = "delete from warehouse WHERE id=:id";
         $query = $dbh->prepare($sql);
         $query->bindParam(':id', $id, PDO::PARAM_STR);
         $query->execute();
@@ -19,6 +19,51 @@ if (strlen($_SESSION['alogin']) == 0) {
         $msg = "Data Deleted successfully";
     }
 
+    if (isset($_POST['submit'])) {
+
+
+        $product = $_POST['product'];
+        $user_id = $_SESSION['id'];
+        $org_id = $_SESSION['id'];
+        $warehouse = $_POST['warehouse'];
+        $quantity = $_POST['quantity'];
+        $status = $_POST['status'];
+
+        $sql = "INSERT INTO `warehouse`(`product_id`, `user_id`, `org_id`, `warehouse`, `quantity`, `status`)
+	VALUES (:product, :user_id, :org_id, :warehouse, :quantity, :status)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':product', $product, PDO::PARAM_STR);
+        $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+        $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
+        $query->bindParam(':warehouse', $warehouse, PDO::PARAM_STR);
+        $query->bindParam(':quantity', $quantity, PDO::PARAM_STR);
+        $query->bindParam(':status', $status, PDO::PARAM_STR);
+        $query->execute();
+
+        echo var_dump($sql);
+        $msg = "Product Updated Successfully";
+        header('location:warehouselist.php');
+    }
+
+    if (isset($_POST['edit'])) {
+        $id = $_POST['edit'];
+        $product = $_POST['product'];
+        $warehouse = $_POST['warehouse'];
+        $quantity = $_POST['quantity'];
+        $status = $_POST['status'];
+
+        $sql = "UPDATE `warehouse` SET `product_id`=(:product), `warehouse`=(:warehouse), `quantity`=(:quantity), `status`=(:status) WHERE id=(:id)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':product', $product, PDO::PARAM_STR);
+        $query->bindParam(':warehouse', $warehouse, PDO::PARAM_STR);
+        $query->bindParam(':quantity', $quantity, PDO::PARAM_STR);
+        $query->bindParam(':status', $status, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Product Updated Successfully";
+
+        header('location:warehouselist.php');
+    }
 
 
 ?>
@@ -98,11 +143,11 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 <tr>
                                                     <td><?php echo htmlentities($cnt); ?></td>
                                                     <?php
-                                            $s = "SELECT * FROM `product` WHERE org_id=:org_id";
-                                            $q = $dbh->prepare($s);
-                                            $q->bindParam(':org_id', $result->product_id, PDO::PARAM_STR);
-                                            $q->execute();
-                                            $res = $q->fetch(PDO::FETCH_OBJ);
+                                                    $s = "SELECT * FROM `product` WHERE org_id=:org_id";
+                                                    $q = $dbh->prepare($s);
+                                                    $q->bindParam(':org_id', $result->product_id, PDO::PARAM_STR);
+                                                    $q->execute();
+                                                    $res = $q->fetch(PDO::FETCH_OBJ);
 
                                                     ?>
                                                     <td><?php echo var_dump($res); ?></td>
@@ -115,15 +160,96 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                     <!-- Action Button Start -->
                                                     <td>
-                                                        <a data-toggle="modal" href="warehouseedit.php?s=<?php echo $result->sn; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <a data-toggle="modal" href="#edit<?= $cnt ?>" data-toggle="modal" data-target="#edit<?= $cnt ?>">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                                        <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog model-sm">
-                                                                <div class="modal-content"> </div>
+
+                                                        <div class="modal fade" id="edit<?= $cnt ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" style="height:auto">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">×</span></button>
+                                                                        <h4 class="modal-title">Add Detail</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+
+                                                                        <form action="warehouselist.php" method="POST" class="forma">
+
+                                                                            <p>
+                                                                                <label for="product">Products</label>
+                                                                                <select name="product" id="">
+                                                                                    <?php
+                                                                                    $sq = "SELECT * FROM `product` WHERE org_id=:org_id";
+                                                                                    $qu = $dbh->prepare($sq);
+                                                                                    $qu->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
+                                                                                    $qu->execute();
+                                                                                    $res = $qu->fetchAll(PDO::FETCH_OBJ);
+                                                                                    $cnt = 1;
+                                                                                    if ($query->rowCount() > 0) {
+                                                                                        foreach ($res as $re) {                ?>
+                                                                                            <option value="<?php echo htmlentities($re->id); ?>">
+                                                                                                <?php echo htmlentities($re->name); ?></option>
+                                                                                    <?php $cnt = $cnt + 1;
+                                                                                        }
+                                                                                    } ?>
+                                                                                </select>
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="warehouse">WareHouse</label>
+                                                                                <select name="warehouse" id="">
+                                                                                    <?php
+                                                                                    $s = "SELECT * FROM `building` WHERE org_id=:org_id";
+                                                                                    $q = $dbh->prepare($s);
+                                                                                    $q->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
+                                                                                    $q->execute();
+                                                                                    $rs = $q->fetchAll(PDO::FETCH_OBJ);
+                                                                                    $cnt = 1;
+                                                                                    if ($query->rowCount() > 0) {
+                                                                                        foreach ($rs as $r) {                ?>
+                                                                                            <option value="<?php echo htmlentities($rt->id); ?>">
+                                                                                                <?php echo htmlentities($r->name); ?></option>
+                                                                                    <?php $cnt = $cnt + 1;
+                                                                                        }
+                                                                                    } ?>
+                                                                                </select>
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="quantity">Quantity</label>
+                                                                                <input type="text" name="quantity" value="<?php echo $result->quantity; ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="status">Status</label>
+                                                                                <select name="status">
+                                                                                    <option value="closed">Closed</option>
+                                                                                    <option value="open">Open</option>
+                                                                                </select>
+                                                                            </p>
+
+
+                                                                            <p>
+                                                                                <button type="submit" name="edit" value="<?php echo ($result->id); ?>">
+                                                                                    Submit
+                                                                                </button>
+                                                                            </p>
+
+
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </div>
+
+                                                                </div>
+
                                                             </div>
                                                         </div>
+                                                        <!--end of modal-dialog-->
 
-                                                        <a href="warehouselist.php?del=<?php echo $result->sn; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
+                                                        <a href="warehouselist.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                                     </td>
 
                                                     <!-- Action Button End -->
@@ -145,7 +271,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <h4 class="modal-title">Add New Warehouse</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="warehouseform.php" method="POST" class="forma">
+                                            <form action="warehouselist.php" method="POST" class="forma">
 
                                                 <p>
                                                     <label for="product">Products</label>
@@ -181,7 +307,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                         $cnt = 1;
                                                         if ($query->rowCount() > 0) {
                                                             foreach ($results as $result) {                ?>
-                                                                <option value="<?php echo htmlentities($result->sn); ?>">
+                                                                <option value="<?php echo htmlentities($result->id); ?>">
                                                                     <?php echo htmlentities($result->name); ?></option>
                                                         <?php $cnt = $cnt + 1;
                                                             }
