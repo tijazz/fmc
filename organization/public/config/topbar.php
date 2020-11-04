@@ -101,8 +101,11 @@
         })
     }
 
-    var notification = JSON.parse(<?= sendnotify($dbh, $_SESSION['org_id']) ?>)
+    // Json data for notifications
+    var notification = JSON.stringify(<?= sendnotify($dbh, $_SESSION['org_id']) ?>)
     console.log(notification)
+
+
 </script>
 <style>
     /* initally  */
