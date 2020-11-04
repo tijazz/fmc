@@ -13,6 +13,8 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
     define('DB_NAME', 'demishoc_fmc');
 }
 
+
+
 // Establish database connection.
 try
 {
@@ -22,7 +24,6 @@ catch (PDOException $e)
 {
 exit("Error: " . $e->getMessage());
 }
-
 
 function notify($dbh, $user_id, $org_id, $message){
     $sql = " INSERT INTO `notification`(`user_id`, `org_id`, `message`) VALUES (:user_id, :org_id, :message)";
