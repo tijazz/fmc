@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2020 at 05:58 PM
+-- Generation Time: Nov 04, 2020 at 12:20 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -50,7 +50,7 @@ INSERT INTO `admin` (`id`, `username`, `email`, `password`, `organization`) VALU
 --
 
 CREATE TABLE `administration` (
-  `sn` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `org_id` int(11) DEFAULT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE `administration` (
 -- Dumping data for table `administration`
 --
 
-INSERT INTO `administration` (`sn`, `user_id`, `org_id`, `name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`, `date`) VALUES
+INSERT INTO `administration` (`id`, `user_id`, `org_id`, `name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`, `date`) VALUES
 (1, 2, NULL, 'dsl', 'dcl iron', '12', 'Abdullahi', 'Oyo', 'A.C.', 'ibadan', 'in stock', '2020-08-16 00:00:00'),
 (3, 2, NULL, 'Abdullahi Temidayo Jimoh', 'camry404', '12', 'Adullahi', 'Oyo, Nigeria.', 'fan', 'ibadan', 'out stock', '2020-08-27 00:00:00'),
 (4, 1, 1, 'Terminus', 'camry404', '12', 'jat', 'Oyo, Nigeria.', 'fan', 'ibadan', 'in stock', '2020-09-20 00:00:00');
@@ -106,13 +106,23 @@ INSERT INTO `advert` (`id`, `user_id`, `org_id`, `type`, `name`, `description`, 
 
 CREATE TABLE `alarm` (
   `id` int(11) NOT NULL,
-  `user` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `org_id` int(11) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
   `description` varchar(50) DEFAULT NULL,
   `start` timestamp NOT NULL DEFAULT current_timestamp(),
-  `end` datetime DEFAULT NULL
+  `end` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `alarm`
+--
+
+INSERT INTO `alarm` (`id`, `user_id`, `org_id`, `name`, `description`, `start`, `end`) VALUES
+(1, 0, 1, 'camry', 'treated corn', '2020-11-02 16:17:13', '2020-11-02 16:16:51'),
+(2, 0, 1, 'camry', 'treated corn', '2020-11-02 16:17:42', '2020-11-02 16:16:51'),
+(3, 0, 1, 'Saheed Adigun', 'Bypassing', '2020-11-02 16:18:20', '2020-11-01 23:00:00'),
+(4, 0, 1, 'Saheed Adigun', 'Bypassing', '2020-11-02 16:18:43', '2020-11-01 23:00:00');
 
 -- --------------------------------------------------------
 
@@ -210,7 +220,7 @@ INSERT INTO `asset_amount` (`id`, `user_id`, `asset_id`, `asset_type`, `amount`,
 --
 
 CREATE TABLE `building` (
-  `sn` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `org_id` int(11) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
@@ -239,10 +249,10 @@ CREATE TABLE `building` (
 -- Dumping data for table `building`
 --
 
-INSERT INTO `building` (`sn`, `user_id`, `org_id`, `name`, `description`, `size`, `amount`, `location`, `lat`, `lng`, `category`, `date`, `table_name`, `capacity`, `type`, `purpose`, `status`, `utilization`, `start_season`, `end_season`, `ownership`, `fallow`, `manager`) VALUES
+INSERT INTO `building` (`id`, `user_id`, `org_id`, `name`, `description`, `size`, `amount`, `location`, `lat`, `lng`, `category`, `date`, `table_name`, `capacity`, `type`, `purpose`, `status`, `utilization`, `start_season`, `end_season`, `ownership`, `fallow`, `manager`) VALUES
 (4, 2, NULL, 'Abdullahi', 'camry404', '12', 1000, 'Oyo', NULL, NULL, 'ops', '2020-08-18 23:00:00', 'building', 0, '', '', 'full', '', '0000-00-00', '0000-00-00', 'full', '', ''),
 (7, 2, NULL, 'Abdullahi', 'Buy Fuel', '20', 1233, 'nigeria', NULL, NULL, 'ops', '2020-08-27 17:55:40', 'building', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 0, 1, 'Abdullahi', 'Bypassing', '23', 1000000, 'Oyo, Nigeria.', NULL, NULL, 'admin', '2020-09-20 15:42:24', 'building', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(8, 0, 1, 'Abdullahi', 'Bypassing', '23', 1000000, 'Oyo, Nigeria.', NULL, NULL, 'admin', '2020-09-20 15:42:24', 'building', 0, '', '', 'full', '', '2020-10-26', '2020-11-02', 'full', '', '');
 
 -- --------------------------------------------------------
 
@@ -336,8 +346,7 @@ INSERT INTO `employee` (`id`, `user_id`, `org_id`, `image`, `name`, `address`, `
 (57, 1, NULL, NULL, 'Abdullahi Temidayo Jimoh', 'Borehole Area, Aroje, Ogbomoso, Oyo State.', 'abdullahij951@gmail.com', NULL, '9f3be05aa998ef91c248fa85488cb406', 'male', NULL, '+2348061266260', '', '', '', '0000-00-00', '', NULL, NULL, '', '', '', 'permanent', 'active', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-10-11 22:11:07'),
 (58, 1, 1, NULL, 'Abdullahi Temidayo Jimoh', 'Borehole Area, Aroje, Ogbomoso, Oyo State.', 'abdullahij951@gmail.com', NULL, 'ba9efe632eae7716a16f64b7043792b1', 'male', NULL, '+2348061266260', '', '', '', '0000-00-00', '', NULL, NULL, '', '', '', 'permanent', 'active', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-10-11 22:12:26'),
 (59, 1, 1, NULL, 'Abdullahi Temidayo Jimoh', 'Borehole Area, Aroje, Ogbomoso, Oyo State.', 'abdullahij951@gmail.com', NULL, '6ef06a2495a48c6d6be6242f631399b7', 'male', NULL, '+2348061266260', '', '', '', '2020-10-12', '', NULL, NULL, '', '', '', 'permanent', 'active', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-10-11 23:04:22'),
-(60, 0, 1, NULL, 'Abdullahi Temidayo Jimoh', 'Borehole Area, Aroje, Ogbomoso, Oyo State.', 'abdullahij951@gmail.com', NULL, '61833d7ee14d94597e51c6df4066fa3d', '', NULL, '+2348061266260', '', '', '', '0000-00-00', '', NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-10-15 10:17:14'),
-(61, 0, 1, NULL, 'Abdullahi  Jimoh', 'Borehole Area, Aroje, Ogbomoso, Oyo State.', 'abdullahij951@gmail.com', NULL, '73eebd76cb633c7c0ef459ceb32160d1', '', NULL, '+2348061266260', '', '', '', '0000-00-00', '', NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-10-17 14:18:03');
+(60, 0, 1, NULL, 'Abdullahi Temidayo Jimoh', 'Borehole Area, Aroje, Ogbomoso, Oyo State.', 'abdullahij951@gmail.com', NULL, '61833d7ee14d94597e51c6df4066fa3d', '', NULL, '+2348061266260', '', '', '', '0000-00-00', '', NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, NULL, 'employee', 0, 0, 0, 0, 0, '2020-10-15 10:17:14');
 
 -- --------------------------------------------------------
 
@@ -623,11 +632,11 @@ INSERT INTO `locations` (`id`, `user`, `org_id`, `name`, `lat`, `lng`, `descript
 (27, '2', NULL, 'Abdullahi', 9.298905, 9.444320, 'Bypassing', 1, 23, 'loamy', '7', 'qwerty', 'dog', 'rearing', '2020-08-31', '2020-09-14', 'full', '12', 'Abdullahi', NULL, 'location'),
 (28, '2', NULL, 'Abdullahi', 9.298905, 9.444320, 'Bypassing', 1, 23, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'location'),
 (29, '1', 1, 'camry', 8.669519, 9.114730, 'Bypassing', 1, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'field', 'location'),
-(30, '1', 1, 'Abdullahi', 0.000000, 0.000000, 'Bypassing', 1, 23, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'field', 'location'),
-(31, '1', 1, 'Terminus', 0.000000, 0.000000, 'camry404', 1, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pen', 'location'),
+(30, '1', 1, 'Abdullahi', 0.000000, 0.000000, 'Bypassing', 1, 23, '', '', '', '', '', '0000-00-00', '0000-00-00', 'lease', '', 'Abdullahi', 'field', 'location'),
+(31, '1', 1, 'Terminus', 0.000000, 0.000000, 'camry404', 1, 12, '', '', '', '', '', '0000-00-00', '0000-00-00', 'full', '', '', 'pen', 'location'),
 (32, '', NULL, NULL, 9.255534, 9.004867, '', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'data', 'location'),
-(34, NULL, NULL, 'Saheed Adigun', 0.000000, 0.000000, 'Bypassing', 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'data', 'location'),
-(35, '0', 1, 'Saheed Adigun', 0.000000, 0.000000, 'Bypass', 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'data', 'location');
+(34, '0', 1, 'Saheed Adigun', 0.000000, 0.000000, 'Bypassing', 1, 0, '', '', 'qwerty', '', '', '0000-00-00', '0000-00-00', 'full', '', '', 'field', 'location'),
+(35, '0', 1, 'Saheed Adigun', 0.000000, 0.000000, 'Bypass', 1, 0, '', '', '', '', '', '0000-00-00', '0000-00-00', 'lease', '', '', 'pen', 'location');
 
 -- --------------------------------------------------------
 
@@ -636,7 +645,7 @@ INSERT INTO `locations` (`id`, `user`, `org_id`, `name`, `lat`, `lng`, `descript
 --
 
 CREATE TABLE `machinery` (
-  `sn` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `org_id` int(11) DEFAULT NULL,
   `category` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
@@ -653,7 +662,7 @@ CREATE TABLE `machinery` (
 -- Dumping data for table `machinery`
 --
 
-INSERT INTO `machinery` (`sn`, `user_id`, `org_id`, `category`, `name`, `description`, `serial_no`, `manufacturer`, `amount`, `date`, `table_name`) VALUES
+INSERT INTO `machinery` (`id`, `user_id`, `org_id`, `category`, `name`, `description`, `serial_no`, `manufacturer`, `amount`, `date`, `table_name`) VALUES
 (1, 2, NULL, 'tractor', 'james', 'a player', '123235655', 'dangote', 1200, '2020-08-12 00:00:00', 'machinery'),
 (3, 2, NULL, 'tractor', 'Terminus', 'For this month', '45323453', 'Adullahi', 0, '2020-08-12 00:00:00', 'machinery'),
 (5, 2, NULL, 'tractor', 'Abdullahi ', 'Bypassing', '45323453', 'Q&S', 0, '2020-08-20 00:00:00', 'machinery'),
@@ -773,7 +782,9 @@ INSERT INTO `monthlyreport` (`id`, `user_id`, `org_id`, `month`, `name`, `hours`
 (3, '1', 1, '2020-09', '8', '2', 'hey you there. I feeling you', 'Completed', '3', '1', 'facility'),
 (4, '55', 1, '2020-09', '8', '2', 'trying for the employee', 'Completed', '3', '55', 'facility'),
 (5, '55', 55, '2020-10', '31', '1', 'superman', 'Completed', '3', '55', 'pen'),
-(6, '55', 1, '2020-10', '31', '1', 'Nonsense', 'Completed', '3', '55', 'pen');
+(6, '55', 1, '2020-10', '31', '1', 'Nonsense', 'Completed', '3', '55', 'pen'),
+(7, '0', 1, '2020-11', '8', '2', 'hello', 'Completed', '3', '0', 'facility'),
+(8, '0', 1, '2020-11', NULL, '2', 'who is this?', 'Completed', '4', '0', 'field');
 
 -- --------------------------------------------------------
 
@@ -783,9 +794,10 @@ INSERT INTO `monthlyreport` (`id`, `user_id`, `org_id`, `month`, `name`, `hours`
 
 CREATE TABLE `notification` (
   `id` int(11) NOT NULL,
-  `notiuser` varchar(50) NOT NULL,
-  `notireciver` varchar(50) NOT NULL,
-  `notitype` varchar(50) NOT NULL,
+  `user_id` varchar(50) DEFAULT NULL,
+  `org_id` varchar(50) DEFAULT NULL,
+  `message` varchar(225) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
   `time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -793,21 +805,8 @@ CREATE TABLE `notification` (
 -- Dumping data for table `notification`
 --
 
-INSERT INTO `notification` (`id`, `notiuser`, `notireciver`, `notitype`, `time`) VALUES
-(18, 'test@gmail.com', 'Admin', 'Create Account', '2020-06-30 05:49:20'),
-(19, 'fatai@gmail.com', 'Admin', 'Send Feedback', '2020-07-01 16:58:30'),
-(20, 'Admin', 'fatai@gmail.com', 'Send Message', '2020-07-01 17:01:00'),
-(50, 'fatai@gmail.com', 'Admin', 'Send Feedback', '2020-07-02 11:48:31'),
-(51, 'Admin', 'fatai@gmail.com', 'Send Message', '2020-07-02 17:16:10'),
-(52, 'bolaji@gmail.com', 'Admin', 'Send Feedback', '2020-07-03 04:07:28'),
-(53, 'Admin', 'bolaji@gmail.com', 'Send Message', '2020-07-03 04:10:13'),
-(18, 'test@gmail.com', 'Admin', 'Create Account', '2020-06-30 05:49:20'),
-(19, 'fatai@gmail.com', 'Admin', 'Send Feedback', '2020-07-01 16:58:30'),
-(20, 'Admin', 'fatai@gmail.com', 'Send Message', '2020-07-01 17:01:00'),
-(50, 'fatai@gmail.com', 'Admin', 'Send Feedback', '2020-07-02 11:48:31'),
-(51, 'Admin', 'fatai@gmail.com', 'Send Message', '2020-07-02 17:16:10'),
-(52, 'bolaji@gmail.com', 'Admin', 'Send Feedback', '2020-07-03 04:07:28'),
-(53, 'Admin', 'bolaji@gmail.com', 'Send Message', '2020-07-03 04:10:13');
+INSERT INTO `notification` (`id`, `user_id`, `org_id`, `message`, `status`, `time`) VALUES
+(15, '0', '1', 'Employee Deleted successfully', 0, '2020-11-04 01:25:36');
 
 -- --------------------------------------------------------
 
@@ -1450,7 +1449,7 @@ INSERT INTO `utilities` (`id`, `user_id`, `org_id`, `sn`, `name`, `description`,
 --
 
 CREATE TABLE `vehicle` (
-  `sn` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `org_id` int(11) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
@@ -1466,7 +1465,7 @@ CREATE TABLE `vehicle` (
 -- Dumping data for table `vehicle`
 --
 
-INSERT INTO `vehicle` (`sn`, `user_id`, `org_id`, `name`, `description`, `serial_no`, `manufacturer`, `amount`, `date`, `table_name`) VALUES
+INSERT INTO `vehicle` (`id`, `user_id`, `org_id`, `name`, `description`, `serial_no`, `manufacturer`, `amount`, `date`, `table_name`) VALUES
 (1, 2, NULL, 'camry', 'camry404', '123453221', 'toyota', 1233, '2020-08-16 00:00:00', 'vehicle'),
 (4, 2, NULL, 'sienna', 'a long vehicle', '1234434', 'mezidis', 0, '2020-08-21 00:00:00', 'vehicle'),
 (7, 0, NULL, 'Terminus', '2', '1234434', 'covas', 0, '2020-08-27 00:00:00', 'vehicle'),
@@ -1551,16 +1550,17 @@ CREATE TABLE `weeklyreport` (
 INSERT INTO `weeklyreport` (`id`, `user_id`, `org_id`, `week`, `name`, `hours`, `activity`, `activity_status`, `field_status`, `manager`, `type`) VALUES
 (1, '1', 1, '2020-W40', '29', '1', 'wssdd', 'Completed', '3', '1', 'field'),
 (2, '1', 1, '2020-W40', '29', '1', 'wssdd', 'Completed', '3', '1', 'field'),
-(3, '1', 1, '2020-W40', '31', '2', 'sdfds', 'Completed', '3', '1', 'pen'),
+(3, '1', 1, '2020-W40', '31', '3', 'sdfds', 'Completed', '3', '1', 'pen'),
 (4, '1', 1, '2020-W40', '30', '2', 'qwert key board', 'Completed', '3', '1', 'field'),
-(5, '1', 1, '2020-W40', '', '2', 'qwert key board', 'Completed', '3', '1', 'field'),
+(5, '1', 1, '2020-W40', '30', '2', 'qwert key board', 'Completed', '3', '1', 'field'),
 (6, '1', 1, '2020-W40', '', '2', 'qwert key board', 'Completed', '3', '1', 'field'),
 (10, '1', 1, '2020-W40', '8', '3', 'try again', 'Completed', '3', '1', 'facility'),
 (11, '1', 1, '2020-W40', '8', '2', 'there you are ', 'Completed', '3', '1', 'facility'),
 (12, NULL, NULL, '2020-W43', NULL, '1', 'trying', 'Completed', '3', NULL, 'field'),
 (13, '1', 1, '2020-W43', NULL, '3', 'coming', 'Completed', '3', '1', 'field'),
 (14, '1', 1, '2020-W43', NULL, '2', 'heloo', 'Completed', '3', '1', 'field'),
-(15, '55', 1, '2020-W43', NULL, '2', 'get ready', 'Completed', '3', '1', 'field');
+(16, '0', 1, '2020-W45', '34', '2', 'It is working Great', 'Completed', '5', '0', 'field'),
+(17, '0', 1, '2020-W45', '35', '2', 'hello', 'Completed', '5', '0', 'pen');
 
 -- --------------------------------------------------------
 
@@ -1595,7 +1595,7 @@ CREATE TABLE `worker` (
   `team_work` varchar(50) DEFAULT NULL,
   `punctuality` varchar(50) DEFAULT NULL,
   `organization` varchar(50) DEFAULT NULL,
-  `table_name` varchar(50) NOT NULL DEFAULT 'employee',
+  `table_name` varchar(50) NOT NULL DEFAULT 'worker',
   `sign_up_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -1622,7 +1622,7 @@ ALTER TABLE `admin`
 -- Indexes for table `administration`
 --
 ALTER TABLE `administration`
-  ADD PRIMARY KEY (`sn`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `advert`
@@ -1652,7 +1652,7 @@ ALTER TABLE `asset_amount`
 -- Indexes for table `building`
 --
 ALTER TABLE `building`
-  ADD PRIMARY KEY (`sn`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `documents`
@@ -1718,7 +1718,7 @@ ALTER TABLE `locations`
 -- Indexes for table `machinery`
 --
 ALTER TABLE `machinery`
-  ADD PRIMARY KEY (`sn`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `maintenance`
@@ -1742,6 +1742,12 @@ ALTER TABLE `member`
 -- Indexes for table `monthlyreport`
 --
 ALTER TABLE `monthlyreport`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notification`
+--
+ALTER TABLE `notification`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1868,7 +1874,7 @@ ALTER TABLE `utilities`
 -- Indexes for table `vehicle`
 --
 ALTER TABLE `vehicle`
-  ADD PRIMARY KEY (`sn`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `wallet`
@@ -1908,7 +1914,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `administration`
 --
 ALTER TABLE `administration`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `advert`
@@ -1920,7 +1926,7 @@ ALTER TABLE `advert`
 -- AUTO_INCREMENT for table `alarm`
 --
 ALTER TABLE `alarm`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `appraisal`
@@ -1938,7 +1944,7 @@ ALTER TABLE `asset_amount`
 -- AUTO_INCREMENT for table `building`
 --
 ALTER TABLE `building`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `documents`
@@ -2004,7 +2010,7 @@ ALTER TABLE `locations`
 -- AUTO_INCREMENT for table `machinery`
 --
 ALTER TABLE `machinery`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `maintenance`
@@ -2028,7 +2034,13 @@ ALTER TABLE `member`
 -- AUTO_INCREMENT for table `monthlyreport`
 --
 ALTER TABLE `monthlyreport`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `notification`
+--
+ALTER TABLE `notification`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `operation`
@@ -2154,7 +2166,7 @@ ALTER TABLE `utilities`
 -- AUTO_INCREMENT for table `vehicle`
 --
 ALTER TABLE `vehicle`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `wallet`
@@ -2172,7 +2184,7 @@ ALTER TABLE `warehouse`
 -- AUTO_INCREMENT for table `weeklyreport`
 --
 ALTER TABLE `weeklyreport`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `worker`
