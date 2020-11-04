@@ -1,10 +1,8 @@
 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
-        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#" id='slide_left_btn'><i
-                class="fa fa-bars"></i> </a>
+        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#" id='slide_left_btn'><i class="fa fa-bars"></i> </a>
 
-        <form role="search" class="navbar-form-custom"
-            action="http://webapplayers.com/  inspinia_admin-v2.6.1/search_results.html">
+        <form role="search" class="navbar-form-custom" action="http://webapplayers.com/  inspinia_admin-v2.6.1/search_results.html">
         </form>
 
     </div>
@@ -15,7 +13,7 @@
         </li>
         <li class="dropdown notifier">
             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                <i class="fa fa-bell notification-bell"></i>  <span class="label label-primary"></span>
+                <i class="fa fa-bell notification-bell"></i> <span class="label label-primary"></span>
             </a>
             <ul class="dropdown-menu dropdown-messages notifications_">
                 <li class="user_notification">
@@ -102,6 +100,9 @@
             navTriggerBtn.classList.toggle('right_btn');
         })
     }
+
+    var notification = JSON.parse(<?= sendnotify($dbh, $_SESSION['org_id']) ?>)
+    console.log(notification)
 </script>
 <style>
     /* initally  */
