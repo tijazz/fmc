@@ -211,15 +211,14 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                                             <p>
                                                                                 <select name="category">
-                                                                                    <option selected disabled>Select</option>
                                                                                     <?php
-                                                                                    $s = "SELECT * FROM `asset` WHERE item LIKE 'building'";
+                                                                                    $s = "SELECT DISTINCT * FROM `asset` WHERE item LIKE 'building'";
                                                                                     $q = $dbh->prepare($s);
                                                                                     $q->execute();
                                                                                     $res = $q->fetchAll(PDO::FETCH_OBJ);
                                                                                     if ($q->rowCount() > 0) {
                                                                                         foreach ($res as $re) {                ?>
-                                                                                            <option value="<?php echo htmlentities($re->category); ?>">
+                                                                                            <option value="<?php echo htmlentities($re->category); ?>" <?= $result->category == $re->category? 'SELECTED' : ''   ?>>
                                                                                                 <?php echo htmlentities($re->category); ?></option>
                                                                                     <?php 
                                                                                         }
