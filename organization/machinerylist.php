@@ -124,7 +124,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                             <div class="panel-body">
                                 <?php if ($error) { ?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?>
                                     </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
-                                <table id="zctb tablePreview" class="display table table-dark table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                                <table id="zctb" class="display table table-dark table-striped table-bordered table-hover" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -180,16 +180,16 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                                                 <select name="category" id="">
                                                                                     <option selected disabled>Select</option>
                                                                                     <?php
-                                                                                    $sql = "SELECT * FROM `asset` WHERE item LIKE 'Machinery'";
-                                                                                    $query = $dbh->prepare($sql);
-                                                                                    $query->execute();
-                                                                                    $res = $query->fetchAll(PDO::FETCH_OBJ);
-                                                                                    $cnt = 1;
-                                                                                    if ($query->rowCount() > 0) {
+                                                                                    $s = "SELECT * FROM `asset` WHERE item LIKE 'Machinery'";
+                                                                                    $q = $dbh->prepare($s);
+                                                                                    $q->execute();
+                                                                                    $res = $q->fetchAll(PDO::FETCH_OBJ);
+                                                                                    
+                                                                                    if ($q->rowCount() > 0) {
                                                                                         foreach ($res as $re) { ?>
-                                                                                            <option value="<?php echo htmlentities($re->category); ?>">
+                                                                                            <option value="<?php echo htmlentities($re->category); ?>" <?= $re->category == $result->category ? 'SELECTED' : ''?>>
                                                                                                 <?php echo htmlentities($re->category); ?></option>
-                                                                                    <?php $cnt = $cnt + 1;
+                                                                                    <?php
                                                                                         }
                                                                                     } ?>
                                                                                 </select>
@@ -268,7 +268,6 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <form action="machinerylist.php" method="POST" class="forma">
                                                 <p>
                                                     <select name="category" id="">
-                                                        <option selected disabled>Select</option>
                                                         <?php
                                                         $sql = "SELECT * FROM `asset` WHERE item LIKE 'Machinery'";
                                                         $query = $dbh->prepare($sql);
@@ -277,7 +276,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                         $cnt = 1;
                                                         if ($query->rowCount() > 0) {
                                                             foreach ($results as $result) {                ?>
-                                                                <option value="<?php echo htmlentities($result->category); ?>">
+                                                                <option value="<?php echo htmlentities($result->category);?>">
                                                                     <?php echo htmlentities($result->category); ?></option>
                                                         <?php $cnt = $cnt + 1;
                                                             }
