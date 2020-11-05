@@ -27,8 +27,8 @@ if (strlen($_SESSION['alogin']) == 0) {
         $amount = $_POST['amount'];
         $status = $_POST['status'];
         $location = $_POST['location'];
-        $user_id = $_SESSION['id'];
-        $org_id = $_SESSION['id'];
+        $user_id = $_SESSION['user_id'];
+        $org_id = $_SESSION['org_id'];
 
         $sql = "INSERT INTO `other_asset`(`user_id`, `name`, `description`, `amount`, `quantity`, `manufacturer`, `status`, `location`, `org_id`) VALUES (:user_id, :name, :description, :amount, :quantity, :manufacturer, :status, :location, :org_id)";
         $query = $dbh->prepare($sql);
@@ -99,7 +99,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                 </div>
                 <div class="row dashboard-header">
                     <div class="panel-heading" style='padding:0;'>
-                        <h2 class="page-title">Manage Goods/Products</h2>
+                        <h2 class="page-title">Manage Other Tangible Asset</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -131,13 +131,11 @@ if (strlen($_SESSION['alogin']) == 0) {
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Category</th>
                                             <th>Name</th>
                                             <th>Description</th>
                                             <th>Quantity</th>
                                             <th>Manufacturer</th>
                                             <th>Location</th>
-                                            <th>Place</th>
                                             <th>Status</th>
                                             <th>Date</th>
                                             <th>Action</th>
@@ -146,7 +144,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                     <tbody>
 
-                                        <?php $sql = "SELECT * from `otasset`  Where org_id=:org_id";
+                                        <?php $sql = "SELECT * from `other_asset`  Where org_id=:org_id";
                                         $query = $dbh->prepare($sql);
                                         $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
                                         $query->execute();
@@ -156,13 +154,11 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             foreach ($results as $result) {                ?>
                                                 <tr>
                                                     <td><?php echo htmlentities($cnt); ?></td>
-                                                    <td><?php echo htmlentities($result->category); ?></td>
                                                     <td><?php echo htmlentities($result->name); ?></td>
                                                     <td><?php echo htmlentities($result->description); ?></td>
                                                     <td><?php echo htmlentities($result->quantity); ?></td>
                                                     <td><?php echo htmlentities($result->manufacturer); ?></td>
                                                     <td><?php echo htmlentities($result->location); ?></td>
-                                                    <td><?php echo htmlentities($result->place); ?></td>
                                                     <td><?php echo htmlentities($result->status); ?></td>
                                                     <td><?php echo htmlentities($result->date); ?></td>
 
@@ -213,8 +209,8 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                                             <p>
                                                                                 <label for="status">Status</label>
                                                                                 <select name="status">
-                                                                                    <option value="in storage">in storage</option>
-                                                                                    <option value="in use">in use</option>
+                                                                                    <option value="in storage" <?= $result->status == 'in storage' ? 'SELECTED' : '' ?>>in storage</option>
+                                                                                    <option value="in use" <?= $result->status == 'in use' ? 'SELECTED' : '' ?>>in use</option>
                                                                                 </select>
                                                                             </p>
 
@@ -264,7 +260,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <h4 class="modal-title">Add New Product</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="otassetedit.php" method="POST" class="forma">
+                                            <form action="otassetlist.php" method="POST" class="forma">
 
 
                                                 <p>
@@ -307,7 +303,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 </p>
 
                                                 <p>
-                                                    <button type="submit" name="edit" value="">
+                                                    <button type="submit" name="submit" value="">
                                                         Submit
                                                     </button>
                                                 </p>
