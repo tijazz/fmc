@@ -7,7 +7,7 @@ window.onload = () => {
     notificationCountd.innerHTML = notificationListCount
     if(notificationListCount == 0){
         console.log(notificationCountd)
-        // notificationCountd.style.display = 'none'
+        notificationCountd.style.display = 'none'
     }
     
 }

@@ -16,57 +16,7 @@
                 <i class="fa fa-bell notification-bell"></i> <span class="label label-primary"></span>
             </a>
             <ul class="dropdown-menu dropdown-messages notifications_">
-                <li class="user_notification">
-                    <div class="dropdown-messages-box">
-                        <a href="profile.html" class="pull-left">
-                            <img alt="image" class="img-circle" src="public/images/farm.jpg">
-                        </a>
-                        <div class="media-body">
-                            <small class="pull-right">46h ago</small>
-                            <strong>Your Farm humidity level</strong> has risen <strong>past 70%</strong>. <br>
-                            <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
-                        </div>
-                    </div>
-                </li>
-                <li class="divider"></li>
-                <li class="user_notification">
-                    <div class="dropdown-messages-box">
-                        <a href="profile.html" class="pull-left">
-                            <img alt="image" class="img-circle" src="public/images/farm.jpg">
-                        </a>
-                        <div class="media-body">
-                            <small class="pull-right">46h ago</small>
-                            <strong>The ongoing protests</strong> has risen <strong>past 70%</strong>. <br>
-                            <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
-                        </div>
-                    </div>
-                </li>
-                <li class="divider"></li>
-                <li class="user_notification">
-                    <div class="dropdown-messages-box">
-                        <a href="profile.html" class="pull-left">
-                            <img alt="image" class="img-circle" src="public/images/farm.jpg">
-                        </a>
-                        <div class="media-body">
-                            <small class="pull-right">46h ago</small>
-                            <strong>The sheep </strong> have <strong>hibernated</strong>. <br>
-                            <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
-                        </div>
-                    </div>
-                </li>
-                <li class="divider"></li>
-                <li class="user_notification">
-                    <div class="dropdown-messages-box">
-                        <a href="profile.html" class="pull-left">
-                            <img alt="image" class="img-circle" src="public/images/farm.jpg">
-                        </a>
-                        <div class="media-body">
-                            <small class="pull-right">46h ago</small>
-                            <strong>Your Farm humidity level</strong> has risen <strong>past 70%</strong>. <br>
-                            <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
-                        </div>
-                    </div>
-                </li>
+         
             </ul>
         </li>
         <li>
@@ -101,9 +51,77 @@
         })
     }
 
+    renderTimestamp = timestamp => {
+        let prefix = '';
+        const timeDiff = Math.round((new Date().getTime() - new Date(timestamp).getTime()) / 60000);
+        if (timeDiff < 60 && timeDiff > 1) {
+            prefix = `${timeDiff} minutes ago`
+        }
+        else if (timeDiff <= 1) {
+            if(timeDiff == 0){
+                prefix = 'now'
+            }else{
+                prefix = `${timeDiff} minute ago`
+            }
+        }
+        else if (timeDiff < 24 * 60 && timeDiff > 60) {
+            prefix = `${Math.round(timeDiff / 60)} hours ago`
+        }
+        else if (timeDiff <= 31 * 24 * 60 && timeDiff > 24 * 60) {
+            const prefix_math = Math.round(timeDiff / (60 * 24))
+            if (prefix_math <= 1) {
+                prefix = 'Yesterday'
+            }
+            else {
+                prefix = `${Math.round(timeDiff / (60 * 24))} days ago`
+            }
+        }
+        else {
+            prefix = `${new Date(timestamp)}`
+        }
+        return prefix
+    }
+
     // Json data for notifications
-    var notification = JSON.stringify(<?= sendnotify($dbh, $_SESSION['org_id']) ?>)
-    console.log(notification)
+    var notifications = JSON.stringify(<?= sendnotify($dbh, $_SESSION['org_id']) ?>);
+    var notificationsElement = document.querySelector('.notifications_')
+    notifications = JSON.parse(notifications)
+    for(var i in notifications){
+        var notification = notifications[i]
+        var listElement = document.createElement('li')
+        listElement.classList.add('user_notification')
+        var divElement = document.createElement('div')
+        divElement.classList.add('dropdown-messages-box')
+        aTag = document.createElement('a')
+        aTag.classList.add('pull-left')
+        var image = document.createElement('img')
+        image.classList.add('img-circle')
+        image.src = 'public/images/farm.jpg'
+        aTag.appendChild(image)
+        divElement.appendChild(aTag)
+        var SecondDiv = document.createElement('div')
+        SecondDiv.classList.add('media-body')
+        var smallTag = document.createElement('small')
+        smallTag.classList.add('pull-right')
+        smallTag.innerText = renderTimestamp(notification['time'])
+        var strongTag = document.createElement('strong')
+        strongTag.innerText = notification['message']
+        var secondsmallTag = document.createElement('small')
+        lineTag = document.createElement('br')
+        secondsmallTag.innerText = renderTimestamp(notification['time']) + ' at ' + new Date(notification['time']).toTimeString().
+        replace("West Africa Standard Time","").replace("GMT+0100","").replace('(','').replace(')','')
+        secondsmallTag.classList.add('text-muted')
+        SecondDiv.appendChild(smallTag)
+        SecondDiv.appendChild(strongTag)
+        SecondDiv.appendChild(lineTag)
+        SecondDiv.appendChild(secondsmallTag)
+        divElement.appendChild(SecondDiv)
+        listElement.appendChild(divElement)
+        notificationsElement.appendChild(listElement)
+        var divider = document.createElement('li')
+        divider.classList.add('divider')
+        notificationsElement.appendChild(divider)
+    }
 
 
 </script>
