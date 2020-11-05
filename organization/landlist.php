@@ -195,25 +195,20 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                                             </p>
 
                                                                             <iframe src="map.php" frameborder="0" width="100%"></iframe>
-                                                                            <input type="button" value="select" onclick="sel()">
+                                                                            <input type="button" value="select" class="sel">
 
 
                                                                             <p>
                                                                                 <label for="lat">Latitude</label>
-                                                                                <input type="text" name="lat" value="<?php echo ($result->lat); ?>" id="lat">
+                                                                                <input type="text" name="lat" value="<?php echo ($result->lat); ?>" class="lat">
                                                                             </p>
 
 
                                                                             <p>
                                                                                 <label for="lng">Longitude</label>
-                                                                                <input type="text" name="lng" value="<?php echo ($result->lng); ?>" id="lng">
+                                                                                <input type="text" name="lng" value="<?php echo ($result->lng); ?>" class="lng">
                                                                             </p>
-                                                                            <script>
-                                                                                function sel() {
-                                                                                    document.getElementById("lat").value = localStorage.getItem("lat");
-                                                                                    document.getElementById("lng").value = localStorage.getItem("lng");
-                                                                                }
-                                                                            </script>
+                                                                            
                                                                             <p>
                                                                                 <button type="submit" name="edit" id="submit" value="<?php echo ($result->id); ?>">
                                                                                     Submit
@@ -276,24 +271,25 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 </p>
 
                                                 <iframe src="map.php" frameborder="0" width="100%"></iframe>
-                                                <input type="button" value="select" onclick="sel()">
+                                                <input type="button" value="select" class="sel">
 
 
                                                 <p>
                                                     <label for="lat">Latitude</label>
-                                                    <input type="text" name="lat" value="" id="lat">
+                                                    <input type="text" name="lat" value="" class="lat">
                                                 </p>
 
 
                                                 <p>
                                                     <label for="lng">Longitude</label>
-                                                    <input type="text" name="lng" value="" id="lng">
+                                                    <input type="text" name="lng" value="" class="lng">
                                                 </p>
                                                 <script>
-                                                    function sel() {
-                                                        document.getElementById("lat").value = localStorage.getItem("lat");
-                                                        document.getElementById("lng").value = localStorage.getItem("lng");
-                                                    }
+                                                    $('.sel').click(function() {
+                                                        alert('It is working')
+                                                        $('.lat').val(localStorage.getItem('lat'))
+                                                        $('.lng').val(localStorage.getItem('lng'))
+                                                    })
                                                 </script>
                                                 <p>
                                                     <button type="submit" name="submit" id="submit">
