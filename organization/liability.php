@@ -36,7 +36,7 @@
                             
                 </div>
                 <div class="row  border-bottom white-bg dashboard-header">
-                <div class="panel-heading"><h2 class="page-title">TANGIBLE ASSETS</h2></div>
+                <div class="panel-heading"><h2 class="page-title">LIABILITIES</h2></div>
 				</div>
             <div class="row">
                        

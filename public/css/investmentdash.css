@@ -391,7 +391,9 @@ h1,h2,h3,h4,h5,h6{color:#fff;}
 @media(max-width:965px){
     .group{grid-template-columns:1fr;}
     .farm-details{margin:3rem 0 0 0;}
-    .items,.group{flex-direction:column;justify-content:center;}
+    .items,.group{flex-direction:column;justify-content:center;align-items:center;}
+    .item{margin:0;margin-bottom: 1rem;}
+    .item:first-of-type{margin-left:0 !important; }
 }
 
 @media(max-width:600px){

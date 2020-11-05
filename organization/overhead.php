@@ -95,7 +95,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                         </metadata>
                                                     </svg>
                                                     <div class="stat-panel-number h1 "></div>
-                                                    <div class="stat-panel-title text-uppercase">Mainteanance</div>
+                                                    <div class="stat-panel-title text-uppercase">Maintenance</div>
                                                 </div>
                                             </div>
                                             <a href="maintenancelist.php" class="block-anchor panel-footer text-center">Full Detail <i class="fa fa-arrow-right"></i></a>

@@ -51,7 +51,7 @@
 
 .table-cover,.employee_table{background:#fff;}
 .employee_table{
-    overflow-x:scroll;
+    overflow-x:auto;
     position: relative;
 }
 
@@ -87,7 +87,7 @@
 @media(max-width:1195px){
     .page-title{font-size: 20px;padding-top:1rem;}
 }
-#zctb{overflow-x:scroll;}
+#zctb{overflow-x:auto;}
 #zctb_wrapper{
     border-radius: 5px;
 }

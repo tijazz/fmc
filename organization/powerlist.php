@@ -88,6 +88,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                 </div>
                 <div class="row  white-bg dashboard-header">
+                    <h1>Light and Power</h1>
                 </div>
                 <div class="row">
 

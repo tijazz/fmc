@@ -96,7 +96,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                 </div>
                 <div class="row  border-bottom white-bg dashboard-header">
                     <div class="panel-heading">
-                        <h4>Maintenance</h4>
+                        <h4>Weather</h4>
                     </div>
                     <?php if ($error) { ?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
 

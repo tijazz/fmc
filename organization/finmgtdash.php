@@ -130,7 +130,8 @@ else{
                         <div class="col-lg-3 col-md-12 col-sm-12 right-details fluid">
                             <!-- Payment History chart -->
                             <div class="summary payment-history">
-                                <canvas id="paymentBarChart" height="300" width="300">
+                                <!-- <canvas id="paymentBarChart" height="300" width="300">
+                                    </canvas> -->
                             </div>
                             <!-- end chart -->
 

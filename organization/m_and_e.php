@@ -67,62 +67,64 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         <div class="average average_1">
                                             <h5 class="me_title">
                                                 <img src='public/images/icons8-futures-50.png' />
-                                                <span>Average Yield</span>
+                                                <span>Pens</span>
                                             </h5>
-                                            <div class="value">&#8358;45,000.00</div>
+                                            <div class="value">350</div>
                                         </div>
                                         <div class="average average_2">
                                             <h5 class='me_title'>
                                                 <img src="public/images/icons8-accounting-50.png" alt="">
                                                 <span>
-                                                    ROI
+                                                    Fields
                                                 </span>
                                             </h5>
-                                            <div class="value">450%</div>
+                                            <div class="value">450</div>
                                         </div>
                                         <div class="average average_3">
                                             <h5 class='me_title'>
                                                 <img src="public/images/icons8-coin-in-hand-50.png" alt="">
-                                                <span>Equity</span>
+                                                <span>All Employees</span>
                                             </h5>
                                             <div class="value">
-                                                2.5X
+                                                50
                                             </div>
                                         </div>
                                         <div class="portfolio">
                                             <h5 class='me_title'>
-                                                <span>Portfolio</span>
+                                                <span>Facilities</span>
                                             </h5>
                                             <div class="cirle_container">
                                                 <div class="circle">
                                                     <h2>400
                                                         <span>
-                                                            ROI
+                                                            Facilities
                                                         </span></h2>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="current_value">
                                             <h5 class='me_title'>
-                                                <span>Current Value</span>
+                                                <span>Schedules</span>
                                             </h5>
                                             <div class="cirle_container">
                                                 <div class="circle">
                                                     <h2>
-                                                        &#8358;20,000
+                                                        40
+                                                        <span>unattented tasks</span>
                                                     </h2>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="total_earnings">
                                             <h5 class='me_title'>
-                                                <span>Total Earnings</span>
+                                                <span>Weather</span>
                                             </h5>
                                             <div class="cirle_container">
                                                 <div class="circle">
                                                     <h2>
-                                                        450
-                                                        <span>ROI</span>
+                                                        40
+                                                        <sup>o</sup>
+                                                        <span>Celcius</span>
                                                     </h2>
                                                 </div>
                                             </div>
@@ -132,11 +134,11 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         <div class="rental_yields">
                                             <h5 class='me_title'>
                                                 <img src="public/images/icons8-neutral-trading-50.png" alt="">
-                                                <span>Total Earnings</span>
+                                                <span>Total Workers</span>
                                             </h5>
-                                            <h1>&#8358;20,000.00</h1>
+                                            <h1>20</h1>
                                         </div>
-                                        <div class="invested_locations">
+                                        <!-- <div class="invested_locations">
                                             <h5 class='me_title'>
                                                 <img src="public/images/icons8-pos-terminal-50.png" alt="">
                                                 <span>Recent Investments</span>
@@ -164,7 +166,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <span class="perc">35%</span>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                 </div>

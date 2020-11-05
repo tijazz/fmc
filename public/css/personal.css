@@ -268,7 +268,8 @@ ul{padding:0;list-style:none;}
   overflow-x:hidden;
 }
 
-.sidebar-collapse::-webkit-scrollbar-thumb{
+.sidebar-collapse::-webkit-scrollbar-thumb,
+.grid2-evaluation::-webkit-scrollbar-thumb{
   background:#1ab394;
   width:5px;
   height:40px;
@@ -279,12 +280,15 @@ ul{padding:0;list-style:none;}
 
 
 
-.sidebar-collapse::-webkit-scrollbar{
+.sidebar-collapse::-webkit-scrollbar,
+.grid2-evaluation::-webkit-scrollbar{
   width:8px;
   /* background:#1ab394; */
 }
 
-.sidebar-collapse::-webkit-scrollbar-thumb:hover{
+.sidebar-collapse::-webkit-scrollbar-thumb:hover,
+.grid2-evaluation::-webkit-scrollbar-thumb:hover
+{
   background:#1ee2bb;
 }
 

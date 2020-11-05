@@ -116,7 +116,7 @@ require_once "public/config/header.php";
             </div>
             <div class="row dashboard-header">
                 <div class="panel-heading">
-                    <h2 class="page-title">Manage Employee</h2>
+                    <h2 class="page-title">Employee Appraisal</h2>
                 </div>
             </div>
             <div class="row">
