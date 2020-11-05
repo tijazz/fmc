@@ -126,7 +126,7 @@ include('includes/config.php');
         function saveData(lat, lng) {
             localStorage.setItem("lat", lat)
             localStorage.setItem("lng", lng)
-            alert("It is working")
+            alert("It is working"+ lat + "    " + lng)
             document.getElementById("sta").innerHTML = "Selected"
         }
 
