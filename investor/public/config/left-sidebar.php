@@ -51,7 +51,7 @@
             </li>
 
             <li>
-                <a href="na.php">
+                <a href="investee.php">
                     <i class="fa fa-star"></i>
                     <span class="nav-label">Investee</span>
                 </a>
