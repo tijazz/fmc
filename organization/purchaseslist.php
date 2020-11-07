@@ -120,7 +120,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <th>Description</th>
                                             <th>Price per Unit</th>
                                             <th>Quantity of item</th>
-                                            <th>Amount</th>
+                                            <th>Total Amount</th>
                                             <th>Date</th>
                                             <th>Action</th>
                                         </tr>
@@ -179,22 +179,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                                             </p>
 
                                                                             <p>
-                                                                                <label for="amount">Cost</label>
+                                                                                <label for="amount">Total Amount</label>
                                                                                 <input type="text" name="amount" value="<?php echo $result->amount ?>" id="amount">
                                                                             </p>
-
-                                                                            <script>
-                                                                                $("#amount").click(function() {
-                                                                                    var amt = $('#ppunit').val();
-
-                                                                                    var qua = $('#qitem').val();
-
-                                                                                    var amount = parseInt(amt) * parseInt(qua);
-
-                                                                                    $("#amount").val(amount);
-                                                                                });
-                                                                            </script>
-
 
                                                                             <p>
                                                                                 <button type="submit" name="edit" value="<?php echo $result->id ?>">
@@ -260,19 +247,6 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <input type="text" name="amount" value="0" id="amount">
                                                 </p>
 
-                                                <script>
-                                                    $("#amount").click(function() {
-                                                        var amt = $('#ppunit').val();
-
-                                                        var qua = $('#qitem').val();
-
-                                                        var amount = parseInt(amt) * parseInt(qua);
-
-                                                        $("#amount").val(amount);
-                                                    });
-                                                </script>
-
-
                                                 <p>
                                                     <button type="submit" name="submit">
                                                         Submit
@@ -295,14 +269,6 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                         </div>
 
-                        <!---
-                <div class="col-lg-4">
-                        <?php
-                        //    require_once "public/config/right-sidebar.php";
-                        ?>
-
-                            </div>
-                                                    -->
                     </div>
 
 
@@ -322,6 +288,18 @@ if (strlen($_SESSION['alogin']) == 0) {
         <?php
         require_once "public/config/footer.php";
         ?>
+
+        <script>
+            $("#amount").click(function() {
+                var amt = $('#ppunit').val();
+
+                var qua = $('#qitem').val();
+
+                var amount = parseInt(amt) * parseInt(qua);
+
+                $("#amount").val(amount);
+            });
+        </script>
 
     </body>
 
