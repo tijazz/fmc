@@ -21,4 +21,3 @@ btn.addEventListener('click',() => {
     overlapHeader.classList.toggle('column-flexed');
 })
 
-console.log('hey');
