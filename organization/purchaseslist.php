@@ -159,7 +159,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                                     </div>
                                                                     <div class="modal-body">
 
-                                                                        <form action="purchaseedit.php" method="POST" class="forma">
+                                                                        <form action="purchaseslist.php" method="POST" class="forma">
 
                                                                             <p>
                                                                                 <label for="full_name">Name of Item</label>
@@ -223,7 +223,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <h4 class="modal-title">Add New Product</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="purchases.php" method="POST" class="forma">
+                                            <form action="purchaseslist.php" method="POST" class="forma">
 
                                                 <p>
                                                     <label for="full_name">Name of Item</label>
