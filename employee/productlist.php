@@ -20,6 +20,39 @@ if (strlen($_SESSION['alogin']) == 0) {
     }
 
 
+    if (isset($_POST['submit'])) {
+        $name = $_POST['name'];
+        $amount = $_POST['amount'];
+        $user_id = $_SESSION['user_id'];
+        $org_id = $_SESSION['org_id'];
+
+        $sql = "INSERT INTO `product`(`org_id`, `user_id`, `name`, `amount`)
+	VALUES (:org_id, :user_id, :name, :amount)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':amount', $amount, PDO::PARAM_STR);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
+        $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Product Updated Successfully";
+    }
+
+    if (isset($_POST['edit'])) {
+        $id = $_POST['edit'];
+        $name = $_POST['name'];
+        $amount = $_POST['amount'];
+
+
+        $sql = "UPDATE `product` SET `name`=(:name), `amount`=(:amount) WHERE id=(:id)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':amount', $amount, PDO::PARAM_STR);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Product Updated Successfully";
+
+        header('location:productlist.php');
+    }
 
 ?>
 
@@ -99,13 +132,51 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                     <!-- Action Button Start -->
                                                     <td>
-                                                        <a data-toggle="modal" href="productedit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <a data-toggle="modal" href="#edit<?= $cnt ?>" data-toggle="modal" data-target="#edit<?= $cnt ?>">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                                        <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog model-sm">
-                                                                <div class="modal-content"> </div>
+
+                                                        <div class="modal fade" id="edit<?= $cnt ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" style="height:auto">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">×</span></button>
+                                                                        <h4 class="modal-title">Add Detail</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form action="productlist.php" method="POST" class="forma">
+
+
+                                                                            <p>
+                                                                                <label for="name">Product Name</label>
+                                                                                <input type="text" name="name" value="<?php echo $result->name ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="amount">Amount</label>
+                                                                                <input type="text" name="amount" value="<?php echo $result->amount ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <button type="submit" name="edit" value="<?php echo ($result->id); ?>">
+                                                                                    Submit
+                                                                                </button>
+                                                                            </p>
+
+
+                                                                        </form>
+
+                                                                    </div>
+                                                                    <div class="modal-footer">
+
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </div>
+
+                                                                </div>
+
                                                             </div>
                                                         </div>
+                                                        <!--end of modal-dialog-->
 
                                                         <a href="productlist.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                                     </td>
@@ -129,7 +200,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <h4 class="modal-title">Add New Warehouse</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="productform.php" method="POST" class="forma">
+                                            <form action="productlist.php" method="POST" class="forma">
 
                                                 <p>
                                                     <label for="name">Product Name</label>

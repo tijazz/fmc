@@ -59,6 +59,29 @@ if (strlen($_SESSION['alogin']) == 0) {
 
         header('location:employeeappraisal.php');
     }
+
+    if (isset($_POST['edit'])) {
+        $idedit = $_POST['edit'];
+        $empwor_id = $_POST['empwor_id'];
+        $manager = $_POST['manager'];
+        $resp = $_POST['resp'];
+        $manager_rating = $_POST['manager_rating'];
+        $date = $_POST['date'];
+
+
+        $sql = "UPDATE appraisal SET empwor_id=(:empwor_id), manager=(:manager), resp=(:resp), manager_rating=(:manager_rating), date=(:date) WHERE id=(:idedit)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':empwor_id', $empwor_id, PDO::PARAM_STR);
+        $query->bindParam(':manager', $manager, PDO::PARAM_STR);
+        $query->bindParam(':resp', $resp, PDO::PARAM_STR);
+        $query->bindParam(':manager_rating', $manager_rating, PDO::PARAM_STR);
+        $query->bindParam(':date', $date, PDO::PARAM_STR);
+        $query->bindParam(':idedit', $idedit, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Information Updated Successfully";
+
+        header('location:employeeappraisal.php');
+    }
 }
 
 ?>
@@ -93,7 +116,7 @@ require_once "public/config/header.php";
             </div>
             <div class="row dashboard-header">
                 <div class="panel-heading">
-                    <h2 class="page-title">Manage Employee</h2>
+                    <h2 class="page-title">Employee Appraisal</h2>
                 </div>
             </div>
             <div class="row">
@@ -175,13 +198,103 @@ require_once "public/config/header.php";
 
                                                 <!-- Action Button Start -->
                                                 <td>
-                                                    <a data-toggle="modal" href="employeeappedit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                    <a data-toggle="modal" href="#edit<?= $cnt ?>" data-toggle="modal" data-target="#edit<?= $cnt ?>">&nbsp;
                                                         <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                                    <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog model-sm">
-                                                            <div class="modal-content"> </div>
+
+                                                    <div class="modal fade" id="edit<?= $cnt ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content" style="height:auto">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">×</span></button>
+                                                                    <h4 class="modal-title">Add Detail</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form action="employeeappraisal.php" method="POST" class="forma" enctype="multipart/form-data" onSubmit="return validate()">
+                                                                        <?php
+                                                                        $sql = "SELECT * FROM `appraisal` WHERE id = :id";
+                                                                        $query = $dbh->prepare($sql);
+                                                                        $query->bindValue(":id", $id, PDO::PARAM_STR);
+                                                                        $query->execute();
+                                                                        $results = $query->fetch(PDO::FETCH_OBJ);
+                                                                        ?>
+
+                                                                        <p>
+                                                                            <label for="date">Date</label>
+                                                                            <input type="date" name="date" value="<?php echo $results->date ?>">
+                                                                        </p>
+
+                                                                        <p>
+                                                                            <label for="empwor_id">Name</label>
+                                                                            <select name="empwor_id" id="">
+                                                                                <?php
+                                                                                $s = "SELECT * FROM `employee` WHERE org_id = :org_id";
+                                                                                $q = $dbh->prepare($s);
+                                                                                $q->bindValue(":org_id", $_SESSION['id'], PDO::PARAM_STR);
+                                                                                $q->execute();
+                                                                                $rs = $q->fetchAll(PDO::FETCH_OBJ);
+                                                                                $cnt = 1;
+                                                                                if ($q->rowCount() > 0) {
+                                                                                    foreach ($rs as $r) { ?>
+                                                                                        <option value="<?php echo $r->id ?>" <?= ($results->empwor_id == $r->id) ? "SELECTED" : "" ?>><?php echo $r->name ?></option>
+                                                                                <?php  }
+                                                                                } ?>
+
+                                                                            </select>
+                                                                        </p>
+
+                                                                        <p>
+                                                                            <label for="manager">Manager</label>
+                                                                            <select name="manager" id="">
+                                                                                <?php
+                                                                                $s = "SELECT * FROM `employee` WHERE org_id = :org_id";
+                                                                                $q = $dbh->prepare($s);
+                                                                                $q->bindValue(":org_id", $_SESSION['org_id'], PDO::PARAM_STR);
+                                                                                $q->execute();
+                                                                                $rs = $q->fetchAll(PDO::FETCH_OBJ);
+                                                                                $cnt = 1;
+                                                                                if ($q->rowCount() > 0) {
+                                                                                    foreach ($rs as $r) { ?>
+                                                                                        <option value="<?php echo $r->id ?>" <?= ($results->manager == $r->id) ? "SELECTED" : "" ?>><?php echo $r->name ?></option>
+                                                                                <?php  }
+                                                                                } ?>
+
+                                                                            </select>
+                                                                        </p>
+
+
+                                                                        <p>
+                                                                            <label for="resp">Responsibilities</label>
+                                                                            <textarea name="resp" id="resp" cols="30" rows="10"><?php echo $results->resp ?></textarea>
+
+
+                                                                        </p>
+
+                                                                        <p>
+                                                                            <label for="manager_rating">Manager's Rating</label>
+                                                                            <input type="range" name="manager_rating" min="1" max="5" value="<?php echo $results->manager_rating ?>">
+
+
+                                                                        </p>
+
+                                                                        <p>
+                                                                            <button type="submit" name="edit" value="<?php echo $results->id ?>">
+                                                                                Submit
+                                                                            </button>
+                                                                        </p>
+
+                                                                    </form>
+                                                                </div>
+                                                                <div class="modal-footer">
+
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                </div>
+
+                                                            </div>
+
                                                         </div>
                                                     </div>
+                                                    <!--end of modal-dialog-->
 
                                                     <a href="employeeappraisal.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                                 </td>
@@ -296,7 +409,7 @@ require_once "public/config/header.php";
                     </div>
 
                 </div>
-                
+
             </div>
 
         </div>

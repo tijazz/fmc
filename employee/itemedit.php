@@ -32,33 +32,33 @@
 
 <?php
 if (isset($_POST['edit'])) {
-    $sn=$_POST['edit'];
+    $id=$_POST['edit'];
     $name=$_POST['name'];
     $description = $_POST['description'];
     $serial_no = $_POST['snum'];
     $manufacturer = $_POST['manufacturer'];
     $category = $_POST['category'];
     
-    $sql = "UPDATE `machinery` SET `name`=(:name), `description`=(:description), `serial_no`=(:serial_no), `manufacturer`=(:manufacturer), `category`=(:category) WHERE sn=(:sn)";
+    $sql = "UPDATE `machinery` SET `name`=(:name), `description`=(:description), `serial_no`=(:serial_no), `manufacturer`=(:manufacturer), `category`=(:category) WHERE id=(:id)";
     $query = $dbh->prepare($sql);
     $query-> bindParam(':name', $name, PDO::PARAM_STR);
     $query-> bindParam(':description', $description, PDO::PARAM_STR);
     $query-> bindParam(':serial_no', $serial_no, PDO::PARAM_STR);
     $query-> bindParam(':manufacturer', $manufacturer, PDO::PARAM_STR);
     $query-> bindParam(':category', $category, PDO::PARAM_STR);
-    $query-> bindValue(':sn', $sn, PDO::PARAM_STR);
+    $query-> bindValue(':id', $id, PDO::PARAM_STR);
     $query->execute(); 
     $msg="Rent Updated Successfully";
     
     header('location:machinerylist.php');
 }
 elseif (isset($_GET['s'])) {
-    $sn=$_GET['s'];
+    $id=$_GET['s'];
     
 
-    $sql = "SELECT * from `machinery` WHERE sn=(:idedit)";
+    $sql = "SELECT * from `machinery` WHERE id=(:idedit)";
     $query = $dbh->prepare($sql);
-    $query-> bindValue(':idedit', $sn, PDO::PARAM_STR);
+    $query-> bindValue(':idedit', $id, PDO::PARAM_STR);
     $query->execute();
     $results=$query->fetch(PDO::FETCH_OBJ);
     
@@ -108,7 +108,7 @@ elseif (isset($_GET['s'])) {
     </p>
 
     <p>
-        <button type="submit" name="edit" value="<?php echo ($results->sn);?>">
+        <button type="submit" name="edit" value="<?php echo ($results->id);?>">
             Submit
         </button>
     </p>

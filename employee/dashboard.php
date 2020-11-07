@@ -261,51 +261,61 @@ else{
             require_once "public/config/footer.php";
             ?>
 
-    </body>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
 
-        var chart = new Chart(ctx, {
-            // The type of chart we want to create
-            type: 'doughnut',
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'doughnut',
 
-            // The data for our dataset
-            data: {
-                labels: ['Losses', 'Savings'],
-                datasets: [{
-                    label: 'Financial Management',
-                    backgroundColor: ['rgb(195, 34, 69)', '#2ff5dc'],
-                    borderColor: ['rgb(228, 29, 72)', '#1b6859'],
-                    data: [25000, 45000]
-                }]
-            },
+    // The data for our dataset
+    data: {
+        labels: ['Losses', 'Savings'],
+        datasets: [{
+            label: 'Financial Management',
+            backgroundColor: ['rgb(195, 34, 69)', '#2ff5dc'],
+            borderColor: ['rgb(228, 29, 72)', '#1b6859'],
+            data: [25000, 45000]
+        }]
+    },
 
-            // Configuration options go here
-            options: {
-                animation: {
-                    animateScale: false,
-                    duration: 3000,
-                    easing: 'linear'
-                },
+    // Configuration options go here
+    options: {
+        animation: {
+            animateScale: false,
+            duration: 3000,
+            easing: 'linear'
+        },
 
-            }
-        });
-    </script>
-    <style>
-        th.sorting::after {
-            height: 3px;
-            width: 5px;
-            background: red !important;
-        }
-        @media(max-width:600px){
-            .grouped{
-                grid-column:1/3;
-            }
-        }
-    </style>
-    <!-- Mirrored from webapplayers.com/inspinia_admin-v2.6.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Sep 2016 02:26:53 GMT -->
+    }
+});
+</script>
+<style>
+th.sorting::after {
+    height: 3px;
+    width: 5px;
+    background: red !important;
+}
+</style>
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.6.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Sep 2016 02:26:53 GMT -->
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            toastr.options = {
+                closeButton: true,
+                progressBar: true,
+                showMethod: 'slideDown',
+                timeOut: 4000
+            };
+            toastr.success('Your Number 1 farm management company.', 'Welcome to DUFMA');
+            
+        }, 1300);
+        
 
-    </html>
+    });
+</script>
+</html>
 
 <?php } ?>

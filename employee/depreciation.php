@@ -35,7 +35,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                 </div>
                 <div class="row  dashboard-header">
                     <div class="panel-heading">
-                        <h2 class="page-title">Overhead</h2>
+                        <h2 class="page-title">Depreciation</h2>
                     </div>
                 </div>
                 <div class="row">

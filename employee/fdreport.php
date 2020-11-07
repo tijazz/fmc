@@ -21,11 +21,6 @@ if (strlen($_SESSION['alogin']) == 0) {
     require_once "public/config/header.php";
     ?>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
 
     <body>
 
@@ -50,130 +45,130 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                         <!-- Zero Configuration Table -->
 
-                        <div class="bs-example">
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item">
-                                    <a href="#field" class="nav-link active" data-toggle="tab">Field</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#pen" class="nav-link" data-toggle="tab">Pen</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#facility" class="nav-link" data-toggle="tab">Facility</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane fade show active" id="field" style="width:content-width;">
-                                    <div class="panel panel-default" style="background:#b3f3e677;border-radius:5px;box-shadow:1px 1px 4px 2px rgba(110, 104, 104, 0.335);">
-                                        <div class="panel-heading">View Panel</div>
-                                        <div class="panel-body">
-                                            <?php if ($error) { ?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
+                        <div class="container-fluid" style="margin-top: 10px;">
+                            <div class="bs-example">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <a href="#field" class="nav-link" id="field-tab" data-toggle="tab" role="tab" aria-controls="field" aria-selected="true">Field</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a href="#pen" class="nav-link" id="pen-tab" data-toggle="tab" role="tab" aria-controls="pen" aria-selected="false">Pen</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a href="#facility" class="nav-link" id="facility-tab" data-toggle="tab" role="tab" aria-controls="facility" aria-selected="false">Facility</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade active" id="field" role="tabpanel" aria-labelledby="field-tab">
+                                        <div class="panel panel-default" style="background:#b3f3e677;border-radius:5px;box-shadow:1px 1px 4px 2px rgba(110, 104, 104, 0.335);">
+                                            <div class="panel-heading">Field Panel</div>
+                                            <div class="panel-body">
 
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="panel panel-default">
-                                                        <div class="panel-body bk-primary text-light">
-                                                            <div class="stat-panel text-center">
-                                                                <div class="stat-panel-number h1 ">Weekly</div>
-                                                                <div class="stat-panel-title text-uppercase">Report</div>
-                                                            </div>
-                                                        </div>
-                                                        <a href="fieldweeklyreport.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="panel panel-default">
-                                                        <div class="panel-body bk-success text-light">
-                                                            <div class="stat-panel text-center">
-                                                                <div class="stat-panel-number h1 ">Monthly</div>
-                                                                <div class="stat-panel-title text-uppercase">Report</div>
-                                                            </div>
-                                                        </div>
-                                                        <a href="fieldmonthlyreport.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
-                                                    </div>
-                                                </div>
 
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-body bg-success text-light">
+                                                                <div class="stat-panel text-center">
+                                                                    <div class="stat-panel-number h1 ">Weekly</div>
+                                                                    <div class="stat-panel-title text-uppercase">Report</div>
+                                                                </div>
+                                                            </div>
+                                                            <a href="fieldweeklyreport.php" class="block-anchor btn-info panel-footer text-center">Full Detail <i class="fa fa-arrow-right"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-body bg-success text-light">
+                                                                <div class="stat-panel text-center">
+                                                                    <div class="stat-panel-number h1 ">Monthly</div>
+                                                                    <div class="stat-panel-title text-uppercase">Report</div>
+                                                                </div>
+                                                            </div>
+                                                            <a href="fieldmonthlyreport.php" class="block-anchor btn-default panel-footer text-center text-light">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
 
                                             </div>
-
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="tab-pane fade show active" id="pen" style="width:content-width;">
-                                    <div class="panel panel-default" style="background:#b3f3e677;border-radius:5px;box-shadow:1px 1px 4px 2px rgba(110, 104, 104, 0.335);">
-                                        <div class="panel-heading">View Panel</div>
-                                        <div class="panel-body">
-                                            <?php if ($error) { ?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
+                                    <div class="tab-pane fade" id="pen" role="tabpanel" aria-labelledby="pen-tab">
+                                        <div class="panel panel-default" style="background:#b3f3e677;border-radius:5px;box-shadow:1px 1px 4px 2px rgba(110, 104, 104, 0.335);">
+                                            <div class="panel-heading">Pen Panel</div>
+                                            <div class="panel-body">
+                                                <?php if ($error) { ?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
 
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="panel panel-default">
-                                                        <div class="panel-body bk-primary text-light">
-                                                            <div class="stat-panel text-center">
-                                                                <div class="stat-panel-number h1 ">Weekly</div>
-                                                                <div class="stat-panel-title text-uppercase">Report</div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-body bg-success text-light">
+                                                                <div class="stat-panel text-center">
+                                                                    <div class="stat-panel-number h1 ">Weekly</div>
+                                                                    <div class="stat-panel-title text-uppercase">Report</div>
+                                                                </div>
                                                             </div>
+                                                            <a href="penweeklyreport.php" class="block-anchor btn-info panel-footer text-center">Full Detail <i class="fa fa-arrow-right"></i></a>
                                                         </div>
-                                                        <a href="penweeklyreport.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="panel panel-default">
-                                                        <div class="panel-body bk-success text-light">
-                                                            <div class="stat-panel text-center">
-                                                                <div class="stat-panel-number h1 ">Monthly</div>
-                                                                <div class="stat-panel-title text-uppercase">Report</div>
+                                                    <div class="col-md-3">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-body bg-success text-light">
+                                                                <div class="stat-panel text-center">
+                                                                    <div class="stat-panel-number h1 ">Monthly</div>
+                                                                    <div class="stat-panel-title text-uppercase">Report</div>
+                                                                </div>
                                                             </div>
+                                                            <a href="penmonthlyreport.php" class="block-anchor btn-default panel-footer text-center text-light">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
                                                         </div>
-                                                        <a href="penmonthlyreport.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
                                                     </div>
-                                                </div>
 
+
+                                                </div>
 
                                             </div>
-
                                         </div>
                                     </div>
-                                </div>
 
+                                    <div class="tab-pane fade" id="facility" role="tabpanel" aria-labelledby="facility-tab">
+                                        <div class="panel panel-default" style="background:#b3f3e677;border-radius:5px;box-shadow:1px 1px 4px 2px rgba(110, 104, 104, 0.335);">
+                                            <div class="panel-heading">Facility Panel</div>
+                                            <div class="panel-body">
+                                                <?php if ($error) { ?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
 
-
-                                <div class="tab-pane fade show active" id="facility" style="width:content-width;">
-                                    <div class="panel panel-default" style="background:#b3f3e677;border-radius:5px;box-shadow:1px 1px 4px 2px rgba(110, 104, 104, 0.335);">
-                                        <div class="panel-heading">View Panel</div>
-                                        <div class="panel-body">
-                                            <?php if ($error) { ?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
-
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="panel panel-default">
-                                                        <div class="panel-body bk-primary text-light">
-                                                            <div class="stat-panel text-center">
-                                                                <div class="stat-panel-number h1 ">Weekly</div>
-                                                                <div class="stat-panel-title text-uppercase">Report</div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-body bg-success text-light">
+                                                                <div class="stat-panel text-center">
+                                                                    <div class="stat-panel-number h1 ">Weekly</div>
+                                                                    <div class="stat-panel-title text-uppercase">Report</div>
+                                                                </div>
                                                             </div>
+                                                            <a href="facilityweeklyreport.php" class="block-anchor btn-info panel-footer text-center">Full Detail <i class="fa fa-arrow-right"></i></a>
                                                         </div>
-                                                        <a href="facilityweeklyreport.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-body bg-success text-light">
+                                                                <div class="stat-panel text-center">
+                                                                    <div class="stat-panel-number h1 ">Monthly</div>
+                                                                    <div class="stat-panel-title text-uppercase">Report</div>
+                                                                </div>
+                                                            </div>
+                                                            <a href="facilitymonthlyreport.php" class="block-anchor btn-default panel-footer text-center text-light">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <div class="panel panel-default">
-                                                        <div class="panel-body bk-success text-light">
-                                                            <div class="stat-panel text-center">
-                                                                <div class="stat-panel-number h1 ">Monthly</div>
-                                                                <div class="stat-panel-title text-uppercase">Report</div>
-                                                            </div>
-                                                        </div>
-                                                        <a href="facilitymonthlyreport.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
-                                                    </div>
-                                                </div>
+
                                             </div>
-
                                         </div>
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
                         </div>
 

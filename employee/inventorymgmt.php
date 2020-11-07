@@ -56,6 +56,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="public/css/inventorymgmt.css">
 
 <?php
     require_once "public/config/header.php";
@@ -63,7 +64,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 <body>
 
-    <div id="wrapper inventory_duf">
+    <div id="wrapper">
         <?php
             require_once "public/config/left-sidebar.php";
             ?>
@@ -102,19 +103,19 @@ if (strlen($_SESSION['alogin']) == 0) {
                     <div class="items">
                         <div class="item item1">
                             <h1>30</h1>
-                            <span>Pens of Chicken</span>
+                            <span>Machinery</span>
                         </div>
                         <div class="item item1">
                             <h1>45</h1>
-                            <span>Bags of Grains</span>
+                            <span>Buildings</span>
                         </div>
                         <div class="item item1">
                             <h1>89</h1>
-                            <span>Cows</span>
+                            <span>Lands/Fields</span>
                         </div>
                         <div class="item item1">
                             <h1>40</h1>
-                            <span>Tractors</span>
+                            <span>Vehicles</span>
                         </div>
                     </div>
                     <div class="wrapper">

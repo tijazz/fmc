@@ -19,8 +19,49 @@ if (strlen($_SESSION['alogin']) == 0) {
         $msg = "Data Deleted successfully";
         header('location:slmlist.php');
     }
+    if (isset($_POST['edit'])) {
+        $id = $_POST['edit'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $ppunit = $_POST['ppunit'];
+        $qitem = $_POST['qitem'];
+        $amount = $_POST['amount'];
 
+        $sql = "UPDATE `slm` SET `name`=(:name), `description`=(:description), `ppunit`=(:ppunit), `qitem`=(:qitem), `amount`=(:amount) WHERE id=(:id)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindParam(':description', $description, PDO::PARAM_STR);
+        $query->bindParam(':ppunit', $ppunit, PDO::PARAM_STR);
+        $query->bindParam(':qitem', $qitem, PDO::PARAM_STR);
+        $query->bindParam(':amount', $amount, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "slm Updated Successfully";
 
+        header('location:slmlist.php');
+    }
+    if (isset($_POST['submit'])) {
+        $user_id = $_SESSION['user_id'];
+        $org_id = $_SESSION['org_id'];
+        $asset_id = $_POST['asset_id'];
+        $asset_type = $_POST['asset_type'];
+        $asset_life = $_POST['asset_life'];
+        $ope_cost = $_POST['ope_cost'];
+        $salvage = $_POST['salvage'];
+
+        $sql = "INSERT INTO slm (user_id, org_id, asset_id, asset_type, asset_life, ope_cost, salvage) VALUES (:user_id, :org_id, :asset_id, :asset_type, :asset_life,  :ope_cost, :salvage)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+        $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
+        $query->bindParam(':asset_id', $asset_id, PDO::PARAM_STR);
+        $query->bindParam(':asset_type', $asset_type, PDO::PARAM_STR);
+        $query->bindParam(':asset_life', $asset_life, PDO::PARAM_STR);
+        $query->bindParam(':ope_cost', $ope_cost, PDO::PARAM_STR);
+        $query->bindParam(':salvage', $salvage, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "slm Updated Successfully";
+        header('location:slmlist.php');
+    }
 
 ?>
 
@@ -132,30 +173,30 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                 switch ($result->asset_type) {
                                                     case 'machinery':
-                                                        $s = "SELECT * from machinery WHERE sn = :sn";
+                                                        $s = "SELECT * from machinery WHERE id = :id";
                                                         break;
                                                     case 'building':
-                                                        $s = "SELECT * from building WHERE sn = :sn";
+                                                        $s = "SELECT * from building WHERE id = :id";
                                                         break;
                                                     case 'vehicle':
-                                                        $s = "SELECT * from vehicle WHERE sn = :sn";
+                                                        $s = "SELECT * from vehicle WHERE id = :id";
                                                         break;
                                                     case 'other_asset':
-                                                        $s = "SELECT * from other_asset WHERE sn = :sn";
+                                                        $s = "SELECT * from other_asset WHERE id = :id";
                                                         break;
                                                     case 'administration':
-                                                        $s = "SELECT * from administration WHERE sn = :sn";
+                                                        $s = "SELECT * from administration WHERE id = :id";
                                                         break;
                                                     case 'operation':
-                                                        $s = "SELECT * from operation WHERE sn = :sn";
+                                                        $s = "SELECT * from operation WHERE id = :id";
                                                         break;
                                                     case 'locations':
-                                                        $s = "SELECT * from locations WHERE id = :sn";
+                                                        $s = "SELECT * from locations WHERE id = :id";
                                                         break;
                                                 }
 
                                                 $q = $dbh->prepare($s);
-                                                $q->bindParam(':sn', $result->asset_id, PDO::PARAM_STR);
+                                                $q->bindParam(':id', $result->asset_id, PDO::PARAM_STR);
                                                 $q->execute();
                                                 $r = $q->fetch(PDO::FETCH_OBJ);
 
@@ -167,7 +208,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <td><?php echo htmlentities($result->asset_type); ?></td>
                                                     <td><?php echo htmlentities(round($r->amount, 2)); ?></td>
                                                     <td><?php echo htmlentities(round($result->salvage, 2)); ?></td>
-                                                    <td><?php echo htmlentities(round ($result->asset_life, 2)); ?></td>
+                                                    <td><?php echo htmlentities(round($result->asset_life, 2)); ?></td>
                                                     <td><?php echo htmlentities($result->ope_cost); ?></td>
                                                     <td><?php echo htmlentities($depreciate); ?></td>
                                                     <td><?php echo htmlentities($result->asset_id); ?></td>
@@ -184,13 +225,61 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <td><?php echo htmlentities($cost); ?></td>
                                                     <!-- Action Button Start -->
                                                     <td>
-                                                        <a data-toggle=" modal" href="slmedit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <a data-toggle="modal" href="#edit<?= $cnt ?>" data-toggle="modal" data-target="#edit<?= $cnt ?>">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                                        <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog model-sm">
-                                                                <div class="modal-content"> </div>
+
+                                                        <div class="modal fade" id="edit<?= $cnt ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" style="height:auto">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">×</span></button>
+                                                                        <h4 class="modal-title">Add Detail</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+
+                                                                        <form action="slmlist.php" method="POST" class="forma">
+
+                                                                            <p>
+                                                                                <label for="full_name">Name of Item</label>
+                                                                                <input type="text" name="name" value="<?php echo $result->name ?>">
+                                                                            </p>
+                                                                            <p>
+                                                                                <label for="full_name">Description</label>
+                                                                                <input type="text" name="description" value="<?php echo $result->description ?>">
+                                                                            </p>
+                                                                            <p>
+                                                                                <label for="id">Price per Unit of Item</label>
+                                                                                <input type="text" name="ppunit" value="<?php echo $result->ppunit ?>" id="ppunit">
+                                                                            </p>
+                                                                            <p>
+                                                                                <label for="full_name">Quantity of Item</label>
+                                                                                <input type="text" name="qitem" value="<?php echo $result->qitem ?>" id="qitem">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="amount">Cost</label>
+                                                                                <input type="text" name="amount" value="<?php echo $result->amount ?>" id="amount">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <button type="submit" name="edit" value="<?php echo $result->id ?>">
+                                                                                    Submit
+                                                                                </button>
+                                                                            </p>
+
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </div>
+
+                                                                </div>
+
                                                             </div>
                                                         </div>
+                                                        <!--end of modal-dialog-->
 
                                                         <a href="slmlist.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                                     </td>
@@ -216,7 +305,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <h4 class="modal-title">Add New Product</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="slm.php" method="POST" class="forma">
+                                            <form action="slmlist.php" method="POST" class="forma">
 
                                                 <p>
                                                     <label for="asset_id">Asset Name</label>
@@ -230,7 +319,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                         if ($q->rowCount() > 0) {
                                                             foreach ($res as $re) { ?>
-                                                                <option value="<?php echo $re->sn; ?>"><?php echo $re->name; ?></option>
+                                                                <option value="<?php echo $re->id; ?>"><?php echo $re->name; ?></option>
                                                         <?php }
                                                         }
                                                         ?>
@@ -244,7 +333,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <input type="text" name="salvage" value="">
                                                 </p>
                                                 <p>
-                                                    <label for="sn">Asset Operating Cost</label>
+                                                    <label for="id">Asset Operating Cost</label>
                                                     <input type="text" name="ope_cost">
                                                 </p>
                                                 <p>
@@ -298,7 +387,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                         if ($q->rowCount() > 0) {
                                                             foreach ($res as $re) { ?>
-                                                                <option value="<?php echo $re->sn; ?>"><?php echo $re->name; ?></option>
+                                                                <option value="<?php echo $re->id; ?>"><?php echo $re->name; ?></option>
                                                         <?php }
                                                         }
                                                         ?>
@@ -312,7 +401,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <input type="text" name="salvage" value="">
                                                 </p>
                                                 <p>
-                                                    <label for="sn">Asset Operating Cost</label>
+                                                    <label for="id">Asset Operating Cost</label>
                                                     <input type="text" name="ope_cost">
                                                 </p>
                                                 <p>
@@ -365,7 +454,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                         if ($q->rowCount() > 0) {
                                                             foreach ($res as $re) { ?>
-                                                                <option value="<?php echo $re->sn; ?>"><?php echo $re->name; ?></option>
+                                                                <option value="<?php echo $re->id; ?>"><?php echo $re->name; ?></option>
                                                         <?php }
                                                         }
                                                         ?>
@@ -379,7 +468,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <input type="text" name="salvage" value="">
                                                 </p>
                                                 <p>
-                                                    <label for="sn">Asset Operating Cost</label>
+                                                    <label for="id">Asset Operating Cost</label>
                                                     <input type="text" name="ope_cost">
                                                 </p>
                                                 <p>
@@ -431,7 +520,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                         if ($q->rowCount() > 0) {
                                                             foreach ($res as $re) { ?>
-                                                                <option value="<?php echo $re->sn; ?>"><?php echo $re->name; ?></option>
+                                                                <option value="<?php echo $re->id; ?>"><?php echo $re->name; ?></option>
                                                         <?php }
                                                         }
                                                         ?>
@@ -445,7 +534,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <input type="text" name="salvage" value="">
                                                 </p>
                                                 <p>
-                                                    <label for="sn">Asset Operating Cost</label>
+                                                    <label for="id">Asset Operating Cost</label>
                                                     <input type="text" name="ope_cost">
                                                 </p>
                                                 <p>
@@ -497,7 +586,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                         if ($q->rowCount() > 0) {
                                                             foreach ($res as $re) { ?>
-                                                                <option value="<?php echo $re->sn; ?>"><?php echo $re->name; ?></option>
+                                                                <option value="<?php echo $re->id; ?>"><?php echo $re->name; ?></option>
                                                         <?php }
                                                         }
                                                         ?>
@@ -511,7 +600,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <input type="text" name="salvage" value="">
                                                 </p>
                                                 <p>
-                                                    <label for="sn">Asset Operating Cost</label>
+                                                    <label for="id">Asset Operating Cost</label>
                                                     <input type="text" name="ope_cost">
                                                 </p>
                                                 <p>
@@ -564,7 +653,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                         if ($q->rowCount() > 0) {
                                                             foreach ($res as $re) { ?>
-                                                                <option value="<?php echo $re->sn; ?>"><?php echo $re->name; ?></option>
+                                                                <option value="<?php echo $re->id; ?>"><?php echo $re->name; ?></option>
                                                         <?php }
                                                         }
                                                         ?>
@@ -578,7 +667,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <input type="text" name="salvage" value="">
                                                 </p>
                                                 <p>
-                                                    <label for="sn">Asset Operating Cost</label>
+                                                    <label for="id">Asset Operating Cost</label>
                                                     <input type="text" name="ope_cost">
                                                 </p>
                                                 <p>
@@ -646,7 +735,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <input type="text" name="salvage" value="">
                                                 </p>
                                                 <p>
-                                                    <label for="sn">Asset Operating Cost</label>
+                                                    <label for="id">Asset Operating Cost</label>
                                                     <input type="text" name="ope_cost">
                                                 </p>
                                                 <p>

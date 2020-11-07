@@ -49,14 +49,13 @@
                 ?>
                             
                 </div>
-                <div class="row  border-bottom white-bg dashboard-header">
-                <div class="panel-heading"><h2 class="page-title">Manage Testimonials</h2></div>
+                <div class="row  white-bg dashboard-header">
+                <div class="panel-heading"><h2 class="page-title">Product Sale</h2></div>
 				</div>
             <div class="row">
                        
                 <div class="col-lg-12">
 
-                    <h2 class="page-title">Configure Testimonials</h2>
 
                   <!-- Zero Configuration Table -->
 				<div class="panel panel-default">

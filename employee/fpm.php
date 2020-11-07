@@ -54,7 +54,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="panel panel-default">
-                                            <div class="panel-body bk-primary text-light">
+                                            <div class="panel-body bg-success text-light">
                                                 <div class="stat-panel text-center">
                                                     <svg id="Layer_2" height="128" viewBox="0 0 128 128" width="128" xmlns="http://www.w3.org/2000/svg" data-name="Layer 2">
                                                         <path d="m59.2 100.6h-36.318a7.332 7.332 0 1 0 0 3.5h36.318a7.332 7.332 0 1 0 0-3.5zm-43.43 5.582a3.832 3.832 0 1 1 3.831-3.832 3.836 3.836 0 0 1 -3.83 3.837zm50.542-7.663a3.832 3.832 0 1 1 -3.832 3.832 3.836 3.836 0 0 1 3.832-3.828z" />
@@ -64,14 +64,14 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <div class="stat-panel-title text-uppercase">Field</div>
                                                 </div>
                                             </div>
-                                            <a href="fplist.php" class="block-anchor panel-footer text-center">Full
+                                            <a href="fplist.php" class="block-anchor panel-footer btn-info text-center">Full
                                                 Detail <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="panel panel-default">
-                                            <div class="panel-body bk-primary text-light">
+                                            <div class="panel-body bg-success text-light">
                                                 <div class="stat-panel text-center">
                                                     <svg id="Layer_2" height="128" viewBox="0 0 128 128" width="128" xmlns="http://www.w3.org/2000/svg" data-name="Layer 2">
                                                         <path d="m59.2 100.6h-36.318a7.332 7.332 0 1 0 0 3.5h36.318a7.332 7.332 0 1 0 0-3.5zm-43.43 5.582a3.832 3.832 0 1 1 3.831-3.832 3.836 3.836 0 0 1 -3.83 3.837zm50.542-7.663a3.832 3.832 0 1 1 -3.832 3.832 3.836 3.836 0 0 1 3.832-3.828z" />
@@ -81,7 +81,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <div class="stat-panel-title text-uppercase">Pen</div>
                                                 </div>
                                             </div>
-                                            <a href="plist.php" class="block-anchor panel-footer text-center">Full
+                                            <a href="plist.php" class="block-anchor panel-footer btn-secondary text-center">Full
                                                 Detail <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>
@@ -89,7 +89,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                     <div class="col-md-3">
                                         <div class="panel panel-default">
-                                            <div class="panel-body bk-success text-light">
+                                            <div class="panel-body bg-success text-light">
                                                 <div class="stat-panel text-center">
                                                     <svg id="Capa_1" enable-background="new 0 0 512 512" height="128" viewBox="0 0 512 512" width="128" xmlns="http://www.w3.org/2000/svg">
                                                         <g>
@@ -102,14 +102,14 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <div class="stat-panel-title text-uppercase">Facilities</div>
                                                 </div>
                                             </div>
-                                            <a href="ftlist.php" class="block-anchor panel-footer text-center">Full
+                                            <a href="ftlist.php" class="block-anchor panel-footer btn-warning text-center">Full
                                                 Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="panel panel-default">
-                                            <div class="panel-body bk-success text-light">
+                                            <div class="panel-body bg-success text-light">
                                                 <div class="stat-panel text-center">
                                                     <svg id="Capa_1" enable-background="new 0 0 512 512" height="128" viewBox="0 0 512 512" width="128" xmlns="http://www.w3.org/2000/svg">
                                                         <g>
@@ -122,14 +122,14 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <div class="stat-panel-title text-uppercase">Mapping/Tagging</div>
                                                 </div>
                                             </div>
-                                            <a href="maptag.php" class="block-anchor panel-footer text-center">Full
+                                            <a href="maptag.php" class="block-anchor panel-footer btn-danger text-center">Full
                                                 Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="panel panel-default">
-                                            <div class="panel-body bk-info text-light">
+                                            <div class="panel-body bg-success text-light">
                                                 <div class="stat-panel text-center">
 
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="128" height="128">
@@ -147,13 +147,13 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <div class="stat-panel-title text-uppercase">Scheduling and Designation</div>
                                                 </div>
                                             </div>
-                                            <a href="scheduling.php" class="block-anchor panel-footer text-center">Full
+                                            <a href="scheduling.php" class="block-anchor panel-footer btn-success text-center">Full
                                                 Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="panel panel-default">
-                                            <div class="panel-body bk-info text-light">
+                                            <div class="panel-body bg-success text-light">
                                                 <div class="stat-panel text-center">
                                                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="128" height="128" viewBox="0 0 384 384" style="enable-background:new 0 0 384 384;" xml:space="preserve">
                                                         <g>
@@ -188,7 +188,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <div class="stat-panel-title text-uppercase">Activity Log</div>
                                                 </div>
                                             </div>
-                                            <a href="otassetlist.php" class="block-anchor panel-footer text-center">Full Detail
+                                            <a href="otassetlist.php" class="block-anchor panel-footer btn-light text-center">Full Detail
                                                 &nbsp; <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>

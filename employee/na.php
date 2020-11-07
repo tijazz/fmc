@@ -79,10 +79,7 @@
 		
 		   #page-wrapper > div:nth-child(3) > div > div > div.panel-body > div > div > div > a:hover{
 			   color:#fff;
-           }
-           .panel,.panel-body{
-               background:teal;
-           }
+		   }
 	   </style>
         <?php
                 require_once "public/config/footer.php";

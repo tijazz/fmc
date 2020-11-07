@@ -11,7 +11,7 @@ if (strlen($_SESSION['alogin']) == 0) {
     if (isset($_GET['del'])) {
         $id = $_GET['del'];
 
-        $sql = "delete from vehicle WHERE sn=:id";
+        $sql = "delete from vehicle WHERE id=:id";
         $query = $dbh->prepare($sql);
         $query->bindParam(':id', $id, PDO::PARAM_STR);
         $query->execute();
@@ -20,7 +20,53 @@ if (strlen($_SESSION['alogin']) == 0) {
         header('location:vehiclelist.php');
     }
 
+    if (isset($_POST['submit'])) {
 
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $serial_no = $_POST['serial_no'];
+        $manufacturer = $_POST['manufacturer'];
+        $amount = $_POST['amount'];
+        $user_id = $_SESSION['user_id'];
+        $org_id = $_SESSION['org_id'];
+
+        $sql = "INSERT INTO `vehicle`(`name`, `description`, `user_id`, `serial_no`, `amount`, `manufacturer`, `org_id`) VALUES (:name, :description, :user_id, :serial_no, :amount, :manufacturer, :org_id)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+        $query->bindParam(':description', $description, PDO::PARAM_STR);
+        $query->bindParam(':serial_no', $serial_no, PDO::PARAM_STR);
+        $query->bindParam(':amount', $amount, PDO::PARAM_STR);
+        $query->bindParam(':manufacturer', $manufacturer, PDO::PARAM_STR);
+        $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Rent Updated Successfully";
+
+        header('location:vehiclelist.php');
+    }
+
+    if (isset($_POST['edit'])) {
+        $id = $_POST['edit'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $serial_no = $_POST['snum'];
+        $manufacturer = $_POST['manufacturer'];
+        $amount = $_POST['amount'];
+        $category = $_POST['category'];
+
+        $sql = "UPDATE `vehicle` SET `name`=(:name), `description`=(:description), `amount`=(:amount), `serial_no`=(:serial_no), `manufacturer`=(:manufacturer) WHERE id=(:id)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindParam(':description', $description, PDO::PARAM_STR);
+        $query->bindParam(':serial_no', $serial_no, PDO::PARAM_STR);
+        $query->bindParam(':manufacturer', $manufacturer, PDO::PARAM_STR);
+        $query->bindParam(':amount', $amount, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Rent Updated Successfully";
+
+        header('location:vehiclelist.php');
+    }
 
 ?>
 
@@ -106,15 +152,68 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                     <!-- Action Button Start -->
                                                     <td>
-                                                        <a data-toggle="modal" href="vehicleedit.php?s=<?php echo $result->sn; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <a data-toggle="modal" href="#edit<?= $cnt ?>" data-toggle="modal" data-target="#edit<?= $cnt ?>">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                                        <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog model-sm">
-                                                                <div class="modal-content"> </div>
+
+                                                        <div class="modal fade" id="edit<?= $cnt ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" style="height:auto">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">×</span></button>
+                                                                        <h4 class="modal-title">Add Detail</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form action="vehiclelist.php" method="POST" class="forma">
+
+
+                                                                            <p>
+                                                                                <label for="name">Name</label>
+                                                                                <input type="text" name="name" value="<?php echo ($result->name); ?>">
+                                                                            </p>
+
+
+                                                                            <p>
+                                                                                <label for="description">Description</label>
+                                                                                <input type="text" name="description" value="<?php echo ($result->description); ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="snum">Item Serial Number</label>
+                                                                                <input type="text" name="snum" value="<?php echo ($result->serial_no); ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="amount">Manufacturer</label>
+                                                                                <input type="text" name="manufacturer" value="<?php echo ($result->manufacturer); ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="amount">Amount</label>
+                                                                                <input type="text" name="amount" value="<?php echo ($result->amount); ?>">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <button type="submit" name="edit" value="<?php echo ($result->id); ?>">
+                                                                                    Submit
+                                                                                </button>
+                                                                            </p>
+
+                                                                        </form>
+
+                                                                    </div>
+                                                                    <div class="modal-footer">
+
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </div>
+
+                                                                </div>
+
                                                             </div>
                                                         </div>
+                                                        <!--end of modal-dialog-->
 
-                                                        <a href="vehiclelist.php?del=<?php echo $result->sn; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
+                                                        <a href="vehiclelist.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                                     </td>
 
                                                     <!-- Action Button End -->
@@ -136,7 +235,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <h4 class="modal-title">Add New Vehicle</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="vehicleform.php" method="POST" class="forma">
+                                            <form action="vehiclelist.php" method="POST" class="forma">
 
                                                 <p>
                                                     <label for="name">Name</label>

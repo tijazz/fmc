@@ -19,7 +19,50 @@ if (strlen($_SESSION['alogin']) == 0) {
         $msg = "Data Deleted successfully";
     }
 
+    if (isset($_POST['edit'])) {
+        $id = $_POST['edit'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $ppunit = $_POST['ppunit'];
+        $qitem = $_POST['qitem'];
+        $amount = $_POST['amount'];
 
+        $sql = "UPDATE `purchases` SET `name`=(:name), `description`=(:description), `ppunit`=(:ppunit), `qitem`=(:qitem), `amount`=(:amount) WHERE id=(:id)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindParam(':description', $description, PDO::PARAM_STR);
+        $query->bindParam(':ppunit', $ppunit, PDO::PARAM_STR);
+        $query->bindParam(':qitem', $qitem, PDO::PARAM_STR);
+        $query->bindParam(':amount', $amount, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Rent Updated Successfully";
+
+        header('location:purchaseslist.php');
+    }
+
+    if (isset($_POST['submit'])) {
+        $user_id = $_SESSION['user_id'];
+        $org_id = $_SESSION['org_id'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $ppunit = $_POST['ppunit'];
+        $qitem = $_POST['qitem'];
+        $amount = $_POST['amount'];
+
+        $sql = "INSERT INTO purchases (user_id, org_id, name, description, ppunit, qitem, amount) VALUES (:user_id, :org_id, :name, :description, :ppunit, :qitem, :amount)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+        $query->bindParam(':org_id', $org_id, PDO::PARAM_STR);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindParam(':description', $description, PDO::PARAM_STR);
+        $query->bindParam(':ppunit', $ppunit, PDO::PARAM_STR);
+        $query->bindParam(':qitem', $qitem, PDO::PARAM_STR);
+        $query->bindParam(':amount', $amount, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Purchases Updated Successfully";
+        header('location:purchaseslist.php');
+    }
 
 ?>
 
@@ -47,6 +90,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                 </div>
                 <div class="row  white-bg dashboard-header">
+                    <h1>Purchases</h1>
                 </div>
                 <div class="row">
 
@@ -76,7 +120,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <th>Description</th>
                                             <th>Price per Unit</th>
                                             <th>Quantity of item</th>
-                                            <th>Amount</th>
+                                            <th>Total Amount</th>
                                             <th>Date</th>
                                             <th>Action</th>
                                         </tr>
@@ -102,13 +146,61 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <td><?php echo htmlentities($result->date); ?></td>
                                                     <!-- Action Button Start -->
                                                     <td>
-                                                        <a data-toggle="modal" href="purchaseedit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <a data-toggle="modal" href="#edit<?= $cnt ?>" data-toggle="modal" data-target="#edit<?= $cnt ?>">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                                        <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog model-sm">
-                                                                <div class="modal-content"> </div>
+
+                                                        <div class="modal fade" id="edit<?= $cnt ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" style="height:auto">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">×</span></button>
+                                                                        <h4 class="modal-title">Add Detail</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+
+                                                                        <form action="purchaseslist.php" method="POST" class="forma">
+
+                                                                            <p>
+                                                                                <label for="full_name">Name of Item</label>
+                                                                                <input type="text" name="name" value="<?php echo $result->name ?>">
+                                                                            </p>
+                                                                            <p>
+                                                                                <label for="full_name">Description</label>
+                                                                                <input type="text" name="description" value="<?php echo $result->description ?>">
+                                                                            </p>
+                                                                            <p>
+                                                                                <label for="id">Price per Unit of Item</label>
+                                                                                <input type="text" name="ppunit" value="<?php echo $result->ppunit ?>" id="ppunit">
+                                                                            </p>
+                                                                            <p>
+                                                                                <label for="full_name">Quantity of Item</label>
+                                                                                <input type="text" name="qitem" value="<?php echo $result->qitem ?>" id="qitem">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <label for="amount">Total Amount</label>
+                                                                                <input type="text" name="amount" value="<?php echo $result->amount ?>" id="amount">
+                                                                            </p>
+
+                                                                            <p>
+                                                                                <button type="submit" name="edit" value="<?php echo $result->id ?>">
+                                                                                    Submit
+                                                                                </button>
+                                                                            </p>
+
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </div>
+
+                                                                </div>
+
                                                             </div>
                                                         </div>
+                                                        <!--end of modal-dialog-->
 
                                                         <a href="purchaseslist.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
                                                     </td>
@@ -131,7 +223,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <h4 class="modal-title">Add New Product</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="purchases.php" method="POST" class="forma">
+                                            <form action="purchaseslist.php" method="POST" class="forma">
 
                                                 <p>
                                                     <label for="full_name">Name of Item</label>
@@ -142,7 +234,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <input type="text" name="description" value="">
                                                 </p>
                                                 <p>
-                                                    <label for="sn">Price per Unit of Item</label>
+                                                    <label for="id">Price per Unit of Item</label>
                                                     <input type="text" name="ppunit" value="0" id="ppunit">
                                                 </p>
                                                 <p>
@@ -154,19 +246,6 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <label for="amount">Cost</label>
                                                     <input type="text" name="amount" value="0" id="amount">
                                                 </p>
-
-                                                <script>
-                                                    $("#amount").click(function() {
-                                                        var amt = $('#ppunit').val();
-
-                                                        var qua = $('#qitem').val();
-
-                                                        var amount = parseInt(amt) * parseInt(qua);
-
-                                                        $("#amount").val(amount);
-                                                    });
-                                                </script>
-
 
                                                 <p>
                                                     <button type="submit" name="submit">
@@ -190,14 +269,6 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                         </div>
 
-                        <!---
-                <div class="col-lg-4">
-                        <?php
-                        //    require_once "public/config/right-sidebar.php";
-                        ?>
-
-                            </div>
-                                                    -->
                     </div>
 
 
@@ -217,6 +288,18 @@ if (strlen($_SESSION['alogin']) == 0) {
         <?php
         require_once "public/config/footer.php";
         ?>
+
+        <script>
+            $("#amount").click(function() {
+                var amt = $('#ppunit').val();
+
+                var qua = $('#qitem').val();
+
+                var amount = parseInt(amt) * parseInt(qua);
+
+                $("#amount").val(amount);
+            });
+        </script>
 
     </body>
 

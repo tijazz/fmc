@@ -10,6 +10,55 @@ if (strlen($_SESSION['alogin']) == 0) {
 } else {
 
 
+    if (isset($_POST['submit'])) {
+        $id = $_POST['field'];
+        $data_type = 'field';
+
+        $sql = "UPDATE `locations` SET `data_type`=:data_type WHERE id=(:id)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':data_type', $data_type, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Rent Updated Successfully";
+
+        header('location:fplist.php');
+    }
+
+
+    if (isset($_POST['edit'])) {
+        $sn = $_POST['edit'];
+        $soil_type = $_POST['soil_type'];
+        $ph = $_POST['ph'];
+        $chemical = $_POST['chemical'];
+        $active = $_POST['active'];
+        $utilization = $_POST['utilization'];
+        $start_season = $_POST['start_season'];
+        $end_season = $_POST['end_season'];
+        $ownership = $_POST['ownership'];
+        $manager = $_POST['manager'];
+        $fallow = $_POST['fallow'];
+
+        $sql = "UPDATE `locations` SET `soil_type`=:soil_type,`ph`=:ph,`chemical`=:chemical,`active`=:active,`utilization`=:utilization,`start_season`=:start_season,`end_season`=:end_season,`ownership`=:ownership,`fallow`=:fallow,`manager`=:manager WHERE id=(:sn)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':soil_type', $soil_type, PDO::PARAM_STR);
+        $query->bindParam(':ph', $ph, PDO::PARAM_STR);
+        $query->bindParam(':chemical', $chemical, PDO::PARAM_STR);
+        $query->bindParam(':active', $active, PDO::PARAM_STR);
+        $query->bindParam(':utilization', $utilization, PDO::PARAM_STR);
+        $query->bindParam(':start_season', $start_season, PDO::PARAM_STR);
+        $query->bindParam(':end_season', $end_season, PDO::PARAM_STR);
+        $query->bindParam(':ownership', $ownership, PDO::PARAM_STR);
+        $query->bindParam(':manager', $manager, PDO::PARAM_STR);
+        $query->bindParam(':fallow', $fallow, PDO::PARAM_STR);
+        $query->bindValue(':sn', $sn, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Rent Updated Successfully";
+
+        header('location:fplist.php');
+    }
+
+
+
 
 ?>
 
@@ -38,7 +87,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                 </div>
                 <div class="row dashboard-header">
                     <div class="panel-heading" style='padding:0;'>
-                        <h2 class="page-title">Manage Fields/Pens</h2>
+                        <h2 class="page-title">Manage Fields</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -115,11 +164,108 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                     <!-- Action Button Start -->
                                                     <td>
-                                                        <a data-toggle="modal" href="fpedit.php?s=<?php echo $result->id; ?>" data-target="#MyModal" data-backdrop="static">&nbsp;
+                                                        <a data-toggle="modal" href="#edit<?= $cnt ?>" data-toggle="modal" data-target="#edit<?= $cnt ?>">&nbsp;
                                                             <i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                                        <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog model-sm">
-                                                                <div class="modal-content"> </div>
+                                                        
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="edit<?= $cnt ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <form action="fplist.php" method="POST" class="forma modal-body">
+                                                                        <p>
+                                                                            <label for="name">Name</label>
+                                                                            <input type="text" name="name" value="<?php echo ($result->name); ?>" disabled>
+                                                                        </p>
+
+
+                                                                        <p>
+                                                                            <label for="size">Size</label>
+                                                                            <input type="text" name="size" value="<?php echo ($result->size); ?>" disabled>
+                                                                        </p>
+
+                                                                        <p>
+                                                                            <label for="location">Latitude</label>
+                                                                            <input type="text" name="latitude" value="<?php echo ($result->lat); ?>" disabled>
+                                                                        </p>
+
+                                                                        <p>
+                                                                            <label for="location">Longitude</label>
+                                                                            <input type="text" name="longitude" value="<?php echo ($result->lng); ?>" disabled>
+                                                                        </p>
+
+                                                                        <p>
+                                                                            <label for="soil_type">Soil Type</label>
+                                                                            <input type="text" name="soil_type" value="<?php echo ($result->soil_type); ?>">
+                                                                        </p>
+
+                                                                        <p>
+                                                                            <label for="ph">pH Value</label>
+                                                                            <input type="text" name="ph" value="<?php echo ($result->ph); ?>">
+                                                                        </p>
+
+                                                                        <p>
+                                                                            <label for="chemical">Chemicals</label>
+                                                                            <input type="text" name="chemical" value="<?php echo ($result->chemicals); ?>">
+                                                                        </p>
+
+                                                                        <p>
+                                                                            <label for="active">Active Crops/Pens</label>
+                                                                            <input type="text" name="active" value="<?php echo ($result->active); ?>">
+                                                                        </p>
+
+                                                                        <p>
+                                                                            <label for="utilization">Utilization</label>
+                                                                            <input type="text" name="utilization" value="<?php echo ($result->utilization); ?>">
+                                                                        </p>
+
+
+                                                                        <p>
+                                                                            <label for="start_season">Start Season</label>
+                                                                            <input type="date" name="start_season" value="<?php echo ($result->start_season); ?>">
+                                                                        </p>
+
+                                                                        <p>
+                                                                            <label for="end_season">End Season</label>
+                                                                            <input type="date" name="end_season" value="<?php echo ($result->end_season); ?>">
+                                                                        </p>
+
+                                                                        <p>
+                                                                            <label for="ownership">OwnerShip</label>
+                                                                            <select name="ownership">
+                                                                                <option value="full">Full</option>
+                                                                                <option value="lease">Lease</option>
+                                                                                <option value="rent">Rent</option>
+                                                                            </select>
+                                                                        </p>
+
+                                                                        <p>
+                                                                            <label for="fallow">Fallow Period</label>
+                                                                            <input type="text" name="fallow" value="<?php echo ($result->fallow); ?>">
+                                                                        </p>
+
+                                                                        <p>
+                                                                            <label for="manager">Manager</label>
+                                                                            <input type="text" name="manager" value="">
+                                                                        </p>
+
+                                                                        <p>
+                                                                            <button type="submit" name="edit" value="<?php echo $result->id; ?>">
+                                                                                Submit
+                                                                            </button>
+                                                                        </p>
+
+                                                                    </form>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
 
@@ -150,14 +296,14 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <h4 class="modal-title">Add Detail</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="fpedit.php" method="POST" class="forma">
+                                            <form action="fplist.php" method="POST" class="forma" class="modal-body">
 
 
                                                 <p>
                                                     <label for="name">Name</label>
                                                     <select name="field" id="">
                                                         <?php
-                                                        $sql = "SELECT * FROM `locations` WHERE data_type = 'data'";
+                                                        $sql = "SELECT * FROM `locations` WHERE data_type = 'field'";
                                                         $query = $dbh->prepare($sql);
                                                         $query->execute();
                                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -173,7 +319,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 </p>
 
                                                 <p>
-                                                    <button type="submit" name="submit" value="<?php echo $sn; ?>">
+                                                    <button type="submit" name="submit" value="">
                                                         Submit
                                                     </button>
                                                 </p>
