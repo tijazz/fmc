@@ -1,0 +1,24 @@
+
+<!-- <?php
+                                    $sql = "SELECT * from organization where id = :id";
+                                    $query = $dbh->prepare($sql);
+                                    $query->bindParam(':id', $_SESSION['id'], PDO::PARAM_STR);
+                                    $query->execute();
+                                    $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                    $cnt = 1;
+                                    if ($query->rowCount() > 0) {
+
+                                        
+                                        foreach ($results as $result) {
+                                            
+                                        ?>
+
+                                    <li><i class="fa fa-envelope"></i><span><?php echo $result->name; ?> </span></li>
+                                    <li><i class="fa fa-list-alt"></i><span><?php echo $result->email; ?></span></li>
+                                    <li><i class="fa fa-map-marker"></i><span><?php echo $result->password; ?></span></li>
+                                    <li> <i class="fa fa-map-marker"></i><span><?php echo $result->gender; ?></span></li>
+                                    <li> <i class="fa fa-map-marker"></i><span><?php echo $result->role; ?></span></li>
+                                    <li><i class="fa fa-phone"></i><span><?php echo $result->phone; ?></span></li>
+                                    <li><span class="edit"><a href="editProfile.php"><i class="fa fa-pencil fa-2x"></i></a></span></li> -->
+                                    
+<!-- <?php } ?> -->
