@@ -130,7 +130,6 @@ if (strlen($_SESSION['alogin']) == 0) {
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Serial no</th>
                                             <th>Description</th>
                                             <th>Type</th>
                                             <th>Name</th>
@@ -159,7 +158,6 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 $res = $q->fetch(PDO::FETCH_OBJ);         ?>
                                                 <tr>
                                                     <td><?php echo htmlentities($cnt); ?></td>
-                                                    <td><?php echo htmlentities($res->id); ?></td>
                                                     <td><?php echo htmlentities($result->description); ?></td>
                                                     <td><?php echo htmlentities($result->type); ?></td>
                                                     <td><?php echo htmlentities($res->name); ?></td>
@@ -193,7 +191,6 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                                                     $q->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
                                                                                     $q->execute();
                                                                                     $res = $q->fetchAll(PDO::FETCH_OBJ);
-                                                                                    $cnt = 1;
                                                                                     if ($query->rowCount() > 0) {
                                                                                         foreach ($res as $re) { ?>
                                                                                             <option value="<?php echo $re->id ?>" <?php echo $result->item_id == $re->id ? 'SELECTED' : 'nothing'; ?>><?php echo $re->name ?></option>
@@ -264,7 +261,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <h4 class="modal-title">Building</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="maintenanceform.php" method="POST" class="forma">
+                                            <form action="maintenancelist.php" method="POST" class="forma">
                                                 <input type="text" name="type" value="building" hidden>
                                                 <p>
                                                     <label for="name">Name</label>
