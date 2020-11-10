@@ -19,9 +19,9 @@ if (strlen($_SESSION['alogin']) == 0) {
         $msg = "Data Deleted successfully";
     }
 
-    if (isset($_GET['submit'])) {
-        $user_id=$_POST['user_id'];
-        $org_id=$_POST['org_id'];
+    if (isset($_POST['submit'])) {
+        $user_id=$_SESSION['user_id'];
+        $org_id=$_SESSION['org_id'];
         $name=$_POST['name'];
         $description=$_POST['description'];
         $supervisor=$_POST['supervisor'];
@@ -41,8 +41,6 @@ if (strlen($_SESSION['alogin']) == 0) {
         $query->bindParam(":company",$company,PDO::PARAM_STR);
         $query->bindParam(":date",$date,PDO::PARAM_STR);
         $query->execute();
-        $results = $query->fetchAll(PDO::FETCH_OBJ);
-        $cnt = 1;
     }
 
 
@@ -246,7 +244,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                 <p>
                                                     <label for="date">Date</label>
-                                                    <input type="text" name="date">
+                                                    <input type="date" name="date">
                                                 </p>
 
 
