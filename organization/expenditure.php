@@ -111,7 +111,7 @@
 													<div class="stat-panel-title text-uppercase">Project Expenses</div>
 												</div>
 											</div>
-											<a href="expenditurelist.php" class="block-anchor panel-footer text-center">Full Detail <i class="fa fa-arrow-right"></i></a>
+											<a href="prod-exp.php" class="block-anchor panel-footer text-center">Full Detail <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
                                     <div class="col-md-3">
