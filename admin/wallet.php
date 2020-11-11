@@ -169,7 +169,7 @@ else{
                             </div>
                             
                             <div class="transactions_wrapper">
-                            <ul class="transactions general">
+                            <ul class="transactions general showing">
                                 <?php 
                                 $email = $_SESSION['alogin'];
                                 $sql = "SELECT * FROM transactions INNER JOIN member ON transactions.user_id = member.id WHERE email = (:email)";

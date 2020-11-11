@@ -209,7 +209,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                             </div>
 
                             <div class="transactions_wrapper">
-                                <ul class="transactions general">
+                                <ul class="transactions general showing">
                                     <?php
                                     $sql = "SELECT * FROM wallet WHERE org_id=:org_id and user_id=:user_id";
                                     $query = $dbh->prepare($sql);

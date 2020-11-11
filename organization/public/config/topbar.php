@@ -1,8 +1,10 @@
 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
-        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#" id='slide_left_btn'><i class="fa fa-bars"></i> </a>
+        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#" id='slide_left_btn'><i
+                class="fa fa-bars"></i> </a>
 
-        <form role="search" class="navbar-form-custom" action="http://webapplayers.com/  inspinia_admin-v2.6.1/search_results.html">
+        <form role="search" class="navbar-form-custom"
+            action="http://webapplayers.com/  inspinia_admin-v2.6.1/search_results.html">
         </form>
 
     </div>
@@ -16,7 +18,7 @@
                 <i class="fa fa-bell notification-bell"></i> <span class="label label-primary"></span>
             </a>
             <ul class="dropdown-menu dropdown-messages notifications_">
-         
+
             </ul>
         </li>
         <li>
@@ -58,9 +60,9 @@
             prefix = `${timeDiff} minutes ago`
         }
         else if (timeDiff <= 1) {
-            if(timeDiff == 0){
+            if (timeDiff == 0) {
                 prefix = 'now'
-            }else{
+            } else {
                 prefix = `${timeDiff} minute ago`
             }
         }
@@ -86,7 +88,8 @@
     var notifications = JSON.stringify(<?= sendnotify($dbh, $_SESSION['org_id']) ?>);
     var notificationsElement = document.querySelector('.notifications_')
     notifications = JSON.parse(notifications)
-    for(var i in notifications){
+    for (var i in notifications) {
+       
         var notification = notifications[i]
         var listElement = document.createElement('li')
         listElement.classList.add('user_notification')
@@ -109,7 +112,7 @@
         var secondsmallTag = document.createElement('small')
         lineTag = document.createElement('br')
         secondsmallTag.innerText = renderTimestamp(notification['time']) + ' at ' + new Date(notification['time']).toTimeString().
-        replace("West Africa Standard Time","").replace("GMT+0100","").replace('(','').replace(')','')
+            replace("West Africa Standard Time", "").replace("GMT+0100", "").replace('(', '').replace(')', '')
         secondsmallTag.classList.add('text-muted')
         SecondDiv.appendChild(smallTag)
         SecondDiv.appendChild(strongTag)
@@ -118,8 +121,10 @@
         divElement.appendChild(SecondDiv)
         listElement.appendChild(divElement)
         notificationsElement.appendChild(listElement)
-        var divider = document.createElement('li')
-        divider.classList.add('divider')
+        if (i != (notifications.length - 1) ) {
+            var divider = document.createElement('li')
+            divider.classList.add('divider')
+        }
         notificationsElement.appendChild(divider)
     }
 

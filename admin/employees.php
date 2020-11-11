@@ -75,9 +75,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                                     foreach ($results as $result) { ?>
                                         <div class="col-lg-3">
                                             <div class="panel panel-default" style="width:200px;">
-                                                <img class="panel-heading" src="../images/<?php echo $result->image ?>" alt="Card image" style="width:100%">
+                                                <img class="panel-heading" src="../images/<?php echo $result->image ?>" alt="Card image" style="width:200px;height:200px;object-fit: cover;">
                                                 <div class="panel-body">
-                                                    <h4 class="card-title"><?php echo $result->name ?></h4>
+                                                    <h4 class="card-title" style="color:#666;"><?php echo $result->name ?></h4>
                                                     <p class="card-text">Email: <?php echo $result->email ?></p>
                                                     <p class="card-text">Organization: <?php
                                                                                         $s = "SELECT * from organization WHERE id =" . $result->organization;

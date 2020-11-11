@@ -7,13 +7,15 @@
     <title>DUFMA</title>
     <link rel="stylesheet" href="public/css/presets.css">
     <link rel="stylesheet" href="public/css/landing.css">
+    <link rel="stylesheet" href="public/css/preloader.css">
     <link rel="shortcut icon" href="public/images/favicon.png" type="image/x-icon">
 </head>
 
 <body>
     <nav class="main_nav flex a_cent">
-        <div class="logo">
+        <div class="logo flex a_cent">
             <img src="public/images/favicon.png" alt="">
+            <span class="ufma">ufma</span>
         </div>
         <ul class="right_nav">
             <li><a href="#">Home</a></li>
@@ -83,16 +85,26 @@
         <img src="public/images/slide2.jpg" alt="">
         <img src="public/images/slide3.jpg" alt="">
         <div class="text1 text">
-            <h1>Lorem</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat!</p>
+            <h1>Technology for your Agricultural Vision </h1>
+            <p>
+                Nigerian’s first indigenous farm management solution powered by Machine Learning and Artificial 
+Intelligence Technology
+            </p>
+            <a href="#">Read More</a>
         </div>
         <div class="text2 text">
-            <h1>Lorem1</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat!</p>
+            <h1>Farm Accountability Equals Farm Profitability</h1>
+            <p>
+                DUFMA ERP helps you with seamless documentation of farm processes that make your business 
+survive the woes of failed businesses
+            </p>
+            <a href="#">Book for a demo here</a>
         </div>
         <div class="text3 text">
-            <h1>Lorem2</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat!</p>
+            <h1>The Future of Agricultural Digitization is here</h1>
+            <p>DUFMA ERP travels beyond your present to your future and put processes in place to ensure the 
+                success of your farm.</p>
+                <a href="#">Book for a demo here</a>
         </div>
     </div>
     <div class="bubbles">
@@ -105,15 +117,13 @@
             <h2>Dufma
                 <span></span>
             </h2>
-            <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio fugiat exercitationem eaque, aut ratione
-                delectus labore officiis totam ipsa, aliquam quam, laudantium accusantium corrupti debitis alias
-                possimus recusandae repellat cum dolorem ducimus consequatur aspernatur! Quo esse cum, voluptatem
-                adipisci sed tenetur corporis eius aut modi hic veritatis magnam consequatur natus saepe mollitia illo
-                ipsam ab id molestiae officia provident recusandae temporibus. Fugiat vitae dolorem aut, consequuntur
-                officiis et commodi qui, harum saepe voluptatibus id! Odio molestiae quas, velit esse repellendus quo
-                fuga exercitationem mollitia aliquam commodi eius ea rerum in non sit omnis temporibus odit, ut eum.
-                Tenetur, itaque explicabo.
+            <p class="erp_info">
+                DUFMA ERP is a desirable tool which will help potential farmers, small farm holders and large-scale 
+                farm holders manage there enterprise; the toolset include inventory management, supply chain 
+                management, financial management, risk management and monitoring and evaluation services. All 
+                this services are seamlessly knitted into our DUFMA Advisory services and DUFMA FSB to provide an
+                inclusive all-in-one service to help our client grow their business in a timely efficient and desirable 
+                manner.
             </p>
         </div>
         <div class="illustr">
@@ -124,17 +134,21 @@
         <h2>Request A Demo</h2>
         <div class="demo_req_content">
             <div class="content">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi quas omnis voluptatem culpa
-                    similique molestias tenetur inventore, rerum quia aperiam.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi quas omnis voluptatem culpa
-                    similique molestias tenetur inventore, rerum quia aperiam.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi quas omnis voluptatem culpa
-                    similique molestias tenetur inventore, rerum quia aperiam.</p>
+                <p>
+                        With over SME expanding in geometric proportion 
+                        across the country, efficient management software is 
+                        needed to push result and outcomes of Agricultural 
+                        business beyond the limit of conventional agricultural 
+                        management Principles. Lets DUFMA ERP take you on 
+                        this journey of discovery.
+                </p>
+               
                 <img src="public/images/8400.jpg" alt="Image" class="small">
             </div>
             <form class="form">
                 <input type="email" name="email" id="email" placeholder="Email">
                 <input type="text" name="phone" id="phone" placeholder="Phone">
+                <input type="text" name="business_type" id="business_type" placeholder="Type of business">
                 <textarea name="message" id="message" placeholder='Message Here' cols="30" rows="10"></textarea>
                 <input type="submit" value="Submit">
             </form>
@@ -150,7 +164,7 @@
                     <img src="public/images/ai-brain.svg" alt="">
                 </div>
                 <div class="card_text">
-                    <p>ML/AI</p>
+                    <p>Monitoring and Evaluation</p>
                 </div>
             </div>
             <div class="card">
@@ -158,7 +172,7 @@
                     <img src="public/images/blockchain.svg" alt="">
                 </div>
                 <div class="card_text">
-                    <p>Blockchain</p>
+                    <p>Financial Management</p>
                 </div>
             </div>
             <div class="card">
@@ -166,7 +180,7 @@
                     <img src="public/images/farmer.svg" alt="">
                 </div>
                 <div class="card_text">
-                    <p>Profiling</p>
+                    <p>Inventory Management</p>
                 </div>
             </div>
             <div class="card">
@@ -174,7 +188,7 @@
                     <img src="public/images/fertilizer.svg" alt="">
                 </div>
                 <div class="card_text">
-                    <p>Procurement</p>
+                    <p>Risk Management</p>
                 </div>
             </div>
             <div class="card">
@@ -182,7 +196,7 @@
                     <img src="public/images/satellite.svg" alt="">
                 </div>
                 <div class="card_text">
-                    <p>Remote</p>
+                    <p>Supply Chain Management</p>
                 </div>
             </div>
             <div class="card">
@@ -190,7 +204,7 @@
                     <img src="public/images/smartphone.svg" alt="">
                 </div>
                 <div class="card_text">
-                    <p>Flexible</p>
+                    <p>Farm Smart box</p>
                 </div>
             </div>
             <div class="card">
@@ -198,8 +212,7 @@
                     <img src="public/images/tractor.svg" alt="">
                 </div>
                 <div class="card_text">
-                    <p>Supply</p>
-                    <p>Chain</p>
+                    <p>Smart Irritech</p>
                 </div>
             </div>
             <div class="card">
@@ -207,7 +220,7 @@
                     <img src="public/images/transportation.svg" alt="">
                 </div>
                 <div class="card_text">
-                    <p>Risk Management</p>
+                    <p>Smart Farm Vision</p>
                 </div>
             </div>
 
@@ -227,7 +240,26 @@
         </div>
     </div>
 </body>
+ <!-- Preloader -->
+ <div class="pre-loader">
+        <div class="sk-fading-circle">
+            <div class="sk-circle1 sk-circle"></div>
+            <div class="sk-circle2 sk-circle"></div>
+            <div class="sk-circle3 sk-circle"></div>
+            <div class="sk-circle4 sk-circle"></div>
+            <div class="sk-circle5 sk-circle"></div>
+            <div class="sk-circle6 sk-circle"></div>
+            <div class="sk-circle7 sk-circle"></div>
+            <div class="sk-circle8 sk-circle"></div>
+            <div class="sk-circle9 sk-circle"></div>
+            <div class="sk-circle10 sk-circle"></div>
+            <div class="sk-circle11 sk-circle"></div>
+            <div class="sk-circle12 sk-circle"></div>
+        </div>
+    </div>
+    <!-- End preloader -->
 <script src="public/js/gsap.min.js"></script>
 <script src="public/js/landing.js"></script>
+<script src="public/js/preloader.js"></script>
 
 </html>

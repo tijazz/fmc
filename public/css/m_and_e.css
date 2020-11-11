@@ -1,15 +1,5 @@
-*{
-    margin:0;
-    padding:0;
-    text-decoration:none;
-    list-style: none;
-}
 
-body,html{
-    background:#2f4050;
-    min-height:100vh;
-    /* padding:2rem 2rem; */
-}
+
 
 .me_container{
     display:grid;
@@ -36,7 +26,7 @@ body,html{
 
 
 .returns{
-    background: #26303A
+    background: #26303A;
 
 }
 

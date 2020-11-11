@@ -42,6 +42,7 @@ li::selection{color:auto;background:0 0}
 .hero .text{position:absolute;top:50%;left:3rem;transform:translateY(-50%);z-index:6;color:#fff}
 .hero .text2{opacity:0}
 .hero .text3{opacity:0}
+.hero .text a{margin-top:1rem;color:#fff;display:inline-block;background:#1ab394;border-radius:2px;padding:0.5rem 1rem;}
 .hero .text h1{font-size:3rem}
 .mobile_ham{display:none;cursor:pointer}
 .mobile_nav{position:fixed;background:#fff;width:100%;margin-top:75px;z-index:8;opacity:0;pointer-events:none;transition:.4s ease}
@@ -52,6 +53,7 @@ li::selection{color:auto;background:0 0}
 .mobile_ham.active span:nth-of-type(2){width:36px;transform:translateY(-10px) rotate(45deg)}
 .mobile_ham.active span:first-of-type{transform:rotate(-45deg)}
 .mobile_nav .child1,.mobile_nav .child2{display:none}
+.ufma{line-height:50px;font-size:20px;margin-top:5px;font-weight:600;margin-left:-2px;text-transform:uppercase}
 @media(max-width:896px){
 .right_nav{display:none}
 .mobile_ham{display:block}
@@ -79,7 +81,10 @@ li::selection{color:auto;background:0 0}
 .hero{height:280px}
 .newsletter>div{max-width:96%;padding:3rem 2rem}
 .main_nav{padding:0 20px}
-h1{font-size:2rem !important;}
-h2{font-size:1.4rem !important;}
-.hero .text{left:1.2rem;}
+h1{font-size:2rem!important}
+h2{font-size:1.4rem!important}
+.hero .text{left:1.2rem}
+}
+.text .erp_info,.content p{
+    line-height:1.6rem;
 }
