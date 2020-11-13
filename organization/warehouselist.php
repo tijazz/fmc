@@ -23,8 +23,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 
         $product = $_POST['product'];
-        $user_id = $_SESSION['id'];
-        $org_id = $_SESSION['id'];
+        $user_id = $_SESSION['user_id'];
+        $org_id = $_SESSION['org_id'];
         $warehouse = $_POST['warehouse'];
         $quantity = $_POST['quantity'];
         $status = $_POST['status'];
@@ -104,7 +104,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                         <div class="navbar">
                             <div class="container-fluid" style='padding-left:7px;'>
                                 <h1 class="nav navbar-nav">
-                                    <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add Category</a>
+                                    <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add to Warehouse</a>
                                 </h1>
                             </div>
                         </div>
@@ -115,7 +115,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                             <div class="panel-body">
                                 <?php if ($error) { ?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?>
                                     </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
-                                <table id="zctb tablePreview" class="display table table-dark table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                                <table id="zctb" class="display table table-dark table-striped table-bordered table-hover" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -132,9 +132,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                     <tbody>
 
-                                        <?php $sql = "SELECT * from `warehouse` WHERE org_id=:org_id";
+                                        <?php
+                                        $sql = "SELECT * from `warehouse` WHERE org_id=:org_id ORDER BY id DESC";
                                         $query = $dbh->prepare($sql);
-                                        $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
+                                        $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
                                         $query->execute();
                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
                                         $cnt = 1;
@@ -143,17 +144,25 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 <tr>
                                                     <td><?php echo htmlentities($cnt); ?></td>
                                                     <?php
-                                                    $s = "SELECT * FROM `product` WHERE org_id=:org_id";
+                                                    $s = "SELECT * FROM `product` WHERE id=:id";
                                                     $q = $dbh->prepare($s);
-                                                    $q->bindParam(':org_id', $result->product_id, PDO::PARAM_STR);
+                                                    $q->bindParam(':id', $result->product_id, PDO::PARAM_STR);
                                                     $q->execute();
                                                     $res = $q->fetch(PDO::FETCH_OBJ);
 
                                                     ?>
-                                                    <td><?php echo var_dump($res); ?></td>
+                                                    <td><?php echo htmlentities($res->name);; ?></td>
                                                     <td><?php echo htmlentities($result->quantity); ?></td>
-                                                    <td><?php echo htmlentities($result->warehouse); ?></td>
-                                                    <td><?php echo htmlentities($result->location); ?></td>
+                                                    <?php
+                                                    $s = "SELECT * FROM `building` WHERE id=:id";
+                                                    $q = $dbh->prepare($s);
+                                                    $q->bindParam(':id', $result->warehouse, PDO::PARAM_STR);
+                                                    $q->execute();
+                                                    $res = $q->fetch(PDO::FETCH_OBJ);
+
+                                                    ?>
+                                                    <td><?php echo htmlentities($res->name); ?></td>
+                                                    <td><?php echo htmlentities($res->location); ?></td>
                                                     <td><?php echo htmlentities($result->stock_status); ?></td>
                                                     <td><?php echo htmlentities($result->status); ?></td>
                                                     <td><?php echo htmlentities($result->date); ?></td>
@@ -181,15 +190,15 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                                                     <?php
                                                                                     $sq = "SELECT * FROM `product` WHERE org_id=:org_id";
                                                                                     $qu = $dbh->prepare($sq);
-                                                                                    $qu->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
+                                                                                    $qu->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
                                                                                     $qu->execute();
                                                                                     $res = $qu->fetchAll(PDO::FETCH_OBJ);
-                                                                                    $cnt = 1;
+
                                                                                     if ($query->rowCount() > 0) {
                                                                                         foreach ($res as $re) {                ?>
                                                                                             <option value="<?php echo htmlentities($re->id); ?>">
                                                                                                 <?php echo htmlentities($re->name); ?></option>
-                                                                                    <?php $cnt = $cnt + 1;
+                                                                                    <?php
                                                                                         }
                                                                                     } ?>
                                                                                 </select>
@@ -201,15 +210,14 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                                                     <?php
                                                                                     $s = "SELECT * FROM `building` WHERE org_id=:org_id";
                                                                                     $q = $dbh->prepare($s);
-                                                                                    $q->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
+                                                                                    $q->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
                                                                                     $q->execute();
                                                                                     $rs = $q->fetchAll(PDO::FETCH_OBJ);
-                                                                                    $cnt = 1;
                                                                                     if ($query->rowCount() > 0) {
                                                                                         foreach ($rs as $r) {                ?>
                                                                                             <option value="<?php echo htmlentities($rt->id); ?>">
                                                                                                 <?php echo htmlentities($r->name); ?></option>
-                                                                                    <?php $cnt = $cnt + 1;
+                                                                                    <?php
                                                                                         }
                                                                                     } ?>
                                                                                 </select>
@@ -256,7 +264,8 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 </tr>
                                         <?php $cnt = $cnt + 1;
                                             }
-                                        } ?>
+                                        }
+                                        ?>
 
                                     </tbody>
                                 </table>
@@ -280,15 +289,14 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                         <?php
                                                         $sql = "SELECT * FROM `product` WHERE org_id=:org_id";
                                                         $query = $dbh->prepare($sql);
-                                                        $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
+                                                        $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
                                                         $query->execute();
                                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
-                                                        $cnt = 1;
                                                         if ($query->rowCount() > 0) {
                                                             foreach ($results as $result) {                ?>
                                                                 <option value="<?php echo htmlentities($result->id); ?>">
                                                                     <?php echo htmlentities($result->name); ?></option>
-                                                        <?php $cnt = $cnt + 1;
+                                                        <?php
                                                             }
                                                         } ?>
                                                     </select>
@@ -301,7 +309,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                         <?php
                                                         $sql = "SELECT * FROM `building` WHERE org_id=:org_id";
                                                         $query = $dbh->prepare($sql);
-                                                        $query->bindParam(':org_id', $_SESSION['id'], PDO::PARAM_STR);
+                                                        $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
                                                         $query->execute();
                                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
                                                         $cnt = 1;
