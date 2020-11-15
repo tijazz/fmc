@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2020 at 05:20 PM
+-- Generation Time: Nov 15, 2020 at 06:07 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -362,8 +362,8 @@ CREATE TABLE `expenditure` (
   `description` varchar(55) DEFAULT NULL,
   `supervisor` varchar(55) DEFAULT NULL,
   `location` varchar(50) DEFAULT NULL,
-  `company` varchar(50) NOT NULL DEFAULT current_timestamp(),
-  `date` timestamp NULL DEFAULT NULL
+  `company` varchar(50) DEFAULT NULL,
+  `date` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
