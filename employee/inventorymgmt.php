@@ -56,14 +56,13 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="public/css/inventorymgmt.css">
+<link rel="stylesheet" href="../public/css/inv.css">
 
 <?php
     require_once "public/config/header.php";
     ?>
 
 <body>
-
     <div id="wrapper">
         <?php
             require_once "public/config/left-sidebar.php";
@@ -83,7 +82,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                 </div>
             </div>
             <div class="row">
-                <div >
+                <div>
                     <!-- content -->
                     <div class="backdrop_org"></div>
                     <div class="question">
@@ -100,24 +99,51 @@ if (strlen($_SESSION['alogin']) == 0) {
                             </div>
                         </form>
                     </div>
-                    <div class="items">
-                        <div class="item item1">
-                            <h1>30</h1>
-                            <span>Machinery</span>
+                    <section class="statistic">
+                        <div class="section__content section__content--p30">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="statistic__item">
+                                            <h2 class="number">100</h2>
+                                            <span class="desc">Machineries</span>
+                                            <div class="icon">
+                                                <i class="fa fa-tractor"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="statistic__item">
+                                            <h2 class="number">38</h2>
+                                            <span class="desc">Buildings</span>
+                                            <div class="icon">
+                                                <i class="fa fa-university"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="statistic__item">
+                                            <h2 class="number product_no">1086</h2>
+                                            <span class="desc">Products</span>
+                                            <div class="icon">
+                                                <i class="fa fa-money"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="statistic__item">
+                                            <h2 class="number warehouse_no">140</h2>
+                                            <span class="desc">Warehouses</span>
+                                            <div class="icon">
+                                                <i class="fa fa-warehouse"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="item item1">
-                            <h1>45</h1>
-                            <span>Buildings</span>
-                        </div>
-                        <div class="item item1">
-                            <h1>89</h1>
-                            <span>Lands/Fields</span>
-                        </div>
-                        <div class="item item1">
-                            <h1>40</h1>
-                            <span>Vehicles</span>
-                        </div>
-                    </div>
+                    </section>
+                    <!-- END STATISTIC-->
                     <div class="wrapper">
                         <div class="summ">
                             <div class="summary">
@@ -147,232 +173,85 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 455<span>Total Items</span>
                             </h1>
                         </div>
-                        <div class="details">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th> S/N </th>
-                                        <th> Item </th>
-                                        <th> Quantity </th>
-                                        <th> Price </th>
-                                        <th> Description </th>
-                                        <th> Action </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Cattle</td>
-                                        <td>25</td>
-                                        <td>&#8358;50,000.00</td>
-                                        <td>To be sold in December</td>
-                                        <td>
-                                            <div class="add_btn"><i class="fa fa-plus"></i></div>
-                                            <div class="sub_btn"><i class="fa fa-minus"></i></div>
-                                            <div class="del_btn"><i class="fa fa-trash trash"></i></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Cattle</td>
-                                        <td>25</td>
-                                        <td>&#8358;50,000.00</td>
-                                        <td>To be sold in December</td>
-                                        <td>
-                                            <div class="add_btn"><i class="fa fa-plus"></i></div>
-                                            <div class="sub_btn"><i class="fa fa-minus"></i></div>
-                                            <div class="del_btn"><i class="fa fa-trash trash"></i></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Cattle</td>
-                                        <td>25</td>
-                                        <td>&#8358;50,000.00</td>
-                                        <td>To be sold in December</td>
-                                        <td>
-                                            <div class="add_btn"><i class="fa fa-plus"></i></div>
-                                            <div class="sub_btn"><i class="fa fa-minus"></i></div>
-                                            <div class="del_btn"><i class="fa fa-trash trash"></i></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Cattle</td>
-                                        <td>25</td>
-                                        <td>&#8358;50,000.00</td>
-                                        <td>To be sold in December</td>
-                                        <td>
-                                            <div class="add_btn"><i class="fa fa-plus"></i></div>
-                                            <div class="sub_btn"><i class="fa fa-minus"></i></div>
-                                            <div class="del_btn"><i class="fa fa-trash trash"></i></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Cattle</td>
-                                        <td>25</td>
-                                        <td>&#8358;50,000.00</td>
-                                        <td>To be sold in December</td>
-                                        <td>
-                                            <div class="add_btn"><i class="fa fa-plus"></i></div>
-                                            <div class="sub_btn"><i class="fa fa-minus"></i></div>
-                                            <div class="del_btn"><i class="fa fa-trash trash"></i></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>Cattle</td>
-                                        <td>25</td>
-                                        <td>&#8358;50,000.00</td>
-                                        <td>To be sold in December</td>
-                                        <td>
-                                            <div class="add_btn"><i class="fa fa-plus"></i></div>
-                                            <div class="sub_btn"><i class="fa fa-minus"></i></div>
-                                            <div class="del_btn"><i class="fa fa-trash trash"></i></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>Cattle</td>
-                                        <td>25</td>
-                                        <td>&#8358;50,000.00</td>
-                                        <td>To be sold in December</td>
-                                        <td>
-                                            <div class="add_btn"><i class="fa fa-plus"></i></div>
-                                            <div class="sub_btn"><i class="fa fa-minus"></i></div>
-                                            <div class="del_btn"><i class="fa fa-trash trash"></i></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>8</td>
-                                        <td>Cattle</td>
-                                        <td>25</td>
-                                        <td>&#8358;50,000.00</td>
-                                        <td>To be sold in December</td>
-                                        <td>
-                                            <div class="add_btn"><i class="fa fa-plus"></i></div>
-                                            <div class="sub_btn"><i class="fa fa-minus"></i></div>
-                                            <div class="del_btn"><i class="fa fa-trash trash"></i></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>9</td>
-                                        <td>Cattle</td>
-                                        <td>25</td>
-                                        <td>&#8358;50,000.00</td>
-                                        <td>To be sold in December</td>
-                                        <td>
-                                            <div class="add_btn"><i class="fa fa-plus"></i></div>
-                                            <div class="sub_btn"><i class="fa fa-minus"></i></div>
-                                            <div class="del_btn"><i class="fa fa-trash trash"></i></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>10</td>
-                                        <td>Cattle</td>
-                                        <td>25</td>
-                                        <td>&#8358;50,000.00</td>
-                                        <td>To be sold in December</td>
-                                        <td>
-                                            <div class="add_btn"><i class="fa fa-plus"></i></div>
-                                            <div class="sub_btn"><i class="fa fa-minus"></i></div>
-                                            <div class="del_btn"><i class="fa fa-trash trash"></i></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>11</td>
-                                        <td>Cattle</td>
-                                        <td>25</td>
-                                        <td>&#8358;50,000.00</td>
-                                        <td>To be sold in December</td>
-                                        <td>
-                                            <div class="add_btn"><i class="fa fa-plus"></i></div>
-                                            <div class="sub_btn"><i class="fa fa-minus"></i></div>
-                                            <div class="del_btn"><i class="fa fa-trash trash"></i></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>12</td>
-                                        <td>Cattle</td>
-                                        <td>25</td>
-                                        <td>&#8358;50,000.00</td>
-                                        <td>To be sold in December</td>
-                                        <td>
-                                            <div class="add_btn"><i class="fa fa-plus"></i></div>
-                                            <div class="sub_btn"><i class="fa fa-minus"></i></div>
-                                            <div class="del_btn"><i class="fa fa-trash trash"></i></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>13</td>
-                                        <td>Cattle</td>
-                                        <td>25</td>
-                                        <td>&#8358;50,000.00</td>
-                                        <td>To be sold in December</td>
-                                        <td>
-                                            <div class="add_btn"><i class="fa fa-plus"></i></div>
-                                            <div class="sub_btn"><i class="fa fa-minus"></i></div>
-                                            <div class="del_btn"><i class="fa fa-trash trash"></i></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>14</td>
-                                        <td>Cattle</td>
-                                        <td>25</td>
-                                        <td>&#8358;50,000.00</td>
-                                        <td>To be sold in December</td>
-                                        <td>
-                                            <div class="add_btn"><i class="fa fa-plus"></i></div>
-                                            <div class="sub_btn"><i class="fa fa-minus"></i></div>
-                                            <div class="del_btn"><i class="fa fa-trash trash"></i></div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- end content  -->
-                </div>
-            </div>
-        </div>
-        <?php
+                        <section>
+                            <div class="section__content section__content--p30">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12">
+                                            <!-- RECENT REPORT 2-->
+                                            <div class="recent-report2">
+                                                <h3 class="title-3">recent reports</h3>
+                                                <div class="chart-info">
+                                                    <div class="chart-info__left">
+                                                        <div class="chart-note">
+                                                            <span class="dot dot--blue"></span>
+                                                            <span>products</span>
+                                                        </div>
+                                                        <div class="chart-note">
+                                                            <span class="dot dot--green"></span>
+                                                            <span>Services</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="chart-info-right">
+                                                        <div class="rs-select2--dark rs-select2--md m-r-10">
+                                                            <select class="js-select2" name="property">
+                                                                <option selected="selected">All Properties</option>
+                                                                <option value="">Products</option>
+                                                                <option value="">Services</option>
+                                                            </select>
+                                                            <div class="dropDownSelect2"></div>
+                                                        </div>
+                                                        <div class="rs-select2--dark rs-select2--sm">
+                                                            <select class="js-select2 au-select-dark" name="time">
+                                                                <option selected="selected">All Time</option>
+                                                                <option value="">By Month</option>
+                                                                <option value="">By Day</option>
+                                                            </select>
+                                                            <div class="dropDownSelect2"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="recent-report__chart">
+                                                    <canvas id="recent-rep2-chart"></canvas>
+                                                </div>
+                                            </div>
+                                            <!-- END RECENT REPORT 2             -->
+                                            
+                                        </div>
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="au-card chart-percent-card recent-report2">
+                                                <div class="au-card-inner">
+                                                    <h3 class="title-2 tm-b-5">char by %</h3>
+                                                    <div class="row no-gutters">
+                                                        <div class="col-xl-6">
+                                                            <div class="chart-note-wrap">
+                                                                <div class="chart-note mr-0 d-block">
+                                                                    <span class="dot dot--blue"></span>
+                                                                    <span>products</span>
+                                                                </div>
+                                                                <div class="chart-note mr-0 d-block">
+                                                                    <span class="dot dot--red"></span>
+                                                                    <span>Warehouses</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-6">
+                                                            <div class="percent-chart">
+                                                                <canvas id="percent-chart"></canvas>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end content  -->
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
     require_once "public/config/footer.php";
     ?>
 </body>
-<script>
- let canceller = document.querySelector(".cancel")
-    let del_item = document.querySelector("p.del_item");
-    let del_modal = document.querySelector('.question');
-    let backdrop_org = document.querySelector('.backdrop_org');
-    let del_btns = document.querySelectorAll('.del_btn');
-    let summary = document.querySelector(".wrapper > div.summ > div");
-    let h1 = document.querySelector("h1.summ_h1");
-    h1.addEventListener('mouseover', () => {
-        summary.classList.add('show');
-    })
-    h1.addEventListener('mouseleave', () => {
-        summary.classList.remove('show')
-    })
-    for (let i = 0; i < del_btns.length; i++) {
-        del_btns[i].addEventListener('click', () => {
-            var item = del_btns[i].parentElement.parentElement.querySelector('td:nth-of-type(2)').innerHTML;
-            var quantity = del_btns[i].parentElement.parentElement.querySelector('td:nth-of-type(3)').innerHTML;
-            del_item.textContent = item + ' (' + quantity + ')';
-            del_modal.classList.add('question-shown');
-            backdrop_org.classList.add('backdrop-shown')
-        })
-    }
-    backdrop_org.addEventListener('click', () => {
-        del_modal.classList.remove('question-shown');
-        backdrop_org.classList.remove('backdrop-shown')
-    })
-
-    canceller.addEventListener('click', () => {
-        del_modal.classList.remove('question-shown');
-        backdrop_org.classList.remove('backdrop-shown')
-    })
-</script>
-
+<script src="../public/js/inv.js"></script>
 </html>
 <?php } ?>

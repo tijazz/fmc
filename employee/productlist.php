@@ -92,14 +92,14 @@ if (strlen($_SESSION['alogin']) == 0) {
                         <div class="navbar">
                             <div class="container-fluid" style='padding-left:7px;'>
                                 <h1 class="nav navbar-nav">
-                                    <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add Category</a>
+                                    <a class="btn btn-md btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i> Add New Product</a>
                                 </h1>
                             </div>
                         </div>
                         <!-- button style End -->
                         <!-- Zero Configuration Table -->
                         <div class="panel panel-default">
-                            <div class="panel-heading">List Warehouses</div>
+                            <div class="panel-heading">List Products</div>
                             <div class="panel-body">
                                 <?php if ($error) { ?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?>
                                     </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
@@ -116,7 +116,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                     <tbody>
 
-                                        <?php $sql = "SELECT * from `product` WHERE org_id=:org_id";
+                                        <?php 
+                                        $sql = "SELECT * from `product` WHERE org_id=:org_id";
                                         $query = $dbh->prepare($sql);
                                         $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
                                         $query->execute();

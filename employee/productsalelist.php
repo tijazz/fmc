@@ -81,7 +81,6 @@
                                                 <th>Customer Name</th>
                                                 <th>Phone</th>
                                                 <th>Type</th>
-                                                <th>Add Parameter</th>
                                                 <th>Action</th>	
 										</tr>
 									</thead>
@@ -113,7 +112,6 @@
                                             <td><?php echo htmlentities($result->customername);?></td>
                                             <td><?php echo htmlentities($result->phone);?></td>
                                             <td><?php echo htmlentities($result->type);?></td>
-                                            <td><?php echo htmlentities($result->add_parameter);?></td>
 
 																						
 											<td>

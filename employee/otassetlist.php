@@ -72,6 +72,20 @@ if (strlen($_SESSION['alogin']) == 0) {
         header('location:otassetlist.php');
     }
 
+    if (isset($_POST['update'])) {
+        $id = $_POST['update'];
+        $state = $_POST['state'];
+
+        $sql = "UPDATE `other_asset` SET `state`=(:state) WHERE id=(:id)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':state', $state, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Updated Successfully";
+
+        header('location:otassetlist.php');
+    }
+
 ?>
 
     <!DOCTYPE html>
@@ -154,7 +168,124 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             foreach ($results as $result) {                ?>
                                                 <tr>
                                                     <td><?php echo htmlentities($cnt); ?></td>
-                                                    <td><?php echo htmlentities($result->name); ?></td>
+                                                    <td>
+                                                        <a data-toggle="modal" href="#status<?= $cnt ?>" data-toggle="modal" data-target="#status<?= $cnt ?>">&nbsp;
+                                                            <?php echo htmlentities($result->name); ?></a>&nbsp;&nbsp;
+
+                                                        <div class="modal fade" id="status<?= $cnt ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" style="height:auto">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">×</span></button>
+                                                                        <h4 class="modal-title">Status</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="row shop-tracking-status">
+
+                                                                            <div class="col-md-12">
+                                                                                <div class="well">
+
+                                                                                    <form action="<?= $_SERVER['PHP_SELF'] ?>" class="form-horizontal" method="POST">
+                                                                                        <div class="form-group">
+                                                                                            <label for="inputOrderTrackingID" class="col-sm-2 control-label">Status </label>
+                                                                                            <div class="col-sm-10">
+                                                                                                <select name="state" id="inputOrderTrackingID" class="form-control">
+                                                                                                    <option value="1" <?= $result->state == 1 ? 'SELECTED' : '' ?>>Accepted</option>
+                                                                                                    <option value="2" <?= $result->state == 2 ? 'SELECTED' : '' ?>>In Progress</option>
+                                                                                                    <option value="3" <?= $result->state == 3 ? 'SELECTED' : '' ?>>Shipped</option>
+                                                                                                    <option value="4" <?= $result->state == 4 ? 'SELECTED' : '' ?>>Delivered</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <div class="col-sm-offset-2 col-sm-10">
+                                                                                                <button type="submit" id="shopGetOrderStatusID" class="btn btn-success" name="update" value="<?= $result->id ?>">Update Status</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </form>
+
+                                                                                    <h4>Your order status:</h4>
+
+                                                                                    <ul class="list-group">
+                                                                                        <li class="list-group-item">
+                                                                                            <span class="prefix">Item Name:</span>
+                                                                                            <span class="label label-success"><?php echo htmlentities($result->name); ?></span>
+                                                                                        </li>
+                                                                                        <li class="list-group-item">
+                                                                                            <span class="prefix">Date created:</span>
+                                                                                            <span class="label label-success"><?php echo htmlentities($result->date); ?></span>
+                                                                                        </li>
+                                                                                        <li class="list-group-item">
+                                                                                            <span class="prefix">Last update:</span>
+                                                                                            <span class="label label-success"><?php echo htmlentities($result->updated_at); ?></span>
+                                                                                        </li>
+                                                                                    </ul>
+
+                                                                                    <div class="order-status">
+
+                                                                                        <div class="order-status-timeline">
+                                                                                            <!-- class names: c0 c1 c2 c3 and c4 -->
+                                                                                            <?php
+                                                                                            switch ($result->state) {
+                                                                                                case 1:
+                                                                                                    $state = 'c0';
+                                                                                                    break;
+                                                                                                case 2:
+                                                                                                    $state = 'c1';
+                                                                                                    break;
+                                                                                                case 3:
+                                                                                                    $state = 'c2';
+                                                                                                    break;
+                                                                                                case 4:
+                                                                                                    $state = 'c3';
+                                                                                                    break;
+                                                                                                default:
+                                                                                                    $state = 'c4';
+                                                                                                    break;
+                                                                                            }
+                                                                                            ?>
+                                                                                            <div class="order-status-timeline-completion <?= $state ?>"></div>
+                                                                                        </div>
+
+                                                                                        <div class="image-order-status image-order-status-new active img-circle">
+                                                                                            <span class="status">Accepted</span>
+                                                                                            <div class="icon"></div>
+                                                                                        </div>
+                                                                                        <div class="image-order-status image-order-status-active active img-circle">
+                                                                                            <span class="status">In progress</span>
+                                                                                            <div class="icon"></div>
+                                                                                        </div>
+                                                                                        <div class="image-order-status image-order-status-intransit active img-circle">
+                                                                                            <span class="status">Shipped</span>
+                                                                                            <div class="icon"></div>
+                                                                                        </div>
+                                                                                        <div class="image-order-status image-order-status-delivered active img-circle">
+                                                                                            <span class="status">Delivered</span>
+                                                                                            <div class="icon"></div>
+                                                                                        </div>
+                                                                                        <div class="image-order-status image-order-status-completed active img-circle">
+                                                                                            <span class="status">Completed</span>
+                                                                                            <div class="icon"></div>
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <!--end of modal-dialog-->
+                                                    </td>
                                                     <td><?php echo htmlentities($result->description); ?></td>
                                                     <td><?php echo htmlentities($result->quantity); ?></td>
                                                     <td><?php echo htmlentities($result->manufacturer); ?></td>
