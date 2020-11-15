@@ -134,27 +134,36 @@
           datasets: [
             {
               label: "My First dataset",
-              data: [document.querySelector('.product_no').innerText,document.querySelector('.warehouse_no').innerText ],
+              data: [document.querySelector('.accepted_no').innerText,document.querySelector('.progress_no').innerText,document.querySelector('.shipped_no').innerText, document.querySelector('.progress_no').innerText ],
               backgroundColor: [
                 '#1ab394',
+                '#fa4251',
+                '#fa4251',
                 '#fa4251'
               ],
               hoverBackgroundColor: [
                 '#1ab394',
+                '#fa4251',
+                '#fa4251',
                 '#fa4251'
               ],
               borderWidth: [
-                0, 0
+                0, 0, 0, 0
               ],
               hoverBorderColor: [
                 'transparent',
+                'transparent',
+                'transparent',
                 'transparent'
+
               ]
             }
           ],
           labels: [
-            'Products',
-            'Warehouses'
+            'Accepted',
+            'In Progress',
+            'Shipped',
+            'Delivered'
           ]
         },
         options: {
