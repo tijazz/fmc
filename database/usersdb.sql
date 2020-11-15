@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2020 at 12:20 PM
+-- Generation Time: Nov 15, 2020 at 05:20 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -61,17 +61,19 @@ CREATE TABLE `administration` (
   `category` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `place` varchar(50) NOT NULL,
   `status` varchar(50) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp()
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `state` varchar(11) NOT NULL DEFAULT '1',
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `administration`
 --
 
-INSERT INTO `administration` (`id`, `user_id`, `org_id`, `name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`, `date`) VALUES
-(1, 2, NULL, 'dsl', 'dcl iron', '12', 'Abdullahi', 'Oyo', 'A.C.', 'ibadan', 'in stock', '2020-08-16 00:00:00'),
-(3, 2, NULL, 'Abdullahi Temidayo Jimoh', 'camry404', '12', 'Adullahi', 'Oyo, Nigeria.', 'fan', 'ibadan', 'out stock', '2020-08-27 00:00:00'),
-(4, 1, 1, 'Terminus', 'camry404', '12', 'jat', 'Oyo, Nigeria.', 'fan', 'ibadan', 'in stock', '2020-09-20 00:00:00');
+INSERT INTO `administration` (`id`, `user_id`, `org_id`, `name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`, `date`, `state`, `updated_at`) VALUES
+(1, 2, NULL, 'dsl', 'dcl iron', '12', 'Abdullahi', 'Oyo', 'A.C.', 'ibadan', 'in stock', '2020-08-16 00:00:00', '1', '2020-11-15 16:08:25'),
+(3, 2, NULL, 'Abdullahi Temidayo Jimoh', 'camry404', '12', 'Adullahi', 'Oyo, Nigeria.', 'fan', 'ibadan', 'out stock', '2020-08-27 00:00:00', '1', '2020-11-15 16:08:25'),
+(4, 1, 1, 'Terminus', 'camry404', '12', 'jat', 'Oyo, Nigeria.', 'fan', 'ibadan', 'in stock', '2020-09-20 00:00:00', '1', '2020-11-15 16:08:25');
 
 -- --------------------------------------------------------
 
@@ -96,7 +98,8 @@ CREATE TABLE `advert` (
 
 INSERT INTO `advert` (`id`, `user_id`, `org_id`, `type`, `name`, `description`, `amount`, `date`) VALUES
 (1, 0, 1, 'print', 'pen', 'camry404', 5000, '2020-10-15 21:57:08'),
-(2, 0, 1, 'tv', 'manager', 'Bypassing', 100000, '2020-10-15 21:56:24');
+(2, 0, 1, 'tv', 'manager', 'Bypassing', 1000, '2020-10-15 21:56:24'),
+(4, 0, 1, 'tv', 'org_id', 'camry404', 12456, '2020-11-07 14:08:43');
 
 -- --------------------------------------------------------
 
@@ -163,6 +166,7 @@ INSERT INTO `appraisal` (`id`, `user_id`, `org_id`, `empwor_id`, `manager`, `res
 --
 
 CREATE TABLE `asset` (
+  `id` int(11) NOT NULL,
   `item` varchar(50) NOT NULL,
   `category` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -171,24 +175,16 @@ CREATE TABLE `asset` (
 -- Dumping data for table `asset`
 --
 
-INSERT INTO `asset` (`item`, `category`) VALUES
-('Machinery', 'tractor'),
-('Building', 'admin'),
-('Building', 'ops'),
-('Building', 'storage'),
-('Building', 'warehouse'),
-('operation', 'seed'),
-('administration', 'fan'),
-('administration', 'A.C.'),
-('Machinery', 'tractor'),
-('Building', 'admin'),
-('Building', 'ops'),
-('Building', 'storage'),
-('Building', 'warehouse'),
-('operation', 'seed'),
-('administration', 'fan'),
-('administration', 'A.C.'),
-('Machinery', 'Truck');
+INSERT INTO `asset` (`id`, `item`, `category`) VALUES
+(1, 'Machinery', 'tractor'),
+(2, 'Building', 'admin'),
+(3, 'Building', 'ops'),
+(4, 'Building', 'storage'),
+(5, 'Building', 'warehouse'),
+(6, 'operation', 'seed'),
+(7, 'administration', 'fan'),
+(8, 'administration', 'A.C.'),
+(18, 'Machinery', 'van');
 
 -- --------------------------------------------------------
 
@@ -232,6 +228,8 @@ CREATE TABLE `building` (
   `lng` varchar(50) DEFAULT NULL,
   `category` varchar(50) DEFAULT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `state` varchar(11) NOT NULL DEFAULT '1',
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `table_name` varchar(50) NOT NULL DEFAULT 'building',
   `capacity` int(50) DEFAULT NULL,
   `type` varchar(50) DEFAULT NULL,
@@ -249,10 +247,12 @@ CREATE TABLE `building` (
 -- Dumping data for table `building`
 --
 
-INSERT INTO `building` (`id`, `user_id`, `org_id`, `name`, `description`, `size`, `amount`, `location`, `lat`, `lng`, `category`, `date`, `table_name`, `capacity`, `type`, `purpose`, `status`, `utilization`, `start_season`, `end_season`, `ownership`, `fallow`, `manager`) VALUES
-(4, 2, NULL, 'Abdullahi', 'camry404', '12', 1000, 'Oyo', NULL, NULL, 'ops', '2020-08-18 23:00:00', 'building', 0, '', '', 'full', '', '0000-00-00', '0000-00-00', 'full', '', ''),
-(7, 2, NULL, 'Abdullahi', 'Buy Fuel', '20', 1233, 'nigeria', NULL, NULL, 'ops', '2020-08-27 17:55:40', 'building', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 0, 1, 'Abdullahi', 'Bypassing', '23', 1000000, 'Oyo, Nigeria.', NULL, NULL, 'admin', '2020-09-20 15:42:24', 'building', 0, '', '', 'full', '', '2020-10-26', '2020-11-02', 'full', '', '');
+INSERT INTO `building` (`id`, `user_id`, `org_id`, `name`, `description`, `size`, `amount`, `location`, `lat`, `lng`, `category`, `date`, `state`, `updated_at`, `table_name`, `capacity`, `type`, `purpose`, `status`, `utilization`, `start_season`, `end_season`, `ownership`, `fallow`, `manager`) VALUES
+(4, 2, NULL, 'Abdullahi', 'camry404', '12', 1000, 'Oyo', NULL, NULL, 'ops', '2020-08-18 23:00:00', '1', '2020-11-15 16:09:08', 'building', 0, '', '', 'full', '', '0000-00-00', '0000-00-00', 'full', '', ''),
+(7, 2, NULL, 'Abdullahi', 'Buy Fuel', '20', 1233, 'nigeria', NULL, NULL, 'ops', '2020-08-27 17:55:40', '1', '2020-11-15 16:09:08', 'building', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 0, 1, 'Abdullahi', 'Bypassing', '23', 1000000, 'Oyo, Nigeria.', NULL, NULL, 'admin', '2020-09-20 15:42:24', '1', '2020-11-15 16:09:08', 'building', 0, '', '', 'full', '', '2020-10-26', '2020-11-02', 'full', '', ''),
+(9, 0, 1, 'Abd', 'iron hoe', '12', 1000000, 'Nigeria.', NULL, NULL, 'warehouse', '2020-11-05 09:51:27', '1', '2020-11-15 16:09:08', 'building', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 0, 1, 'Saheed Adigun', 'camry404', '23', 1334344, 'Oyo', NULL, NULL, 'warehouse', '2020-11-05 09:51:55', '1', '2020-11-15 16:09:08', 'building', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -356,23 +356,15 @@ INSERT INTO `employee` (`id`, `user_id`, `org_id`, `image`, `name`, `address`, `
 
 CREATE TABLE `expenditure` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `description` varchar(55) NOT NULL,
-  `type-expenses` varchar(55) NOT NULL,
-  `type-asset` varchar(55) NOT NULL,
-  `amount` double NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp()
+  `user_id` int(11) DEFAULT NULL,
+  `org_id` int(11) NOT NULL,
+  `name` varchar(55) DEFAULT NULL,
+  `description` varchar(55) DEFAULT NULL,
+  `supervisor` varchar(55) DEFAULT NULL,
+  `location` varchar(50) DEFAULT NULL,
+  `company` varchar(50) NOT NULL DEFAULT current_timestamp(),
+  `date` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `expenditure`
---
-
-INSERT INTO `expenditure` (`id`, `user_id`, `description`, `type-expenses`, `type-asset`, `amount`, `date`) VALUES
-(1, 5, 'Boy', 'Insurance & security', '', 1000000, '2020-07-12 16:27:45'),
-(2, 5, 'Training', 'Raw Materials', '', 1245677, '2020-07-12 16:35:00'),
-(4, 5, 'good', 'Project\r\nExpenses', '', 1334344, '2020-07-12 16:56:15'),
-(5, 5, 'repair of pipes', 'Buildings', '', 10000, '2020-07-13 20:21:22');
 
 -- --------------------------------------------------------
 
@@ -616,27 +608,28 @@ CREATE TABLE `locations` (
   `fallow` varchar(50) DEFAULT NULL,
   `manager` varchar(50) DEFAULT NULL,
   `data_type` varchar(11) DEFAULT 'data',
-  `locations` varchar(11) NOT NULL DEFAULT 'location'
+  `locations` varchar(11) NOT NULL DEFAULT 'location',
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `state` varchar(11) NOT NULL DEFAULT '1',
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `locations`
 --
 
-INSERT INTO `locations` (`id`, `user`, `org_id`, `name`, `lat`, `lng`, `description`, `location_status`, `size`, `soil_type`, `ph`, `chemical`, `active`, `utilization`, `start_season`, `end_season`, `ownership`, `fallow`, `manager`, `data_type`, `locations`) VALUES
-(21, 'olawale', NULL, NULL, 7.872496, 8.588821, 'farm 3A', 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'location'),
-(22, '', NULL, NULL, 7.146105, 5.126693, '', 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'location'),
-(24, 'hello', NULL, NULL, 8.824571, 8.240799, 'testing', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'location'),
-(25, '', NULL, NULL, 8.951792, 9.697006, '', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'location'),
-(26, '', NULL, NULL, 8.843251, 8.960922, '', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'location'),
-(27, '2', NULL, 'Abdullahi', 9.298905, 9.444320, 'Bypassing', 1, 23, 'loamy', '7', 'qwerty', 'dog', 'rearing', '2020-08-31', '2020-09-14', 'full', '12', 'Abdullahi', NULL, 'location'),
-(28, '2', NULL, 'Abdullahi', 9.298905, 9.444320, 'Bypassing', 1, 23, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'location'),
-(29, '1', 1, 'camry', 8.669519, 9.114730, 'Bypassing', 1, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'field', 'location'),
-(30, '1', 1, 'Abdullahi', 0.000000, 0.000000, 'Bypassing', 1, 23, '', '', '', '', '', '0000-00-00', '0000-00-00', 'lease', '', 'Abdullahi', 'field', 'location'),
-(31, '1', 1, 'Terminus', 0.000000, 0.000000, 'camry404', 1, 12, '', '', '', '', '', '0000-00-00', '0000-00-00', 'full', '', '', 'pen', 'location'),
-(32, '', NULL, NULL, 9.255534, 9.004867, '', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'data', 'location'),
-(34, '0', 1, 'Saheed Adigun', 0.000000, 0.000000, 'Bypassing', 1, 0, '', '', 'qwerty', '', '', '0000-00-00', '0000-00-00', 'full', '', '', 'field', 'location'),
-(35, '0', 1, 'Saheed Adigun', 0.000000, 0.000000, 'Bypass', 1, 0, '', '', '', '', '', '0000-00-00', '0000-00-00', 'lease', '', '', 'pen', 'location');
+INSERT INTO `locations` (`id`, `user`, `org_id`, `name`, `lat`, `lng`, `description`, `location_status`, `size`, `soil_type`, `ph`, `chemical`, `active`, `utilization`, `start_season`, `end_season`, `ownership`, `fallow`, `manager`, `data_type`, `locations`, `date`, `state`, `updated_at`) VALUES
+(21, 'olawale', NULL, NULL, 7.872496, 8.588821, 'farm 3A', 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'location', '2020-11-15 16:10:32', '1', '2020-11-15 16:10:55'),
+(22, '', NULL, NULL, 7.146105, 5.126693, '', 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'location', '2020-11-15 16:10:32', '1', '2020-11-15 16:10:55'),
+(24, 'hello', NULL, NULL, 8.824571, 8.240799, 'testing', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'location', '2020-11-15 16:10:32', '1', '2020-11-15 16:10:55'),
+(25, '', NULL, NULL, 8.951792, 9.697006, '', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'location', '2020-11-15 16:10:32', '1', '2020-11-15 16:10:55'),
+(26, '', NULL, NULL, 8.843251, 8.960922, '', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'location', '2020-11-15 16:10:32', '1', '2020-11-15 16:10:55'),
+(27, '2', NULL, 'Abdullahi', 9.298905, 9.444320, 'Bypassing', 1, 23, 'loamy', '7', 'qwerty', 'dog', 'rearing', '2020-08-31', '2020-09-14', 'full', '12', 'Abdullahi', NULL, 'location', '2020-11-15 16:10:32', '1', '2020-11-15 16:10:55'),
+(28, '2', NULL, 'Abdullahi', 9.298905, 9.444320, 'Bypassing', 1, 23, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'location', '2020-11-15 16:10:32', '1', '2020-11-15 16:10:55'),
+(29, '1', 1, 'camry', 8.669519, 9.114730, 'Bypassing', 1, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'field', 'location', '2020-11-15 16:10:32', '1', '2020-11-15 16:10:55'),
+(30, '1', 1, 'Abdullahi', 8.995200, 9.268539, 'Bypassing\"', 1, 23, '', '', '', '', '', '0000-00-00', '0000-00-00', 'lease', '', 'Abdullahi', 'field', 'location', '2020-11-15 16:10:32', '1', '2020-11-15 16:10:55'),
+(32, '', NULL, NULL, 9.255534, 9.004867, '', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'data', 'location', '2020-11-15 16:10:32', '1', '2020-11-15 16:10:55'),
+(36, '0', 1, 'user_id', 8.778111, 8.697250, 'Bypassing\"', 1, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'data', 'location', '2020-11-15 16:10:32', '1', '2020-11-15 16:10:55');
 
 -- --------------------------------------------------------
 
@@ -655,21 +648,24 @@ CREATE TABLE `machinery` (
   `manufacturer` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `amount` int(50) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `table_name` varchar(50) NOT NULL DEFAULT 'machinery'
+  `table_name` varchar(50) NOT NULL DEFAULT 'machinery',
+  `state` varchar(11) NOT NULL DEFAULT '1',
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `machinery`
 --
 
-INSERT INTO `machinery` (`id`, `user_id`, `org_id`, `category`, `name`, `description`, `serial_no`, `manufacturer`, `amount`, `date`, `table_name`) VALUES
-(1, 2, NULL, 'tractor', 'james', 'a player', '123235655', 'dangote', 1200, '2020-08-12 00:00:00', 'machinery'),
-(3, 2, NULL, 'tractor', 'Terminus', 'For this month', '45323453', 'Adullahi', 0, '2020-08-12 00:00:00', 'machinery'),
-(5, 2, NULL, 'tractor', 'Abdullahi ', 'Bypassing', '45323453', 'Q&S', 0, '2020-08-20 00:00:00', 'machinery'),
-(7, 2, NULL, 'tractor', 'Abdullahi', 'Bypassing', '45323453', 'jat', 11000, '2020-08-27 00:00:00', 'machinery'),
-(8, 2, NULL, 'tractor', 'Abdullahi', 'Bypassing', '45323453', 'jat', 1000000, '2020-08-31 00:00:00', 'machinery'),
-(9, 1, 0, 'tractor', 'Abdullahi', 'camry404', '45323453', 'jat', 1000000, '2020-09-20 00:00:00', 'machinery'),
-(10, 0, 1, 'tractor', 'Abdullahi', 'Bypassing', '45323453', 'jat', 1000000, '2020-09-20 00:00:00', 'machinery');
+INSERT INTO `machinery` (`id`, `user_id`, `org_id`, `category`, `name`, `description`, `serial_no`, `manufacturer`, `amount`, `date`, `table_name`, `state`, `updated_at`) VALUES
+(1, 2, NULL, 'tractor', 'james', 'a player', '123235655', 'dangote', 1200, '2020-08-12 00:00:00', 'machinery', '1', '2020-11-15 14:56:53'),
+(3, 2, NULL, 'tractor', 'Terminus', 'For this month', '45323453', 'Adullahi', 0, '2020-08-12 00:00:00', 'machinery', '1', '2020-11-15 14:56:53'),
+(5, 2, NULL, 'tractor', 'Abdullahi ', 'Bypassing', '45323453', 'Q&S', 0, '2020-08-20 00:00:00', 'machinery', '1', '2020-11-15 14:56:53'),
+(7, 2, NULL, 'tractor', 'Abdullahi', 'Bypassing', '45323453', 'jat', 11000, '2020-08-27 00:00:00', 'machinery', '1', '2020-11-15 14:56:53'),
+(8, 2, NULL, 'tractor', 'Abdullahi', 'Bypassing', '45323453', 'jat', 1000000, '2020-08-31 00:00:00', 'machinery', 'accepted', '2020-11-15 14:45:20'),
+(9, 1, 0, 'tractor', 'Abdullahi', 'camry404', '45323453', 'jat', 1000000, '2020-09-20 00:00:00', 'machinery', '1', '2020-11-15 14:56:53'),
+(10, 0, 1, 'tractor', 'Abdullahi', 'Bypassing', '45323453', 'jat', 1000000, '2020-09-20 00:00:00', 'machinery', '2', '2020-11-15 15:34:45'),
+(12, 0, 1, 'van', 'Saheed Adigun', 'Bypassing', '45323453', 'jat', 1245677, '2020-11-05 09:46:44', 'machinery', '1', '2020-11-15 14:56:53');
 
 -- --------------------------------------------------------
 
@@ -698,7 +694,8 @@ INSERT INTO `maintenance` (`id`, `org_id`, `user_id`, `item_id`, `serial no`, `t
 (1, NULL, NULL, NULL, 12345678, 'Buildings', 'Repair of SInk', 100000, '0000-00-00 00:00:00', '2020-07-13 20:29:28'),
 (2, 1, 0, 8, NULL, 'building', 'Bypassing', 100, '2020-10-14 07:06:25', '2020-10-13 23:00:00'),
 (3, 1, 0, 10, NULL, 'machinery', 'Buy Fuel', 1000, '2020-10-14 08:51:47', '2017-05-31 23:00:00'),
-(4, 1, 0, 9, NULL, 'vehicle', 'treated corn', 5000, '2020-10-14 08:52:04', '2017-05-31 23:00:00');
+(4, 1, 0, 9, NULL, 'vehicle', 'treated corn', 5000, '2020-10-14 08:52:04', '2017-05-31 23:00:00'),
+(5, 1, 0, 9, NULL, 'vehicle', 'iron hoe', 1334344, '2020-11-07 14:03:36', '2020-11-06 23:00:00');
 
 -- --------------------------------------------------------
 
@@ -826,19 +823,21 @@ CREATE TABLE `operation` (
   `category` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `place` varchar(50) NOT NULL,
   `status` varchar(50) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp()
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `state` varchar(11) NOT NULL DEFAULT '1',
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `operation`
 --
 
-INSERT INTO `operation` (`sn`, `user_id`, `org_id`, `name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`, `date`) VALUES
-(1, 2, NULL, 'corn', 'treated corn', '15', 'covas', 'Oyo', 'seed', 'ibadan', 'in stock', '2020-08-16 00:00:00'),
-(2, 2, NULL, 'Abdullahi', 'Bypassing', '15', 'jat', 'Oyo', 'seed', 'Ghana', 'in stock', '2020-08-21 00:00:00'),
-(3, 2, NULL, 'Abdullahi Temidayo Jimoh', 'camry404', '12', 'jat', 'Oyo', 'seed', 'ibadan', 'in stock', '2020-08-27 00:00:00'),
-(4, 1, 1, 'Abdullahi', 'Bypassing', '12', 'jat', 'Oyo, Nigeria.', 'seed', 'ibadan', 'out stock', '2020-09-20 00:00:00'),
-(5, 0, 1, 'pen', 'Bypassing', '', '', '', 'seed', '', 'in stock', '2020-10-15 16:45:51');
+INSERT INTO `operation` (`sn`, `user_id`, `org_id`, `name`, `description`, `quantity`, `manufacturer`, `location`, `category`, `place`, `status`, `date`, `state`, `updated_at`) VALUES
+(1, 2, NULL, 'corn', 'treated corn', '15', 'covas', 'Oyo', 'seed', 'ibadan', 'in stock', '2020-08-16 00:00:00', '1', '2020-11-15 16:11:34'),
+(2, 2, NULL, 'Abdullahi', 'Bypassing', '15', 'jat', 'Oyo', 'seed', 'Ghana', 'in stock', '2020-08-21 00:00:00', '1', '2020-11-15 16:11:34'),
+(3, 2, NULL, 'Abdullahi Temidayo Jimoh', 'camry404', '12', 'jat', 'Oyo', 'seed', 'ibadan', 'in stock', '2020-08-27 00:00:00', '1', '2020-11-15 16:11:34'),
+(4, 1, 1, 'Abdullahi', 'Bypassing', '12', 'jat', 'Oyo, Nigeria.', 'seed', 'ibadan', 'out stock', '2020-09-20 00:00:00', '1', '2020-11-15 16:11:34'),
+(5, 0, 1, 'pen', 'Bypassing', '', '', '', 'seed', '', 'in stock', '2020-10-15 16:45:51', '1', '2020-11-15 16:11:34');
 
 -- --------------------------------------------------------
 
@@ -872,17 +871,19 @@ INSERT INTO `organization` (`id`, `username`, `email`, `password`, `organization
 --
 
 CREATE TABLE `other_asset` (
-  `sn` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `org_id` int(11) DEFAULT NULL,
-  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
-  `description` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
-  `quantity` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
-  `manufacturer` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `location` varchar(50) NOT NULL,
-  `amount` int(50) NOT NULL,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci DEFAULT NULL,
+  `description` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci DEFAULT NULL,
+  `quantity` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci DEFAULT NULL,
+  `manufacturer` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL,
+  `location` varchar(50) DEFAULT NULL,
+  `amount` int(50) DEFAULT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `state` varchar(11) NOT NULL DEFAULT '1',
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `table_name` varchar(50) NOT NULL DEFAULT 'other_asset'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -890,11 +891,13 @@ CREATE TABLE `other_asset` (
 -- Dumping data for table `other_asset`
 --
 
-INSERT INTO `other_asset` (`sn`, `user_id`, `org_id`, `name`, `description`, `quantity`, `manufacturer`, `status`, `location`, `amount`, `date`, `table_name`) VALUES
-(1, 0, NULL, 'hoe', 'iron hoe', '12', 'jat', 'in storage', 'Oyo', 1000000, '2020-08-16 00:00:00', 'other_asset'),
-(4, 2, NULL, 'Abdullahi Temidayo Jimoh', 'Bypassing', '12', 'Adullahi', 'in use', 'Oyo', 0, '2020-08-27 00:00:00', 'other_asset'),
-(5, 2, NULL, 'Terminus', 'Bypassing', '12', 'jat', 'in storage', 'Nigeria.', 1000000, '2020-08-31 00:00:00', 'other_asset'),
-(6, 1, 1, 'Abdullahi', 'Bypassing', '12', 'jat', 'in storage', 'Nigeria.', 1000000, '2020-09-20 00:00:00', 'other_asset');
+INSERT INTO `other_asset` (`id`, `user_id`, `org_id`, `name`, `description`, `quantity`, `manufacturer`, `status`, `location`, `amount`, `date`, `state`, `updated_at`, `table_name`) VALUES
+(1, 0, NULL, 'hoe', 'iron hoe', '12', 'jat', 'in storage', 'Oyo', 1000000, '2020-08-16 00:00:00', '1', '2020-11-15 16:12:10', 'other_asset'),
+(4, 2, NULL, 'Abdullahi Temidayo Jimoh', 'Bypassing', '12', 'Adullahi', 'in use', 'Oyo', 0, '2020-08-27 00:00:00', '1', '2020-11-15 16:12:10', 'other_asset'),
+(5, 2, NULL, 'Terminus', 'Bypassing', '12', 'jat', 'in storage', 'Nigeria.', 1000000, '2020-08-31 00:00:00', '1', '2020-11-15 16:12:10', 'other_asset'),
+(6, 1, 1, 'Abdullahi', 'Bypassing', '12', 'jat', 'in storage', 'Nigeria.', 1000000, '2020-09-20 00:00:00', '1', '2020-11-15 16:12:10', 'other_asset'),
+(7, 0, 1, 'org_id', 'Buy Fuel', '15', 'Adullahi', 'in storage', 'Nigeria.', 1000000, '2020-11-05 11:04:21', '1', '2020-11-15 16:12:10', 'other_asset'),
+(8, 0, 1, 'status', 'Buy Fuel', '15', 'Adullahi', 'in use', 'Oyo', 1245677, '2020-11-05 11:05:49', '1', '2020-11-15 16:12:10', 'other_asset');
 
 -- --------------------------------------------------------
 
@@ -991,7 +994,8 @@ INSERT INTO `product` (`id`, `user_id`, `org_id`, `name`, `amount`) VALUES
 (4, 'Ade', NULL, 'Tractor', 25),
 (5, 'Similola', 1, 'Disinfectant', 8),
 (6, '1', 1, 'Beans', 100),
-(7, '55', 55, 'Abdullahi', 1000000);
+(7, '55', 55, 'Abdullahi', 1000000),
+(8, '0', 1, 'Yam', 1000);
 
 -- --------------------------------------------------------
 
@@ -1078,7 +1082,8 @@ CREATE TABLE `purchases` (
 INSERT INTO `purchases` (`id`, `user_id`, `org_id`, `sn`, `name`, `description`, `ppunit`, `qitem`, `amount`, `time`, `date`, `add_parameters`) VALUES
 (1, 0, 1, '001', 'sugar', 'tea', '10', '4', 2300, '0000-00-00 00:00:00', '2016-08-31 23:00:00', 'nothing'),
 (2, 0, 1, NULL, 'manager', 'Bypassing', '100', '14', 1400, '2020-10-16 10:06:21', '2020-10-16 10:06:21', ''),
-(3, 0, 1, NULL, 'manager', 'Bypassing', '345', '10', 3450, '2020-10-16 10:22:15', '2020-10-16 10:22:15', '');
+(3, 0, 1, NULL, 'manager', 'Bypassing', '345', '10', 3450, '2020-10-16 10:22:15', '2020-10-16 10:22:15', ''),
+(4, 0, 1, NULL, 'user', 'Buy Fuel', '0123', '0257', 35678, '2020-11-07 14:22:42', '2020-11-07 14:22:42', '');
 
 -- --------------------------------------------------------
 
@@ -1440,7 +1445,9 @@ INSERT INTO `utilities` (`id`, `user_id`, `org_id`, `sn`, `name`, `description`,
 (1, NULL, NULL, '001', 'light', 'dec', 2300, '2017-06-26 23:00:00'),
 (2, NULL, NULL, '001', 'ade', 'ICT director\'s car', 2300, '2017-05-31 23:00:00'),
 (3, NULL, NULL, '124345665', 'Terminus', 'Bypassing', 1000000, '2017-05-31 23:00:00'),
-(6, 0, 1, NULL, 'pen', 'iron hoe', 50, '2020-10-14 21:45:07');
+(6, 0, 1, NULL, 'pen', 'iron hoe', 50, '2020-10-14 21:45:07'),
+(8, 0, 1, NULL, 'user_id', 'Buy Fuel', 1334344, '2020-11-07 14:07:44'),
+(9, 0, 1, NULL, 'org_id', 'camry404', 1334344, '2020-11-07 14:07:52');
 
 -- --------------------------------------------------------
 
@@ -1458,6 +1465,8 @@ CREATE TABLE `vehicle` (
   `manufacturer` varchar(50) DEFAULT NULL,
   `amount` int(50) DEFAULT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `state` varchar(11) NOT NULL DEFAULT '1',
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `table_name` varchar(50) NOT NULL DEFAULT 'vehicle'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -1465,13 +1474,13 @@ CREATE TABLE `vehicle` (
 -- Dumping data for table `vehicle`
 --
 
-INSERT INTO `vehicle` (`id`, `user_id`, `org_id`, `name`, `description`, `serial_no`, `manufacturer`, `amount`, `date`, `table_name`) VALUES
-(1, 2, NULL, 'camry', 'camry404', '123453221', 'toyota', 1233, '2020-08-16 00:00:00', 'vehicle'),
-(4, 2, NULL, 'sienna', 'a long vehicle', '1234434', 'mezidis', 0, '2020-08-21 00:00:00', 'vehicle'),
-(7, 0, NULL, 'Terminus', '2', '1234434', 'covas', 0, '2020-08-27 00:00:00', 'vehicle'),
-(8, 2, NULL, 'Abdullahi', 'Bypassing', '1234434', 'jat', 1000000, '2020-08-31 00:00:00', 'vehicle'),
-(9, 1, 1, 'Abdullahi', 'Bypassing', '1234434', 'jat', 1000000, '2020-09-20 00:00:00', 'vehicle'),
-(10, 0, 1, 'jquery', 'Bypassing', '1234434', 'jat', 5000, '2020-10-15 16:28:59', 'vehicle');
+INSERT INTO `vehicle` (`id`, `user_id`, `org_id`, `name`, `description`, `serial_no`, `manufacturer`, `amount`, `date`, `state`, `updated_at`, `table_name`) VALUES
+(1, 2, NULL, 'camry', 'camry404', '123453221', 'toyota', 1233, '2020-08-16 00:00:00', '1', '2020-11-15 16:12:58', 'vehicle'),
+(4, 2, NULL, 'sienna', 'a long vehicle', '1234434', 'mezidis', 0, '2020-08-21 00:00:00', '1', '2020-11-15 16:12:58', 'vehicle'),
+(7, 0, NULL, 'Terminus', '2', '1234434', 'covas', 0, '2020-08-27 00:00:00', '1', '2020-11-15 16:12:58', 'vehicle'),
+(8, 2, NULL, 'Abdullahi', 'Bypassing', '1234434', 'jat', 1000000, '2020-08-31 00:00:00', '1', '2020-11-15 16:12:58', 'vehicle'),
+(9, 1, 1, 'Abdullahi', 'Bypassing', '1234434', 'jat', 1000000, '2020-09-20 00:00:00', '1', '2020-11-15 16:12:58', 'vehicle'),
+(11, 0, 1, 'user_id', 'Bypassing', '1234434', 'jat', 1245677, '2020-11-05 10:54:52', '1', '2020-11-15 16:12:58', 'vehicle');
 
 -- --------------------------------------------------------
 
@@ -1506,7 +1515,7 @@ INSERT INTO `wallet` (`id`, `user_id`, `org_id`, `amount`, `description`, `send_
 --
 
 CREATE TABLE `warehouse` (
-  `sn` int(6) NOT NULL,
+  `id` int(6) NOT NULL,
   `product_id` varchar(255) DEFAULT NULL,
   `user_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_swedish_ci DEFAULT NULL,
   `org_id` varchar(11) DEFAULT NULL,
@@ -1519,9 +1528,9 @@ CREATE TABLE `warehouse` (
 -- Dumping data for table `warehouse`
 --
 
-INSERT INTO `warehouse` (`sn`, `product_id`, `user_id`, `org_id`, `warehouse`, `quantity`, `status`) VALUES
-(1, '5', '1', '1', '', '10', 'closed'),
-(2, '6', '1', '1', '8', '15', 'closed');
+INSERT INTO `warehouse` (`id`, `product_id`, `user_id`, `org_id`, `warehouse`, `quantity`, `status`) VALUES
+(2, '6', '1', '1', '8', '15', 'closed'),
+(3, '5', '0', '1', '8', '15', 'open');
 
 -- --------------------------------------------------------
 
@@ -1640,6 +1649,12 @@ ALTER TABLE `alarm`
 -- Indexes for table `appraisal`
 --
 ALTER TABLE `appraisal`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `asset`
+--
+ALTER TABLE `asset`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1766,7 +1781,7 @@ ALTER TABLE `organization`
 -- Indexes for table `other_asset`
 --
 ALTER TABLE `other_asset`
-  ADD PRIMARY KEY (`sn`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `power`
@@ -1886,7 +1901,7 @@ ALTER TABLE `wallet`
 -- Indexes for table `warehouse`
 --
 ALTER TABLE `warehouse`
-  ADD PRIMARY KEY (`sn`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `weeklyreport`
@@ -1920,7 +1935,7 @@ ALTER TABLE `administration`
 -- AUTO_INCREMENT for table `advert`
 --
 ALTER TABLE `advert`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `alarm`
@@ -1935,6 +1950,12 @@ ALTER TABLE `appraisal`
   MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `asset`
+--
+ALTER TABLE `asset`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
 -- AUTO_INCREMENT for table `asset_amount`
 --
 ALTER TABLE `asset_amount`
@@ -1944,7 +1965,7 @@ ALTER TABLE `asset_amount`
 -- AUTO_INCREMENT for table `building`
 --
 ALTER TABLE `building`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `documents`
@@ -2004,19 +2025,19 @@ ALTER TABLE `liabilty`
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `machinery`
 --
 ALTER TABLE `machinery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `maintenance`
 --
 ALTER TABLE `maintenance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `maintenance-item`
@@ -2058,7 +2079,7 @@ ALTER TABLE `organization`
 -- AUTO_INCREMENT for table `other_asset`
 --
 ALTER TABLE `other_asset`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `power`
@@ -2070,7 +2091,7 @@ ALTER TABLE `power`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `productsale`
@@ -2088,7 +2109,7 @@ ALTER TABLE `product sales`
 -- AUTO_INCREMENT for table `purchases`
 --
 ALTER TABLE `purchases`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `rawmaterials`
@@ -2160,13 +2181,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `utilities`
 --
 ALTER TABLE `utilities`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `vehicle`
 --
 ALTER TABLE `vehicle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `wallet`
@@ -2178,7 +2199,7 @@ ALTER TABLE `wallet`
 -- AUTO_INCREMENT for table `warehouse`
 --
 ALTER TABLE `warehouse`
-  MODIFY `sn` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `weeklyreport`
