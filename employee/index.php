@@ -28,7 +28,7 @@ if (isset($_POST['login'])) {
 		$results = $query->fetchAll(PDO::FETCH_OBJ);
 
 		if ($query->rowCount() > 0) {
-			$_SESSION['org'] = $results[0]->organization;
+			$_SESSION['org_name'] = $results[0]->organization;
 			$_SESSION['org_id'] = $results[0]->id;
 		}
 
