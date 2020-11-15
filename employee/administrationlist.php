@@ -167,7 +167,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                         <?php $sql = "SELECT * from `administration`  WHERE org_id=:org_id";
                                         $query = $dbh->prepare($sql);
-                                        $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                                        $query->bindParam(':org_id', $_SESSION['user_id'], PDO::PARAM_STR);
                                         $query->execute();
                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
                                         $cnt = 1;

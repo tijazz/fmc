@@ -162,9 +162,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                         <?php
 
-                                        $sql = "SELECT * from slm WHERE org_id = :org_id";
+                                        $sql = "SELECT * from slm WHERE user_id = :user_id";
                                         $query = $dbh->prepare($sql);
-                                        $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                                        $query->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_STR);
                                         $query->execute();
                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
                                         $cnt = 1;
