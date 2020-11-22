@@ -18,7 +18,7 @@
             <span class="ufma">ufma</span>
         </div>
         <ul class="right_nav">
-            <li><a href="#">Home</a></li>
+            <li class="active"><a href="#">Home</a></li>
             <li class="parent"><a href="#">Solutions
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path
@@ -161,7 +161,7 @@ survive the woes of failed businesses
         <div class="cards">
             <div class="card">
                 <div class="card_image flex a_cent j_cent">
-                    <img src="public/images/ai-brain.svg" alt="">
+                    <img src="public/images/monitor.svg" alt="">
                 </div>
                 <div class="card_text">
                     <p>Monitoring and Evaluation</p>
@@ -169,7 +169,7 @@ survive the woes of failed businesses
             </div>
             <div class="card">
                 <div class="card_image flex a_cent j_cent">
-                    <img src="public/images/blockchain.svg" alt="">
+                    <img src="public/images/money.svg" alt="">
                 </div>
                 <div class="card_text">
                     <p>Financial Management</p>
@@ -177,7 +177,7 @@ survive the woes of failed businesses
             </div>
             <div class="card">
                 <div class="card_image flex a_cent j_cent">
-                    <img src="public/images/farmer.svg" alt="">
+                    <img src="public/images/farmer-.svg" alt="">
                 </div>
                 <div class="card_text">
                     <p>Inventory Management</p>
@@ -185,7 +185,7 @@ survive the woes of failed businesses
             </div>
             <div class="card">
                 <div class="card_image flex a_cent j_cent">
-                    <img src="public/images/fertilizer.svg" alt="">
+                    <img src="public/images/risk.svg" alt="">
                 </div>
                 <div class="card_text">
                     <p>Risk Management</p>
@@ -193,7 +193,7 @@ survive the woes of failed businesses
             </div>
             <div class="card">
                 <div class="card_image flex a_cent j_cent">
-                    <img src="public/images/satellite.svg" alt="">
+                    <img src="public/images/smartphone_tech.svg" alt="">
                 </div>
                 <div class="card_text">
                     <p>Supply Chain Management</p>
@@ -201,7 +201,7 @@ survive the woes of failed businesses
             </div>
             <div class="card">
                 <div class="card_image flex a_cent j_cent">
-                    <img src="public/images/smartphone.svg" alt="">
+                    <img src="public/images/supply_manag.svg" alt="">
                 </div>
                 <div class="card_text">
                     <p>Farm Smart box</p>
@@ -209,7 +209,7 @@ survive the woes of failed businesses
             </div>
             <div class="card">
                 <div class="card_image flex a_cent j_cent">
-                    <img src="public/images/tractor.svg" alt="">
+                    <img src="public/images/irrigation.svg" alt="">
                 </div>
                 <div class="card_text">
                     <p>Smart Irritech</p>
@@ -217,7 +217,7 @@ survive the woes of failed businesses
             </div>
             <div class="card">
                 <div class="card_image flex a_cent j_cent">
-                    <img src="public/images/transportation.svg" alt="">
+                    <img src="public/images/supply_manag.svg" alt="">
                 </div>
                 <div class="card_text">
                     <p>Smart Farm Vision</p>

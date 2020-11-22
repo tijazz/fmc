@@ -1,8 +1,9 @@
 *{margin:0;padding:0;box-sizing:border-box;text-decoration:none;list-style:none}
-body,html{font-family:Roboto;background:#f2f2f2;overflow-x:hidden}
+body,html{font-family:Roboto;overflow-x:hidden}
 .main_nav{height:75px;padding:0 50px;top:0;position:fixed;width:100%;z-index:10;justify-content:space-between;background:#fff;box-shadow:0 20px 40px rgba(204,204,204,.363)}
 .logo img{height:50px;width:50px}
 .right_nav>li{margin-left:2.5rem;display:inline-block;height:75px;line-height:75px}
+.right_nav>li.active{border-bottom:3px solid #000;}
 li::selection{color:auto;background:0 0}
 .right_nav>li>a{text-transform:uppercase;color:#000}
 .hero{height:420px;background:#000;margin-top:75px}
@@ -27,8 +28,8 @@ li::selection{color:auto;background:0 0}
 .solutions h2{position:relative;text-align:center;margin-top:1.6rem;margin-bottom:1.5rem}
 .solutions h2 span{position:absolute;bottom:-3px;height:2px;background:#000;width:80px;left:50%;transform:translateX(-50%)}
 .cards{display:grid;grid-template-columns:repeat(4,1fr);max-width:800px;margin:auto;justify-items:center;grid-gap:1rem;padding-bottom:3rem}
-.card{height:150px;width:120px;border-radius:5px;box-shadow:0 20px 40px #cccccc3b;background:#fff;display:grid;grid-template-rows:75% 25%;text-align:center;padding-bottom:.3rem}
-.card_image{height:80px;width:80px;border-radius:50%;background:#a3f1d05e;margin:auto}
+.card{height:170px;width:145px;border-radius:5px;box-shadow:2px 20px 40px #cccccc3b;background:#fff;display:grid;grid-template-rows:75% 25%;text-align:center;padding-bottom:.3rem}
+.card_image{height:100px;width:100px;border-radius:50%;background:#a3f1d05e;margin:auto}
 .card_image img{height:65px;width:65px;object-fit:cover}
 .card_text p{font-weight:600}
 .newsletter{height:300px;background:#fff}
@@ -75,16 +76,26 @@ li::selection{color:auto;background:0 0}
 .form input[type=submit]{margin:auto;display:inline-block}
 }
 @media(max-width:556px){
-.cards{grid-template-columns:repeat(2,1fr);width:400px}
+.cards{grid-template-columns:repeat(2,1fr);}
 .info{padding:0 20px}
 .demo_req{padding:1rem 20px}
 .hero{height:280px}
 .newsletter>div{max-width:96%;padding:3rem 2rem}
 .main_nav{padding:0 20px}
-h1{font-size:2rem!important}
+h1{font-size:1.6rem!important}
 h2{font-size:1.4rem!important}
 .hero .text{left:1.2rem}
-}
+
 .text .erp_info,.content p{
     line-height:1.6rem;
 }
+
+.text p{margin-right:1rem;}
+.demo_req_content{
+    display:flex;
+    flex-direction: column;
+}
+.demo_req .form input, .demo_req .form textarea{width:100%;}
+}
+
+.card_text p{color:rgb(58, 57, 57);font-weight:400;}
