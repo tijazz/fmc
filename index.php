@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="public/css/presets.css">
     <link rel="stylesheet" href="public/css/landing.css">
     <link rel="stylesheet" href="public/css/preloader.css">
+    <link rel="stylesheet" href="public/font-awesome/css/font-awesome.min.css">
     <link rel="shortcut icon" href="public/images/favicon.png" type="image/x-icon">
 </head>
 
@@ -23,7 +24,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path
                             d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z" />
-                        </svg>
+                    </svg>
                 </a>
                 <ul class="child">
                     <li><a href="#">Media</a></li>
@@ -31,12 +32,12 @@
                     <li><a href="#">Webinars</a></li>
                 </ul>
             </li>
-            <li><a href="#">Request a Demo</a></li>
+            <li><a href="#demo_request">Request a Demo</a></li>
             <li class="parent"><a href="#">Contact us
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path
                             d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z" />
-                        </svg>
+                    </svg>
                 </a>
                 <ul class="child">
                     <li><a href="#">Careers</a></li>
@@ -56,7 +57,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                     <path
                         d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z" />
-                    </svg>
+                </svg>
             </a>
 
         </li>
@@ -65,12 +66,12 @@
             <li><a href="#">Case Studies</a></li>
             <li><a href="#">Webinars</a></li>
         </ul>
-        <li><a href="#">Request A Demo</a></li>
+        <li><a href="#demo_request">Request A Demo</a></li>
         <li class="parent2 parent"><a href="#">Contact Us
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                     <path
                         d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z" />
-                    </svg>
+                </svg>
             </a>
         </li>
         <ul class="child2">
@@ -87,24 +88,24 @@
         <div class="text1 text">
             <h1>Technology for your Agricultural Vision </h1>
             <p>
-                Nigerian’s first indigenous farm management solution powered by Machine Learning and Artificial 
-Intelligence Technology
+                Nigerian’s first indigenous farm management solution powered by Machine Learning and Artificial
+                Intelligence Technology
             </p>
             <a href="#">Read More</a>
         </div>
         <div class="text2 text">
             <h1>Farm Accountability Equals Farm Profitability</h1>
             <p>
-                DUFMA ERP helps you with seamless documentation of farm processes that make your business 
-survive the woes of failed businesses
+                DUFMA ERP helps you with seamless documentation of farm processes that make your business
+                survive the woes of failed businesses
             </p>
             <a href="#">Book for a demo here</a>
         </div>
         <div class="text3 text">
             <h1>The Future of Agricultural Digitization is here</h1>
-            <p>DUFMA ERP travels beyond your present to your future and put processes in place to ensure the 
+            <p>DUFMA ERP travels beyond your present to your future and put processes in place to ensure the
                 success of your farm.</p>
-                <a href="#">Book for a demo here</a>
+            <a href="#">Book for a demo here</a>
         </div>
     </div>
     <div class="bubbles">
@@ -118,11 +119,11 @@ survive the woes of failed businesses
                 <span></span>
             </h2>
             <p class="erp_info">
-                DUFMA ERP is a desirable tool which will help potential farmers, small farm holders and large-scale 
-                farm holders manage there enterprise; the toolset include inventory management, supply chain 
-                management, financial management, risk management and monitoring and evaluation services. All 
+                DUFMA ERP is a desirable tool which will help potential farmers, small farm holders and large-scale
+                farm holders manage there enterprise; the toolset include inventory management, supply chain
+                management, financial management, risk management and monitoring and evaluation services. All
                 this services are seamlessly knitted into our DUFMA Advisory services and DUFMA FSB to provide an
-                inclusive all-in-one service to help our client grow their business in a timely efficient and desirable 
+                inclusive all-in-one service to help our client grow their business in a timely efficient and desirable
                 manner.
             </p>
         </div>
@@ -130,19 +131,19 @@ survive the woes of failed businesses
             <img src="public/images/illustr.jpg" alt="">
         </div>
     </div>
-    <div class="demo_req">
+    <div class="demo_req" id="demo_request">
         <h2>Request A Demo</h2>
         <div class="demo_req_content">
             <div class="content">
                 <p>
-                        With over SME expanding in geometric proportion 
-                        across the country, efficient management software is 
-                        needed to push result and outcomes of Agricultural 
-                        business beyond the limit of conventional agricultural 
-                        management Principles. Lets DUFMA ERP take you on 
-                        this journey of discovery.
+                    With over SME expanding in geometric proportion
+                    across the country, efficient management software is
+                    needed to push result and outcomes of Agricultural
+                    business beyond the limit of conventional agricultural
+                    management Principles. Lets DUFMA ERP take you on
+                    this journey of discovery.
                 </p>
-               
+
                 <img src="public/images/8400.jpg" alt="Image" class="small">
             </div>
             <form class="form">
@@ -239,25 +240,72 @@ survive the woes of failed businesses
             </div>
         </div>
     </div>
-</body>
- <!-- Preloader -->
- <div class="pre-loader">
-        <div class="sk-fading-circle">
-            <div class="sk-circle1 sk-circle"></div>
-            <div class="sk-circle2 sk-circle"></div>
-            <div class="sk-circle3 sk-circle"></div>
-            <div class="sk-circle4 sk-circle"></div>
-            <div class="sk-circle5 sk-circle"></div>
-            <div class="sk-circle6 sk-circle"></div>
-            <div class="sk-circle7 sk-circle"></div>
-            <div class="sk-circle8 sk-circle"></div>
-            <div class="sk-circle9 sk-circle"></div>
-            <div class="sk-circle10 sk-circle"></div>
-            <div class="sk-circle11 sk-circle"></div>
-            <div class="sk-circle12 sk-circle"></div>
+    <div class="footer">
+        <div class="footer_wrapper">
+            <div class="location">
+                <h3>Contacts/Locations</h3>
+                <ul>
+                    <li><i class="fa fa-envelope"></i><span>info@dufma.ng</span></li>
+                    <li><i class="fa fa-map-marker"></i><span>
+                            No 1, Lonlo street, Abule Egba, Lagos State.
+                        </span></li>
+                    <li><i class="fa fa-phone"></i>
+                        <span>+2348162313162, +2348137913430</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="services">
+                <h3>Services</h3>
+                <ul>
+                    <li>Farm Investment</li>
+                    <li>Farm Clinic</li>
+                    <li>Farm Training</li>
+                    <li>Management System</li>
+                </ul>
+            </div>
+            <div class="company">
+                <h3>Our company</h3>
+                <ul>
+                    <li>Dermisho</li>
+                    <li>Seller's Hub</li>
+                    <li>Market</li>
+                    <li>About us</li>
+                </ul>
+            </div>
+            <div class="social-buttons">
+                <a href="#" class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
+                    <span class="social-button__inner">
+                        <i class="fa fa-facebook"></i>
+                    </span>
+                </a>
+                <a href="#" class="social-buttons__button social-button social-button--linkedin" aria-label="LinkedIn">
+                    <span class="social-button__inner">
+                        <i class="fa fa-linkedin"></i>
+                    </span>
+                </a>
+                <a href="#" class="social-buttons__button social-button social-button--twitter" aria-label="Twitter">
+                    <span class="social-button__inner">
+                        <i class="fa fa-twitter"></i>
+                    </span>
+                </a>
+            </div>
         </div>
     </div>
-    <!-- End preloader -->
+</body>
+<!-- Preloader -->
+<!-- End preloader -->
+<div class="pre-loader">
+    <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
 <script src="public/js/gsap.min.js"></script>
 <script src="public/js/landing.js"></script>
 <script src="public/js/preloader.js"></script>
