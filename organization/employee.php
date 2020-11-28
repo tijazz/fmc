@@ -77,34 +77,69 @@ if (strlen($_SESSION['alogin']) == 0) {
         $mail = new PHPMailer(true);
 
 
+        // try {
+        //     //Server settings
+        //     $mail->SMTPDebug = 0; // Enable verbose debug output                  // Send using SMTP
+        //     $mail->Host       = 'mail.dufma.ng';                    // Set the SMTP server to send through
+        //     $mail->Username   = 'admin@dufma.ng';                     // SMTP username
+        //     $mail->Password   = 'ADEMOLA789@';
+        //     $mail->SMTPKeepAlive = true;
+        //     $mail->isSMTP();                               // SMTP password
+        //     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+
+        //     $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+        //     $mail->Port       = '465';                                   // TCP port to connect to
+        //     $mail->setFrom('admin@dufma.ng', 'Dufma');
+        //     $mail->addAddress($email, $name);
+
+
+        //     // Content
+        //     $mail->isHTML(true);                                  // Set email format to HTML
+        //     $mail->Subject = 'Login Details';
+        //     $mail->Body    = "This is your login details:<br> email: " . $email . "<br>Password: " .  $password . "<br>Link: http://fmc.dufma.ng/";
+        //     $mail->AltBody = "This is your email " . $email . " and Password " .  $password;
+
+        //     $mail->send();
+        //     echo 'Message has been sent';
+        // } catch (Exception $e) {
+        //     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        // }
+
+
         try {
             //Server settings
-            $mail->SMTPDebug = 0; // Enable verbose debug output                  // Send using SMTP
-            $mail->Host       = 'mail.dufma.ng';                    // Set the SMTP server to send through
-            $mail->Username   = 'admin@dufma.ng';                     // SMTP username
-            $mail->Password   = 'ADEMOLA789@';
-            $mail->SMTPKeepAlive = true;
-            $mail->isSMTP();                               // SMTP password
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+            $mail->isSMTP();                                            // Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-
-            $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-            $mail->Port       = '465';                                   // TCP port to connect to
-            $mail->setFrom('admin@dufma.ng', 'Dufma');
-            $mail->addAddress($email, $name);
-
-
+            $mail->Username   = 'dufmanigeria@gmail.com';                     // SMTP username
+            $mail->Password   = 'dufma234';                               // SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+            $mail->Port       = 587;                                    // TCP port to connect to
+        
+            //Recipients
+            $mail->setFrom('dufmanigeria@gmail.com', 'Abdullahi');
+            $mail->addAddress( $email, $name);     // Add a recipient
+            // $mail->addAddress('ellen@example.com');               // Name is optional
+            // $mail->addReplyTo('info@example.com', 'Information');
+            // $mail->addCC('cc@example.com');
+            // $mail->addBCC('bcc@example.com');
+        
+            // Attachments
+            // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+            // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+        
             // Content
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = 'Login Details';
-            $mail->Body    = "This is your login details:<br> email: " . $email . "<br>Password: " .  $password . "<br>Link: http://fmc.dufma.ng/";
-            $mail->AltBody = "This is your email " . $email . " and Password " .  $password;
-
+            $mail->Body    = "This is your login details:<br> email: " . $_POST['email'] . "<br>Password: " .  $_POST['password'];
+            $mail->AltBody = "This is your email " . $_POST['email'] . " and Password " .  $_POST['password'];
+        
             $mail->send();
             echo 'Message has been sent';
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
-
 
         if (move_uploaded_file($file_loc, $folder . $final_file)) {
             $image = $final_file;

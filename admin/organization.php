@@ -41,40 +41,46 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 
 
-        // Load Composer's autoloader
-        require '../vendor/autoload.php';
+       // Load Composer's autoloader
+require '../vendor/autoload.php';
 
-        // Instantiation and passing `true` enables exceptions
-        $mail = new PHPMailer(true);
+// Instantiation and passing `true` enables exceptions
+$mail = new PHPMailer(true);
 
+try {
+    //Server settings
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+    $mail->isSMTP();                                            // Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+    $mail->Username   = 'dufmanigeria@gmail.com';                     // SMTP username
+    $mail->Password   = 'dufma234';                               // SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+    $mail->Port       = 587;                                    // TCP port to connect to
 
-        try {
-            //Server settings
-            $mail->SMTPDebug = 0; // Enable verbose debug output                  // Send using SMTP
-            $mail->Host       = 'mail.dufma.ng';                    // Set the SMTP server to send through
-            $mail->Username   = 'admin@dufma.ng';                     // SMTP username
-            $mail->Password   = 'ADEMOLA789@';
-            $mail->SMTPKeepAlive = true;
-            $mail->isSMTP();                               // SMTP password
-            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+    //Recipients
+    $mail->setFrom('dufmanigeria@gmail.com', 'Abdullahi');
+    $mail->addAddress( $email, $name);     // Add a recipient
+    // $mail->addAddress('ellen@example.com');               // Name is optional
+    // $mail->addReplyTo('info@example.com', 'Information');
+    // $mail->addCC('cc@example.com');
+    // $mail->addBCC('bcc@example.com');
 
-            $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-            $mail->Port       = '465';                                   // TCP port to connect to
-            $mail->setFrom('admin@dufma.ng', 'Dufma');
-            $mail->addAddress($email, $organization);
+    // Attachments
+    // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
+    // Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = 'Login Details';
+    $mail->Body    = "This is your organization login details:<br> email: " . $_POST['email'] . "<br>Password: " .  $password;
+    $mail->AltBody = "This is your email " . $_POST['email'] . " and Password " .  $password;
 
-            // Content
-            $mail->isHTML(true);                                  // Set email format to HTML
-            $mail->Subject = 'Login Details';
-            $mail->Body    = "This is your login details:<br> email: " . $email . "<br>Username: " .  $username . "<br>Password: " .  $password . "<br>Link: http://fmc.dufma.ng/";
-            $mail->AltBody = "This is your email " . $email . "<br>Username: " .  $username . " and Password " .  $password;
-
-            $mail->send();
-            echo 'Message has been sent';
-        } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-        }
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
 
 
         if (move_uploaded_file($file_loc, $folder . $final_file)) {
