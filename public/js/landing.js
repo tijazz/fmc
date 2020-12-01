@@ -1,5 +1,6 @@
 let heroImgs = document.querySelectorAll('.hero img')
 let circles = document.querySelectorAll('.bubbles > span')
+if (heroImgs.length >0){
 
 var all = 0
 swap = () => {
@@ -53,6 +54,7 @@ tl.to('.hero .text3', 1, {
     autoAlpha: 1
 })
 
+}
 let mobileHam = document.querySelector('.mobile_ham');
 let mobileNav = document.querySelector('.mobile_nav');
 mobileHam.addEventListener('click', () => {

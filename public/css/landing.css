@@ -124,3 +124,7 @@ h2{font-size:1.4rem!important}
     .footer_wrapper > div{margin-bottom:1.5rem;}
     .social-buttons{justify-content: flex-start;}
 }
+
+.right_nav>li.active:hover{
+    border-bottom:3px solid green;
+}

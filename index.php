@@ -27,8 +27,8 @@
                     </svg>
                 </a>
                 <ul class="child">
-                    <li><a href="#">Media</a></li>
-                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="media.php">Media</a></li>
+                    <li><a href="case_studies.php">Case Studies</a></li>
                     <li><a href="#">Webinars</a></li>
                 </ul>
             </li>
@@ -62,8 +62,8 @@
 
         </li>
         <ul class="child1">
-            <li><a href="#">Media</a></li>
-            <li><a href="#">Case Studies</a></li>
+            <li><a href="media.php">Media</a></li>
+            <li><a href="case_studies.php">Case Studies</a></li>
             <li><a href="#">Webinars</a></li>
         </ul>
         <li><a href="#demo_request">Request A Demo</a></li>
