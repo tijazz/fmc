@@ -19,7 +19,7 @@ if (isset($_POST['login'])) {
 		$_SESSION['user_id'] = 0;
 		$_SESSION['type'] = "organization";
 		
-		// echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
+		echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
 	} else {
 
 		echo "<script>alert('Invalid Details');</script>";
