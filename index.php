@@ -10,26 +10,36 @@
     <link rel="stylesheet" href="public/css/preloader.css">
     <link rel="stylesheet" href="public/font-awesome/css/font-awesome.min.css">
     <link rel="shortcut icon" href="public/images/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <nav class="main_nav flex a_cent">
-        <div class="logo flex a_cent">
-            <img src="public/images/favicon.png" alt="">
-            <span class="ufma">ufma</span>
-        </div>
+        <a href="index.php">
+            <div class="logo flex a_cent">
+                <img src="public/images/favicon.png" alt="">
+                <span class="ufma" style="color:#000;">ufma</span>
+            </div>
+        </a>
         <ul class="right_nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li class="parent"><a href="#">Solutions
+            <li class="active"><a href="index.php">Home</a></li>
+            <li class="parent"><a href="solutions.php">Solutions
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path
                             d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z" />
                     </svg>
                 </a>
                 <ul class="child">
-                    <li><a href="media.php">Media</a></li>
-                    <li><a href="case_studies.php">Case Studies</a></li>
-                    <li><a href="#">Webinars</a></li>
+                    <a href="media.php">
+                        <li>Media</li>
+                    </a>
+                    <a href="case_studies.php">
+                        <li>Case Studies</li>
+                    </a>
+                    <a href="#">
+                        <li>Webinars</li>
+                    </a>
                 </ul>
             </li>
             <li><a href="#demo_request">Request a Demo</a></li>
@@ -40,8 +50,12 @@
                     </svg>
                 </a>
                 <ul class="child">
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Services</a></li>
+                    <a href="#">
+                        <li>Careers</li>
+                    </a>
+                    <a href="#">
+                        <li>Services</li>
+                    </a>
                 </ul>
             </li>
             <li><a href="sign_in.php">Login</a></li>
@@ -52,8 +66,8 @@
         </li>
     </nav>
     <ul class="mobile_nav">
-        <li><a href="#">Home</a></li>
-        <li class="parent1 parent"><a href="#">Solutions
+        <li><a href="index.php">Home</a></li>
+        <li class="parent1 parent"><a href="solutions.php">Solutions
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                     <path
                         d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z" />
@@ -75,11 +89,11 @@
             </a>
         </li>
         <ul class="child2">
-            <li><a href="#">Media</a></li>
-            <li><a href="#">Case Studies</a></li>
+            <li><a href="media.php">Media</a></li>
+            <li><a href="case_studies.php">Case Studies</a></li>
             <li><a href="#">Webinars</a></li>
         </ul>
-        <li><a href="gen_index.html">Login</a></li>
+        <li><a href="sign_in.php">Login</a></li>
     </ul>
     <div class="hero">
         <img src="public/images/slide1.jpg" alt="" class="active">
