@@ -24,9 +24,10 @@ exit("Error: " . $e->getMessage());
 }
 
 
-$location = $_SERVER['HTTP_REFERER'];
-
-($_SESSION['type'] == "investor") ?? header("location:$location") ;
+$type = ($_SESSION['type'] == "investor");
+if (!$type) {
+    header("location:../_404.html");
+}
 
 
 

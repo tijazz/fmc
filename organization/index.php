@@ -23,8 +23,8 @@ if (isset($_POST['login'])) {
 	} else {
 
 		echo "<script>alert('Invalid Details');</script>";
-		// header("location:../sign_in.php");
+		header("location:../sign_in.php");
 	}
 } else {
-	// header("location:../sign_in.php");
+	header("location:../sign_in.php");
 }

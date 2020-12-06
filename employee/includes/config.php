@@ -26,6 +26,8 @@ exit("Error: " . $e->getMessage());
 }
 
 
-$location = $_SERVER['HTTP_REFERER'];
+$type = ($_SESSION['type'] == "employee");
+if (!$type) {
+    header("location:../_404.html");
+}
 
-($_SESSION['type'] == "employee") ?? header("location:$location") ;

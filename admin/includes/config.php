@@ -23,4 +23,9 @@ catch (PDOException $e)
 exit("Error: " . $e->getMessage());
 }
 
+$type = ($_SESSION['type'] == "investor");
+if (!$type) {
+    header("location:../_404.html");
+}
+
 

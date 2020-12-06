@@ -25,9 +25,10 @@ catch (PDOException $e)
 exit("Error: " . $e->getMessage());
 }
 
-$location = $_SERVER['HTTP_REFERER'];
-
-($_SESSION['type'] == "organization") ?? header("location:$location") ;
+$type = ($_SESSION['type'] == "organization");
+if (!$type) {
+    header("location:../_404.html");
+}
 
 function notify($dbh, $user_id, $org_id, $message){
     $sql = " INSERT INTO `notification`(`user_id`, `org_id`, `message`) VALUES (:user_id, :org_id, :message)";
