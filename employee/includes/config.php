@@ -13,6 +13,8 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
     define('DB_NAME', 'demishoc_fmc');
 }
 
+
+
 // Establish database connection.
 try
 {
@@ -23,3 +25,7 @@ catch (PDOException $e)
 exit("Error: " . $e->getMessage());
 }
 
+
+$location = $_SERVER['HTTP_REFERER'];
+
+($_SESSION['type'] == "employee") ?? header("location:$location") ;

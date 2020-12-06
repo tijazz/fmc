@@ -44,7 +44,7 @@
             <div class="divider"></div>
             <div class="forms">
                 <!-- organization form -->
-                <form action="#" class="organization_form active">
+                <form action="organization/index.php" class="organization_form active" method="POST">
                     <h2>Organization form</h2>
                     <div>
                         <label for="username"><span>Username</span><i class="fa fa-user"></i> </label>
@@ -58,14 +58,14 @@
                         </input>
                     </div>
 
-                    <button type="submit" class="submit">
+                    <button type="submit" class="submit" name="login">
                         <span>Login <i class="fa space fa-angle-right"></i></span>
                     </button>
                 </form>
                 <!-- end organization form  -->
 
                 <!-- investor form -->
-                <form action="#" class="investor_form">
+                <form action="investor/index.php" class="investor_form" method="POST">
                     <h2>Investor form</h2>
                     <div>
                         <label for="username"><span>Username</span><i class="fa fa-user"></i> </label>
@@ -79,7 +79,7 @@
                         </input>
                     </div>
 
-                    <button type="submit" class="submit">
+                    <button type="submit" class="submit" name="login">
                         <span>Login <i class="fa space fa-angle-right"></i></span>
                     </button>
                 </form>
@@ -88,7 +88,7 @@
 
 
                 <!-- employee form -->
-                <form action="#" class="employee_form">
+                <form action="employee/index.php" class="employee_form" method="POST">
                     <h2>Employee form</h2>
                     <div>
                         <label for="username"><span>Username</span><i class="fa fa-user"></i> </label>
@@ -102,7 +102,7 @@
                         </input>
                     </div>
 
-                    <button type="submit" class="submit">
+                    <button type="submit" class="submit" name="login">
                         <span>Login <i class="fa space fa-angle-right"></i></span>
                     </button>
                 </form>
