@@ -53,7 +53,38 @@ require '../vendor/autoload.php';
 
 // Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);
+  try {
+             //Server settings
+             $mail->SMTPDebug = 0; // Enable verbose debug output                  // Send using SMTP
+             $mail->Host       = 'mail.dufma.ng';                    // Set the SMTP server to send through
+             $mail->Username   = 'admin@fmc.dufma.ng';                     // SMTP username
+             $mail->Password   = 'Ademola789@';
+             $mail->SMTPKeepAlive = true;
+             $mail->isSMTP();                               // SMTP password
+             $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+  //$mail->SMTPAuth   = false;                                   // Enable SMTP authentication
 
+             $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+             $mail->Port       = 465;                                   // TCP port to connect to
+             $mail->setFrom('admin@fmc.dufma.ng', 'Dufma');
+             $mail->addAddress($email, $name);
+
+
+             // Content
+             $mail->isHTML(true);                                  // Set email format to HTML
+             $mail->Subject = 'Login Details';
+         $mail->Body    = "This is your login details:<br> email: " . $email . "<br>Password: " .  $password . "<br>Link: http://fmc.dufma.ng/employee";
+             $mail->AltBody = "This is your email " . $email . " and Password " .  $password;
+
+             $mail->send();
+             echo 'Message has been sent';
+        } catch (Exception $e) {
+             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+         }
+
+
+
+/*
 try {
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
@@ -88,7 +119,7 @@ try {
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
-
+*/
 
     if (move_uploaded_file($file_loc, $folder . $final_file)) {
         $image = $final_file;
