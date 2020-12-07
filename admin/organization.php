@@ -47,19 +47,89 @@ require '../vendor/autoload.php';
 // Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
+  try {
+             //Server settings
+             $mail->SMTPDebug = 0; // Enable verbose debug output                  // Send using SMTP
+             $mail->Host       = 'mail.dufma.ng';                    // Set the SMTP server to send through
+             $mail->Username   = 'admin@fmc.dufma.ng';                     // SMTP username
+             $mail->Password   = 'Ademola789@';
+             $mail->SMTPKeepAlive = true;
+             $mail->isSMTP();                               // SMTP password
+             $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+  //$mail->SMTPAuth   = false;                                   // Enable SMTP authentication
+
+             $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+             $mail->Port       = 465;                                   // TCP port to connect to
+             $mail->setFrom('admin@fmc.dufma.ng', 'Dufma');
+             $mail->addAddress($email, $name);
+
+
+             // Content
+             $mail->isHTML(true);                                  // Set email format to HTML
+             $mail->Subject = 'Login Details';
+         $mail->Body    = "This is your login details:<br> email: " . $email . "<br>Password: " .  $password . "<br>Link: http://fmc.dufma.ng/organization";
+             $mail->AltBody = "This is your email " . $email . " and Password " .  $password;
+
+             $mail->send();
+             echo 'Message has been sent';
+        } catch (Exception $e) {
+             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+         }
+
+/*
+// try {
+//     //Server settings
+//     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+//     $mail->isSMTP();                                            // Send using SMTP
+//     $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+//     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+//     $mail->Username   = 'dufmanigeria@gmail.com';                     // SMTP username
+//     $mail->Password   = 'dufma234';                               // SMTP password
+//     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+//     $mail->Port       = 587;                                    // TCP port to connect to
+
+//     // //Recipients
+//     $mail->setFrom('dufmanigeria@gmail.com', 'Abdullahi');
+    $mail->addAddress( $email, $name);     // Add a recipient
+    // $mail->addAddress('ellen@example.com');               // Name is optional
+    // $mail->addReplyTo('info@example.com', 'Information');
+    // $mail->addCC('cc@example.com');
+    // $mail->addBCC('bcc@example.com');
+
+    // Attachments
+    // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+    // Content
+//     $mail->isHTML(true);                                  // Set email format to HTML
+//     $mail->Subject = 'Login Details';
+//     $mail->Body    = "This is your organization login details:<br> email: " . $_POST['email'] . "<br>Password: " .  $password;
+//     $mail->AltBody = "This is your email " . $_POST['email'] . " and Password " .  $password;
+
+//     $mail->send();
+//     echo 'Message has been sent';
+// } catch (Exception $e) {
+//     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+// }
+
+*/
+
+
+
+/*
 try {
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
     $mail->isSMTP();                                            // Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+    $mail->Host       = 'mail.dufma.ng';                    // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'dufmanigeria@gmail.com';                     // SMTP username
-    $mail->Password   = 'dufma234';                               // SMTP password
+    $mail->Username   = 'dufma@fmc.dufma.ng';                     // SMTP username
+    $mail->Password   = '53launo&~DD';                               // SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-    $mail->Port       = 587;                                    // TCP port to connect to
+    $mail->Port       = 465;                                    // TCP port to connect to
 
     //Recipients
-    $mail->setFrom('dufmanigeria@gmail.com', 'Abdullahi');
+    $mail->setFrom('dufma@fmc.dufma.ng', 'Dufma');
     $mail->addAddress( $email, $name);     // Add a recipient
     // $mail->addAddress('ellen@example.com');               // Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
@@ -81,22 +151,26 @@ try {
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
+*/
 
+//create record and insert into DB
 
         if (move_uploaded_file($file_loc, $folder . $final_file)) {
             $image = $final_file;
         }
 
-        $sql = "INSERT INTO organization (`username`, `email`, `password`, `organization`) 
-        VALUES(:username, :email, :password, :organization);";
-        $query = $dbh->prepare($sql);
-        $query->bindParam(':username', $username, PDO::PARAM_STR);
-        $query->bindParam(':email', $email, PDO::PARAM_STR);
-        $query->bindParam(':password', md5($password), PDO::PARAM_STR);
-        $query->bindParam(':organization', $organization, PDO::PARAM_STR);
-        $query->execute();
+         $sql = "INSERT INTO organization (`username`, `email`, `password`, `organization`) 
+         VALUES(:username, :email, :password, :organization);";
+         $query = $dbh->prepare($sql);
+         $query->bindParam(':username', $username, PDO::PARAM_STR);
+         $query->bindParam(':email', $email, PDO::PARAM_STR);
+         $query->bindParam(':password', md5($password), PDO::PARAM_STR);
+         $query->bindParam(':organization', $organization, PDO::PARAM_STR);
+         $query->execute();
 
-        header('location:organization.php');
+         header('location:organization.php');
+
+        
     }
 
 
