@@ -23,6 +23,10 @@ catch (PDOException $e)
 exit("Error: " . $e->getMessage());
 }
 
+if(isset($_SESSION['type'])){
+}else {
+    $_SESSION['type'] = "investor";
+}
 
 $type = ($_SESSION['type'] == "investor");
 if (!$type) {

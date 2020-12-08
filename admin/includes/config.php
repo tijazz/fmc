@@ -23,7 +23,13 @@ catch (PDOException $e)
 exit("Error: " . $e->getMessage());
 }
 
-$type = ($_SESSION['type'] == "investor");
+if(isset($_SESSION['type'])){
+    
+}else {
+    $_SESSION['type'] = "admin";
+}
+
+$type = ($_SESSION['type'] == "admin");
 if (!$type) {
     header("location:../_404.html");
 }
