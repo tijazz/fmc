@@ -25,7 +25,14 @@ catch (PDOException $e)
 exit("Error: " . $e->getMessage());
 }
 
-$type = ($_SESSION['type'] == "organization");
+
+if(isset($_SESSION['type'])){
+}else {
+    $_SESSION['type'] = 'organization';
+}
+
+
+$type = ($_SESSION['type'] == "organization") ;
 if (!$type) {
     header("location:../_404.html");
 }

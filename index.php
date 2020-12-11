@@ -284,6 +284,7 @@
                     <li>Seller's Hub</li>
                     <li>Market</li>
                     <li>About us</li>
+                    <li> <a href="admin/index.php">Admin</a></li>
                 </ul>
             </div>
             <div class="social-buttons">

@@ -20,7 +20,6 @@ if (isset($_POST['login'])) {
 		$_SESSION['monitory'] = $results[0]->monitory;
 		$_SESSION['financial'] = $results[0]->financial;
 		$_SESSION['images'] = $results[0]->image;
-		$_SESSION['type'] = "employee";
 
 		$sql = "SELECT * FROM organization WHERE id=:id";
 		$query = $dbh->prepare($sql);

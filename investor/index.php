@@ -29,7 +29,7 @@ if (isset($_POST['login'])) {
 		($_SESSION['unit'] = $results->unit);
 		($_SESSION['images'] = $results->images);
 		($_SESSION['timestamp'] = time());
-		$_SESSION['type'] = "investor";
+		
 
 		echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
 	} else {
