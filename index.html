@@ -10,6 +10,7 @@
     />
     <title>Hackathon</title>
     <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
   </head>
   <body>
     <section id="header">
@@ -50,17 +51,17 @@
 
     <section id="features">
       <div class="feature-row">
-        <div class="feature-col">
+        <div class="feature-col" id='feature1'>
           <img src="./images/pic-1.png" alt="" />
           <h4>Learn Anywhere</h4>
           <p>Switch between your computer, tablet or mobile device.</p>
         </div>
-        <div class="feature-col">
+        <div class="feature-col" id="feature2">
           <img src="./images/pic-2.png" alt="" />
           <h4>Expert Teachers</h4>
           <p>Learn from industry experts who are passionate offer teaching.</p>
         </div>
-        <div class="feature-col">
+        <div class="feature-col" id="feature3">
           <img src="./images/pic-3.png" alt="" />
           <h4>Unlimited Access</h4>
           <p>
@@ -225,5 +226,6 @@
         speedAsDuration: true,
       });
     </script>
+    <script src="public/js/animations.js"></script>
   </body>
 </html>

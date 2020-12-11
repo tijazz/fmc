@@ -6,6 +6,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  opacity:0
 }
 h1 {
   font-size: 35px;
@@ -98,7 +99,8 @@ p {
   position: fixed;
   top: 0;
   right: -250px;
-  background: #076b2d;
+  /* background: #076b2d; */
+  background: #fff;
   z-index: 2;
   transition: 0.5s;
 }
@@ -109,7 +111,7 @@ nav ul li {
 }
 
 nav ul li a {
-  color: white;
+  color: #076b2d;
   text-decoration: none;
 }
 
@@ -372,16 +374,17 @@ hr {
     width: 70px;
   }
   .header-text {
-    margin-top: 100px;
+    margin-top: 30px;
     color: black;
   }
   .header-text h1,
   .header-text p {
     color: black;
+    font-size:18px;
   }
 
   h1 {
-    font-size: 25px;
+    font-size: 21px;
   }
   #menuBtn {
     width: 40px;
@@ -433,4 +436,29 @@ hr {
     flex-basis: 50%;
     margin-bottom: 30px;
   }
+}
+
+
+/* extras */
+#feature1{
+  transform:translateX(-40px);
+  transition:0.4s ease;
+}
+
+#feature2{
+  transform: translateY(40px);
+  transition:0.4s ease;
+}
+
+#feature3{
+  transform:translateX(40px);
+  transition:0.4s ease;
+}
+
+.course-right-col,.offer-right-col,
+.course-text,.offer-left-col,#contact
+{
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.4s ease;
 }
