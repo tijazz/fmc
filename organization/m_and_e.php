@@ -69,7 +69,12 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 <img src='public/images/icons8-futures-50.png' />
                                                 <span>Pens</span>
                                             </h5>
-                                            <div class="value">350</div>
+                                            <?php $sql = "SELECT count(*) from monthlyreport WHERE org_id = (:org_id) AND type = 'pen'";
+                                            $query = $dbh->prepare($sql);
+                                            $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                                            $query->execute();
+                                            $pen = $query->fetchColumn();              ?>
+                                            <div class="value"><?= $pen ?? 0 ?></div>
                                         </div>
                                         <div class="average average_2">
                                             <h5 class='me_title'>
@@ -78,16 +83,24 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     Fields
                                                 </span>
                                             </h5>
-                                            <div class="value">450</div>
+                                            <?php $sql = "SELECT count(*) from monthlyreport WHERE org_id = (:org_id) AND type = 'field'";
+                                            $query = $dbh->prepare($sql);
+                                            $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                                            $query->execute();
+                                            $field = $query->fetchColumn();              ?>
+                                            <div class="value"><?= $field ?? 0 ?></div>
                                         </div>
                                         <div class="average average_3">
                                             <h5 class='me_title'>
                                                 <img src="public/images/icons8-coin-in-hand-50.png" alt="">
                                                 <span>All Employees</span>
                                             </h5>
-                                            <div class="value">
-                                                50
-                                            </div>
+                                            <?php $sql = "SELECT count(*) from employee WHERE org_id = (:org_id)";
+                                            $query = $dbh->prepare($sql);
+                                            $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                                            $query->execute();
+                                            $employee = $query->fetchColumn();              ?>
+                                            <div class="value"><?= $employee ?></div>
                                         </div>
                                         <div class="portfolio">
                                             <h5 class='me_title'>
@@ -95,7 +108,13 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             </h5>
                                             <div class="cirle_container">
                                                 <div class="circle">
-                                                    <h2>400
+                                                    <h2><?php $sql = "SELECT count(*) from monthlyreport WHERE org_id = (:org_id) AND type = 'facility'";
+                                            $query = $dbh->prepare($sql);
+                                            $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                                            $query->execute();
+                                            $facility = $query->fetchColumn();
+                                            echo $facility          ?>
+                                            
                                                         <span>
                                                             Facilities
                                                         </span></h2>
@@ -136,7 +155,12 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 <img src="public/images/icons8-neutral-trading-50.png" alt="">
                                                 <span>Total Workers</span>
                                             </h5>
-                                            <h1>20</h1>
+                                            <?php $sql = "SELECT count(*) from worker WHERE org_id = (:org_id)";
+                                            $query = $dbh->prepare($sql);
+                                            $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                                            $query->execute();
+                                            $worker = $query->fetchColumn();              ?>
+                                            <h1><?= $worker?></h1>
                                         </div>
                                         <!-- <div class="invested_locations">
                                             <h5 class='me_title'>

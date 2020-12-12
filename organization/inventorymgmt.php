@@ -64,7 +64,14 @@ if (strlen($_SESSION['alogin']) == 0) {
                                     <div class="row">
                                         <div class="col-md-6 col-lg-3">
                                             <div class="statistic__item">
-                                                <h2 class="number">100</h2>
+                                                <?php
+                                                $sql = "SELECT count(*) from `machinery` where org_id = :org_id";
+                                                $query = $dbh->prepare($sql);
+                                                $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                                                $query->execute();
+                                                $machinery = $query->fetchColumn();
+                                                ?>
+                                                <h2 class="number"><?= $machinery?></h2>
                                                 <span class="desc">Machineries</span>
                                                 <div class="icon">
                                                     <i class="fa fa-tractor"></i>
@@ -73,7 +80,14 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         </div>
                                         <div class="col-md-6 col-lg-3">
                                             <div class="statistic__item">
-                                                <h2 class="number">38</h2>
+                                            <?php
+                                                $sql = "SELECT count(*) from `building` where org_id = :org_id";
+                                                $query = $dbh->prepare($sql);
+                                                $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                                                $query->execute();
+                                                $building = $query->fetchColumn();
+                                                ?>
+                                                <h2 class="number"><?= $building?></h2>
                                                 <span class="desc">Buildings</span>
                                                 <div class="icon">
                                                     <i class="fa fa-university"></i>
@@ -82,7 +96,14 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         </div>
                                         <div class="col-md-6 col-lg-3">
                                             <div class="statistic__item">
-                                                <h2 class="number">1086</h2>
+                                            <?php
+                                                $sql = "SELECT count(*) from `product` where org_id = :org_id";
+                                                $query = $dbh->prepare($sql);
+                                                $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                                                $query->execute();
+                                                $product = $query->fetchColumn();
+                                                ?>
+                                                <h2 class="number"><?= $product?></h2>
                                                 <span class="desc">Products</span>
                                                 <div class="icon">
                                                     <i class="fa fa-money"></i>
@@ -91,8 +112,15 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         </div>
                                         <div class="col-md-6 col-lg-3">
                                             <div class="statistic__item">
-                                                <h2 class="number">140</h2>
-                                                <span class="desc">Warehouses</span>
+                                            <?php
+                                                $sql = "SELECT count(*) from `vehicle` where org_id = :org_id";
+                                                $query = $dbh->prepare($sql);
+                                                $query->bindParam(':org_id', $_SESSION['org_id'], PDO::PARAM_STR);
+                                                $query->execute();
+                                                $vehicle = $query->fetchColumn();
+                                                ?>
+                                                <h2 class="number"><?= $vehicle?></h2>
+                                                <span class="desc">Vehicle</span>
                                                 <div class="icon">
                                                     <i class="fa fa-warehouse"></i>
                                                 </div>
@@ -110,26 +138,25 @@ if (strlen($_SESSION['alogin']) == 0) {
                                     <div class="summary-left">
                                         <div class="hidden_details">
                                             <ul>
-                                                <li>Bags of Rice</li>
-                                                <li>Cattle</li>
-                                                <li>Rabbits</li>
-                                                <li>Worker Dogs</li>
-                                                <li>Tractors</li>
+                                                <li>Building</li>
+                                                <li>Vehicle</li>
+                                                <li>Machiney</li>
+                                                <li>Product</li>
+                                                
                                             </ul>
                                             <ul>
-                                                <li>200</li>
-                                                <li>100</li>
-                                                <li>50</li>
-                                                <li>50</li>
-                                                <li>55</li>
-                                                <li>455</li>
+                                                <li><?= $building?></li>
+                                                <li><?= $vehicle?></li>
+                                                <li><?= $machinery?></li>
+                                                <li><?= $product?></li>
+                                                <li><?= $product + $building + $vehicle + $product ?> </li>
                                             </ul>
                                         </div>
                                     </div>
 
                                 </div>
                                 <h1 class="summ_h1">
-                                    455<span>Total Items</span>
+                                <?= $product + $building + $vehicle + $product ?><span>Total Items</span>
                                 </h1>
                             </div>
                             <section>
@@ -216,7 +243,6 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     }
                                                     
                                                 }
-                                                echo var_dump($result);
                                             }
 
                                             ?>
@@ -231,22 +257,22 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                                     <div class="chart-note mr-0 d-block">
                                                                         <h2 class="number accepted_no"><?= $accept ?></h2>
                                                                         <span class="dot dot--blue"></span>
-                                                                        <span>Accepted</span>
+                                                                        <span><?= $accept?></span>
                                                                     </div>
                                                                     <div class="chart-note mr-0 d-block">
                                                                         <h2 class="number progress_no"><?= $progress ?></h2>
                                                                         <span class="dot dot--red"></span>
-                                                                        <span>In Progress</span>
+                                                                        <span><?= $progress?></span>
                                                                     </div>
                                                                     <div class="chart-note mr-0 d-block">
                                                                         <h2 class="number shipped_no"><?= $shipped ?></h2>
-                                                                        <span class="dot dot--red"></span>
-                                                                        <span>Shipped</span>
+                                                                        <span class="dot dot--blue"></span>
+                                                                        <span><?= $shipped?></span>
                                                                     </div>
                                                                     <div class="chart-note mr-0 d-block">
                                                                         <h2 class="number delivered_no"><?= $delivered ?></h2>
                                                                         <span class="dot dot--red"></span>
-                                                                        <span>Delivered</span>
+                                                                        <span><?= $delivered?></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
