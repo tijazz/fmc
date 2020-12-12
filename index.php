@@ -24,6 +24,7 @@
         </a>
         <ul class="right_nav">
             <li class="active"><a href="index.php">Home</a></li>
+            <li><a href="irrigation.php">Smart Farming</a></li>
             <li class="parent"><a href="solutions.php">Solutions
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path
@@ -67,6 +68,7 @@
     </nav>
     <ul class="mobile_nav">
         <li><a href="index.php">Home</a></li>
+        <li><a href="irrigation.php">Smart Farming</a></li>
         <li class="parent1 parent"><a href="solutions.php">Solutions
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                     <path
