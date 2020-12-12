@@ -44,11 +44,11 @@
   <nav id="sideNav">
     <ul>
       <li><a href="#header">Home</a></li>
-      <li><a href="#offer">About Us</a></li>
-      <li><a href="#features">Product offer</a></li>
-      <li><a href="#courses">Features
+      <li><a href="#courses">About Us</a></li>
+      <li><a href="#offer">Product offer</a></li>
+      <li><a href="#features">Features
         </a></li>
-      <li><a href="#offer">Book a demo
+      <li><a href="#contact">Book a demo
         </a></li>
       <li><a href="#contact">Contact us
         </a></li>
